@@ -1,0 +1,12 @@
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\bin\Debug\Los_Gatos_Morados.exe.config
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\bin\Debug\Los_Gatos_Morados.exe
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\bin\Debug\Los_Gatos_Morados.pdb
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.csprojAssemblyReference.cache
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.dashboardScreen.resources
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.loginScreen.resources
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.Properties.Resources.resources
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.csproj.GenerateResource.cache
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.exe
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.pdb
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.ticketDetails.resources
+C:\Users\Rebecca Jenkins\source\repos\Los_Gatos_Morados\Los_Gatos_Morados\obj\Debug\Los_Gatos_Morados.ticketsScreen.resources
