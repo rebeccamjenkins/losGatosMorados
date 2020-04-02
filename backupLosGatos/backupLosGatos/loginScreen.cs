@@ -25,6 +25,7 @@ namespace backupLosGatos
 
             Boolean userValid;
 
+
             if (loginCount > 1)
             {
                 using (OleDbConnection myConnection = new OleDbConnection())
@@ -39,33 +40,43 @@ namespace backupLosGatos
 
                     if (readerReturnValue.HasRows == true)
                     {
+                        int typeReturn = 0;
                         OleDbCommand userType = myConnection.CreateCommand();
                         userType.CommandText = "SELECT userType FROM Users WHERE username = '" + usernameText.Text + "'";
 
-                        OleDbDataReader userTypeReturn = userType.ExecuteReader();
-                        while (userTypeReturn.Read())
-                        {
-                            int typeReturn = userTypeReturn.GetInt32(2);
+                        OleDbDataReader userTypeReturn = userType.ExecuteReader(CommandBehavior.CloseConnection);
+
+
+
+
+                            while (userTypeReturn.Read())
+                                {
+                            typeReturn = userTypeReturn.GetInt32(0);
                             if (typeReturn == 1)
-                            {
-                                dashboardScreen dashboard = new dashboardScreen();
-                                dashboard.Show();
-                            }
-                            else if (typeReturn == 2)
-                            {
-                                managerDashboard dashboard = new managerDashboard();
-                                dashboard.Show();
-                            }
-                            else if (typeReturn == 3)
-                            {
-                                technicianDashboard dashboard = new technicianDashboard();
-                                dashboard.Show();
-                            }
-                            readerReturnValue = null;
-                        }
+                                    {
+                                        dashboardScreen dashboard = new dashboardScreen();
+                                        dashboard.Show();
+                                    }
+                                    else if (typeReturn == 2)
+                                    {
+                                        managerDashboard dashboard = new managerDashboard();
+                                        dashboard.Show();
+                                    }
+                                    else if (typeReturn == 3)
+                                    {
+                                        technicianDashboard dashboard = new technicianDashboard();
+                                        dashboard.Show();
+                                    }
+                                    readerReturnValue = null;
+                                }
+
+
+
 
                         userValid = true;
-                        MessageBox.Show("You have successfully logged in.");
+                        MessageBox.Show("You have successfully logged in." + typeReturn);
+
+
                         userTypeReturn.Close();
                     }
                     else
