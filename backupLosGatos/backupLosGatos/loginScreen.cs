@@ -45,7 +45,7 @@ namespace backupLosGatos
                         OleDbDataReader userTypeReturn = userType.ExecuteReader();
                         while (userTypeReturn.Read())
                         {
-                            int typeReturn = userTypeReturn.GetInt32(2);
+                            int typeReturn = userTypeReturn.GetInt32(0);
                             if (typeReturn == 1)
                             {
                                 dashboardScreen dashboard = new dashboardScreen();

@@ -20,3 +20,17 @@ C:\Users\Rebecca Jenkins\source\repos\backupLosGatos\backupLosGatos\bin\Debug\ba
 C:\Users\Rebecca Jenkins\source\repos\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.pdb
 C:\Users\Rebecca Jenkins\source\repos\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
 C:\Users\Rebecca Jenkins\source\repos\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.exe.config
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.exe
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.pdb
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csprojAssemblyReference.cache
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.dashboardScreen.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.loginScreen.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.managerDashboard.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.Properties.Resources.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.technicianDashboard.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.ticketDetails.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.GenerateResource.cache
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.CoreCompileInputs.cache
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
