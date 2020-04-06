@@ -44,15 +44,15 @@ namespace backupLosGatos
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.equipmentIDTextBox = new System.Windows.Forms.TextBox();
+            this.equipmentID = new System.Windows.Forms.TextBox();
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
-            this.unitIDTextBox = new System.Windows.Forms.TextBox();
-            this.ticketIDTextBox = new System.Windows.Forms.TextBox();
+            this.unitID = new System.Windows.Forms.TextBox();
+            this.ticketID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.additionalInformationTextBox = new System.Windows.Forms.TextBox();
-            this.inspectorSignatureTextBox = new System.Windows.Forms.TextBox();
-            this.welderSignatureTextBox = new System.Windows.Forms.TextBox();
+            this.inspectorSignature = new System.Windows.Forms.TextBox();
+            this.welderSignature = new System.Windows.Forms.TextBox();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
             this.ticketsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -68,6 +68,7 @@ namespace backupLosGatos
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ticketsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.updateButton = new System.Windows.Forms.Button();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -85,69 +86,62 @@ namespace backupLosGatos
             // ticketIDLabel
             // 
             ticketIDLabel.AutoSize = true;
-            ticketIDLabel.Location = new System.Drawing.Point(24, 47);
-            ticketIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            ticketIDLabel.Location = new System.Drawing.Point(32, 58);
             ticketIDLabel.Name = "ticketIDLabel";
-            ticketIDLabel.Size = new System.Drawing.Size(52, 16);
+            ticketIDLabel.Size = new System.Drawing.Size(65, 19);
             ticketIDLabel.TabIndex = 0;
             ticketIDLabel.Text = "Ticket #:";
             // 
             // welderSignatureLabel
             // 
             welderSignatureLabel.AutoSize = true;
-            welderSignatureLabel.Location = new System.Drawing.Point(24, 44);
-            welderSignatureLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            welderSignatureLabel.Location = new System.Drawing.Point(32, 54);
             welderSignatureLabel.Name = "welderSignatureLabel";
-            welderSignatureLabel.Size = new System.Drawing.Size(49, 16);
+            welderSignatureLabel.Size = new System.Drawing.Size(63, 19);
             welderSignatureLabel.TabIndex = 0;
             welderSignatureLabel.Text = "Welder:";
             // 
             // inspectorSignatureLabel
             // 
             inspectorSignatureLabel.AutoSize = true;
-            inspectorSignatureLabel.Location = new System.Drawing.Point(338, 43);
-            inspectorSignatureLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            inspectorSignatureLabel.Location = new System.Drawing.Point(451, 53);
             inspectorSignatureLabel.Name = "inspectorSignatureLabel";
-            inspectorSignatureLabel.Size = new System.Drawing.Size(61, 16);
+            inspectorSignatureLabel.Size = new System.Drawing.Size(76, 19);
             inspectorSignatureLabel.TabIndex = 2;
             inspectorSignatureLabel.Text = "Inspector:";
             // 
             // additionalInformationLabel
             // 
-            additionalInformationLabel.Location = new System.Drawing.Point(24, 87);
-            additionalInformationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            additionalInformationLabel.Location = new System.Drawing.Point(32, 107);
             additionalInformationLabel.Name = "additionalInformationLabel";
-            additionalInformationLabel.Size = new System.Drawing.Size(72, 48);
+            additionalInformationLabel.Size = new System.Drawing.Size(96, 59);
             additionalInformationLabel.TabIndex = 4;
             additionalInformationLabel.Text = "Additional Information:";
             // 
             // equipmentIDLabel
             // 
             equipmentIDLabel.AutoSize = true;
-            equipmentIDLabel.Location = new System.Drawing.Point(24, 112);
-            equipmentIDLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            equipmentIDLabel.Location = new System.Drawing.Point(32, 138);
             equipmentIDLabel.Name = "equipmentIDLabel";
-            equipmentIDLabel.Size = new System.Drawing.Size(70, 16);
+            equipmentIDLabel.Size = new System.Drawing.Size(89, 19);
             equipmentIDLabel.TabIndex = 4;
             equipmentIDLabel.Text = "Equipment:";
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(122, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(163, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(402, 40);
+            this.label1.Size = new System.Drawing.Size(536, 49);
             this.label1.TabIndex = 9;
             this.label1.Text = "Weld Progress Tracking System";
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(125, 47);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(167, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(397, 44);
+            this.label3.Size = new System.Drawing.Size(529, 54);
             this.label3.TabIndex = 10;
             this.label3.Text = "Wildcat Refinery\'s centralized service catalog for management of trouble tickets " +
     "by management and technician personnel";
@@ -162,21 +156,21 @@ namespace backupLosGatos
             this.ticketPage});
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(89, 536);
+            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.pageOptions.Size = new System.Drawing.Size(109, 622);
             this.pageOptions.TabIndex = 11;
             // 
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(80, 21);
+            this.dashboardPage.Size = new System.Drawing.Size(98, 24);
             this.dashboardPage.Text = "Dashboard";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ticketPage
             // 
             this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(80, 21);
+            this.ticketPage.Size = new System.Drawing.Size(98, 24);
             this.ticketPage.Text = "Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -184,16 +178,16 @@ namespace backupLosGatos
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(equipmentIDLabel);
-            this.groupBox1.Controls.Add(this.equipmentIDTextBox);
-            this.groupBox1.Controls.Add(this.unitIDTextBox);
+            this.groupBox1.Controls.Add(this.equipmentID);
+            this.groupBox1.Controls.Add(this.unitID);
             this.groupBox1.Controls.Add(ticketIDLabel);
-            this.groupBox1.Controls.Add(this.ticketIDTextBox);
+            this.groupBox1.Controls.Add(this.ticketID);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(128, 111);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(171, 114);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(602, 165);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(803, 203);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ticket Information";
@@ -201,21 +195,20 @@ namespace backupLosGatos
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 80);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(32, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 16);
+            this.label2.Size = new System.Drawing.Size(39, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "Unit:";
             // 
-            // equipmentIDTextBox
+            // equipmentID
             // 
-            this.equipmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "equipmentID", true));
-            this.equipmentIDTextBox.Location = new System.Drawing.Point(111, 110);
-            this.equipmentIDTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.equipmentIDTextBox.Name = "equipmentIDTextBox";
-            this.equipmentIDTextBox.Size = new System.Drawing.Size(140, 20);
-            this.equipmentIDTextBox.TabIndex = 5;
+            this.equipmentID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "equipmentID", true));
+            this.equipmentID.Location = new System.Drawing.Point(148, 135);
+            this.equipmentID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.equipmentID.Name = "equipmentID";
+            this.equipmentID.Size = new System.Drawing.Size(185, 23);
+            this.equipmentID.TabIndex = 5;
             // 
             // ticketsBindingSource
             // 
@@ -227,38 +220,38 @@ namespace backupLosGatos
             this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
             this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // unitIDTextBox
+            // unitID
             // 
-            this.unitIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "unitID", true));
-            this.unitIDTextBox.Location = new System.Drawing.Point(111, 77);
-            this.unitIDTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.unitIDTextBox.Name = "unitIDTextBox";
-            this.unitIDTextBox.Size = new System.Drawing.Size(140, 20);
-            this.unitIDTextBox.TabIndex = 3;
+            this.unitID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "unitID", true));
+            this.unitID.Location = new System.Drawing.Point(148, 95);
+            this.unitID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unitID.Name = "unitID";
+            this.unitID.Size = new System.Drawing.Size(185, 23);
+            this.unitID.TabIndex = 3;
             // 
-            // ticketIDTextBox
+            // ticketID
             // 
-            this.ticketIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "ticketID", true));
-            this.ticketIDTextBox.Location = new System.Drawing.Point(111, 45);
-            this.ticketIDTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ticketIDTextBox.Name = "ticketIDTextBox";
-            this.ticketIDTextBox.Size = new System.Drawing.Size(140, 20);
-            this.ticketIDTextBox.TabIndex = 1;
+            this.ticketID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "ticketID", true));
+            this.ticketID.Location = new System.Drawing.Point(148, 55);
+            this.ticketID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ticketID.Name = "ticketID";
+            this.ticketID.Size = new System.Drawing.Size(185, 23);
+            this.ticketID.TabIndex = 1;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(additionalInformationLabel);
             this.groupBox2.Controls.Add(this.additionalInformationTextBox);
             this.groupBox2.Controls.Add(inspectorSignatureLabel);
-            this.groupBox2.Controls.Add(this.inspectorSignatureTextBox);
+            this.groupBox2.Controls.Add(this.inspectorSignature);
             this.groupBox2.Controls.Add(welderSignatureLabel);
-            this.groupBox2.Controls.Add(this.welderSignatureTextBox);
+            this.groupBox2.Controls.Add(this.welderSignature);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(128, 279);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(171, 320);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(602, 195);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(803, 240);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detailed Information";
@@ -266,30 +259,30 @@ namespace backupLosGatos
             // additionalInformationTextBox
             // 
             this.additionalInformationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "additionalInformation", true));
-            this.additionalInformationTextBox.Location = new System.Drawing.Point(111, 84);
-            this.additionalInformationTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.additionalInformationTextBox.Location = new System.Drawing.Point(148, 103);
+            this.additionalInformationTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.additionalInformationTextBox.Multiline = true;
             this.additionalInformationTextBox.Name = "additionalInformationTextBox";
-            this.additionalInformationTextBox.Size = new System.Drawing.Size(454, 92);
+            this.additionalInformationTextBox.Size = new System.Drawing.Size(604, 112);
             this.additionalInformationTextBox.TabIndex = 5;
             // 
-            // inspectorSignatureTextBox
+            // inspectorSignature
             // 
-            this.inspectorSignatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "inspectorSignature", true));
-            this.inspectorSignatureTextBox.Location = new System.Drawing.Point(425, 41);
-            this.inspectorSignatureTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.inspectorSignatureTextBox.Name = "inspectorSignatureTextBox";
-            this.inspectorSignatureTextBox.Size = new System.Drawing.Size(140, 20);
-            this.inspectorSignatureTextBox.TabIndex = 3;
+            this.inspectorSignature.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "inspectorSignature", true));
+            this.inspectorSignature.Location = new System.Drawing.Point(567, 50);
+            this.inspectorSignature.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inspectorSignature.Name = "inspectorSignature";
+            this.inspectorSignature.Size = new System.Drawing.Size(185, 23);
+            this.inspectorSignature.TabIndex = 3;
             // 
-            // welderSignatureTextBox
+            // welderSignature
             // 
-            this.welderSignatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "welderSignature", true));
-            this.welderSignatureTextBox.Location = new System.Drawing.Point(111, 41);
-            this.welderSignatureTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.welderSignatureTextBox.Name = "welderSignatureTextBox";
-            this.welderSignatureTextBox.Size = new System.Drawing.Size(140, 20);
-            this.welderSignatureTextBox.TabIndex = 1;
+            this.welderSignature.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "welderSignature", true));
+            this.welderSignature.Location = new System.Drawing.Point(148, 50);
+            this.welderSignature.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.welderSignature.Name = "welderSignature";
+            this.welderSignature.Size = new System.Drawing.Size(185, 23);
+            this.welderSignature.TabIndex = 1;
             // 
             // ticketsTableAdapter
             // 
@@ -323,14 +316,14 @@ namespace backupLosGatos
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.ticketsBindingNavigatorSaveItem});
-            this.ticketsBindingNavigator.Location = new System.Drawing.Point(89, 0);
+            this.ticketsBindingNavigator.Location = new System.Drawing.Point(109, 0);
             this.ticketsBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.ticketsBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.ticketsBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.ticketsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.ticketsBindingNavigator.Name = "ticketsBindingNavigator";
             this.ticketsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.ticketsBindingNavigator.Size = new System.Drawing.Size(719, 27);
+            this.ticketsBindingNavigator.Size = new System.Drawing.Size(921, 27);
             this.ticketsBindingNavigator.TabIndex = 14;
             this.ticketsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -340,13 +333,13 @@ namespace backupLosGatos
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 24);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -356,7 +349,7 @@ namespace backupLosGatos
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
@@ -365,7 +358,7 @@ namespace backupLosGatos
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMoveFirstItem.Text = "Move first";
             // 
             // bindingNavigatorMovePreviousItem
@@ -374,7 +367,7 @@ namespace backupLosGatos
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
             // bindingNavigatorSeparator
@@ -388,7 +381,7 @@ namespace backupLosGatos
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(38, 23);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(49, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
@@ -403,7 +396,7 @@ namespace backupLosGatos
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -412,7 +405,7 @@ namespace backupLosGatos
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 24);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
@@ -425,22 +418,34 @@ namespace backupLosGatos
             this.ticketsBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.ticketsBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("ticketsBindingNavigatorSaveItem.Image")));
             this.ticketsBindingNavigatorSaveItem.Name = "ticketsBindingNavigatorSaveItem";
-            this.ticketsBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 24);
+            this.ticketsBindingNavigatorSaveItem.Size = new System.Drawing.Size(29, 24);
             this.ticketsBindingNavigatorSaveItem.Text = "Save Data";
             this.ticketsBindingNavigatorSaveItem.Click += new System.EventHandler(this.ticketsBindingNavigatorSaveItem_Click);
             // 
+            // updateButton
+            // 
+            this.updateButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(1056, 714);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(129, 30);
+            this.updateButton.TabIndex = 22;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // ticketDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 536);
+            this.ClientSize = new System.Drawing.Size(1030, 622);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.ticketsBindingNavigator);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ticketDetails";
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Ticket Details";
             this.Load += new System.EventHandler(this.ticketDetails_Load);
@@ -491,12 +496,13 @@ namespace backupLosGatos
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton ticketsBindingNavigatorSaveItem;
-        private System.Windows.Forms.TextBox unitIDTextBox;
-        private System.Windows.Forms.TextBox ticketIDTextBox;
-        private System.Windows.Forms.TextBox equipmentIDTextBox;
+        private System.Windows.Forms.TextBox unitID;
+        private System.Windows.Forms.TextBox ticketID;
+        private System.Windows.Forms.TextBox equipmentID;
         private System.Windows.Forms.TextBox additionalInformationTextBox;
-        private System.Windows.Forms.TextBox inspectorSignatureTextBox;
-        private System.Windows.Forms.TextBox welderSignatureTextBox;
+        private System.Windows.Forms.TextBox inspectorSignature;
+        private System.Windows.Forms.TextBox welderSignature;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button updateButton;
     }
 }

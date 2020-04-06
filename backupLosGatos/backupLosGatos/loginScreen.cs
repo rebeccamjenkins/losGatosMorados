@@ -22,15 +22,12 @@ namespace backupLosGatos
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
             Boolean userValid;
-
 
             if (loginCount > 1)
             {
                 using (OleDbConnection myConnection = new OleDbConnection())
                 {
-
                     myConnection.ConnectionString = "Provider=SQLNCLI11;Data Source=10.135.85.184;User ID=Group6;Password=Grp6s2117;Initial Catalog=GROUP6";
                     myConnection.Open();
                     OleDbCommand cmdNotReturned = myConnection.CreateCommand();
@@ -46,15 +43,12 @@ namespace backupLosGatos
 
                         OleDbDataReader userTypeReturn = userType.ExecuteReader(CommandBehavior.CloseConnection);
 
-
-
-
                             while (userTypeReturn.Read())
                                 {
                             typeReturn = userTypeReturn.GetInt32(0);
                             if (typeReturn == 1)
                                     {
-                                        dashboardScreen dashboard = new dashboardScreen();
+                                        coordinatorDashboard dashboard = new coordinatorDashboard();
                                         dashboard.Show();
                                     }
                                     else if (typeReturn == 2)
@@ -70,13 +64,8 @@ namespace backupLosGatos
                                     readerReturnValue = null;
                                 }
 
-
-
-
                         userValid = true;
                         MessageBox.Show("You have successfully logged in." + typeReturn);
-
-
                         userTypeReturn.Close();
                     }
                     else
