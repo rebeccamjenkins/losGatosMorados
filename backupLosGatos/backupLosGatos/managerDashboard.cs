@@ -24,10 +24,13 @@ namespace backupLosGatos
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-            //dashboardScreen dashboard = new dashboardScreen();
-            ticketDetails ticketDetails = new ticketDetails();
-            //this.Hide();
-            //ticketDetails.Show();
+            /*ticketDetails newTicket = new ticketDetails();
+            this.Hide();
+            newTicket.Show();*/
+
+            newTicket ticket = new newTicket();
+            this.Hide();
+            ticket.Show();
 
         }
 
