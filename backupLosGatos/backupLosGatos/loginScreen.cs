@@ -43,29 +43,31 @@ namespace backupLosGatos
 
                         OleDbDataReader userTypeReturn = userType.ExecuteReader(CommandBehavior.CloseConnection);
 
-                            while (userTypeReturn.Read())
-                                {
+                        while (userTypeReturn.Read())
+                        {
                             typeReturn = userTypeReturn.GetInt32(0);
                             if (typeReturn == 1)
-                                    {
-                                        coordinatorDashboard dashboard = new coordinatorDashboard();
-                                        dashboard.Show();
-                                    }
-                                    else if (typeReturn == 2)
-                                    {
-                                        managerDashboard dashboard = new managerDashboard();
-                                        dashboard.Show();
-                                    }
-                                    else if (typeReturn == 3)
-                                    {
-                                        technicianDashboard dashboard = new technicianDashboard();
-                                        dashboard.Show();
-                                    }
-                                    readerReturnValue = null;
-                                }
+                            {
+                                coordinatorDashboard dashboard = new coordinatorDashboard();
+                                dashboard.Show();
+                                this.Hide();
+                            }
+                            else if (typeReturn == 2)
+                            {
+                                managerDashboard dashboard = new managerDashboard();
+                                dashboard.Show();
+                                this.Hide();
+                            }
+                            else if (typeReturn == 3)
+                            {
+                                technicianDashboard dashboard = new technicianDashboard();
+                                dashboard.Show();
+                                this.Hide();
+                            }
+                            readerReturnValue = null;
+                        }
 
                         userValid = true;
-                        MessageBox.Show("You have successfully logged in." + typeReturn);
                         userTypeReturn.Close();
                     }
                     else
@@ -83,7 +85,6 @@ namespace backupLosGatos
                 Application.Exit();
             }
         }
-
         private void usersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();

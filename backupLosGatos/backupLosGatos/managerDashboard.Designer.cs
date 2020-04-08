@@ -230,7 +230,6 @@ namespace backupLosGatos
             this.managerGrid.RowTemplate.Height = 24;
             this.managerGrid.Size = new System.Drawing.Size(803, 266);
             this.managerGrid.TabIndex = 13;
-            this.managerGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.managerGrid_CellContentClick);
             // 
             // ticketIDDataGridViewTextBoxColumn
             // 
