@@ -21,5 +21,22 @@ namespace backupLosGatos
         {
             this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
         }
+
+        private void ticketPage_Click(object sender, EventArgs e)
+        {
+            ticketDetails newTicket = new ticketDetails();
+            this.Hide();
+            newTicket.Show();
+
+            /*newTicket ticket = new newTicket();
+            this.Hide();
+            ticket.Show();*/
+
+        }
+
+        private void dashboardPage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

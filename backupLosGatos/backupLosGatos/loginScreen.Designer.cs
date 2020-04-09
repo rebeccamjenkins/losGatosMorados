@@ -58,6 +58,8 @@ namespace backupLosGatos
             usernameLabel = new System.Windows.Forms.Label();
             passwordLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityBindingNavigator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +107,22 @@ namespace backupLosGatos
             this.tableAdapterManager.TicketsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = null;
+            // 
+            // securityBindingNavigator
+            // 
+            this.securityBindingNavigator.AddNewItem = null;
+            this.securityBindingNavigator.CountItem = null;
+            this.securityBindingNavigator.DeleteItem = null;
+            this.securityBindingNavigator.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.securityBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.securityBindingNavigator.MoveFirstItem = null;
+            this.securityBindingNavigator.MoveLastItem = null;
+            this.securityBindingNavigator.MoveNextItem = null;
+            this.securityBindingNavigator.MovePreviousItem = null;
+            this.securityBindingNavigator.Name = "securityBindingNavigator";
+            this.securityBindingNavigator.PositionItem = null;
+            this.securityBindingNavigator.Size = new System.Drawing.Size(1027, 25);
+            this.securityBindingNavigator.TabIndex = 10;
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -192,6 +210,11 @@ namespace backupLosGatos
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
+            // securityBindingNavigatorSaveItem
+            // 
+            this.securityBindingNavigatorSaveItem.Name = "securityBindingNavigatorSaveItem";
+            this.securityBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
+            // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -227,14 +250,17 @@ namespace backupLosGatos
             this.usernameText.Name = "usernameText";
             this.usernameText.Size = new System.Drawing.Size(180, 22);
             this.usernameText.TabIndex = 8;
+            this.usernameText.Text = "mvillag";
             // 
             // passwordText
             // 
             this.passwordText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "password", true));
             this.passwordText.Location = new System.Drawing.Point(467, 336);
             this.passwordText.Name = "passwordText";
+            this.passwordText.PasswordChar = '*';
             this.passwordText.Size = new System.Drawing.Size(180, 22);
             this.passwordText.TabIndex = 9;
+            this.passwordText.Text = "snickersmocha";
             // 
             // loginScreen
             // 
@@ -255,8 +281,6 @@ namespace backupLosGatos
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.securityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.securityBindingNavigator)).EndInit();
-            this.securityBindingNavigator.ResumeLayout(false);
-            this.securityBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

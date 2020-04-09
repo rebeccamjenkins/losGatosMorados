@@ -49,16 +49,19 @@ namespace backupLosGatos
                             if (typeReturn == 1)
                             {
                                 dashboardScreen dashboard = new dashboardScreen();
+                                this.Hide();
                                 dashboard.Show();
                             }
                             else if (typeReturn == 2)
                             {
                                 managerDashboard dashboard = new managerDashboard();
+                                this.Hide();
                                 dashboard.Show();
                             }
                             else if (typeReturn == 3)
                             {
                                 technicianDashboard dashboard = new technicianDashboard();
+                                this.Hide();
                                 dashboard.Show();
                             }
                             readerReturnValue = null;
@@ -94,6 +97,8 @@ namespace backupLosGatos
         private void loginScreen_Load(object sender, EventArgs e)
         {
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
+            usernameText.Text = "";
+            passwordText.Text = "";
         }
     }
 }
