@@ -97,6 +97,8 @@ namespace backupLosGatos
         private void loginScreen_Load(object sender, EventArgs e)
         {
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
+            usernameText.Text = "";
+            passwordText.Text = "";
         }
     }
 }

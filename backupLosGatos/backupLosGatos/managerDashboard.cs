@@ -24,13 +24,13 @@ namespace backupLosGatos
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-            /*ticketDetails newTicket = new ticketDetails();
+            ticketDetails newTicket = new ticketDetails();
             this.Hide();
-            newTicket.Show();*/
+            newTicket.Show();
 
-            newTicket ticket = new newTicket();
+            /*newTicket ticket = new newTicket();
             this.Hide();
-            ticket.Show();
+            ticket.Show();*/
 
         }
 
