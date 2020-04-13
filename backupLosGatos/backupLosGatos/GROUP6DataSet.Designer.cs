@@ -419,6 +419,10 @@ namespace backupLosGatos {
             
             private global::System.Data.DataColumn columnstatus;
             
+            private global::System.Data.DataColumn columnpriority;
+            
+            private global::System.Data.DataColumn columndateSubmitted;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TicketsDataTable() {
@@ -510,6 +514,22 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn priorityColumn {
+                get {
+                    return this.columnpriority;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn dateSubmittedColumn {
+                get {
+                    return this.columndateSubmitted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -545,7 +565,7 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow AddTicketsRow(int ticketID, int unitID, EquipmentRow parentEquipmentRowByFK_Tickets_Equipment, string welderSignature, string inspectorSignature, string additionalInformation, string status) {
+            public TicketsRow AddTicketsRow(int ticketID, int unitID, EquipmentRow parentEquipmentRowByFK_Tickets_Equipment, string welderSignature, string inspectorSignature, string additionalInformation, string status, string priority, System.DateTime dateSubmitted) {
                 TicketsRow rowTicketsRow = ((TicketsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ticketID,
@@ -554,7 +574,9 @@ namespace backupLosGatos {
                         welderSignature,
                         inspectorSignature,
                         additionalInformation,
-                        status};
+                        status,
+                        priority,
+                        dateSubmitted};
                 if ((parentEquipmentRowByFK_Tickets_Equipment != null)) {
                     columnValuesArray[2] = parentEquipmentRowByFK_Tickets_Equipment[0];
                 }
@@ -594,6 +616,8 @@ namespace backupLosGatos {
                 this.columninspectorSignature = base.Columns["inspectorSignature"];
                 this.columnadditionalInformation = base.Columns["additionalInformation"];
                 this.columnstatus = base.Columns["status"];
+                this.columnpriority = base.Columns["priority"];
+                this.columndateSubmitted = base.Columns["dateSubmitted"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -613,6 +637,10 @@ namespace backupLosGatos {
                 base.Columns.Add(this.columnadditionalInformation);
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
+                this.columnpriority = new global::System.Data.DataColumn("priority", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpriority);
+                this.columndateSubmitted = new global::System.Data.DataColumn("dateSubmitted", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateSubmitted);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnticketID}, true));
                 this.columnticketID.AllowDBNull = false;
@@ -623,6 +651,7 @@ namespace backupLosGatos {
                 this.columninspectorSignature.MaxLength = 10;
                 this.columnadditionalInformation.MaxLength = 2147483647;
                 this.columnstatus.MaxLength = 2147483647;
+                this.columnpriority.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1780,6 +1809,38 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string priority {
+                get {
+                    try {
+                        return ((string)(this[this.tableTickets.priorityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'priority\' in table \'Tickets\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTickets.priorityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime dateSubmitted {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTickets.dateSubmittedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateSubmitted\' in table \'Tickets\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTickets.dateSubmittedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EquipmentRow EquipmentRow {
                 get {
                     return ((EquipmentRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tickets_Equipment"])));
@@ -1835,6 +1896,30 @@ namespace backupLosGatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetstatusNull() {
                 this[this.tableTickets.statusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IspriorityNull() {
+                return this.IsNull(this.tableTickets.priorityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetpriorityNull() {
+                this[this.tableTickets.priorityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdateSubmittedNull() {
+                return this.IsNull(this.tableTickets.dateSubmittedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdateSubmittedNull() {
+                this[this.tableTickets.dateSubmittedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2389,10 +2474,12 @@ namespace backupLosGatos.GROUP6DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("inspectorSignature", "inspectorSignature");
             tableMapping.ColumnMappings.Add("additionalInformation", "additionalInformation");
             tableMapping.ColumnMappings.Add("status", "status");
+            tableMapping.ColumnMappings.Add("priority", "priority");
+            tableMapping.ColumnMappings.Add("dateSubmitted", "dateSubmitted");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Tickets] WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Tickets] WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)) AND ((@IsNull_dateSubmitted = 1 AND [dateSubmitted] IS NULL) OR ([dateSubmitted] = @Original_dateSubmitted)) AND ((@IsNull_priority = 1 AND [priority] IS NULL) OR ([priority] = @Original_priority)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2401,10 +2488,14 @@ namespace backupLosGatos.GROUP6DataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_welderSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "welderSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_inspectorSignature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_inspectorSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateSubmitted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_priority", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Tickets] ([ticketID], [unitID], [equipmentID], [welderSignature], [inspectorSignature], [additionalInformation], [status]) VALUES (@ticketID, @unitID, @equipmentID, @welderSignature, @inspectorSignature, @additionalInformation, @status);
-SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status FROM Tickets WHERE (ticketID = @ticketID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Tickets] ([ticketID], [unitID], [equipmentID], [welderSignature], [inspectorSignature], [additionalInformation], [status], [dateSubmitted], [priority]) VALUES (@ticketID, @unitID, @equipmentID, @welderSignature, @inspectorSignature, @additionalInformation, @status, @dateSubmitted, @priority);
+SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, priority FROM Tickets WHERE (ticketID = @ticketID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2413,10 +2504,12 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inspectorSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@additionalInformation", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "additionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tickets] SET [ticketID] = @ticketID, [unitID] = @unitID, [equipmentID] = @equipmentID, [welderSignature] = @welderSignature, [inspectorSignature] = @inspectorSignature, [additionalInformation] = @additionalInformation, [status] = @status WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)));
-SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status FROM Tickets WHERE (ticketID = @ticketID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tickets] SET [ticketID] = @ticketID, [unitID] = @unitID, [equipmentID] = @equipmentID, [welderSignature] = @welderSignature, [inspectorSignature] = @inspectorSignature, [additionalInformation] = @additionalInformation, [status] = @status, [dateSubmitted] = @dateSubmitted, [priority] = @priority WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)) AND ((@IsNull_dateSubmitted = 1 AND [dateSubmitted] IS NULL) OR ([dateSubmitted] = @Original_dateSubmitted)) AND ((@IsNull_priority = 1 AND [priority] IS NULL) OR ([priority] = @Original_priority)));
+SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, priority FROM Tickets WHERE (ticketID = @ticketID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2425,6 +2518,8 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inspectorSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@additionalInformation", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "additionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_equipmentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "equipmentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2432,6 +2527,10 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_welderSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "welderSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_inspectorSignature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_inspectorSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateSubmitted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_priority", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2448,7 +2547,7 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additi" +
-                "onalInformation, status FROM Tickets";
+                "onalInformation, status, dateSubmitted, priority FROM Tickets";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2509,7 +2608,7 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature) {
+        public virtual int Delete(int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature, global::System.Nullable<global::System.DateTime> Original_dateSubmitted, string Original_priority) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ticketID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_unitID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_equipmentID));
@@ -2528,6 +2627,22 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_inspectorSignature));
+            }
+            if ((Original_dateSubmitted.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_dateSubmitted.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_priority == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_priority));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2549,7 +2664,7 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status) {
+        public virtual int Insert(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, global::System.Nullable<global::System.DateTime> dateSubmitted, string priority) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ticketID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(unitID));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(equipmentID));
@@ -2577,6 +2692,18 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(status));
             }
+            if ((dateSubmitted.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(dateSubmitted.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((priority == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(priority));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2597,7 +2724,23 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature) {
+        public virtual int Update(
+                    int ticketID, 
+                    int unitID, 
+                    int equipmentID, 
+                    string welderSignature, 
+                    string inspectorSignature, 
+                    string additionalInformation, 
+                    string status, 
+                    global::System.Nullable<global::System.DateTime> dateSubmitted, 
+                    string priority, 
+                    int Original_ticketID, 
+                    int Original_unitID, 
+                    int Original_equipmentID, 
+                    string Original_welderSignature, 
+                    string Original_inspectorSignature, 
+                    global::System.Nullable<global::System.DateTime> Original_dateSubmitted, 
+                    string Original_priority) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ticketID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(unitID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(equipmentID));
@@ -2625,24 +2768,52 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(status));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_ticketID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_unitID));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_equipmentID));
-            if ((Original_welderSignature == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            if ((dateSubmitted.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(dateSubmitted.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_welderSignature));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Original_inspectorSignature == null)) {
+            if ((priority == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(priority));
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_ticketID));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_unitID));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_equipmentID));
+            if ((Original_welderSignature == null)) {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_inspectorSignature));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_welderSignature));
+            }
+            if ((Original_inspectorSignature == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_inspectorSignature));
+            }
+            if ((Original_dateSubmitted.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_dateSubmitted.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((Original_priority == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_priority));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2664,8 +2835,8 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature) {
-            return this.Update(Original_ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, Original_ticketID, Original_unitID, Original_equipmentID, Original_welderSignature, Original_inspectorSignature);
+        public virtual int Update(int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, global::System.Nullable<global::System.DateTime> dateSubmitted, string priority, int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature, global::System.Nullable<global::System.DateTime> Original_dateSubmitted, string Original_priority) {
+            return this.Update(Original_ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, priority, Original_ticketID, Original_unitID, Original_equipmentID, Original_welderSignature, Original_inspectorSignature, Original_dateSubmitted, Original_priority);
         }
     }
     
