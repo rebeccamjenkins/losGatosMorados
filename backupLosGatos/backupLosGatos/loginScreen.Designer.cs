@@ -250,7 +250,6 @@ namespace backupLosGatos
             this.usernameText.Name = "usernameText";
             this.usernameText.Size = new System.Drawing.Size(180, 22);
             this.usernameText.TabIndex = 8;
-            this.usernameText.Text = "mvillag";
             // 
             // passwordText
             // 
@@ -260,7 +259,6 @@ namespace backupLosGatos
             this.passwordText.PasswordChar = '*';
             this.passwordText.Size = new System.Drawing.Size(180, 22);
             this.passwordText.TabIndex = 9;
-            this.passwordText.Text = "snickersmocha";
             // 
             // loginScreen
             // 

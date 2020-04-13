@@ -28,9 +28,7 @@ namespace backupLosGatos
             this.Hide();
             newTicket.Show();
 
-            /*newTicket ticket = new newTicket();
-            this.Hide();
-            ticket.Show();*/
+            
 
         }
 

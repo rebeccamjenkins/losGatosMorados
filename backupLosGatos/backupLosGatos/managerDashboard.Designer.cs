@@ -54,6 +54,7 @@ namespace backupLosGatos
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.viewKioskRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -123,7 +124,8 @@ namespace backupLosGatos
             this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
-            this.ticketPage});
+            this.ticketPage,
+            this.viewKioskRequestsToolStripMenuItem});
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Size = new System.Drawing.Size(923, 30);
@@ -157,11 +159,11 @@ namespace backupLosGatos
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(152, 53);
+            this.label1.Location = new System.Drawing.Point(191, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(536, 49);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Weld Progress Tracking System";
+            this.label1.Text = "Welcome, ";
             // 
             // dataGridView1
             // 
@@ -259,6 +261,12 @@ namespace backupLosGatos
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
+            // viewKioskRequestsToolStripMenuItem
+            // 
+            this.viewKioskRequestsToolStripMenuItem.Name = "viewKioskRequestsToolStripMenuItem";
+            this.viewKioskRequestsToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.viewKioskRequestsToolStripMenuItem.Text = "View Kiosk Requests";
+            // 
             // managerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -314,5 +322,6 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalInformationDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ToolStripMenuItem viewKioskRequestsToolStripMenuItem;
     }
 }
