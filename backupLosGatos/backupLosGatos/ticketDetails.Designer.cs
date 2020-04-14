@@ -41,23 +41,23 @@ namespace backupLosGatos
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbEquipment = new System.Windows.Forms.ComboBox();
+            this.cmbUnit = new System.Windows.Forms.ComboBox();
+            this.cmbPriority = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAssigned = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.equipmentIDTextBox = new System.Windows.Forms.TextBox();
+            this.ticketIDTextBox = new System.Windows.Forms.TextBox();
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
-            this.unitIDTextBox = new System.Windows.Forms.TextBox();
-            this.ticketIDTextBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.additionalInformationTextBox = new System.Windows.Forms.TextBox();
             this.inspectorSignatureTextBox = new System.Windows.Forms.TextBox();
             this.welderSignatureTextBox = new System.Windows.Forms.TextBox();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -115,6 +115,15 @@ namespace backupLosGatos
             equipmentIDLabel.TabIndex = 4;
             equipmentIDLabel.Text = "Equipment:";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(451, 57);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(90, 19);
+            label5.TabIndex = 13;
+            label5.Text = "Assigned to:";
+            // 
             // pageOptions
             // 
             this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,36 +133,36 @@ namespace backupLosGatos
             this.ticketPage});
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Size = new System.Drawing.Size(1027, 30);
+            this.pageOptions.Size = new System.Drawing.Size(1027, 28);
             this.pageOptions.TabIndex = 11;
             // 
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 26);
+            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
             this.dashboardPage.Text = "Dashboard";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ticketPage
             // 
             this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(97, 26);
+            this.ticketPage.Size = new System.Drawing.Size(97, 24);
             this.ticketPage.Text = "Find Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbEquipment);
+            this.groupBox1.Controls.Add(this.cmbUnit);
+            this.groupBox1.Controls.Add(this.cmbPriority);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cmbStatus);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(label5);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtAssigned);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(equipmentIDLabel);
-            this.groupBox1.Controls.Add(this.equipmentIDTextBox);
-            this.groupBox1.Controls.Add(this.unitIDTextBox);
             this.groupBox1.Controls.Add(ticketIDLabel);
             this.groupBox1.Controls.Add(this.ticketIDTextBox);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,6 +173,91 @@ namespace backupLosGatos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ticket Information";
             // 
+            // cmbEquipment
+            // 
+            this.cmbEquipment.FormattingEnabled = true;
+            this.cmbEquipment.Items.AddRange(new object[] {
+            "Boiler",
+            "Distiller",
+            "Flare",
+            "Pipe 1",
+            "Pipe 2",
+            "Pipe 3",
+            "Cooler"});
+            this.cmbEquipment.Location = new System.Drawing.Point(148, 138);
+            this.cmbEquipment.Name = "cmbEquipment";
+            this.cmbEquipment.Size = new System.Drawing.Size(185, 25);
+            this.cmbEquipment.TabIndex = 23;
+            // 
+            // cmbUnit
+            // 
+            this.cmbUnit.FormattingEnabled = true;
+            this.cmbUnit.Items.AddRange(new object[] {
+            "North Unit",
+            "East Unit",
+            "South Unit",
+            "West Unit"});
+            this.cmbUnit.Location = new System.Drawing.Point(148, 97);
+            this.cmbUnit.Name = "cmbUnit";
+            this.cmbUnit.Size = new System.Drawing.Size(185, 25);
+            this.cmbUnit.TabIndex = 22;
+            // 
+            // cmbPriority
+            // 
+            this.cmbPriority.FormattingEnabled = true;
+            this.cmbPriority.Items.AddRange(new object[] {
+            "Low",
+            "Medium",
+            "High",
+            "Immediate"});
+            this.cmbPriority.Location = new System.Drawing.Point(567, 138);
+            this.cmbPriority.Name = "cmbPriority";
+            this.cmbPriority.Size = new System.Drawing.Size(185, 25);
+            this.cmbPriority.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(451, 141);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 19);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Priority:";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Unassigned",
+            "Pending - W",
+            "In Progress - W",
+            "Completed - W",
+            "Pending - I",
+            "In Progress - I",
+            "Completed - I",
+            "Failed Test Returned",
+            "Completed"});
+            this.cmbStatus.Location = new System.Drawing.Point(567, 97);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(185, 25);
+            this.cmbStatus.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(451, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 19);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Status:";
+            // 
+            // txtAssigned
+            // 
+            this.txtAssigned.Location = new System.Drawing.Point(567, 54);
+            this.txtAssigned.Name = "txtAssigned";
+            this.txtAssigned.Size = new System.Drawing.Size(185, 23);
+            this.txtAssigned.TabIndex = 14;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -173,13 +267,14 @@ namespace backupLosGatos
             this.label2.TabIndex = 7;
             this.label2.Text = "Unit:";
             // 
-            // equipmentIDTextBox
+            // ticketIDTextBox
             // 
-            this.equipmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "equipmentID", true));
-            this.equipmentIDTextBox.Location = new System.Drawing.Point(148, 135);
-            this.equipmentIDTextBox.Name = "equipmentIDTextBox";
-            this.equipmentIDTextBox.Size = new System.Drawing.Size(185, 23);
-            this.equipmentIDTextBox.TabIndex = 5;
+            this.ticketIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "ticketID", true));
+            this.ticketIDTextBox.Location = new System.Drawing.Point(148, 55);
+            this.ticketIDTextBox.Name = "ticketIDTextBox";
+            this.ticketIDTextBox.ReadOnly = true;
+            this.ticketIDTextBox.Size = new System.Drawing.Size(185, 23);
+            this.ticketIDTextBox.TabIndex = 1;
             // 
             // ticketsBindingSource
             // 
@@ -190,23 +285,6 @@ namespace backupLosGatos
             // 
             this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
             this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // unitIDTextBox
-            // 
-            this.unitIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "unitID", true));
-            this.unitIDTextBox.Location = new System.Drawing.Point(148, 95);
-            this.unitIDTextBox.Name = "unitIDTextBox";
-            this.unitIDTextBox.Size = new System.Drawing.Size(185, 23);
-            this.unitIDTextBox.TabIndex = 3;
-            // 
-            // ticketIDTextBox
-            // 
-            this.ticketIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "ticketID", true));
-            this.ticketIDTextBox.Enabled = false;
-            this.ticketIDTextBox.Location = new System.Drawing.Point(148, 55);
-            this.ticketIDTextBox.Name = "ticketIDTextBox";
-            this.ticketIDTextBox.Size = new System.Drawing.Size(185, 23);
-            this.ticketIDTextBox.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -261,76 +339,6 @@ namespace backupLosGatos
             this.tableAdapterManager.UpdateOrder = backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = null;
             // 
-            // cmbStatus
-            // 
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Unassigned",
-            "Pending - W",
-            "In Progress - W",
-            "Completed - W",
-            "Pending - I",
-            "In Progress - I",
-            "Completed - I",
-            "Failed Test Returned",
-            "Completed"});
-            this.cmbStatus.Location = new System.Drawing.Point(567, 97);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(185, 25);
-            this.cmbStatus.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(451, 97);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 19);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Status:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(451, 57);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(90, 19);
-            label5.TabIndex = 13;
-            label5.Text = "Assigned to:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(567, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(185, 23);
-            this.textBox2.TabIndex = 14;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(451, 141);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 19);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Priority:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Unassigned",
-            "Pending - W",
-            "In Progress - W",
-            "Completed - W",
-            "Pending - I",
-            "In Progress - I",
-            "Completed - I",
-            "Failed Test Returned",
-            "Completed"});
-            this.comboBox1.Location = new System.Drawing.Point(567, 138);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(185, 25);
-            this.comboBox1.TabIndex = 21;
-            // 
             // ticketDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -371,17 +379,17 @@ namespace backupLosGatos
         private System.Windows.Forms.BindingSource ticketsBindingSource;
         private backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter ticketsTableAdapter;
         private backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox unitIDTextBox;
-        private System.Windows.Forms.TextBox ticketIDTextBox;
-        private System.Windows.Forms.TextBox equipmentIDTextBox;
         private System.Windows.Forms.TextBox additionalInformationTextBox;
         private System.Windows.Forms.TextBox inspectorSignatureTextBox;
         private System.Windows.Forms.TextBox welderSignatureTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.ComboBox cmbPriority;
+        public System.Windows.Forms.ComboBox cmbEquipment;
+        public System.Windows.Forms.ComboBox cmbUnit;
+        public System.Windows.Forms.TextBox ticketIDTextBox;
+        public System.Windows.Forms.ComboBox cmbStatus;
+        public System.Windows.Forms.TextBox txtAssigned;
     }
 }

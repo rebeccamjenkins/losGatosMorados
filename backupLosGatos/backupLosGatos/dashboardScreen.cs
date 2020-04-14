@@ -39,7 +39,9 @@ namespace backupLosGatos
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-
+            ticketDetails newTicket = new ticketDetails();
+            this.Hide();
+            newTicket.Show();
         }
 
     }

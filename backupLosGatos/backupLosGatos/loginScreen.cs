@@ -39,8 +39,20 @@ namespace backupLosGatos
 
                     if (readerReturnValue.HasRows == true)
                     {
+                        
                         OleDbCommand userType = myConnection.CreateCommand();
                         userType.CommandText = "SELECT userType FROM Users WHERE username = '" + usernameText.Text + "'";
+
+                        //Attempting to grab the first name of the user
+                        OleDbCommand userName = myConnection.CreateCommand();
+                        userName.CommandText = "SELECT firstName FROM Users WHERE username = '" + usernameText.Text + "'";
+                        OleDbDataReader userNameReturn = userName.ExecuteReader();
+                        string firstName = "";
+                        while (userNameReturn.Read())
+                        {
+                            firstName = userNameReturn.ToString();
+                        }
+                        
 
                         OleDbDataReader userTypeReturn = userType.ExecuteReader();
                         while (userTypeReturn.Read())
@@ -54,7 +66,9 @@ namespace backupLosGatos
                             }
                             else if (typeReturn == 2)
                             {
+                                
                                 managerDashboard dashboard = new managerDashboard();
+                                dashboard.Welcome.Text = dashboard.Welcome.Text + firstName;
                                 this.Hide();
                                 dashboard.Show();
                             }
@@ -68,7 +82,7 @@ namespace backupLosGatos
                         }
 
                         userValid = true;
-                        MessageBox.Show("You have successfully logged in.");
+                        //MessageBox.Show("You have successfully logged in.");
                         userTypeReturn.Close();
                     }
                     else

@@ -31,9 +31,8 @@ namespace backupLosGatos
         {
             this.components = new System.ComponentModel.Container();
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.gROUP6DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,15 +43,15 @@ namespace backupLosGatos
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.securityBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gROUP6DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusOption = new System.Windows.Forms.ComboBox();
             this.technicianOption = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).BeginInit();
             this.pageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.securityBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,15 +67,6 @@ namespace backupLosGatos
             this.dashboardGrid.Size = new System.Drawing.Size(802, 343);
             this.dashboardGrid.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(163, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(536, 49);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Weld Progress Tracking System";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -84,16 +74,6 @@ namespace backupLosGatos
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 17);
             this.label2.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Century Schoolbook", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(167, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(529, 54);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Wildcat Refinery\'s centralized service catalog for management of trouble tickets " +
-    "by management and technician personnel";
             // 
             // label4
             // 
@@ -146,14 +126,13 @@ namespace backupLosGatos
             // ticketPage
             // 
             this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(97, 24);
-            this.ticketPage.Text = "Ticket";
+            this.ticketPage.Size = new System.Drawing.Size(103, 24);
+            this.ticketPage.Text = "New Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
             // pageOptions
             // 
-            this.pageOptions.Dock = System.Windows.Forms.DockStyle.Left;
             this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -161,7 +140,7 @@ namespace backupLosGatos
             this.ticketPage});
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Size = new System.Drawing.Size(110, 613);
+            this.pageOptions.Size = new System.Drawing.Size(1027, 28);
             this.pageOptions.TabIndex = 6;
             this.pageOptions.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.pageOptions_ItemClicked);
             // 
@@ -191,11 +170,21 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 7;
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(321, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(536, 49);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Welcome, ";
+            // 
             // dashboardScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1027, 613);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -203,19 +192,17 @@ namespace backupLosGatos
             this.Controls.Add(this.statusOption);
             this.Controls.Add(this.technicianOption);
             this.Controls.Add(this.pageOptions);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboardGrid);
             this.Name = "dashboardScreen";
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Dashboard";
             this.Load += new System.EventHandler(this.dashboardScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).EndInit();
             this.pageOptions.ResumeLayout(false);
             this.pageOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.securityBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -225,9 +212,7 @@ namespace backupLosGatos
         #endregion
 
         private System.Windows.Forms.DataGridView dashboardGrid;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -242,5 +227,6 @@ namespace backupLosGatos
         private System.Windows.Forms.BindingSource ticketsBindingSource;
         private System.Windows.Forms.ComboBox statusOption;
         private System.Windows.Forms.ComboBox technicianOption;
+        private System.Windows.Forms.Label label3;
     }
 }

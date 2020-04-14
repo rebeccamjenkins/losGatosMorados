@@ -22,5 +22,10 @@ namespace backupLosGatos
             this.assignmentsTableAdapter.Fill(this.gROUP6DataSet.Assignments);
             this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

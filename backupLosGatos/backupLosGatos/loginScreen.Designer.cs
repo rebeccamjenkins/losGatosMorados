@@ -67,7 +67,7 @@ namespace backupLosGatos
             // 
             usernameLabel.AutoSize = true;
             usernameLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            usernameLabel.Location = new System.Drawing.Point(352, 286);
+            usernameLabel.Location = new System.Drawing.Point(105, 193);
             usernameLabel.Name = "usernameLabel";
             usernameLabel.Size = new System.Drawing.Size(87, 20);
             usernameLabel.TabIndex = 2;
@@ -77,7 +77,7 @@ namespace backupLosGatos
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            passwordLabel.Location = new System.Drawing.Point(356, 336);
+            passwordLabel.Location = new System.Drawing.Point(109, 243);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new System.Drawing.Size(83, 20);
             passwordLabel.TabIndex = 4;
@@ -86,7 +86,7 @@ namespace backupLosGatos
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.Location = new System.Drawing.Point(445, 481);
+            this.submitButton.Location = new System.Drawing.Point(170, 311);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(173, 37);
             this.submitButton.TabIndex = 0;
@@ -121,7 +121,7 @@ namespace backupLosGatos
             this.securityBindingNavigator.MovePreviousItem = null;
             this.securityBindingNavigator.Name = "securityBindingNavigator";
             this.securityBindingNavigator.PositionItem = null;
-            this.securityBindingNavigator.Size = new System.Drawing.Size(1027, 25);
+            this.securityBindingNavigator.Size = new System.Drawing.Size(592, 25);
             this.securityBindingNavigator.TabIndex = 10;
             // 
             // bindingNavigatorAddNewItem
@@ -218,7 +218,7 @@ namespace backupLosGatos
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(266, 118);
+            this.label3.Location = new System.Drawing.Point(25, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(529, 54);
             this.label3.TabIndex = 7;
@@ -228,7 +228,7 @@ namespace backupLosGatos
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(262, 69);
+            this.label1.Location = new System.Drawing.Point(18, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(536, 49);
             this.label1.TabIndex = 6;
@@ -246,7 +246,7 @@ namespace backupLosGatos
             // usernameText
             // 
             this.usernameText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "username", true));
-            this.usernameText.Location = new System.Drawing.Point(467, 286);
+            this.usernameText.Location = new System.Drawing.Point(220, 193);
             this.usernameText.Name = "usernameText";
             this.usernameText.Size = new System.Drawing.Size(180, 22);
             this.usernameText.TabIndex = 8;
@@ -254,7 +254,7 @@ namespace backupLosGatos
             // passwordText
             // 
             this.passwordText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "password", true));
-            this.passwordText.Location = new System.Drawing.Point(467, 336);
+            this.passwordText.Location = new System.Drawing.Point(220, 243);
             this.passwordText.Name = "passwordText";
             this.passwordText.PasswordChar = '*';
             this.passwordText.Size = new System.Drawing.Size(180, 22);
@@ -264,7 +264,7 @@ namespace backupLosGatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 613);
+            this.ClientSize = new System.Drawing.Size(592, 434);
             this.Controls.Add(this.passwordText);
             this.Controls.Add(this.usernameText);
             this.Controls.Add(this.label3);
