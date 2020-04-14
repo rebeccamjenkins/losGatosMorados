@@ -48,3 +48,16 @@ C:\Users\Michelle\Source\Repos\SeniorProject3\backupLosGatos\backupLosGatos\obj\
 C:\Users\Michelle\Source\Repos\SeniorProject3\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
 C:\Users\Michelle\Source\Repos\SeniorProject3\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
 C:\Users\Michelle\Source\Repos\SeniorProject3\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.newTicket.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.exe.config
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.exe
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\bin\Debug\backupLosGatos.pdb
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csprojAssemblyReference.cache
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.dashboardScreen.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.loginScreen.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.managerDashboard.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.Properties.Resources.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.technicianDashboard.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.ticketDetails.resources
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.GenerateResource.cache
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
+C:\Users\Rebecca Jenkins\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb

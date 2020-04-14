@@ -68,7 +68,7 @@ namespace backupLosGatos
                         }
 
                         userValid = true;
-                        MessageBox.Show("You have successfully logged in.");
+                        //MessageBox.Show("You have successfully logged in.");
                         userTypeReturn.Close();
                     }
                     else

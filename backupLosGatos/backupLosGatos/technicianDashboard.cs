@@ -19,8 +19,14 @@ namespace backupLosGatos
 
         private void technicianDashboard_Load(object sender, EventArgs e)
         {
-            this.assignmentsTableAdapter.Fill(this.gROUP6DataSet.Assignments);
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+
+        }
+
+        private void ticketPage_Click(object sender, EventArgs e)
+        {
+            ticketDetails newTicket = new ticketDetails();
+            newTicket.Show();
+            this.Hide();
         }
     }
 }

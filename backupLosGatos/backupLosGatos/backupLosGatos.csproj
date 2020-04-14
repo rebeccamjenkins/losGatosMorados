@@ -52,12 +52,6 @@
     <Compile Include="dashboardScreen.Designer.cs">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="newTicket.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="newTicket.Designer.cs">
-      <DependentUpon>newTicket.cs</DependentUpon>
-    </Compile>
     <Compile Include="GROUP6DataSet.cs">
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
     </Compile>
@@ -101,9 +95,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="managerDashboard.resx">
       <DependentUpon>managerDashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="newTicket.resx">
-      <DependentUpon>newTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

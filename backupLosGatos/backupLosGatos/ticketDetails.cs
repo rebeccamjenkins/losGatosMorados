@@ -17,6 +17,11 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
+        private void ticketDetails_Load(object sender, EventArgs e)
+        {
+            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+        }
+
         private void ticketsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -24,10 +29,11 @@ namespace backupLosGatos
             this.tableAdapterManager.UpdateAll(this.gROUP6DataSet);
         }
 
-        private void ticketDetails_Load(object sender, EventArgs e)
+        private void dashboardPage_Click(object sender, EventArgs e)
         {
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+            dashboardScreen pageDashboard = new dashboardScreen();
+            pageDashboard.Show();
+            this.Close();
         }
-
     }
 }
