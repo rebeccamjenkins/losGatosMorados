@@ -19,7 +19,6 @@ namespace backupLosGatos
 
         private void managerDashboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gROUP6DataSet.Users' table. You can move, or remove it, as needed.
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
             this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
         }
@@ -27,8 +26,8 @@ namespace backupLosGatos
         private void ticketPage_Click(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
-            this.Hide();
             newTicket.Show();
+            this.Close();
         }
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -44,7 +43,7 @@ namespace backupLosGatos
             viewTicket.inspectorSignatureTextBox.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
             viewTicket.additionalInformationTextBox.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
-            viewTicket.ShowDialog();
+            viewTicket.Show();
             this.Close();
         }
     }

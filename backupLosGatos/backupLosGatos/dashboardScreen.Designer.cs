@@ -30,6 +30,8 @@ namespace backupLosGatos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label equipmentDescriptionLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dashboardScreen));
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
             this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,19 +52,40 @@ namespace backupLosGatos
             this.queryTicket = new System.Windows.Forms.TextBox();
             this.statusOption = new System.Windows.Forms.ComboBox();
             this.technicianOption = new System.Windows.Forms.ComboBox();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSearch = new System.Windows.Forms.Button();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewKioskRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.filterPanel = new System.Windows.Forms.Panel();
+            this.equipmentOption = new System.Windows.Forms.ComboBox();
+            this.equipmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
+            this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
+            equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
-            this.pageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            this.pageOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.filterPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // equipmentDescriptionLabel
+            // 
+            equipmentDescriptionLabel.AutoSize = true;
+            equipmentDescriptionLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            equipmentDescriptionLabel.Location = new System.Drawing.Point(17, 56);
+            equipmentDescriptionLabel.Name = "equipmentDescriptionLabel";
+            equipmentDescriptionLabel.Size = new System.Drawing.Size(70, 16);
+            equipmentDescriptionLabel.TabIndex = 25;
+            equipmentDescriptionLabel.Text = "Equipment:";
             // 
             // dashboardGrid
             // 
@@ -79,12 +102,12 @@ namespace backupLosGatos
             this.inspectorSignatureDataGridViewTextBoxColumn,
             this.additionalInformationDataGridViewTextBoxColumn});
             this.dashboardGrid.DataSource = this.ticketsBindingSource;
-            this.dashboardGrid.Location = new System.Drawing.Point(17, 135);
+            this.dashboardGrid.Location = new System.Drawing.Point(17, 190);
             this.dashboardGrid.Margin = new System.Windows.Forms.Padding(2);
             this.dashboardGrid.Name = "dashboardGrid";
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
-            this.dashboardGrid.Size = new System.Drawing.Size(655, 279);
+            this.dashboardGrid.Size = new System.Drawing.Size(655, 226);
             this.dashboardGrid.TabIndex = 0;
             this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
             // 
@@ -109,7 +132,7 @@ namespace backupLosGatos
             // dateSubmittedDataGridViewTextBoxColumn
             // 
             this.dateSubmittedDataGridViewTextBoxColumn.DataPropertyName = "dateSubmitted";
-            this.dateSubmittedDataGridViewTextBoxColumn.HeaderText = "Submitted";
+            this.dateSubmittedDataGridViewTextBoxColumn.HeaderText = "Date Submitted";
             this.dateSubmittedDataGridViewTextBoxColumn.Name = "dateSubmittedDataGridViewTextBoxColumn";
             // 
             // priorityDataGridViewTextBoxColumn
@@ -155,10 +178,10 @@ namespace backupLosGatos
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 37);
+            this.label1.Location = new System.Drawing.Point(342, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(402, 40);
+            this.label1.Size = new System.Drawing.Size(332, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "Weld Progress Tracking System";
             // 
@@ -175,7 +198,7 @@ namespace backupLosGatos
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(17, 103);
+            this.label4.Location = new System.Drawing.Point(15, 13);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 16);
@@ -186,7 +209,7 @@ namespace backupLosGatos
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(216, 103);
+            this.label5.Location = new System.Drawing.Point(214, 13);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
@@ -198,7 +221,7 @@ namespace backupLosGatos
             this.label6.AllowDrop = true;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(388, 103);
+            this.label6.Location = new System.Drawing.Point(386, 13);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 16);
@@ -208,7 +231,7 @@ namespace backupLosGatos
             // queryTicket
             // 
             this.queryTicket.AllowDrop = true;
-            this.queryTicket.Location = new System.Drawing.Point(443, 101);
+            this.queryTicket.Location = new System.Drawing.Point(441, 13);
             this.queryTicket.Margin = new System.Windows.Forms.Padding(2);
             this.queryTicket.Multiline = true;
             this.queryTicket.Name = "queryTicket";
@@ -220,7 +243,7 @@ namespace backupLosGatos
             this.statusOption.DataSource = this.ticketsBindingSource;
             this.statusOption.DisplayMember = "status";
             this.statusOption.FormattingEnabled = true;
-            this.statusOption.Location = new System.Drawing.Point(263, 101);
+            this.statusOption.Location = new System.Drawing.Point(261, 13);
             this.statusOption.Margin = new System.Windows.Forms.Padding(2);
             this.statusOption.Name = "statusOption";
             this.statusOption.Size = new System.Drawing.Size(119, 21);
@@ -232,17 +255,23 @@ namespace backupLosGatos
             this.technicianOption.DataSource = this.usersBindingSource;
             this.technicianOption.DisplayMember = "username";
             this.technicianOption.FormattingEnabled = true;
-            this.technicianOption.Location = new System.Drawing.Point(92, 101);
+            this.technicianOption.Location = new System.Drawing.Point(90, 13);
             this.technicianOption.Margin = new System.Windows.Forms.Padding(2);
             this.technicianOption.Name = "technicianOption";
             this.technicianOption.Size = new System.Drawing.Size(119, 21);
             this.technicianOption.TabIndex = 7;
             this.technicianOption.ValueMember = "associateID";
             // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.gROUP6DataSet;
+            // 
             // btnSearch
             // 
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(568, 101);
+            this.btnSearch.Location = new System.Drawing.Point(566, 13);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(104, 21);
@@ -260,7 +289,8 @@ namespace backupLosGatos
             this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
-            this.ticketPage});
+            this.ticketPage,
+            this.viewKioskRequestsToolStripMenuItem});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
@@ -278,32 +308,88 @@ namespace backupLosGatos
             // ticketPage
             // 
             this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(55, 21);
-            this.ticketPage.Text = "Ticket";
+            this.ticketPage.Size = new System.Drawing.Size(100, 21);
+            this.ticketPage.Text = "Create Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // usersBindingSource
+            // viewKioskRequestsToolStripMenuItem
             // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.gROUP6DataSet;
+            this.viewKioskRequestsToolStripMenuItem.Name = "viewKioskRequestsToolStripMenuItem";
+            this.viewKioskRequestsToolStripMenuItem.Size = new System.Drawing.Size(138, 21);
+            this.viewKioskRequestsToolStripMenuItem.Text = "View Kiosk Requests";
             // 
             // usersTableAdapter
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(20, 36);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(238, 41);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
+            // 
+            // filterPanel
+            // 
+            this.filterPanel.Controls.Add(equipmentDescriptionLabel);
+            this.filterPanel.Controls.Add(this.equipmentOption);
+            this.filterPanel.Controls.Add(this.technicianOption);
+            this.filterPanel.Controls.Add(this.statusOption);
+            this.filterPanel.Controls.Add(this.queryTicket);
+            this.filterPanel.Controls.Add(this.btnSearch);
+            this.filterPanel.Controls.Add(this.label4);
+            this.filterPanel.Controls.Add(this.label6);
+            this.filterPanel.Controls.Add(this.label5);
+            this.filterPanel.Location = new System.Drawing.Point(0, 80);
+            this.filterPanel.Name = "filterPanel";
+            this.filterPanel.Size = new System.Drawing.Size(692, 100);
+            this.filterPanel.TabIndex = 28;
+            // 
+            // equipmentOption
+            // 
+            this.equipmentOption.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.equipmentOption.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.equipmentOption.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "equipmentDescription", true));
+            this.equipmentOption.DataSource = this.equipmentBindingSource;
+            this.equipmentOption.DisplayMember = "equipmentDescription";
+            this.equipmentOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.equipmentOption.FormattingEnabled = true;
+            this.equipmentOption.Location = new System.Drawing.Point(90, 56);
+            this.equipmentOption.Name = "equipmentOption";
+            this.equipmentOption.Size = new System.Drawing.Size(119, 21);
+            this.equipmentOption.TabIndex = 26;
+            this.equipmentOption.TabStop = false;
+            this.equipmentOption.ValueMember = "equipmentID";
+            // 
+            // equipmentBindingSource
+            // 
+            this.equipmentBindingSource.DataMember = "Equipment";
+            this.equipmentBindingSource.DataSource = this.gROUP6DataSet;
+            // 
+            // equipmentTableAdapter
+            // 
+            this.equipmentTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AssignmentsTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.EquipmentTableAdapter = this.equipmentTableAdapter;
+            this.tableAdapterManager.TicketsTableAdapter = this.ticketsTableAdapter;
+            this.tableAdapterManager.UpdateOrder = backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             // 
             // dashboardScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 439);
+            this.Controls.Add(this.filterPanel);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pageOptions);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.queryTicket);
-            this.Controls.Add(this.statusOption);
-            this.Controls.Add(this.technicianOption);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboardGrid);
@@ -314,9 +400,13 @@ namespace backupLosGatos
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.pageOptions.ResumeLayout(false);
             this.pageOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.filterPanel.ResumeLayout(false);
+            this.filterPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,6 +427,13 @@ namespace backupLosGatos
         private GROUP6DataSet gROUP6DataSet;
         private System.Windows.Forms.BindingSource ticketsBindingSource;
         private GROUP6DataSetTableAdapters.TicketsTableAdapter ticketsTableAdapter;
+        private System.Windows.Forms.MenuStrip pageOptions;
+        private System.Windows.Forms.ToolStripMenuItem dashboardPage;
+        private System.Windows.Forms.ToolStripMenuItem ticketPage;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem viewKioskRequestsToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn equipmentIDDataGridViewTextBoxColumn;
@@ -346,10 +443,10 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn welderSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalInformationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.MenuStrip pageOptions;
-        private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem ticketPage;
-        private System.Windows.Forms.BindingSource usersBindingSource;
-        private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.Panel filterPanel;
+        private System.Windows.Forms.BindingSource equipmentBindingSource;
+        private GROUP6DataSetTableAdapters.EquipmentTableAdapter equipmentTableAdapter;
+        private GROUP6DataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.ComboBox equipmentOption;
     }
 }

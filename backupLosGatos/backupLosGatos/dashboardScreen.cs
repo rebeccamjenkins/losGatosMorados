@@ -19,30 +19,16 @@ namespace backupLosGatos
 
         private void dashboardScreen_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gROUP6DataSet.Users' table. You can move, or remove it, as needed.
+            this.equipmentTableAdapter.Fill(this.gROUP6DataSet.Equipment);
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
             this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
-        }
-
-        private void pageOptions_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            MenuStrip dashboard = new MenuStrip();
-            this.MainMenuStrip = dashboard;
-            Controls.Add(dashboard);
-        }
-
-        private void dashboardPage_Click(object sender, EventArgs e)
-        {
-            dashboardScreen pageDashboard = new dashboardScreen();
-            pageDashboard.Show();
-            this.Close();
         }
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
-            newTicket.Show();
             this.Hide();
+            newTicket.Show();
         }
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,5 +47,6 @@ namespace backupLosGatos
             viewTicket.Show();
             this.Close();
         }
+
     }
 }
