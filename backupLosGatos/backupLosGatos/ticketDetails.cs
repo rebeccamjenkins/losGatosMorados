@@ -12,6 +12,7 @@ namespace backupLosGatos
 {
     public partial class ticketDetails : Form
     {
+
         public ticketDetails()
         {
             InitializeComponent();
@@ -34,6 +35,11 @@ namespace backupLosGatos
             dashboardScreen pageDashboard = new dashboardScreen();
             pageDashboard.Show();
             this.Close();
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

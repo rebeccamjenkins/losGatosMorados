@@ -27,13 +27,20 @@ namespace backupLosGatos
         private void ticketPage_Click(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
+
+            if (labelRole.Text == "coordinator")
+            {
+                newTicket.updateButton.Enabled = false;
+                newTicket.saveButton.Enabled = false;
+            }
+
             this.Hide();
             newTicket.Show();
         }
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            ticketDetails viewTicket = new ticketDetails();
+            ticketDetails viewTicket = new ticketDetails(this);
             viewTicket.ticketIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
             viewTicket.equipmentIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();

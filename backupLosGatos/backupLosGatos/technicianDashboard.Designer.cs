@@ -41,6 +41,7 @@ namespace backupLosGatos
             this.btnSearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.labelRole = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.filterPanel.SuspendLayout();
@@ -173,11 +174,22 @@ namespace backupLosGatos
             this.filterPanel.Size = new System.Drawing.Size(692, 100);
             this.filterPanel.TabIndex = 28;
             // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.Location = new System.Drawing.Point(620, 9);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(56, 13);
+            this.labelRole.TabIndex = 30;
+            this.labelRole.Text = "technician";
+            this.labelRole.Visible = false;
+            // 
             // technicianDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 439);
+            this.Controls.Add(this.labelRole);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -210,5 +222,6 @@ namespace backupLosGatos
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel filterPanel;
+        private System.Windows.Forms.Label labelRole;
     }
 }

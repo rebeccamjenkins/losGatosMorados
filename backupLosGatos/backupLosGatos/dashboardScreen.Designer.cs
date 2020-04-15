@@ -66,6 +66,7 @@ namespace backupLosGatos
             this.equipmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
+            this.labelRole = new System.Windows.Forms.Label();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -307,10 +308,12 @@ namespace backupLosGatos
             // 
             // ticketPage
             // 
+            this.ticketPage.DoubleClickEnabled = true;
             this.ticketPage.Name = "ticketPage";
             this.ticketPage.Size = new System.Drawing.Size(100, 21);
             this.ticketPage.Text = "Create Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
             // viewKioskRequestsToolStripMenuItem
             // 
@@ -350,12 +353,9 @@ namespace backupLosGatos
             // 
             // equipmentOption
             // 
-            this.equipmentOption.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.equipmentOption.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.equipmentOption.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "equipmentDescription", true));
             this.equipmentOption.DataSource = this.equipmentBindingSource;
             this.equipmentOption.DisplayMember = "equipmentDescription";
-            this.equipmentOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.equipmentOption.FormattingEnabled = true;
             this.equipmentOption.Location = new System.Drawing.Point(90, 56);
             this.equipmentOption.Name = "equipmentOption";
@@ -382,11 +382,22 @@ namespace backupLosGatos
             this.tableAdapterManager.UpdateOrder = backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter;
             // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.Location = new System.Drawing.Point(635, 25);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(60, 13);
+            this.labelRole.TabIndex = 29;
+            this.labelRole.Text = "coordinator";
+            this.labelRole.Visible = false;
+            // 
             // dashboardScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 439);
+            this.Controls.Add(this.labelRole);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pageOptions);
@@ -413,8 +424,6 @@ namespace backupLosGatos
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dashboardGrid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -429,7 +438,6 @@ namespace backupLosGatos
         private GROUP6DataSetTableAdapters.TicketsTableAdapter ticketsTableAdapter;
         private System.Windows.Forms.MenuStrip pageOptions;
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem ticketPage;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -448,5 +456,8 @@ namespace backupLosGatos
         private GROUP6DataSetTableAdapters.EquipmentTableAdapter equipmentTableAdapter;
         private GROUP6DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ComboBox equipmentOption;
+        private System.Windows.Forms.Label labelRole;
+        public System.Windows.Forms.ToolStripMenuItem ticketPage;
+        public System.Windows.Forms.DataGridView dashboardGrid;
     }
 }

@@ -20,9 +20,13 @@ namespace backupLosGatos
 
         int loginCount = 4;
 
-        private void submitButton_Click(object sender, EventArgs e)
-        {
+        public class userInfo
+        { 
+                      
+        }
 
+        public void submitButton_Click(object sender, EventArgs e)
+        {
             Boolean userValid;
 
             if (loginCount > 1)

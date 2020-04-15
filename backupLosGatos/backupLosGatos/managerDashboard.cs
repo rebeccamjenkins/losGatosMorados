@@ -26,6 +26,13 @@ namespace backupLosGatos
         private void ticketPage_Click(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
+
+            //if (labelRole.Text == "manager")
+            //{
+            //    newTicket.updateButton.Enabled = false;
+            //    newTicket.saveButton.Enabled = false;
+            //}
+
             newTicket.Show();
             this.Close();
         }
