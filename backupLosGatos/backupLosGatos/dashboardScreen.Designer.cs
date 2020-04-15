@@ -250,6 +250,8 @@ namespace backupLosGatos
             this.statusOption.Size = new System.Drawing.Size(119, 21);
             this.statusOption.TabIndex = 8;
             this.statusOption.ValueMember = "status";
+            this.statusOption.SelectedIndexChanged += new System.EventHandler(this.statusOption_SelectedIndexChanged);
+            this.statusOption.MouseClick += new System.Windows.Forms.MouseEventHandler(this.statusOption_MouseClick);
             // 
             // technicianOption
             // 
@@ -262,6 +264,8 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(119, 21);
             this.technicianOption.TabIndex = 7;
             this.technicianOption.ValueMember = "associateID";
+            this.technicianOption.SelectedIndexChanged += new System.EventHandler(this.technicianOption_SelectedIndexChanged);
+            this.technicianOption.MouseClick += new System.Windows.Forms.MouseEventHandler(this.technicianOption_MouseClick);
             // 
             // usersBindingSource
             // 

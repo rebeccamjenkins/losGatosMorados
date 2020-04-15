@@ -32,11 +32,7 @@ namespace backupLosGatos {
         
         private EquipmentDataTable tableEquipment;
         
-        private global::System.Data.DataRelation relationFK_Assignments_Tickets;
-        
         private global::System.Data.DataRelation relationFK_Assignments_Users;
-        
-        private global::System.Data.DataRelation relationFK_Tickets_Equipment;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -272,9 +268,7 @@ namespace backupLosGatos {
                     this.tableEquipment.InitVars();
                 }
             }
-            this.relationFK_Assignments_Tickets = this.Relations["FK_Assignments_Tickets"];
             this.relationFK_Assignments_Users = this.Relations["FK_Assignments_Users"];
-            this.relationFK_Tickets_Equipment = this.Relations["FK_Tickets_Equipment"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -293,18 +287,32 @@ namespace backupLosGatos {
             base.Tables.Add(this.tableAssignments);
             this.tableEquipment = new EquipmentDataTable();
             base.Tables.Add(this.tableEquipment);
-            this.relationFK_Assignments_Tickets = new global::System.Data.DataRelation("FK_Assignments_Tickets", new global::System.Data.DataColumn[] {
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Tickets_Equipment", new global::System.Data.DataColumn[] {
+                        this.tableEquipment.equipmentIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTickets.equipmentIDColumn});
+            this.tableTickets.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Assignments_Tickets", new global::System.Data.DataColumn[] {
                         this.tableTickets.ticketIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAssignments.ticketIDColumn}, false);
-            this.Relations.Add(this.relationFK_Assignments_Tickets);
+                        this.tableAssignments.ticketIDColumn});
+            this.tableAssignments.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Assignments_Users", new global::System.Data.DataColumn[] {
+                        this.tableUsers.associateIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAssignments.associateIDColumn});
+            this.tableAssignments.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
             this.relationFK_Assignments_Users = new global::System.Data.DataRelation("FK_Assignments_Users", new global::System.Data.DataColumn[] {
                         this.tableUsers.associateIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAssignments.associateIDColumn}, false);
             this.Relations.Add(this.relationFK_Assignments_Users);
-            this.relationFK_Tickets_Equipment = new global::System.Data.DataRelation("FK_Tickets_Equipment", new global::System.Data.DataColumn[] {
-                        this.tableEquipment.equipmentIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTickets.equipmentIDColumn}, false);
-            this.Relations.Add(this.relationFK_Tickets_Equipment);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -565,21 +573,18 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow AddTicketsRow(int ticketID, int unitID, EquipmentRow parentEquipmentRowByFK_Tickets_Equipment, string welderSignature, string inspectorSignature, string additionalInformation, string status, string priority, System.DateTime dateSubmitted) {
+            public TicketsRow AddTicketsRow(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, string priority, System.DateTime dateSubmitted) {
                 TicketsRow rowTicketsRow = ((TicketsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ticketID,
                         unitID,
-                        null,
+                        equipmentID,
                         welderSignature,
                         inspectorSignature,
                         additionalInformation,
                         status,
                         priority,
                         dateSubmitted};
-                if ((parentEquipmentRowByFK_Tickets_Equipment != null)) {
-                    columnValuesArray[2] = parentEquipmentRowByFK_Tickets_Equipment[0];
-                }
                 rowTicketsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTicketsRow);
                 return rowTicketsRow;
@@ -1236,15 +1241,12 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public AssignmentsRow AddAssignmentsRow(int assignmentID, TicketsRow parentTicketsRowByFK_Assignments_Tickets, UsersRow parentUsersRowByFK_Assignments_Users) {
+            public AssignmentsRow AddAssignmentsRow(int assignmentID, int ticketID, UsersRow parentUsersRowByFK_Assignments_Users) {
                 AssignmentsRow rowAssignmentsRow = ((AssignmentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         assignmentID,
-                        null,
+                        ticketID,
                         null};
-                if ((parentTicketsRowByFK_Assignments_Tickets != null)) {
-                    columnValuesArray[1] = parentTicketsRowByFK_Assignments_Tickets[0];
-                }
                 if ((parentUsersRowByFK_Assignments_Users != null)) {
                     columnValuesArray[2] = parentUsersRowByFK_Assignments_Users[0];
                 }
@@ -1841,17 +1843,6 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EquipmentRow EquipmentRow {
-                get {
-                    return ((EquipmentRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tickets_Equipment"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Tickets_Equipment"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IswelderSignatureNull() {
                 return this.IsNull(this.tableTickets.welderSignatureColumn);
             }
@@ -1920,17 +1911,6 @@ namespace backupLosGatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetdateSubmittedNull() {
                 this[this.tableTickets.dateSubmittedColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public AssignmentsRow[] GetAssignmentsRows() {
-                if ((this.Table.ChildRelations["FK_Assignments_Tickets"] == null)) {
-                    return new AssignmentsRow[0];
-                }
-                else {
-                    return ((AssignmentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Assignments_Tickets"])));
-                }
             }
         }
         
@@ -2120,17 +2100,6 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow TicketsRow {
-                get {
-                    return ((TicketsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Assignments_Tickets"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Assignments_Tickets"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public UsersRow UsersRow {
                 get {
                     return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Assignments_Users"])));
@@ -2192,17 +2161,6 @@ namespace backupLosGatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetequipmentDescriptionNull() {
                 this[this.tableEquipment.equipmentDescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow[] GetTicketsRows() {
-                if ((this.Table.ChildRelations["FK_Tickets_Equipment"] == null)) {
-                    return new TicketsRow[0];
-                }
-                else {
-                    return ((TicketsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Tickets_Equipment"])));
-                }
             }
         }
         

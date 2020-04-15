@@ -19,7 +19,6 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
-        // Added Sql connection and reader objects for later use 
         SqlConnection conn = null;
         SqlDataReader reader = null;
 
@@ -28,9 +27,6 @@ namespace backupLosGatos
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
             this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
 
-            //Below here is all added code from Lab 7 concerning screen load
-
-            // Start out by connecting to the data source: You will need your connection string here
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
@@ -53,22 +49,18 @@ namespace backupLosGatos
             dsstatus.Load(reader, LoadOption.PreserveChanges, dsstatus.Tables[0]);
 
             // 6. Put the retrieved values into the ComboBox
-            statusComboBox.ValueMember = "status";
-            statusComboBox.DisplayMember = "status";
-            statusComboBox.DataSource = dsstatus.Tables[0];
-            statusComboBox.SelectedIndex = 0;
-            statusComboBox.SelectedValue = 0;
-
-            // TODO: This line of code loads data into the ????'auntiesDB_SS1DataSet.Guest'???? table. You can move, or remove it, as needed.
-            //this.guestTableAdapter.Fill(this.auntiesDB_SS1DataSet.Guest);
-            // TODO: This line of code loads data into the 'auntiesDB_SSDataSet.Guests' table. You can move, or remove it, as needed.
-            //this.guestsTableAdapter.Fill(this.auntiesDB_SSDataSet.Guests);
+            statusOption.ValueMember = "status";
+            statusOption.DisplayMember = "status";
+            statusOption.DataSource = dsstatus.Tables[0];
+            statusOption.SelectedIndex = 0;
+            statusOption.SelectedValue = 0;
 
             // Lab 7 screen load code ends here
         }
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
+            //disables buttons for managers - is this necessary?
             ticketDetails newTicket = new ticketDetails();
 
             //if (labelRole.Text == "manager")
@@ -83,16 +75,17 @@ namespace backupLosGatos
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //generates ticketDetails window populated with database information relevant to datagridview cell selected
             ticketDetails viewTicket = new ticketDetails();
-            viewTicket.ticketIDTextBox.Text = this.managerDashboardGrid.CurrentRow.Cells[0].Value.ToString();
-            viewTicket.unitIDTextBox.Text = this.managerDashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.equipmentIDTextBox.Text = this.managerDashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.dateSubmittedDateTimePicker.Text = this.managerDashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            viewTicket.priorityComboBox.Text = this.managerDashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.statusComboBox.Text = this.managerDashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            viewTicket.welderSignatureTextBox.Text = this.managerDashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            viewTicket.inspectorSignatureTextBox.Text = this.managerDashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            viewTicket.additionalInformationTextBox.Text = this.managerDashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            viewTicket.ticketIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
+            viewTicket.unitIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
+            viewTicket.equipmentIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.priorityComboBox.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.statusComboBox.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.welderSignatureTextBox.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.inspectorSignatureTextBox.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.additionalInformationTextBox.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
             viewTicket.Show();
             this.Close();
@@ -103,7 +96,7 @@ namespace backupLosGatos
             // start code from lab 7 regarding drop down
 
             // 7. First time this runs, it will be null so do not send a parameter query
-            if (statusComboBox.SelectedValue == null)
+            if (statusOption.SelectedValue == null)
             {
             }
 
@@ -117,7 +110,7 @@ namespace backupLosGatos
                 param.ParameterName = "@status";
 
                 // 11. Get value to populate parameter from combo box selection
-                param.Value = statusComboBox.SelectedValue.ToString();
+                param.Value = statusOption.SelectedValue.ToString();
 
                 // 12. add new parameter to command object
                 cmd.Parameters.Add(param);
@@ -131,11 +124,8 @@ namespace backupLosGatos
                 ds.Tables.Add(dt);
                 ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
 
-                // 15. Stick the new table into the DataGridView
+                dashboardGrid.DataSource = ds.Tables[0];
 
-                managerDashboardGrid.DataSource = ds.Tables[0];
-
-                // end of lab 7 code regarding drop down
             }
         }
     }

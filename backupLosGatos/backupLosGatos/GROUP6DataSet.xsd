@@ -282,7 +282,7 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
   <xs:element name="GROUP6DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="GROUP6DataSet" msprop:Generator_UserDSName="GROUP6DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Tickets" msprop:Generator_TableClassName="TicketsDataTable" msprop:Generator_TableVarName="tableTickets" msprop:Generator_TablePropName="Tickets" msprop:Generator_RowDeletingName="TicketsRowDeleting" msprop:Generator_RowChangingName="TicketsRowChanging" msprop:Generator_RowEvHandlerName="TicketsRowChangeEventHandler" msprop:Generator_RowDeletedName="TicketsRowDeleted" msprop:Generator_UserTableName="Tickets" msprop:Generator_RowChangedName="TicketsRowChanged" msprop:Generator_RowEvArgName="TicketsRowChangeEvent" msprop:Generator_RowClassName="TicketsRow">
+        <xs:element name="Tickets" msprop:Generator_TableClassName="TicketsDataTable" msprop:Generator_TableVarName="tableTickets" msprop:Generator_RowChangedName="TicketsRowChanged" msprop:Generator_TablePropName="Tickets" msprop:Generator_RowDeletingName="TicketsRowDeleting" msprop:Generator_RowChangingName="TicketsRowChanging" msprop:Generator_RowEvHandlerName="TicketsRowChangeEventHandler" msprop:Generator_RowDeletedName="TicketsRowDeleted" msprop:Generator_RowClassName="TicketsRow" msprop:Generator_UserTableName="Tickets" msprop:Generator_RowEvArgName="TicketsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ticketID" msprop:Generator_ColumnVarNameInTable="columnticketID" msprop:Generator_ColumnPropNameInRow="ticketID" msprop:Generator_ColumnPropNameInTable="ticketIDColumn" msprop:Generator_UserColumnName="ticketID" type="xs:int" />
@@ -327,7 +327,7 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_UserTableName="Users" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_RowEvArgName="UsersRowChangeEvent" msprop:Generator_RowClassName="UsersRow">
+        <xs:element name="Users" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_TablePropName="Users" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_RowClassName="UsersRow" msprop:Generator_UserTableName="Users" msprop:Generator_RowEvArgName="UsersRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="associateID" msprop:Generator_ColumnVarNameInTable="columnassociateID" msprop:Generator_ColumnPropNameInRow="associateID" msprop:Generator_ColumnPropNameInTable="associateIDColumn" msprop:Generator_UserColumnName="associateID" type="xs:int" />
@@ -370,7 +370,7 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Assignments" msprop:Generator_TableClassName="AssignmentsDataTable" msprop:Generator_TableVarName="tableAssignments" msprop:Generator_TablePropName="Assignments" msprop:Generator_RowDeletingName="AssignmentsRowDeleting" msprop:Generator_RowChangingName="AssignmentsRowChanging" msprop:Generator_RowEvHandlerName="AssignmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="AssignmentsRowDeleted" msprop:Generator_UserTableName="Assignments" msprop:Generator_RowChangedName="AssignmentsRowChanged" msprop:Generator_RowEvArgName="AssignmentsRowChangeEvent" msprop:Generator_RowClassName="AssignmentsRow">
+        <xs:element name="Assignments" msprop:Generator_TableClassName="AssignmentsDataTable" msprop:Generator_TableVarName="tableAssignments" msprop:Generator_RowChangedName="AssignmentsRowChanged" msprop:Generator_TablePropName="Assignments" msprop:Generator_RowDeletingName="AssignmentsRowDeleting" msprop:Generator_RowChangingName="AssignmentsRowChanging" msprop:Generator_RowEvHandlerName="AssignmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="AssignmentsRowDeleted" msprop:Generator_RowClassName="AssignmentsRow" msprop:Generator_UserTableName="Assignments" msprop:Generator_RowEvArgName="AssignmentsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="assignmentID" msprop:Generator_ColumnVarNameInTable="columnassignmentID" msprop:Generator_ColumnPropNameInRow="assignmentID" msprop:Generator_ColumnPropNameInTable="assignmentIDColumn" msprop:Generator_UserColumnName="assignmentID" type="xs:int" />
@@ -379,7 +379,7 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Equipment" msprop:Generator_TableClassName="EquipmentDataTable" msprop:Generator_TableVarName="tableEquipment" msprop:Generator_TablePropName="Equipment" msprop:Generator_RowDeletingName="EquipmentRowDeleting" msprop:Generator_RowChangingName="EquipmentRowChanging" msprop:Generator_RowEvHandlerName="EquipmentRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentRowDeleted" msprop:Generator_UserTableName="Equipment" msprop:Generator_RowChangedName="EquipmentRowChanged" msprop:Generator_RowEvArgName="EquipmentRowChangeEvent" msprop:Generator_RowClassName="EquipmentRow">
+        <xs:element name="Equipment" msprop:Generator_TableClassName="EquipmentDataTable" msprop:Generator_TableVarName="tableEquipment" msprop:Generator_RowChangedName="EquipmentRowChanged" msprop:Generator_TablePropName="Equipment" msprop:Generator_RowDeletingName="EquipmentRowDeleting" msprop:Generator_RowChangingName="EquipmentRowChanging" msprop:Generator_RowEvHandlerName="EquipmentRowChangeEventHandler" msprop:Generator_RowDeletedName="EquipmentRowDeleted" msprop:Generator_RowClassName="EquipmentRow" msprop:Generator_UserTableName="Equipment" msprop:Generator_RowEvArgName="EquipmentRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="equipmentID" msprop:Generator_ColumnVarNameInTable="columnequipmentID" msprop:Generator_ColumnPropNameInRow="equipmentID" msprop:Generator_ColumnPropNameInTable="equipmentIDColumn" msprop:Generator_UserColumnName="equipmentID" type="xs:int" />
@@ -411,12 +411,17 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
       <xs:selector xpath=".//mstns:Equipment" />
       <xs:field xpath="mstns:equipmentID" />
     </xs:unique>
+    <xs:keyref name="FK_Assignments_Tickets" refer="Constraint1" msdata:ConstraintOnly="true" msdata:UpdateRule="None" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:Assignments" />
+      <xs:field xpath="mstns:ticketID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Assignments_Users" refer="Users_Constraint1" msprop:rel_Generator_UserChildTable="Assignments" msprop:rel_Generator_ChildPropName="GetAssignmentsRows" msprop:rel_Generator_UserRelationName="FK_Assignments_Users" msprop:rel_Generator_ParentPropName="UsersRow" msprop:rel_Generator_RelationVarName="relationFK_Assignments_Users" msprop:rel_Generator_UserParentTable="Users" msdata:UpdateRule="None" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:Assignments" />
+      <xs:field xpath="mstns:associateID" />
+    </xs:keyref>
+    <xs:keyref name="FK_Tickets_Equipment" refer="Equipment_Constraint1" msdata:ConstraintOnly="true" msdata:UpdateRule="None" msdata:DeleteRule="None">
+      <xs:selector xpath=".//mstns:Tickets" />
+      <xs:field xpath="mstns:equipmentID" />
+    </xs:keyref>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="FK_Assignments_Tickets" msdata:parent="Tickets" msdata:child="Assignments" msdata:parentkey="ticketID" msdata:childkey="ticketID" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK_Assignments_Tickets" msprop:Generator_ParentPropName="TicketsRow" msprop:Generator_RelationVarName="relationFK_Assignments_Tickets" msprop:Generator_UserParentTable="Tickets" />
-      <msdata:Relationship name="FK_Assignments_Users" msdata:parent="Users" msdata:child="Assignments" msdata:parentkey="associateID" msdata:childkey="associateID" msprop:Generator_UserChildTable="Assignments" msprop:Generator_ChildPropName="GetAssignmentsRows" msprop:Generator_UserRelationName="FK_Assignments_Users" msprop:Generator_ParentPropName="UsersRow" msprop:Generator_RelationVarName="relationFK_Assignments_Users" msprop:Generator_UserParentTable="Users" />
-      <msdata:Relationship name="FK_Tickets_Equipment" msdata:parent="Equipment" msdata:child="Tickets" msdata:parentkey="equipmentID" msdata:childkey="equipmentID" msprop:Generator_UserChildTable="Tickets" msprop:Generator_ChildPropName="GetTicketsRows" msprop:Generator_UserRelationName="FK_Tickets_Equipment" msprop:Generator_RelationVarName="relationFK_Tickets_Equipment" msprop:Generator_UserParentTable="Equipment" msprop:Generator_ParentPropName="EquipmentRow" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

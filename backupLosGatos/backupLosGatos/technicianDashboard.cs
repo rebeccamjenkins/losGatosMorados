@@ -19,7 +19,6 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
-        // Added Sql connection and reader objects for later use 
         SqlConnection conn = null;
         SqlDataReader reader = null;
 
@@ -52,11 +51,11 @@ namespace backupLosGatos
             dsstatus.Load(reader, LoadOption.PreserveChanges, dsstatus.Tables[0]);
 
             // 6. Put the retrieved values into the ComboBox
-            statusComboBox.ValueMember = "status";
-            statusComboBox.DisplayMember = "status";
-            statusComboBox.DataSource = dsstatus.Tables[0];
-            statusComboBox.SelectedIndex = 0;
-            statusComboBox.SelectedValue = 0;
+            statusOption.ValueMember = "status";
+            statusOption.DisplayMember = "status";
+            statusOption.DataSource = dsstatus.Tables[0];
+            statusOption.SelectedIndex = 0;
+            statusOption.SelectedValue = 0;
 
             // TODO: This line of code loads data into the ????'auntiesDB_SS1DataSet.Guest'???? table. You can move, or remove it, as needed.
             //this.guestTableAdapter.Fill(this.auntiesDB_SS1DataSet.Guest);
@@ -78,7 +77,7 @@ namespace backupLosGatos
             // start code from lab 7 regarding drop down
 
             // 7. First time this runs, it will be null so do not send a parameter query
-            if (statusComboBox.SelectedValue == null)
+            if (statusOption.SelectedValue == null)
             {
             }
 
@@ -92,7 +91,7 @@ namespace backupLosGatos
                 param.ParameterName = "@status";
 
                 // 11. Get value to populate parameter from combo box selection
-                param.Value = statusComboBox.SelectedValue.ToString();
+                param.Value = statusOption.SelectedValue.ToString();
 
                 // 12. add new parameter to command object
                 cmd.Parameters.Add(param);
@@ -108,7 +107,7 @@ namespace backupLosGatos
 
                 // 15. Stick the new table into the DataGridView
 
-                technicianDashboardGrid.DataSource = ds.Tables[0];
+                dashboardGrid.DataSource = ds.Tables[0];
 
                 // end of lab 7 code regarding drop down
             }
