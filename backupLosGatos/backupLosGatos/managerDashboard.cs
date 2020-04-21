@@ -24,8 +24,8 @@ namespace backupLosGatos
 
         private void managerDashboard_Load(object sender, EventArgs e)
         {
-            this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+            //this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
+            //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
 
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
@@ -127,6 +127,13 @@ namespace backupLosGatos
                 dashboardGrid.DataSource = ds.Tables[0];
 
             }
+        }
+
+        private void ticketPage_Click_1(object sender, EventArgs e)
+        {
+            ticketDetails newTicket = new ticketDetails();
+            newTicket.Show();
+            this.Close();
         }
     }
 }
