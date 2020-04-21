@@ -150,5 +150,10 @@ namespace backupLosGatos
 
             }
         }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            dashboardGrid.Refresh();
+        }
     }
 }

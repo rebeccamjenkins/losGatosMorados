@@ -106,5 +106,13 @@ namespace backupLosGatos
             usernameText.Text = "";
             passwordText.Text = "";
         }
+
+        private void passwordText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                submitButton.PerformClick();            
+            }
+        }
     }
 }

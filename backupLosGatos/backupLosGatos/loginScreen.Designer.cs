@@ -73,10 +73,9 @@ namespace backupLosGatos
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            passwordLabel.Location = new System.Drawing.Point(34, 61);
-            passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            passwordLabel.Location = new System.Drawing.Point(45, 75);
             passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new System.Drawing.Size(66, 17);
+            passwordLabel.Size = new System.Drawing.Size(83, 20);
             passwordLabel.TabIndex = 4;
             passwordLabel.Text = "Password:";
             // 
@@ -84,10 +83,9 @@ namespace backupLosGatos
             // 
             usernameLabel.AutoSize = true;
             usernameLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            usernameLabel.Location = new System.Drawing.Point(34, 25);
-            usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            usernameLabel.Location = new System.Drawing.Point(45, 31);
             usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(70, 17);
+            usernameLabel.Size = new System.Drawing.Size(87, 20);
             usernameLabel.TabIndex = 2;
             usernameLabel.Text = "Username:";
             // 
@@ -95,10 +93,10 @@ namespace backupLosGatos
             // 
             this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.submitButton.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.Location = new System.Drawing.Point(134, 105);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.submitButton.Location = new System.Drawing.Point(179, 129);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(136, 30);
+            this.submitButton.Size = new System.Drawing.Size(181, 37);
             this.submitButton.TabIndex = 0;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -132,7 +130,7 @@ namespace backupLosGatos
             this.securityBindingNavigator.MovePreviousItem = null;
             this.securityBindingNavigator.Name = "securityBindingNavigator";
             this.securityBindingNavigator.PositionItem = null;
-            this.securityBindingNavigator.Size = new System.Drawing.Size(692, 25);
+            this.securityBindingNavigator.Size = new System.Drawing.Size(923, 25);
             this.securityBindingNavigator.TabIndex = 10;
             // 
             // bindingNavigatorAddNewItem
@@ -229,10 +227,9 @@ namespace backupLosGatos
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(85, 41);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(113, 50);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(319, 55);
+            this.label3.Size = new System.Drawing.Size(425, 68);
             this.label3.TabIndex = 7;
             this.label3.Text = "Wildcat Refinery\'s centralized service catalog for management of trouble tickets " +
     "by management and technician personnel";
@@ -241,10 +238,9 @@ namespace backupLosGatos
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 1);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(105, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(325, 40);
+            this.label1.Size = new System.Drawing.Size(433, 49);
             this.label1.TabIndex = 6;
             this.label1.Text = "Weld Progress Tracking System";
             // 
@@ -260,22 +256,23 @@ namespace backupLosGatos
             // usernameText
             // 
             this.usernameText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "username", true));
-            this.usernameText.Location = new System.Drawing.Point(134, 24);
-            this.usernameText.Margin = new System.Windows.Forms.Padding(2);
+            this.usernameText.Location = new System.Drawing.Point(179, 30);
+            this.usernameText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.usernameText.Name = "usernameText";
-            this.usernameText.Size = new System.Drawing.Size(136, 20);
+            this.usernameText.Size = new System.Drawing.Size(180, 22);
             this.usernameText.TabIndex = 8;
             this.usernameText.Text = "\r\n";
             // 
             // passwordText
             // 
             this.passwordText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "password", true));
-            this.passwordText.Location = new System.Drawing.Point(134, 60);
-            this.passwordText.Margin = new System.Windows.Forms.Padding(2);
+            this.passwordText.Location = new System.Drawing.Point(179, 74);
+            this.passwordText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordText.Name = "passwordText";
             this.passwordText.PasswordChar = '*';
-            this.passwordText.Size = new System.Drawing.Size(136, 20);
+            this.passwordText.Size = new System.Drawing.Size(180, 22);
             this.passwordText.TabIndex = 9;
+            this.passwordText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordText_KeyDown);
             // 
             // loginPanel
             // 
@@ -284,40 +281,43 @@ namespace backupLosGatos
             this.loginPanel.Controls.Add(this.submitButton);
             this.loginPanel.Controls.Add(this.usernameText);
             this.loginPanel.Controls.Add(passwordLabel);
-            this.loginPanel.Location = new System.Drawing.Point(176, 173);
+            this.loginPanel.Location = new System.Drawing.Point(235, 213);
+            this.loginPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(310, 158);
+            this.loginPanel.Size = new System.Drawing.Size(413, 194);
             this.loginPanel.TabIndex = 11;
             // 
             // titlePanel
             // 
             this.titlePanel.Controls.Add(this.label1);
             this.titlePanel.Controls.Add(this.label3);
-            this.titlePanel.Location = new System.Drawing.Point(274, 36);
+            this.titlePanel.Location = new System.Drawing.Point(365, 44);
+            this.titlePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titlePanel.Name = "titlePanel";
-            this.titlePanel.Size = new System.Drawing.Size(406, 121);
+            this.titlePanel.Size = new System.Drawing.Size(541, 149);
             this.titlePanel.TabIndex = 12;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(20, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 44);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(238, 41);
+            this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
             // loginScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 439);
+            this.ClientSize = new System.Drawing.Size(923, 540);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.titlePanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.securityBindingNavigator);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "loginScreen";
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Login";
             this.Load += new System.EventHandler(this.loginScreen_Load);
