@@ -29,9 +29,9 @@ namespace backupLosGatos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginScreen));
             System.Windows.Forms.Label passwordLabel;
             System.Windows.Forms.Label usernameLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginScreen));
             this.submitButton = new System.Windows.Forms.Button();
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.securityBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,6 +68,28 @@ namespace backupLosGatos
             this.titlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // passwordLabel
+            // 
+            passwordLabel.AutoSize = true;
+            passwordLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            passwordLabel.Location = new System.Drawing.Point(34, 61);
+            passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new System.Drawing.Size(66, 17);
+            passwordLabel.TabIndex = 4;
+            passwordLabel.Text = "Password:";
+            // 
+            // usernameLabel
+            // 
+            usernameLabel.AutoSize = true;
+            usernameLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            usernameLabel.Location = new System.Drawing.Point(34, 25);
+            usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            usernameLabel.Name = "usernameLabel";
+            usernameLabel.Size = new System.Drawing.Size(70, 17);
+            usernameLabel.TabIndex = 2;
+            usernameLabel.Text = "Username:";
             // 
             // submitButton
             // 
@@ -275,28 +297,6 @@ namespace backupLosGatos
             this.titlePanel.Name = "titlePanel";
             this.titlePanel.Size = new System.Drawing.Size(406, 121);
             this.titlePanel.TabIndex = 12;
-            // 
-            // passwordLabel
-            // 
-            passwordLabel.AutoSize = true;
-            passwordLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            passwordLabel.Location = new System.Drawing.Point(34, 61);
-            passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new System.Drawing.Size(66, 17);
-            passwordLabel.TabIndex = 4;
-            passwordLabel.Text = "Password:";
-            // 
-            // usernameLabel
-            // 
-            usernameLabel.AutoSize = true;
-            usernameLabel.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            usernameLabel.Location = new System.Drawing.Point(34, 25);
-            usernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new System.Drawing.Size(70, 17);
-            usernameLabel.TabIndex = 2;
-            usernameLabel.Text = "Username:";
             // 
             // pictureBox1
             // 

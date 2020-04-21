@@ -23,54 +23,54 @@ namespace backupLosGatos
         SqlDataReader reader = null;
 
         private void managerDashboard_Load(object sender, EventArgs e)
-        {
-            this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
-
+        { 
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
+            //status dropdown
             conn.Open();
-
-            // 1. declare a SQL Command. Select a Unique Set of Statuses from the Tickets Table. 
             SqlCommand cmd = new SqlCommand("SELECT DISTINCT status FROM dbo.Tickets", conn);
-
-            // 2. get a data stream set up
             reader = cmd.ExecuteReader();
-
-            // 3. Get a Data Set called Status
             DataSet dsstatus = new DataSet();
-
-            // 4. Create Data Table from the Data Set to hold query results
             DataTable dtstatus = new DataTable("Table1");
             dsstatus.Tables.Add(dtstatus);
-
-            // 5. Load up the Query result
             dsstatus.Load(reader, LoadOption.PreserveChanges, dsstatus.Tables[0]);
 
-            // 6. Put the retrieved values into the ComboBox
             statusOption.ValueMember = "status";
             statusOption.DisplayMember = "status";
             statusOption.DataSource = dsstatus.Tables[0];
             statusOption.SelectedIndex = 0;
             statusOption.SelectedValue = 0;
 
-            // Lab 7 screen load code ends here
+            //assignee dropdown
+            conn.Open();
+            SqlCommand a_cmd = new SqlCommand("SELECT DISTINCT firstName FROM Users", conn);
+            reader = a_cmd.ExecuteReader();
+            DataSet dsname = new DataSet();
+            DataTable dtname = new DataTable("Table 2");
+            dsname.Tables.Add(dtname);
+            dsname.Load(reader, LoadOption.PreserveChanges, dsname.Tables[0]);
+
+            technicianOption.ValueMember = "firstName";
+            technicianOption.DisplayMember = "firstName";
+            technicianOption.DataSource = dsname.Tables[0];
+            technicianOption.SelectedIndex = 0;
+            technicianOption.SelectedValue = 0;
         }
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-            //disables buttons for managers - is this necessary?
             ticketDetails newTicket = new ticketDetails();
 
-            //if (labelRole.Text == "manager")
-            //{
-            //    newTicket.updateButton.Enabled = false;
-            //    newTicket.saveButton.Enabled = false;
-            //}
+            if (labelRole.Text == "manager")
+            {
+                //newTicket.updateButton.Enabled = false;
+                //newTicket.saveButton.Enabled = false;
+                newTicket.coordButton.Enabled = false;
+            }
 
             newTicket.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -87,44 +87,66 @@ namespace backupLosGatos
             viewTicket.inspectorSignatureTextBox.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
             viewTicket.additionalInformationTextBox.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
+            if (labelRole.Text == "manager")
+            {
+                //viewTicket.updateButton.Enabled = false;
+                //viewTicket.saveButton.Enabled = false;
+                viewTicket.coordButton.Enabled = false;
+            }
+
             viewTicket.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // start code from lab 7 regarding drop down
-
-            // 7. First time this runs, it will be null so do not send a parameter query
             if (statusOption.SelectedValue == null)
             {
             }
 
             else
             {
-                // 9. declare command object with parameter
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
-
-                // 10. define parameters used in command object
                 SqlParameter param = new SqlParameter();
                 param.ParameterName = "@status";
-
-                // 11. Get value to populate parameter from combo box selection
                 param.Value = statusOption.SelectedValue.ToString();
-
-                // 12. add new parameter to command object
                 cmd.Parameters.Add(param);
-
-                // 13. Execute the command
                 reader = cmd.ExecuteReader();
 
-                // 14. Get the new data set and load it as a table
                 DataSet ds = new DataSet();
                 DataTable dt = new DataTable("Table1");
                 ds.Tables.Add(dt);
                 ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
-
                 dashboardGrid.DataSource = ds.Tables[0];
+            }
+        }
+
+        private void technicianOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Int32 test = 0;
+            if (technicianOption.SelectedValue == null)
+            {
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@firstName";
+                param.Value = technicianOption.SelectedValue.ToString();
+                cmd.Parameters.Add(param);
+                test = (Int32)cmd.ExecuteScalar();
+                SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID", conn);
+                SqlParameter id_param = new SqlParameter();
+                id_param.ParameterName = "@associateID";
+                id_cmd.Parameters.Add(id_param);
+                reader = id_cmd.ExecuteReader();
+
+                DataSet dsname2 = new DataSet();
+                DataTable dtname2 = new DataTable("Table3");
+                dsname2.Tables.Add(dtname2);
+                dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
+                this.ticketsBindingSource.DataSource = dsname2.Tables[0];
+                dashboardGrid.DataSource = dsname2.Tables[0];
 
             }
         }

@@ -24,7 +24,6 @@ namespace backupLosGatos
         { 
                       
         }
-
         public void submitButton_Click(object sender, EventArgs e)
         {
             Boolean userValid;
@@ -50,18 +49,21 @@ namespace backupLosGatos
                         while (userTypeReturn.Read())
                         {
                             int typeReturn = userTypeReturn.GetInt32(0);
+                            //if the user is a coordinator
                             if (typeReturn == 1)
                             {
                                 dashboardScreen dashboard = new dashboardScreen();
                                 this.Hide();
                                 dashboard.Show();
                             }
+                            //if the user is a unit manager
                             else if (typeReturn == 2)
                             {
                                 managerDashboard dashboard = new managerDashboard();
                                 this.Hide();
                                 dashboard.Show();
                             }
+                            //if the user is a technician
                             else if (typeReturn == 3)
                             {
                                 technicianDashboard dashboard = new technicianDashboard();
@@ -78,7 +80,7 @@ namespace backupLosGatos
                     else
                     {
                         loginCount--;
-                        MessageBox.Show("Your login attempt has failed.  You have " + loginCount + "login attempt(s) left.");
+                        MessageBox.Show("Your login attempt has failed.  You have " + loginCount + " login attempt(s) left.");
                         usernameText.Clear();
                         passwordText.Clear();
                     }
