@@ -238,7 +238,7 @@ namespace backupLosGatos
             this.priorityComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priority", true));
             this.priorityComboBox.FormattingEnabled = true;
             this.priorityComboBox.Location = new System.Drawing.Point(512, 103);
-            this.priorityComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.priorityComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.priorityComboBox.Name = "priorityComboBox";
             this.priorityComboBox.Size = new System.Drawing.Size(189, 25);
             this.priorityComboBox.TabIndex = 11;
@@ -258,7 +258,7 @@ namespace backupLosGatos
             this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
             this.statusComboBox.FormattingEnabled = true;
             this.statusComboBox.Location = new System.Drawing.Point(512, 64);
-            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(189, 25);
             this.statusComboBox.TabIndex = 9;
@@ -267,7 +267,7 @@ namespace backupLosGatos
             // 
             this.dateSubmittedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ticketsBindingSource, "dateSubmitted", true));
             this.dateSubmittedDateTimePicker.Location = new System.Drawing.Point(512, 26);
-            this.dateSubmittedDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateSubmittedDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateSubmittedDateTimePicker.Name = "dateSubmittedDateTimePicker";
             this.dateSubmittedDateTimePicker.Size = new System.Drawing.Size(265, 23);
             this.dateSubmittedDateTimePicker.TabIndex = 8;
@@ -497,7 +497,7 @@ namespace backupLosGatos
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(27, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -508,7 +508,7 @@ namespace backupLosGatos
             // 
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(700, 4);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(168, 34);
             this.saveButton.TabIndex = 16;
@@ -519,7 +519,7 @@ namespace backupLosGatos
             // 
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.Location = new System.Drawing.Point(524, 4);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(168, 34);
             this.updateButton.TabIndex = 17;
@@ -532,7 +532,7 @@ namespace backupLosGatos
             this.panel1.Controls.Add(this.saveButton);
             this.panel1.Controls.Add(this.updateButton);
             this.panel1.Location = new System.Drawing.Point(23, 465);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(872, 60);
             this.panel1.TabIndex = 18;
@@ -541,7 +541,7 @@ namespace backupLosGatos
             // 
             this.submitButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.Location = new System.Drawing.Point(348, 4);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(168, 34);
             this.submitButton.TabIndex = 18;

@@ -132,6 +132,7 @@ namespace backupLosGatos
         private void ticketPage_Click_1(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
+            newTicket.ticketIDTextBox.Text = this.dashboardGrid.RowCount.ToString();
             newTicket.Show();
             this.Close();
         }
