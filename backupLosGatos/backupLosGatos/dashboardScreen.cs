@@ -103,7 +103,6 @@ namespace backupLosGatos
             }
             else
             {
-                //when a status is selected, datagridview filters information appropriately
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
                 SqlParameter param = new SqlParameter();
                 param.ParameterName = "@status";
@@ -119,28 +118,6 @@ namespace backupLosGatos
 
                 dashboardGrid.DataSource = ds.Tables[0];
             }
-        }
-
-        private void technicianOption_MouseClick(object sender, MouseEventArgs e)
-        {
-            //displays different technicians from which to filter by when dropdown is clicked
-            conn = new
-            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
-            conn.Open();
-
-            SqlCommand cmd = new SqlCommand("SELECT DISTINCT Users.associateID, Users.username, Tickets.ticketID FROM Assignments INNER JOIN Tickets ON Assignments.ticketID = Tickets.ticketID INNER JOIN Users ON Assignments.associateID = Users.associateID", conn);
-            reader = cmd.ExecuteReader();
-
-            DataSet dstechnician = new DataSet();
-            DataTable dttechnician = new DataTable("Table1");
-            dstechnician.Tables.Add(dttechnician);
-            dstechnician.Load(reader, LoadOption.PreserveChanges, dstechnician.Tables[0]);
-
-            technicianOption.ValueMember = "associateID";
-            technicianOption.DisplayMember = "username";
-            technicianOption.DataSource = dstechnician.Tables[0];
-            technicianOption.SelectedIndex = 0;
-            technicianOption.SelectedValue = 0;
         }
 
         private void technicianOption_SelectedIndexChanged(object sender, EventArgs e)

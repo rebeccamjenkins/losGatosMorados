@@ -111,12 +111,14 @@ namespace backupLosGatos
                 param.ParameterName = "@status";
                 param.Value = statusOption.SelectedValue.ToString();
                 cmd.Parameters.Add(param);
+
                 reader = cmd.ExecuteReader();
 
                 DataSet ds = new DataSet();
                 DataTable dt = new DataTable("Table1");
                 ds.Tables.Add(dt);
                 ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
                 dashboardGrid.DataSource = ds.Tables[0];
             }
         }
@@ -147,7 +149,6 @@ namespace backupLosGatos
                 dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
                 this.ticketsBindingSource.DataSource = dsname2.Tables[0];
                 dashboardGrid.DataSource = dsname2.Tables[0];
-
             }
         }
 
