@@ -23,7 +23,7 @@ namespace backupLosGatos
         SqlDataReader reader = null;
 
         private void managerDashboard_Load(object sender, EventArgs e)
-        { 
+        {
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
@@ -43,7 +43,6 @@ namespace backupLosGatos
             statusOption.SelectedValue = 0;
 
             //assignee dropdown
-            conn.Open();
             SqlCommand a_cmd = new SqlCommand("SELECT DISTINCT firstName FROM Users", conn);
             reader = a_cmd.ExecuteReader();
             DataSet dsname = new DataSet();
@@ -103,7 +102,6 @@ namespace backupLosGatos
             if (statusOption.SelectedValue == null)
             {
             }
-
             else
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
@@ -137,9 +135,11 @@ namespace backupLosGatos
                 param.Value = technicianOption.SelectedValue.ToString();
                 cmd.Parameters.Add(param);
                 test = (Int32)cmd.ExecuteScalar();
+
                 SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID", conn);
                 SqlParameter id_param = new SqlParameter();
                 id_param.ParameterName = "@associateID";
+                id_param.Value = test.ToString();
                 id_cmd.Parameters.Add(id_param);
                 reader = id_cmd.ExecuteReader();
 
