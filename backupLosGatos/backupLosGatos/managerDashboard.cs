@@ -23,7 +23,7 @@ namespace backupLosGatos
         SqlDataReader reader = null;
 
         private void managerDashboard_Load(object sender, EventArgs e)
-        { 
+        {
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
