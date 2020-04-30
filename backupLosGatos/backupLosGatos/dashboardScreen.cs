@@ -155,5 +155,10 @@ namespace backupLosGatos
         {
             dashboardGrid.Refresh();
         }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

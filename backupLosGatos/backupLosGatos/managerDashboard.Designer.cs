@@ -64,9 +64,9 @@ namespace backupLosGatos
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.equipmentDescriptionComboBox = new System.Windows.Forms.ComboBox();
             this.labelRole = new System.Windows.Forms.Label();
-            this.refreshButton = new System.Windows.Forms.Button();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
@@ -327,6 +327,7 @@ namespace backupLosGatos
             this.ticketPage.Size = new System.Drawing.Size(120, 24);
             this.ticketPage.Text = "Create Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
             // viewKioskReToolStripMenuItem
             // 
@@ -339,6 +340,7 @@ namespace backupLosGatos
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // usersTableAdapter
             // 
@@ -373,6 +375,19 @@ namespace backupLosGatos
             this.filterPanel.Size = new System.Drawing.Size(923, 123);
             this.filterPanel.TabIndex = 27;
             // 
+            // refreshButton
+            // 
+            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(755, 67);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(139, 26);
+            this.refreshButton.TabIndex = 31;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // equipmentDescriptionComboBox
             // 
             this.equipmentDescriptionComboBox.FormattingEnabled = true;
@@ -392,19 +407,6 @@ namespace backupLosGatos
             this.labelRole.TabIndex = 30;
             this.labelRole.Text = "manager";
             this.labelRole.Visible = false;
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(755, 67);
-            this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(139, 26);
-            this.refreshButton.TabIndex = 31;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // managerDashboard
             // 

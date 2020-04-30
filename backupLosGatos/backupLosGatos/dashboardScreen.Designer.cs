@@ -62,12 +62,13 @@ namespace backupLosGatos
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.equipmentOption = new System.Windows.Forms.ComboBox();
             this.equipmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
             this.labelRole = new System.Windows.Forms.Label();
-            this.refreshButton = new System.Windows.Forms.Button();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -308,7 +309,8 @@ namespace backupLosGatos
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
             this.ticketPage,
-            this.viewKioskRequestsToolStripMenuItem});
+            this.viewKioskRequestsToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
@@ -371,6 +373,19 @@ namespace backupLosGatos
             this.filterPanel.Size = new System.Drawing.Size(923, 123);
             this.filterPanel.TabIndex = 28;
             // 
+            // refreshButton
+            // 
+            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(755, 67);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(139, 26);
+            this.refreshButton.TabIndex = 27;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // equipmentOption
             // 
             this.equipmentOption.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "equipmentDescription", true));
@@ -414,18 +429,12 @@ namespace backupLosGatos
             this.labelRole.Text = "coordinator";
             this.labelRole.Visible = false;
             // 
-            // refreshButton
+            // logoutToolStripMenuItem
             // 
-            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(755, 67);
-            this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(139, 26);
-            this.refreshButton.TabIndex = 27;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // dashboardScreen
             // 
@@ -495,5 +504,6 @@ namespace backupLosGatos
         public System.Windows.Forms.ComboBox technicianOption;
         public System.Windows.Forms.Label labelRole;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
