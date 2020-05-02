@@ -52,6 +52,12 @@
     <Compile Include="dashboardScreen.Designer.cs">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="kioskRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kioskRequests.Designer.cs">
+      <DependentUpon>kioskRequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="GROUP6DataSet.cs">
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="dashboardScreen.resx">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kioskRequests.resx">
+      <DependentUpon>kioskRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginScreen.resx">
       <DependentUpon>loginScreen.cs</DependentUpon>

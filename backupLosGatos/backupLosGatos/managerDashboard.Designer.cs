@@ -313,14 +313,14 @@ namespace backupLosGatos
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
+            this.dashboardPage.Size = new System.Drawing.Size(104, 26);
             this.dashboardPage.Text = "Dashboard";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ticketPage
             // 
             this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(120, 24);
+            this.ticketPage.Size = new System.Drawing.Size(120, 26);
             this.ticketPage.Text = "Create Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click_1);
@@ -330,6 +330,7 @@ namespace backupLosGatos
             this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
             this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
+            this.viewKioskReToolStripMenuItem.Click += new System.EventHandler(this.viewKioskReToolStripMenuItem_Click);
             // 
             // usersTableAdapter
             // 
@@ -339,7 +340,7 @@ namespace backupLosGatos
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(27, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -358,7 +359,7 @@ namespace backupLosGatos
             this.filterPanel.Controls.Add(this.label6);
             this.filterPanel.Controls.Add(this.label5);
             this.filterPanel.Location = new System.Drawing.Point(0, 98);
-            this.filterPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterPanel.Margin = new System.Windows.Forms.Padding(4);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Size = new System.Drawing.Size(923, 123);
             this.filterPanel.TabIndex = 27;
@@ -367,7 +368,7 @@ namespace backupLosGatos
             // 
             this.equipmentDescriptionComboBox.FormattingEnabled = true;
             this.equipmentDescriptionComboBox.Location = new System.Drawing.Point(120, 69);
-            this.equipmentDescriptionComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.equipmentDescriptionComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.equipmentDescriptionComboBox.Name = "equipmentDescriptionComboBox";
             this.equipmentDescriptionComboBox.Size = new System.Drawing.Size(157, 24);
             this.equipmentDescriptionComboBox.TabIndex = 29;
@@ -375,12 +376,12 @@ namespace backupLosGatos
             // labelRole
             // 
             this.labelRole.AutoSize = true;
-            this.labelRole.Location = new System.Drawing.Point(843, 31);
+            this.labelRole.Location = new System.Drawing.Point(903, 30);
             this.labelRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(64, 17);
+            this.labelRole.Size = new System.Drawing.Size(16, 17);
             this.labelRole.TabIndex = 30;
-            this.labelRole.Text = "manager";
+            this.labelRole.Text = "1";
             this.labelRole.Visible = false;
             // 
             // managerDashboard

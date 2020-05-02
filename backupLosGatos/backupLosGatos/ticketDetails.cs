@@ -32,14 +32,54 @@ namespace backupLosGatos
 
         private void dashboardPage_Click(object sender, EventArgs e)
         {
-            dashboardScreen pageDashboard = new dashboardScreen();
-            pageDashboard.Show();
-            this.Close();
+            if (labelRole.Text == "1")
+            {
+                labelRole.Text = "";
+                dashboardScreen pageDashboard = new dashboardScreen();
+                pageDashboard.Show();
+                this.Close();
+            }
+            else if (labelRole.Text == "2")
+            {
+                labelRole.Text = "";
+                managerDashboard userDashboard = new managerDashboard();
+                userDashboard.Show();
+                this.Close();
+            }
+            else
+            {
+                labelRole.Text = "";
+                technicianDashboard userDashboard = new technicianDashboard();
+                userDashboard.Show();
+                this.Close();
+            }
+            
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Your ticket has been submitted.");
+            if (labelRole.Text == "1")
+            {
+                labelRole.Text = "";
+                dashboardScreen pageDashboard = new dashboardScreen();
+                pageDashboard.Show();
+                this.Close();
+            }
+            else if (labelRole.Text == "2")
+            {
+                labelRole.Text = "";
+                managerDashboard userDashboard = new managerDashboard();
+                userDashboard.Show();
+                this.Close();
+            }
+            else
+            {
+                labelRole.Text = "";
+                technicianDashboard userDashboard = new technicianDashboard();
+                userDashboard.Show();
+                this.Close();
+            }
         }
     }
 }

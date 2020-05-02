@@ -21,8 +21,8 @@ namespace backupLosGatos
         int loginCount = 4;
 
         public class userInfo
-        { 
-                      
+        {
+            
         }
 
         public void submitButton_Click(object sender, EventArgs e)
@@ -50,6 +50,7 @@ namespace backupLosGatos
                         while (userTypeReturn.Read())
                         {
                             int typeReturn = userTypeReturn.GetInt32(0);
+                            
                             if (typeReturn == 1)
                             {
                                 dashboardScreen dashboard = new dashboardScreen();
@@ -78,7 +79,7 @@ namespace backupLosGatos
                     else
                     {
                         loginCount--;
-                        MessageBox.Show("Your login attempt has failed.  You have " + loginCount + "login attempt(s) left.");
+                        MessageBox.Show("Your login attempt has failed.  You have " + loginCount + " login attempt(s) left.");
                         usernameText.Clear();
                         passwordText.Clear();
                     }

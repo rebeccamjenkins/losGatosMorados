@@ -25,7 +25,7 @@ namespace backupLosGatos
         private void managerDashboard_Load(object sender, EventArgs e)
         {
             this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+            //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
 
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
@@ -63,12 +63,12 @@ namespace backupLosGatos
             //disables buttons for managers - is this necessary?
             ticketDetails newTicket = new ticketDetails();
 
-            //if (labelRole.Text == "manager")
-            //{
-            //    newTicket.updateButton.Enabled = false;
-            //    newTicket.saveButton.Enabled = false;
-            //}
-
+            /*if (userNum == 2)
+            {
+                newTicket.updateButton.Enabled = false;
+                newTicket.saveButton.Enabled = false;
+            }*/
+            
             newTicket.Show();
             this.Close();
         }
@@ -132,8 +132,23 @@ namespace backupLosGatos
         private void ticketPage_Click_1(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
-            newTicket.ticketIDTextBox.Text = this.dashboardGrid.RowCount.ToString();
+            //cannot get it to show the right ticket number because it's showing up as if the table has 0 rows
+            newTicket.ticketIDTextBox.Text = gROUP6DataSet.Tickets.Rows.Count.ToString();
+
+            //gives the user type to the ticket details form to allow permissions
+            newTicket.labelRole.Text = "2";
+
+            //disables save and update button since we are creating a ticket
+            newTicket.saveButton.Enabled = false;
+            newTicket.updateButton.Enabled = false;
             newTicket.Show();
+            this.Close();
+        }
+
+        private void viewKioskReToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            kioskRequests openRequests = new kioskRequests();
+            openRequests.Show();
             this.Close();
         }
     }

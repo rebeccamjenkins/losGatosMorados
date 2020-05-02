@@ -74,3 +74,4 @@ C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\ba
 C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.GenerateResource.cache
 C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
 C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
+C:\Users\Michelle\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.kioskRequests.resources
