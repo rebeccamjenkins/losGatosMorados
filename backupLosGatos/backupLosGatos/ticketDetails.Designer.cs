@@ -80,6 +80,8 @@ namespace backupLosGatos
             this.submitButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
             this.mangButton = new System.Windows.Forms.Button();
+            this.viewKioskRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -188,12 +190,14 @@ namespace backupLosGatos
             this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
-            this.ticketPage});
+            this.ticketPage,
+            this.viewKioskRequestToolStripMenuItem,
+            this.logoutToolStripMenuItem});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(1154, 38);
+            this.pageOptions.Size = new System.Drawing.Size(923, 28);
             this.pageOptions.TabIndex = 11;
             // 
             // dashboardPage
@@ -389,14 +393,14 @@ namespace backupLosGatos
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.ticketsBindingNavigatorSaveItem});
-            this.ticketsBindingNavigator.Location = new System.Drawing.Point(0, 48);
+            this.ticketsBindingNavigator.Location = new System.Drawing.Point(0, 28);
             this.ticketsBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.ticketsBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.ticketsBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.ticketsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.ticketsBindingNavigator.Name = "ticketsBindingNavigator";
             this.ticketsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.ticketsBindingNavigator.Size = new System.Drawing.Size(1154, 39);
+            this.ticketsBindingNavigator.Size = new System.Drawing.Size(923, 27);
             this.ticketsBindingNavigator.TabIndex = 14;
             this.ticketsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -406,7 +410,7 @@ namespace backupLosGatos
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 36);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorCountItem
@@ -571,6 +575,18 @@ namespace backupLosGatos
             this.mangButton.UseVisualStyleBackColor = true;
             this.mangButton.Visible = false;
             // 
+            // viewKioskRequestToolStripMenuItem
+            // 
+            this.viewKioskRequestToolStripMenuItem.Name = "viewKioskRequestToolStripMenuItem";
+            this.viewKioskRequestToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.viewKioskRequestToolStripMenuItem.Text = "View Kiosk Requests";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            // 
             // ticketDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -649,5 +665,7 @@ namespace backupLosGatos
         public System.Windows.Forms.Button updateButton;
         public System.Windows.Forms.Button coordButton;
         public System.Windows.Forms.Button mangButton;
+        private System.Windows.Forms.ToolStripMenuItem viewKioskRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
