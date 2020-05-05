@@ -59,6 +59,7 @@ namespace backupLosGatos
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             this.viewKioskRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
@@ -68,7 +69,6 @@ namespace backupLosGatos
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
             this.labelRole = new System.Windows.Forms.Label();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -339,6 +339,14 @@ namespace backupLosGatos
             this.viewKioskRequestsToolStripMenuItem.Name = "viewKioskRequestsToolStripMenuItem";
             this.viewKioskRequestsToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.viewKioskRequestsToolStripMenuItem.Text = "View Kiosk Requests";
+            this.viewKioskRequestsToolStripMenuItem.Click += new System.EventHandler(this.viewKioskRequestsToolStripMenuItem_Click);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // usersTableAdapter
             // 
@@ -428,13 +436,6 @@ namespace backupLosGatos
             this.labelRole.TabIndex = 29;
             this.labelRole.Text = "coordinator";
             this.labelRole.Visible = false;
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // dashboardScreen
             // 

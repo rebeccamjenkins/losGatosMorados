@@ -160,5 +160,12 @@ namespace backupLosGatos
         {
             this.Close();
         }
+
+        private void viewKioskRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            kioskRequest openRequests = new kioskRequest();
+            openRequests.Show();
+            this.Close();
+        }
     }
 }

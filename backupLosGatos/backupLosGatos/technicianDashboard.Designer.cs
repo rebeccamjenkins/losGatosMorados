@@ -59,6 +59,7 @@ namespace backupLosGatos
             this.viewKioskReToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
@@ -308,7 +309,7 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(926, 28);
+            this.pageOptions.Size = new System.Drawing.Size(740, 28);
             this.pageOptions.TabIndex = 31;
             // 
             // dashboardPage
@@ -335,11 +336,19 @@ namespace backupLosGatos
             // 
             this.ticketsTableAdapter.ClearBeforeFill = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(741, 0);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 0;
+            // 
             // technicianDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 549);
+            this.ClientSize = new System.Drawing.Size(740, 439);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.labelRole);
             this.Controls.Add(this.filterPanel);
@@ -395,5 +404,6 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priorityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmittedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -334,6 +334,7 @@ namespace backupLosGatos
             this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
             this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
+            this.viewKioskReToolStripMenuItem.Click += new System.EventHandler(this.viewKioskReToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 

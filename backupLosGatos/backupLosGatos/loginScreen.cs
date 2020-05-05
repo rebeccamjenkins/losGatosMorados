@@ -20,9 +20,11 @@ namespace backupLosGatos
 
         int loginCount = 4;
 
-        public class userInfo
-        { 
-                      
+        public static class userInfo
+        {
+            public static int coordUser = 1;
+            public static int mangUser = 2;
+            public static int techUser = 3;
         }
         public void submitButton_Click(object sender, EventArgs e)
         {

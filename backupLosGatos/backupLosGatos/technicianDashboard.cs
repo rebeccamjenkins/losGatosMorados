@@ -27,24 +27,16 @@ namespace backupLosGatos
 
         private void technicianDashboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gROUP6DataSet.Tickets' table. You can move, or remove it, as needed.
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+            //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
             conn.Open();
 
-            //SqlCommand cmd = new SqlCommand("SELECT DISTINCT status FROM dbo.Tickets", conn);
-            //reader = cmd.ExecuteReader();
-            //DataSet dsstatus = new DataSet();
-            //DataTable dtstatus = new DataTable("Table1");
-            //dsstatus.Tables.Add(dtstatus);
-            //dsstatus.Load(reader, LoadOption.PreserveChanges, dsstatus.Tables[0]);
-
-            //statusOption.ValueMember = "status";
-            //statusOption.DisplayMember = "status";
-            //statusOption.DataSource = dsstatus.Tables[0];
-            //statusOption.SelectedIndex = 0;
-            //statusOption.SelectedValue = 0;
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID", conn);
+            DataTable data = new DataTable();
+            sda.Fill(data);
+            dashboardGrid.DataSource = data;
+            conn.Close();
 
             foreach (DataGridViewRow row in dashboardGrid.Rows)
             {
@@ -63,31 +55,5 @@ namespace backupLosGatos
         {
             this.Close();
         }
-
-        //private void statusOption_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (statusOption.SelectedValue == null)
-        //    {
-        //    }
-        //    else
-        //    {
-        //        SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
-        //        SqlParameter param = new SqlParameter();
-        //        param.ParameterName = "@status";
-        //        param.Value = statusOption.SelectedValue.ToString();
-        //        cmd.Parameters.Add(param);
-
-        //        reader = cmd.ExecuteReader();
-
-        //        DataSet ds = new DataSet();
-        //        DataTable dt = new DataTable("Table1");
-        //        ds.Tables.Add(dt);
-        //        ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
-
-        //        dashboardGrid.DataSource = ds.Tables[0];
-        //    }
-        //}
     }
-
-
 }
