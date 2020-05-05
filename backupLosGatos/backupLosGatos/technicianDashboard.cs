@@ -112,5 +112,10 @@ namespace backupLosGatos
                 // end of lab 7 code regarding drop down
             }
         }
+
+        private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

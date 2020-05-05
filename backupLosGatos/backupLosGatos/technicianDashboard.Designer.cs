@@ -137,6 +137,7 @@ namespace backupLosGatos
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(873, 277);
             this.dashboardGrid.TabIndex = 13;
+            this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
             // 
             // btnSearch
             // 
@@ -153,7 +154,7 @@ namespace backupLosGatos
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(27, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -170,7 +171,7 @@ namespace backupLosGatos
             this.filterPanel.Controls.Add(this.label4);
             this.filterPanel.Controls.Add(this.label5);
             this.filterPanel.Location = new System.Drawing.Point(0, 98);
-            this.filterPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterPanel.Margin = new System.Windows.Forms.Padding(4);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Size = new System.Drawing.Size(923, 123);
             this.filterPanel.TabIndex = 28;

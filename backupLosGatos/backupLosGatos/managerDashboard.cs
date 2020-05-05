@@ -141,6 +141,19 @@ namespace backupLosGatos
             //disables save and update button since we are creating a ticket
             newTicket.saveButton.Enabled = false;
             newTicket.updateButton.Enabled = false;
+
+            //Autofills the unit, equipment, and status buttons
+            string[] equipmentNames = new string[] {"Vessel", "Pump", "Water Boiler", "Heat Exchanger", "Distillation Column", "Compressor",
+                "Condensor", "Process Drain", "Hydraulic Jack", "Hydrotreater" };
+            string[] unitNames = new string[] {"1", "2", "3", "4", "5" };
+            string[] statusOptions = new string[] {"Open", "In Progress", "Closed" };
+            string[] priorityList = new string[] { "Urgent", "High", "Medium", "Low" };
+            newTicket.priorityComboBox.Items.AddRange(priorityList);
+            newTicket.cmbUnitList.Items.AddRange(unitNames);
+            newTicket.cmbEquipmentList.Items.AddRange(equipmentNames);
+            newTicket.statusComboBox.Items.AddRange(statusOptions);
+
+            //opens ticketDetails form
             newTicket.Show();
             this.Close();
         }

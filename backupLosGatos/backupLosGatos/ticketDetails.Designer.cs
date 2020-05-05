@@ -66,6 +66,8 @@ namespace backupLosGatos
             this.panel1 = new System.Windows.Forms.Panel();
             this.submitButton = new System.Windows.Forms.Button();
             this.labelRole = new System.Windows.Forms.Label();
+            this.cmbUnitList = new System.Windows.Forms.ComboBox();
+            this.cmbEquipmentList = new System.Windows.Forms.ComboBox();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -177,7 +179,7 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(923, 30);
+            this.pageOptions.Size = new System.Drawing.Size(923, 28);
             this.pageOptions.TabIndex = 11;
             // 
             // dashboardPage
@@ -197,6 +199,8 @@ namespace backupLosGatos
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbEquipmentList);
+            this.groupBox1.Controls.Add(this.cmbUnitList);
             this.groupBox1.Controls.Add(priorityLabel);
             this.groupBox1.Controls.Add(this.priorityComboBox);
             this.groupBox1.Controls.Add(statusLabel);
@@ -222,8 +226,9 @@ namespace backupLosGatos
             // priorityComboBox
             // 
             this.priorityComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priority", true));
+            this.priorityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.priorityComboBox.FormattingEnabled = true;
-            this.priorityComboBox.Location = new System.Drawing.Point(512, 103);
+            this.priorityComboBox.Location = new System.Drawing.Point(507, 108);
             this.priorityComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.priorityComboBox.Name = "priorityComboBox";
             this.priorityComboBox.Size = new System.Drawing.Size(189, 25);
@@ -242,8 +247,9 @@ namespace backupLosGatos
             // statusComboBox
             // 
             this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
+            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(512, 64);
+            this.statusComboBox.Location = new System.Drawing.Point(507, 73);
             this.statusComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(189, 25);
@@ -253,7 +259,7 @@ namespace backupLosGatos
             // 
             this.dateSubmittedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ticketsBindingSource, "dateSubmitted", true));
             this.dateSubmittedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateSubmittedDateTimePicker.Location = new System.Drawing.Point(512, 26);
+            this.dateSubmittedDateTimePicker.Location = new System.Drawing.Point(507, 28);
             this.dateSubmittedDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateSubmittedDateTimePicker.Name = "dateSubmittedDateTimePicker";
             this.dateSubmittedDateTimePicker.Size = new System.Drawing.Size(189, 23);
@@ -271,20 +277,22 @@ namespace backupLosGatos
             // equipmentIDTextBox
             // 
             this.equipmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "equipmentID", true));
-            this.equipmentIDTextBox.Location = new System.Drawing.Point(148, 110);
+            this.equipmentIDTextBox.Location = new System.Drawing.Point(148, 135);
             this.equipmentIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.equipmentIDTextBox.Name = "equipmentIDTextBox";
             this.equipmentIDTextBox.Size = new System.Drawing.Size(185, 23);
             this.equipmentIDTextBox.TabIndex = 5;
+            this.equipmentIDTextBox.Visible = false;
             // 
             // unitIDTextBox
             // 
             this.unitIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "unitID", true));
-            this.unitIDTextBox.Location = new System.Drawing.Point(148, 69);
+            this.unitIDTextBox.Location = new System.Drawing.Point(348, 139);
             this.unitIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.unitIDTextBox.Name = "unitIDTextBox";
             this.unitIDTextBox.Size = new System.Drawing.Size(185, 23);
             this.unitIDTextBox.TabIndex = 3;
+            this.unitIDTextBox.Visible = false;
             // 
             // ticketIDTextBox
             // 
@@ -422,6 +430,28 @@ namespace backupLosGatos
             this.labelRole.Text = "#";
             this.labelRole.Visible = false;
             // 
+            // cmbUnitList
+            // 
+            this.cmbUnitList.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
+            this.cmbUnitList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUnitList.FormattingEnabled = true;
+            this.cmbUnitList.Location = new System.Drawing.Point(148, 73);
+            this.cmbUnitList.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbUnitList.Name = "cmbUnitList";
+            this.cmbUnitList.Size = new System.Drawing.Size(185, 25);
+            this.cmbUnitList.TabIndex = 12;
+            // 
+            // cmbEquipmentList
+            // 
+            this.cmbEquipmentList.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
+            this.cmbEquipmentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEquipmentList.FormattingEnabled = true;
+            this.cmbEquipmentList.Location = new System.Drawing.Point(148, 112);
+            this.cmbEquipmentList.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEquipmentList.Name = "cmbEquipmentList";
+            this.cmbEquipmentList.Size = new System.Drawing.Size(185, 25);
+            this.cmbEquipmentList.TabIndex = 13;
+            // 
             // ticketDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -481,5 +511,7 @@ namespace backupLosGatos
         public System.Windows.Forms.Button saveButton;
         public System.Windows.Forms.Button updateButton;
         public System.Windows.Forms.Label labelRole;
+        public System.Windows.Forms.ComboBox cmbUnitList;
+        public System.Windows.Forms.ComboBox cmbEquipmentList;
     }
 }
