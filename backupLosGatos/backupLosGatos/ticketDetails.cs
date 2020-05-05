@@ -70,7 +70,18 @@ namespace backupLosGatos
             {
                 MessageBox.Show(es.Message);
             }
+        }
 
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewKioskRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            kioskRequest openRequests = new kioskRequest();
+            openRequests.Show();
+            this.Close();
         }
     }
 }

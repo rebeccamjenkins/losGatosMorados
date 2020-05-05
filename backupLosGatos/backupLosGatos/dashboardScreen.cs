@@ -23,6 +23,8 @@ namespace backupLosGatos
 
         private void dashboardScreen_Load(object sender, EventArgs e)
         {
+            //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 

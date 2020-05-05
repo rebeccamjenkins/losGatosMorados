@@ -59,7 +59,7 @@ namespace backupLosGatos
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewKioskReToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewKiosk = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -305,7 +305,7 @@ namespace backupLosGatos
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
             this.ticketPage,
-            this.viewKioskReToolStripMenuItem,
+            this.viewKiosk,
             this.logoutToolStripMenuItem});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
@@ -329,12 +329,12 @@ namespace backupLosGatos
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
-            // viewKioskReToolStripMenuItem
+            // viewKiosk
             // 
-            this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
-            this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
-            this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
-            this.viewKioskReToolStripMenuItem.Click += new System.EventHandler(this.viewKioskReToolStripMenuItem_Click);
+            this.viewKiosk.Name = "viewKiosk";
+            this.viewKiosk.Size = new System.Drawing.Size(170, 24);
+            this.viewKiosk.Text = "View Kiosk Requests";
+            this.viewKiosk.Click += new System.EventHandler(this.viewKioskReToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -458,7 +458,7 @@ namespace backupLosGatos
         private System.Windows.Forms.BindingSource usersBindingSource;
         private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem viewKioskReToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewKiosk;
         private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn equipmentIDDataGridViewTextBoxColumn;

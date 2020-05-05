@@ -44,6 +44,8 @@ namespace backupLosGatos
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewKioskRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.priorityComboBox = new System.Windows.Forms.ComboBox();
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -80,8 +82,6 @@ namespace backupLosGatos
             this.submitButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
             this.mangButton = new System.Windows.Forms.Button();
-            this.viewKioskRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -214,6 +214,19 @@ namespace backupLosGatos
             this.ticketPage.Size = new System.Drawing.Size(120, 24);
             this.ticketPage.Text = "Create Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // viewKioskRequestToolStripMenuItem
+            // 
+            this.viewKioskRequestToolStripMenuItem.Name = "viewKioskRequestToolStripMenuItem";
+            this.viewKioskRequestToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.viewKioskRequestToolStripMenuItem.Text = "View Kiosk Requests";
+            this.viewKioskRequestToolStripMenuItem.Click += new System.EventHandler(this.viewKioskRequestToolStripMenuItem_Click);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // groupBox1
             // 
@@ -531,6 +544,7 @@ namespace backupLosGatos
             this.updateButton.TabIndex = 17;
             this.updateButton.Text = "Edit Ticket";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // panel1
             // 
@@ -574,18 +588,6 @@ namespace backupLosGatos
             this.mangButton.Text = "mang";
             this.mangButton.UseVisualStyleBackColor = true;
             this.mangButton.Visible = false;
-            // 
-            // viewKioskRequestToolStripMenuItem
-            // 
-            this.viewKioskRequestToolStripMenuItem.Name = "viewKioskRequestToolStripMenuItem";
-            this.viewKioskRequestToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
-            this.viewKioskRequestToolStripMenuItem.Text = "View Kiosk Requests";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-            this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // ticketDetails
             // 
