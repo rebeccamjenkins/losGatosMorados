@@ -60,12 +60,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="kioskRequest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="kioskRequest.Designer.cs">
-      <DependentUpon>kioskRequest.cs</DependentUpon>
-    </Compile>
     <Compile Include="loginScreen.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>backupLosGatos</CustomToolNamespace>
@@ -95,9 +89,6 @@
     </Compile>
     <EmbeddedResource Include="dashboardScreen.resx">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="kioskRequest.resx">
-      <DependentUpon>kioskRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginScreen.resx">
       <DependentUpon>loginScreen.cs</DependentUpon>
