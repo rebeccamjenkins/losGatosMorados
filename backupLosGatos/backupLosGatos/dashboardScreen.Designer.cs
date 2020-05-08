@@ -266,7 +266,6 @@ namespace backupLosGatos
             this.statusOption.Size = new System.Drawing.Size(157, 24);
             this.statusOption.TabIndex = 8;
             this.statusOption.ValueMember = "status";
-            this.statusOption.SelectedIndexChanged += new System.EventHandler(this.statusOption_SelectedIndexChanged);
             // 
             // technicianOption
             // 
@@ -279,7 +278,6 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 7;
             this.technicianOption.ValueMember = "associateID";
-            this.technicianOption.SelectedIndexChanged += new System.EventHandler(this.technicianOption_SelectedIndexChanged);
             // 
             // usersBindingSource
             // 
@@ -407,6 +405,7 @@ namespace backupLosGatos
             this.equipmentOption.TabIndex = 26;
             this.equipmentOption.TabStop = false;
             this.equipmentOption.ValueMember = "equipmentID";
+            this.equipmentOption.SelectionChangeCommitted += new System.EventHandler(this.equipmentOption_SelectionChangeCommitted);
             // 
             // equipmentBindingSource
             // 

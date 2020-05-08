@@ -65,7 +65,7 @@ namespace backupLosGatos
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.equipmentDescriptionComboBox = new System.Windows.Forms.ComboBox();
+            this.equipmentOption = new System.Windows.Forms.ComboBox();
             this.labelRole = new System.Windows.Forms.Label();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -140,6 +140,7 @@ namespace backupLosGatos
             this.statusOption.Size = new System.Drawing.Size(157, 24);
             this.statusOption.TabIndex = 19;
             this.statusOption.ValueMember = "status";
+            this.statusOption.SelectionChangeCommitted += new System.EventHandler(this.statusOption_SelectionChangeCommitted);
             // 
             // ticketsBindingSource
             // 
@@ -162,7 +163,7 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 18;
             this.technicianOption.ValueMember = "associateID";
-            this.technicianOption.SelectedIndexChanged += new System.EventHandler(this.technicianOption_SelectedIndexChanged);
+            this.technicianOption.SelectionChangeCommitted += new System.EventHandler(this.technicianOption_SelectionChangeCommitted);
             // 
             // usersBindingSource
             // 
@@ -334,7 +335,7 @@ namespace backupLosGatos
             this.viewKiosk.Name = "viewKiosk";
             this.viewKiosk.Size = new System.Drawing.Size(170, 24);
             this.viewKiosk.Text = "View Kiosk Requests";
-            this.viewKiosk.Click += new System.EventHandler(this.viewKioskReToolStripMenuItem_Click);
+            this.viewKiosk.Click += new System.EventHandler(this.viewKioskRequestsToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -361,7 +362,7 @@ namespace backupLosGatos
             // filterPanel
             // 
             this.filterPanel.Controls.Add(this.refreshButton);
-            this.filterPanel.Controls.Add(this.equipmentDescriptionComboBox);
+            this.filterPanel.Controls.Add(this.equipmentOption);
             this.filterPanel.Controls.Add(equipmentDescriptionLabel);
             this.filterPanel.Controls.Add(this.queryTicket);
             this.filterPanel.Controls.Add(this.technicianOption);
@@ -389,14 +390,15 @@ namespace backupLosGatos
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
-            // equipmentDescriptionComboBox
+            // equipmentOption
             // 
-            this.equipmentDescriptionComboBox.FormattingEnabled = true;
-            this.equipmentDescriptionComboBox.Location = new System.Drawing.Point(120, 69);
-            this.equipmentDescriptionComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.equipmentDescriptionComboBox.Name = "equipmentDescriptionComboBox";
-            this.equipmentDescriptionComboBox.Size = new System.Drawing.Size(157, 24);
-            this.equipmentDescriptionComboBox.TabIndex = 29;
+            this.equipmentOption.FormattingEnabled = true;
+            this.equipmentOption.Location = new System.Drawing.Point(120, 69);
+            this.equipmentOption.Margin = new System.Windows.Forms.Padding(4);
+            this.equipmentOption.Name = "equipmentOption";
+            this.equipmentOption.Size = new System.Drawing.Size(157, 24);
+            this.equipmentOption.TabIndex = 29;
+            this.equipmentOption.SelectionChangeCommitted += new System.EventHandler(this.equipmentOption_SelectionChangeCommitted);
             // 
             // labelRole
             // 
@@ -469,7 +471,7 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalInformationDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel filterPanel;
-        private System.Windows.Forms.ComboBox equipmentDescriptionComboBox;
+        private System.Windows.Forms.ComboBox equipmentOption;
         public System.Windows.Forms.DataGridView dashboardGrid;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         public System.Windows.Forms.ComboBox technicianOption;
