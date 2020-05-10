@@ -60,6 +60,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="kioskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kioskForm.Designer.cs">
+      <DependentUpon>kioskForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="kioskRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="dashboardScreen.resx">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kioskForm.resx">
+      <DependentUpon>kioskForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="kioskRequest.resx">
       <DependentUpon>kioskRequest.cs</DependentUpon>
