@@ -47,19 +47,19 @@ namespace backupLosGatos
             this.viewKioskRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.priorityComboBox = new System.Windows.Forms.ComboBox();
+            this.priorityCombo = new System.Windows.Forms.ComboBox();
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
-            this.statusComboBox = new System.Windows.Forms.ComboBox();
+            this.statusCombo = new System.Windows.Forms.ComboBox();
             this.dateSubmittedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.equipmentIDTextBox = new System.Windows.Forms.TextBox();
-            this.unitIDTextBox = new System.Windows.Forms.TextBox();
-            this.ticketIDTextBox = new System.Windows.Forms.TextBox();
+            this.equipmentCombo = new System.Windows.Forms.ComboBox();
+            this.unitIDText = new System.Windows.Forms.TextBox();
+            this.ticketIDText = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.additionalInformationTextBox = new System.Windows.Forms.TextBox();
-            this.inspectorSignatureTextBox = new System.Windows.Forms.TextBox();
-            this.welderSignatureTextBox = new System.Windows.Forms.TextBox();
+            this.additionalInformationText = new System.Windows.Forms.TextBox();
+            this.inspectorSignatureText = new System.Windows.Forms.TextBox();
+            this.welderSignatureText = new System.Windows.Forms.TextBox();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.tableAdapterManager = new backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager();
             this.ticketsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -231,17 +231,17 @@ namespace backupLosGatos
             // groupBox1
             // 
             this.groupBox1.Controls.Add(priorityLabel);
-            this.groupBox1.Controls.Add(this.priorityComboBox);
+            this.groupBox1.Controls.Add(this.priorityCombo);
             this.groupBox1.Controls.Add(statusLabel);
-            this.groupBox1.Controls.Add(this.statusComboBox);
+            this.groupBox1.Controls.Add(this.statusCombo);
             this.groupBox1.Controls.Add(dateSubmittedLabel);
             this.groupBox1.Controls.Add(this.dateSubmittedDateTimePicker);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(equipmentIDLabel);
-            this.groupBox1.Controls.Add(this.equipmentIDTextBox);
-            this.groupBox1.Controls.Add(this.unitIDTextBox);
+            this.groupBox1.Controls.Add(this.equipmentCombo);
+            this.groupBox1.Controls.Add(this.unitIDText);
             this.groupBox1.Controls.Add(ticketIDLabel);
-            this.groupBox1.Controls.Add(this.ticketIDTextBox);
+            this.groupBox1.Controls.Add(this.ticketIDText);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(23, 97);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -252,15 +252,15 @@ namespace backupLosGatos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ticket Information";
             // 
-            // priorityComboBox
+            // priorityCombo
             // 
-            this.priorityComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priority", true));
-            this.priorityComboBox.FormattingEnabled = true;
-            this.priorityComboBox.Location = new System.Drawing.Point(512, 103);
-            this.priorityComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.priorityComboBox.Name = "priorityComboBox";
-            this.priorityComboBox.Size = new System.Drawing.Size(189, 25);
-            this.priorityComboBox.TabIndex = 11;
+            this.priorityCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priorityLevel", true));
+            this.priorityCombo.FormattingEnabled = true;
+            this.priorityCombo.Location = new System.Drawing.Point(512, 103);
+            this.priorityCombo.Margin = new System.Windows.Forms.Padding(4);
+            this.priorityCombo.Name = "priorityCombo";
+            this.priorityCombo.Size = new System.Drawing.Size(189, 25);
+            this.priorityCombo.TabIndex = 11;
             // 
             // ticketsBindingSource
             // 
@@ -272,15 +272,15 @@ namespace backupLosGatos
             this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
             this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // statusComboBox
+            // statusCombo
             // 
-            this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
-            this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(512, 64);
-            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(189, 25);
-            this.statusComboBox.TabIndex = 9;
+            this.statusCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
+            this.statusCombo.FormattingEnabled = true;
+            this.statusCombo.Location = new System.Drawing.Point(512, 64);
+            this.statusCombo.Margin = new System.Windows.Forms.Padding(4);
+            this.statusCombo.Name = "statusCombo";
+            this.statusCombo.Size = new System.Drawing.Size(189, 25);
+            this.statusCombo.TabIndex = 9;
             // 
             // dateSubmittedDateTimePicker
             // 
@@ -300,41 +300,43 @@ namespace backupLosGatos
             this.label2.TabIndex = 7;
             this.label2.Text = "Unit:";
             // 
-            // equipmentIDTextBox
+            // equipmentCombo
             // 
-            this.equipmentIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "equipmentID", true));
-            this.equipmentIDTextBox.Location = new System.Drawing.Point(148, 110);
-            this.equipmentIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.equipmentIDTextBox.Name = "equipmentIDTextBox";
-            this.equipmentIDTextBox.Size = new System.Drawing.Size(185, 23);
-            this.equipmentIDTextBox.TabIndex = 5;
+            this.equipmentCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "equipmentID", true));
+            this.equipmentCombo.FormattingEnabled = true;
+            this.equipmentCombo.Location = new System.Drawing.Point(148, 110);
+            this.equipmentCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.equipmentCombo.Name = "equipmentCombo";
+            this.equipmentCombo.Size = new System.Drawing.Size(185, 23);
+            this.equipmentCombo.TabIndex = 5;
             // 
-            // unitIDTextBox
+            // unitIDText
             // 
-            this.unitIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "unitID", true));
-            this.unitIDTextBox.Location = new System.Drawing.Point(148, 69);
-            this.unitIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.unitIDTextBox.Name = "unitIDTextBox";
-            this.unitIDTextBox.Size = new System.Drawing.Size(185, 23);
-            this.unitIDTextBox.TabIndex = 3;
+            this.unitIDText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "unitID", true));
+            this.unitIDText.Location = new System.Drawing.Point(148, 69);
+            this.unitIDText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.unitIDText.Name = "unitIDText";
+            this.unitIDText.Size = new System.Drawing.Size(185, 23);
+            this.unitIDText.TabIndex = 3;
             // 
-            // ticketIDTextBox
+            // ticketIDText
             // 
-            this.ticketIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "ticketID", true));
-            this.ticketIDTextBox.Location = new System.Drawing.Point(148, 30);
-            this.ticketIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ticketIDTextBox.Name = "ticketIDTextBox";
-            this.ticketIDTextBox.Size = new System.Drawing.Size(185, 23);
-            this.ticketIDTextBox.TabIndex = 1;
+            this.ticketIDText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "ticketID", true));
+            this.ticketIDText.Location = new System.Drawing.Point(148, 30);
+            this.ticketIDText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ticketIDText.Name = "ticketIDText";
+            this.ticketIDText.ReadOnly = true;
+            this.ticketIDText.Size = new System.Drawing.Size(185, 23);
+            this.ticketIDText.TabIndex = 1;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(additionalInformationLabel);
-            this.groupBox2.Controls.Add(this.additionalInformationTextBox);
+            this.groupBox2.Controls.Add(this.additionalInformationText);
             this.groupBox2.Controls.Add(inspectorSignatureLabel);
-            this.groupBox2.Controls.Add(this.inspectorSignatureTextBox);
+            this.groupBox2.Controls.Add(this.inspectorSignatureText);
             this.groupBox2.Controls.Add(welderSignatureLabel);
-            this.groupBox2.Controls.Add(this.welderSignatureTextBox);
+            this.groupBox2.Controls.Add(this.welderSignatureText);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(23, 265);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -345,33 +347,33 @@ namespace backupLosGatos
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detailed Information";
             // 
-            // additionalInformationTextBox
+            // additionalInformationText
             // 
-            this.additionalInformationTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "additionalInformation", true));
-            this.additionalInformationTextBox.Location = new System.Drawing.Point(148, 68);
-            this.additionalInformationTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.additionalInformationTextBox.Multiline = true;
-            this.additionalInformationTextBox.Name = "additionalInformationTextBox";
-            this.additionalInformationTextBox.Size = new System.Drawing.Size(604, 112);
-            this.additionalInformationTextBox.TabIndex = 5;
+            this.additionalInformationText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "additionalInformation", true));
+            this.additionalInformationText.Location = new System.Drawing.Point(148, 68);
+            this.additionalInformationText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.additionalInformationText.Multiline = true;
+            this.additionalInformationText.Name = "additionalInformationText";
+            this.additionalInformationText.Size = new System.Drawing.Size(604, 112);
+            this.additionalInformationText.TabIndex = 5;
             // 
-            // inspectorSignatureTextBox
+            // inspectorSignatureText
             // 
-            this.inspectorSignatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "inspectorSignature", true));
-            this.inspectorSignatureTextBox.Location = new System.Drawing.Point(567, 32);
-            this.inspectorSignatureTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.inspectorSignatureTextBox.Name = "inspectorSignatureTextBox";
-            this.inspectorSignatureTextBox.Size = new System.Drawing.Size(185, 23);
-            this.inspectorSignatureTextBox.TabIndex = 3;
+            this.inspectorSignatureText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "inspectorSignature", true));
+            this.inspectorSignatureText.Location = new System.Drawing.Point(567, 32);
+            this.inspectorSignatureText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.inspectorSignatureText.Name = "inspectorSignatureText";
+            this.inspectorSignatureText.Size = new System.Drawing.Size(185, 23);
+            this.inspectorSignatureText.TabIndex = 3;
             // 
-            // welderSignatureTextBox
+            // welderSignatureText
             // 
-            this.welderSignatureTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "welderSignature", true));
-            this.welderSignatureTextBox.Location = new System.Drawing.Point(148, 32);
-            this.welderSignatureTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.welderSignatureTextBox.Name = "welderSignatureTextBox";
-            this.welderSignatureTextBox.Size = new System.Drawing.Size(185, 23);
-            this.welderSignatureTextBox.TabIndex = 1;
+            this.welderSignatureText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "welderSignature", true));
+            this.welderSignatureText.Location = new System.Drawing.Point(148, 32);
+            this.welderSignatureText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.welderSignatureText.Name = "welderSignatureText";
+            this.welderSignatureText.Size = new System.Drawing.Size(185, 23);
+            this.welderSignatureText.TabIndex = 1;
             // 
             // ticketsTableAdapter
             // 
@@ -382,6 +384,7 @@ namespace backupLosGatos
             this.tableAdapterManager.AssignmentsTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.EquipmentTableAdapter = null;
+            this.tableAdapterManager.KioskTableAdapter = null;
             this.tableAdapterManager.TicketsTableAdapter = this.ticketsTableAdapter;
             this.tableAdapterManager.UpdateOrder = backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = null;
@@ -593,6 +596,7 @@ namespace backupLosGatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(923, 540);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mangButton);
@@ -651,14 +655,14 @@ namespace backupLosGatos
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton ticketsBindingNavigatorSaveItem;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.ComboBox statusComboBox;
-        public System.Windows.Forms.ComboBox priorityComboBox;
-        public System.Windows.Forms.TextBox unitIDTextBox;
-        public System.Windows.Forms.TextBox ticketIDTextBox;
-        public System.Windows.Forms.TextBox equipmentIDTextBox;
-        public System.Windows.Forms.TextBox additionalInformationTextBox;
-        public System.Windows.Forms.TextBox inspectorSignatureTextBox;
-        public System.Windows.Forms.TextBox welderSignatureTextBox;
+        public System.Windows.Forms.ComboBox statusCombo;
+        public System.Windows.Forms.ComboBox priorityCombo;
+        public System.Windows.Forms.TextBox unitIDText;
+        public System.Windows.Forms.TextBox ticketIDText;
+        public System.Windows.Forms.ComboBox equipmentCombo;
+        public System.Windows.Forms.TextBox additionalInformationText;
+        public System.Windows.Forms.TextBox inspectorSignatureText;
+        public System.Windows.Forms.TextBox welderSignatureText;
         public System.Windows.Forms.DateTimePicker dateSubmittedDateTimePicker;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;

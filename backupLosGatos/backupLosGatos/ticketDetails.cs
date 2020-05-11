@@ -47,22 +47,7 @@ namespace backupLosGatos
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
-            SqlCommand cmd = new SqlCommand("INSERT INTO dbo.Tickets (unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, priorityLevel, dateSubmitted) VALUES ('" + this.unitIDTextBox.Text + "','" + this.equipmentIDTextBox.Text + "','" + this.welderSignatureTextBox.Text + "','" + this.inspectorSignatureTextBox + "','" + this.additionalInformationTextBox.Text + "','" + this.statusComboBox.Text + "','" + this.priorityComboBox.Text + "','" + this.dateSubmittedDateTimePicker.Value + ")'", conn);
-            SqlDataReader read;
-            try
-            {
-                conn.Open();
-                read = cmd.ExecuteReader();
-                MessageBox.Show("New ticket has been created.");
-                while (read.Read())
-                {
-                }
-            }
-            catch (Exception es)
-            {
-                MessageBox.Show(es.Message);
-            }
+
         }
 
         private void updateButton_Click(object sender, EventArgs e)

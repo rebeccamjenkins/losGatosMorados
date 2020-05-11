@@ -42,20 +42,6 @@ namespace backupLosGatos
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.filterPanel = new System.Windows.Forms.Panel();
-            this.refreshButton = new System.Windows.Forms.Button();
-            this.equipmentOption = new System.Windows.Forms.ComboBox();
-            this.labelRole = new System.Windows.Forms.Label();
-            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
-            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
-            this.pageOptions = new System.Windows.Forms.MenuStrip();
-            this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewKioskReToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,12 +51,26 @@ namespace backupLosGatos
             this.inspectorSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.additionalInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.approvalStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.filterPanel = new System.Windows.Forms.Panel();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.equipmentOption = new System.Windows.Forms.ComboBox();
+            this.labelRole = new System.Windows.Forms.Label();
+            this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
+            this.pageOptions = new System.Windows.Forms.MenuStrip();
+            this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewKiosk = new System.Windows.Forms.ToolStripMenuItem();
+            this.logout = new System.Windows.Forms.ToolStripMenuItem();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.filterPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             this.pageOptions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,136 +195,6 @@ namespace backupLosGatos
             this.dashboardGrid.TabIndex = 13;
             this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(755, 16);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(139, 26);
-            this.btnSearch.TabIndex = 24;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(27, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
-            // 
-            // filterPanel
-            // 
-            this.filterPanel.Controls.Add(this.refreshButton);
-            this.filterPanel.Controls.Add(this.equipmentOption);
-            this.filterPanel.Controls.Add(equipmentDescriptionLabel);
-            this.filterPanel.Controls.Add(this.queryTicket);
-            this.filterPanel.Controls.Add(this.technicianOption);
-            this.filterPanel.Controls.Add(this.statusOption);
-            this.filterPanel.Controls.Add(this.btnSearch);
-            this.filterPanel.Controls.Add(this.label4);
-            this.filterPanel.Controls.Add(this.label6);
-            this.filterPanel.Controls.Add(this.label5);
-            this.filterPanel.Location = new System.Drawing.Point(0, 98);
-            this.filterPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Size = new System.Drawing.Size(923, 123);
-            this.filterPanel.TabIndex = 27;
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(755, 67);
-            this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(139, 26);
-            this.refreshButton.TabIndex = 31;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = true;
-            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
-            // 
-            // equipmentOption
-            // 
-            this.equipmentOption.FormattingEnabled = true;
-            this.equipmentOption.Location = new System.Drawing.Point(120, 69);
-            this.equipmentOption.Margin = new System.Windows.Forms.Padding(4);
-            this.equipmentOption.Name = "equipmentOption";
-            this.equipmentOption.Size = new System.Drawing.Size(157, 24);
-            this.equipmentOption.TabIndex = 29;
-            this.equipmentOption.SelectionChangeCommitted += new System.EventHandler(this.equipmentOption_SelectionChangeCommitted);
-            // 
-            // labelRole
-            // 
-            this.labelRole.AutoSize = true;
-            this.labelRole.Location = new System.Drawing.Point(859, 29);
-            this.labelRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelRole.Name = "labelRole";
-            this.labelRole.Size = new System.Drawing.Size(64, 17);
-            this.labelRole.TabIndex = 30;
-            this.labelRole.Text = "manager";
-            this.labelRole.Visible = false;
-            // 
-            // gROUP6DataSet
-            // 
-            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
-            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ticketsBindingSource
-            // 
-            this.ticketsBindingSource.DataMember = "Tickets";
-            this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
-            // 
-            // ticketsTableAdapter
-            // 
-            this.ticketsTableAdapter.ClearBeforeFill = true;
-            // 
-            // pageOptions
-            // 
-            this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardPage,
-            this.createTicketToolStripMenuItem,
-            this.viewKioskReToolStripMenuItem,
-            this.logoutToolStripMenuItem});
-            this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.pageOptions.Location = new System.Drawing.Point(0, 0);
-            this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(923, 28);
-            this.pageOptions.TabIndex = 32;
-            // 
-            // dashboardPage
-            // 
-            this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
-            this.dashboardPage.Text = "Dashboard";
-            this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // viewKioskReToolStripMenuItem
-            // 
-            this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
-            this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
-            this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            // 
-            // createTicketToolStripMenuItem
-            // 
-            this.createTicketToolStripMenuItem.Name = "createTicketToolStripMenuItem";
-            this.createTicketToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
-            this.createTicketToolStripMenuItem.Text = "Create Ticket";
-            // 
             // ticketIDDataGridViewTextBoxColumn
             // 
             this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "ticketID";
@@ -407,6 +277,139 @@ namespace backupLosGatos
             this.approvalStatusDataGridViewTextBoxColumn.Visible = false;
             this.approvalStatusDataGridViewTextBoxColumn.Width = 125;
             // 
+            // ticketsBindingSource
+            // 
+            this.ticketsBindingSource.DataMember = "Tickets";
+            this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
+            // 
+            // gROUP6DataSet
+            // 
+            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
+            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(755, 16);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(139, 26);
+            this.btnSearch.TabIndex = 24;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(27, 44);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(317, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
+            // filterPanel
+            // 
+            this.filterPanel.Controls.Add(this.refreshButton);
+            this.filterPanel.Controls.Add(this.equipmentOption);
+            this.filterPanel.Controls.Add(equipmentDescriptionLabel);
+            this.filterPanel.Controls.Add(this.queryTicket);
+            this.filterPanel.Controls.Add(this.technicianOption);
+            this.filterPanel.Controls.Add(this.statusOption);
+            this.filterPanel.Controls.Add(this.btnSearch);
+            this.filterPanel.Controls.Add(this.label4);
+            this.filterPanel.Controls.Add(this.label6);
+            this.filterPanel.Controls.Add(this.label5);
+            this.filterPanel.Location = new System.Drawing.Point(0, 98);
+            this.filterPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.filterPanel.Name = "filterPanel";
+            this.filterPanel.Size = new System.Drawing.Size(923, 123);
+            this.filterPanel.TabIndex = 27;
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(755, 67);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(139, 26);
+            this.refreshButton.TabIndex = 31;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // equipmentOption
+            // 
+            this.equipmentOption.FormattingEnabled = true;
+            this.equipmentOption.Location = new System.Drawing.Point(120, 69);
+            this.equipmentOption.Margin = new System.Windows.Forms.Padding(4);
+            this.equipmentOption.Name = "equipmentOption";
+            this.equipmentOption.Size = new System.Drawing.Size(157, 24);
+            this.equipmentOption.TabIndex = 29;
+            this.equipmentOption.SelectionChangeCommitted += new System.EventHandler(this.equipmentOption_SelectionChangeCommitted);
+            // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.Location = new System.Drawing.Point(859, 29);
+            this.labelRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(64, 17);
+            this.labelRole.TabIndex = 30;
+            this.labelRole.Text = "manager";
+            this.labelRole.Visible = false;
+            // 
+            // ticketsTableAdapter
+            // 
+            this.ticketsTableAdapter.ClearBeforeFill = true;
+            // 
+            // pageOptions
+            // 
+            this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dashboardPage,
+            this.ticketPage,
+            this.viewKiosk,
+            this.logout});
+            this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.pageOptions.Location = new System.Drawing.Point(0, 0);
+            this.pageOptions.Name = "pageOptions";
+            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.pageOptions.Size = new System.Drawing.Size(923, 28);
+            this.pageOptions.TabIndex = 32;
+            // 
+            // dashboardPage
+            // 
+            this.dashboardPage.Name = "dashboardPage";
+            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
+            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ticketPage
+            // 
+            this.ticketPage.Name = "ticketPage";
+            this.ticketPage.Size = new System.Drawing.Size(120, 24);
+            this.ticketPage.Text = "Create Ticket";
+            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
+            // 
+            // viewKiosk
+            // 
+            this.viewKiosk.Name = "viewKiosk";
+            this.viewKiosk.Size = new System.Drawing.Size(170, 24);
+            this.viewKiosk.Text = "View Kiosk Requests";
+            this.viewKiosk.Click += new System.EventHandler(this.viewKiosk_Click);
+            // 
+            // logout
+            // 
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(74, 24);
+            this.logout.Text = "Logout";
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // managerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -424,11 +427,11 @@ namespace backupLosGatos
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Manager Dashboard";
             this.Load += new System.EventHandler(this.managerDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
             this.pageOptions.ResumeLayout(false);
             this.pageOptions.PerformLayout();
             this.ResumeLayout(false);
@@ -458,9 +461,9 @@ namespace backupLosGatos
         private GROUP6DataSetTableAdapters.TicketsTableAdapter ticketsTableAdapter;
         private System.Windows.Forms.MenuStrip pageOptions;
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem createTicketToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewKioskReToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ticketPage;
+        private System.Windows.Forms.ToolStripMenuItem viewKiosk;
+        private System.Windows.Forms.ToolStripMenuItem logout;
         private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;

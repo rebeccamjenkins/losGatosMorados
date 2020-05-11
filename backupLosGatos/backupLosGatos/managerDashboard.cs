@@ -18,8 +18,6 @@ namespace backupLosGatos
 
         private void managerDashboard_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gROUP6DataSet.Tickets' table. You can move, or remove it, as needed.
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
@@ -85,15 +83,15 @@ namespace backupLosGatos
         {
             //generates ticketDetails window populated with database information relevant to datagridview cell selected
             ticketDetails viewTicket = new ticketDetails();
-            viewTicket.ticketIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
-            viewTicket.unitIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.equipmentIDTextBox.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
+            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
             viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            viewTicket.priorityComboBox.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.statusComboBox.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            viewTicket.welderSignatureTextBox.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            viewTicket.inspectorSignatureTextBox.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            viewTicket.additionalInformationTextBox.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
             if (labelRole.Text == "manager")
             {
@@ -498,12 +496,12 @@ namespace backupLosGatos
             dashboardGrid.Refresh();
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void viewKioskRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void viewKiosk_Click(object sender, EventArgs e)
         {
             kioskRequest viewKiosk = new kioskRequest();
             viewKiosk.Show();
