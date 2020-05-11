@@ -114,6 +114,12 @@
     <Compile Include="ticketDetails.Designer.cs">
       <DependentUpon>ticketDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="ticketTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ticketTest.Designer.cs">
+      <DependentUpon>ticketTest.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="dashboardScreen.resx">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ticketDetails.resx">
       <DependentUpon>ticketDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ticketTest.resx">
+      <DependentUpon>ticketTest.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GROUP6DataSet.xsc">
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>

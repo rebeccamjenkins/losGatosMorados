@@ -19,7 +19,7 @@ namespace backupLosGatos
         private void managerDashboard_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'gROUP6DataSet.Tickets' table. You can move, or remove it, as needed.
-            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+            //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
@@ -69,16 +69,50 @@ namespace backupLosGatos
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-            ticketDetails newTicket = new ticketDetails();
-
+            //ticketDetails newTicket = new ticketDetails();
+            ticketTest newTicket = new ticketTest();
             if (labelRole.Text == "manager")
             {
                 //newTicket.updateButton.Enabled = false;
                 //newTicket.saveButton.Enabled = false;
                 newTicket.coordButton.Enabled = false;
+                
             }
-            newTicket.Show();
             this.Hide();
+
+            //this makes it so it autofills the ticket number for us
+            string connetionString = null;
+            SqlConnection connection;
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            string sql = null;
+
+            connetionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+            sql = "SELECT ticketID FROM Tickets";
+            connection = new SqlConnection(connetionString);
+
+            try
+            {
+                connection.Open();
+                command = new SqlCommand(sql, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds, "SQL Temp Table");
+                adapter.Dispose();
+                command.Dispose();
+                //connection.Close();
+
+                newTicket.ticketIDTextBox.Text = (ds.Tables[0].Rows.Count + 100).ToString();
+                //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open connection to database! ");
+            }
+            
+            newTicket.Show();
+            
+            
         }
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -107,7 +141,7 @@ namespace backupLosGatos
         }
 
         private void equipmentOption_SelectionChangeCommitted(object sender, EventArgs e)
-        {
+        { 
             Int32 test = 0;
             Int32 test1 = 0;
             Int32 test2 = 0;

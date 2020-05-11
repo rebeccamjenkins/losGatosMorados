@@ -324,6 +324,7 @@ namespace backupLosGatos
             this.ticketIDTextBox.Location = new System.Drawing.Point(148, 30);
             this.ticketIDTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ticketIDTextBox.Name = "ticketIDTextBox";
+            this.ticketIDTextBox.ReadOnly = true;
             this.ticketIDTextBox.Size = new System.Drawing.Size(185, 23);
             this.ticketIDTextBox.TabIndex = 1;
             // 
@@ -382,6 +383,7 @@ namespace backupLosGatos
             this.tableAdapterManager.AssignmentsTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.EquipmentTableAdapter = null;
+            this.tableAdapterManager.KioskTableAdapter = null;
             this.tableAdapterManager.TicketsTableAdapter = this.ticketsTableAdapter;
             this.tableAdapterManager.UpdateOrder = backupLosGatos.GROUP6DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsersTableAdapter = null;
@@ -593,6 +595,7 @@ namespace backupLosGatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(923, 540);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mangButton);
