@@ -116,9 +116,11 @@
     </Compile>
     <Compile Include="ticketTest.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ticketTest.Designer.cs">
       <DependentUpon>ticketTest.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <EmbeddedResource Include="dashboardScreen.resx">
       <DependentUpon>dashboardScreen.cs</DependentUpon>
@@ -152,6 +154,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ticketTest.resx">
       <DependentUpon>ticketTest.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="GROUP6DataSet.xsc">
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
