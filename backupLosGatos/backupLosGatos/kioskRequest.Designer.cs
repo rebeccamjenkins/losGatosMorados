@@ -34,9 +34,11 @@
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             this.viewKioskReToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.mangButton = new System.Windows.Forms.Button();
+            this.coordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             this.pageOptions.SuspendLayout();
@@ -97,11 +99,19 @@
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
             // 
+            // ticketPage
+            // 
+            this.ticketPage.Name = "ticketPage";
+            this.ticketPage.Size = new System.Drawing.Size(120, 24);
+            this.ticketPage.Text = "Create Ticket";
+            this.ticketPage.Click += new System.EventHandler(this.createTicketToolStripMenuItem_Click);
+            // 
             // viewKioskReToolStripMenuItem
             // 
             this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
             this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
+            this.viewKioskReToolStripMenuItem.Click += new System.EventHandler(this.viewKioskReToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -110,18 +120,33 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // ticketPage
+            // mangButton
             // 
-            this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(120, 24);
-            this.ticketPage.Text = "Create Ticket";
-            this.ticketPage.Click += new System.EventHandler(this.createTicketToolStripMenuItem_Click);
+            this.mangButton.Location = new System.Drawing.Point(848, 157);
+            this.mangButton.Name = "mangButton";
+            this.mangButton.Size = new System.Drawing.Size(55, 23);
+            this.mangButton.TabIndex = 36;
+            this.mangButton.Text = "mang";
+            this.mangButton.UseVisualStyleBackColor = true;
+            this.mangButton.Visible = false;
+            // 
+            // coordButton
+            // 
+            this.coordButton.Location = new System.Drawing.Point(848, 128);
+            this.coordButton.Name = "coordButton";
+            this.coordButton.Size = new System.Drawing.Size(55, 23);
+            this.coordButton.TabIndex = 35;
+            this.coordButton.Text = "coord";
+            this.coordButton.UseVisualStyleBackColor = true;
+            this.coordButton.Visible = false;
             // 
             // kioskRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 549);
+            this.Controls.Add(this.mangButton);
+            this.Controls.Add(this.coordButton);
             this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -147,5 +172,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewKioskReToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ticketPage;
+        public System.Windows.Forms.Button mangButton;
+        public System.Windows.Forms.Button coordButton;
     }
 }

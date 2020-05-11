@@ -12,7 +12,7 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
-        SqlConnection conn = null;
+        public SqlConnection conn = null;
         SqlDataReader reader = null;
 
         private void dashboardScreen_Load(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace backupLosGatos
             data.Load(reader, LoadOption.PreserveChanges, data.Tables[0]);
             this.ticketsBindingSource.DataSource = data.Tables[0];
             dashboardGrid.DataSource = data.Tables[0];
+            conn.Close();
 
             //status dropdown
             conn.Open();
@@ -85,10 +86,12 @@ namespace backupLosGatos
             equipmentOption.DataSource = dsequip.Tables[0];
             equipmentOption.SelectedIndex = 0;
             equipmentOption.SelectedValue = 0;
+            //conn.Close();
         }
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
+            
             ticketDetails newTicket = new ticketDetails();
 
             if (labelRole.Text == "coordinator")
@@ -97,6 +100,7 @@ namespace backupLosGatos
                 newTicket.saveButton.Enabled = false;
                 newTicket.mangButton.Enabled = false;
             }
+            conn.Close();
             this.Hide();
             newTicket.Show();
         }
@@ -120,7 +124,7 @@ namespace backupLosGatos
                 viewTicket.saveButton.Enabled = false;
                 viewTicket.mangButton.Enabled = false;
             }
-
+            conn.Close();
             viewTicket.Show();
             this.Hide();
         }
@@ -516,11 +520,14 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            dashboardGrid.Refresh();
+            equipmentOption.Text = "";
+            statusOption.Text = "";
+            technicianOption.Text = "";
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            conn.Close();
             this.Close();
         }
 
@@ -528,6 +535,7 @@ namespace backupLosGatos
         {
             kioskRequest viewKiosk = new kioskRequest();
             viewKiosk.Show();
+            conn.Close();
             this.Close();
         }
 
