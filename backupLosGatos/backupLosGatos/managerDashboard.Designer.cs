@@ -38,43 +38,40 @@ namespace backupLosGatos
             this.label4 = new System.Windows.Forms.Label();
             this.queryTicket = new System.Windows.Forms.TextBox();
             this.statusOption = new System.Windows.Forms.ComboBox();
-            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.technicianOption = new System.Windows.Forms.ComboBox();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
-            this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.equipmentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateSubmittedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priorityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.welderSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.inspectorSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.additionalInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
-            this.pageOptions = new System.Windows.Forms.MenuStrip();
-            this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewKiosk = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.refreshButton = new System.Windows.Forms.Button();
             this.equipmentOption = new System.Windows.Forms.ComboBox();
             this.labelRole = new System.Windows.Forms.Label();
+            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
+            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
+            this.pageOptions = new System.Windows.Forms.MenuStrip();
+            this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewKioskReToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priorityLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateSubmittedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.welderSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inspectorSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.additionalInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.approvalStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
-            this.pageOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.filterPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
+            this.pageOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // equipmentDescriptionLabel
@@ -128,10 +125,10 @@ namespace backupLosGatos
             this.queryTicket.Name = "queryTicket";
             this.queryTicket.Size = new System.Drawing.Size(157, 25);
             this.queryTicket.TabIndex = 20;
+            this.queryTicket.TextChanged += new System.EventHandler(this.queryTicket_TextChanged);
             // 
             // statusOption
             // 
-            this.statusOption.DataSource = this.ticketsBindingSource;
             this.statusOption.DisplayMember = "status";
             this.statusOption.FormattingEnabled = true;
             this.statusOption.Location = new System.Drawing.Point(348, 16);
@@ -142,20 +139,9 @@ namespace backupLosGatos
             this.statusOption.ValueMember = "status";
             this.statusOption.SelectionChangeCommitted += new System.EventHandler(this.statusOption_SelectionChangeCommitted);
             // 
-            // ticketsBindingSource
-            // 
-            this.ticketsBindingSource.DataMember = "Tickets";
-            this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
-            // 
-            // gROUP6DataSet
-            // 
-            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
-            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // technicianOption
             // 
-            this.technicianOption.DataSource = this.usersBindingSource;
-            this.technicianOption.DisplayMember = "username";
+            this.technicianOption.DisplayMember = "associateID";
             this.technicianOption.FormattingEnabled = true;
             this.technicianOption.Location = new System.Drawing.Point(120, 16);
             this.technicianOption.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -164,11 +150,6 @@ namespace backupLosGatos
             this.technicianOption.TabIndex = 18;
             this.technicianOption.ValueMember = "associateID";
             this.technicianOption.SelectionChangeCommitted += new System.EventHandler(this.technicianOption_SelectionChangeCommitted);
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.gROUP6DataSet;
             // 
             // label2
             // 
@@ -189,99 +170,30 @@ namespace backupLosGatos
             // 
             // dashboardGrid
             // 
+            this.dashboardGrid.AllowUserToAddRows = false;
+            this.dashboardGrid.AllowUserToDeleteRows = false;
             this.dashboardGrid.AutoGenerateColumns = false;
             this.dashboardGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dashboardGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ticketIDDataGridViewTextBoxColumn,
             this.unitIDDataGridViewTextBoxColumn,
-            this.equipmentIDDataGridViewTextBoxColumn,
-            this.dateSubmittedDataGridViewTextBoxColumn,
-            this.priorityDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn,
+            this.priorityLevelDataGridViewTextBoxColumn,
+            this.dateSubmittedDataGridViewTextBoxColumn,
             this.welderSignatureDataGridViewTextBoxColumn,
             this.inspectorSignatureDataGridViewTextBoxColumn,
-            this.additionalInformationDataGridViewTextBoxColumn});
+            this.additionalInformationDataGridViewTextBoxColumn,
+            this.approvalStatusDataGridViewTextBoxColumn});
             this.dashboardGrid.DataSource = this.ticketsBindingSource;
             this.dashboardGrid.Location = new System.Drawing.Point(23, 234);
             this.dashboardGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dashboardGrid.Name = "dashboardGrid";
+            this.dashboardGrid.ReadOnly = true;
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(873, 277);
             this.dashboardGrid.TabIndex = 13;
             this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
-            // 
-            // ticketIDDataGridViewTextBoxColumn
-            // 
-            this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "ticketID";
-            this.ticketIDDataGridViewTextBoxColumn.HeaderText = "Ticket #";
-            this.ticketIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ticketIDDataGridViewTextBoxColumn.Name = "ticketIDDataGridViewTextBoxColumn";
-            this.ticketIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // unitIDDataGridViewTextBoxColumn
-            // 
-            this.unitIDDataGridViewTextBoxColumn.DataPropertyName = "unitID";
-            this.unitIDDataGridViewTextBoxColumn.HeaderText = "Unit";
-            this.unitIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.unitIDDataGridViewTextBoxColumn.Name = "unitIDDataGridViewTextBoxColumn";
-            this.unitIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // equipmentIDDataGridViewTextBoxColumn
-            // 
-            this.equipmentIDDataGridViewTextBoxColumn.DataPropertyName = "equipmentID";
-            this.equipmentIDDataGridViewTextBoxColumn.HeaderText = "Equipment";
-            this.equipmentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.equipmentIDDataGridViewTextBoxColumn.Name = "equipmentIDDataGridViewTextBoxColumn";
-            this.equipmentIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dateSubmittedDataGridViewTextBoxColumn
-            // 
-            this.dateSubmittedDataGridViewTextBoxColumn.DataPropertyName = "dateSubmitted";
-            this.dateSubmittedDataGridViewTextBoxColumn.HeaderText = "Date Submitted";
-            this.dateSubmittedDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateSubmittedDataGridViewTextBoxColumn.Name = "dateSubmittedDataGridViewTextBoxColumn";
-            this.dateSubmittedDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // priorityDataGridViewTextBoxColumn
-            // 
-            this.priorityDataGridViewTextBoxColumn.DataPropertyName = "priority";
-            this.priorityDataGridViewTextBoxColumn.HeaderText = "Priority";
-            this.priorityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.priorityDataGridViewTextBoxColumn.Name = "priorityDataGridViewTextBoxColumn";
-            this.priorityDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // welderSignatureDataGridViewTextBoxColumn
-            // 
-            this.welderSignatureDataGridViewTextBoxColumn.DataPropertyName = "welderSignature";
-            this.welderSignatureDataGridViewTextBoxColumn.HeaderText = "Welder";
-            this.welderSignatureDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.welderSignatureDataGridViewTextBoxColumn.Name = "welderSignatureDataGridViewTextBoxColumn";
-            this.welderSignatureDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // inspectorSignatureDataGridViewTextBoxColumn
-            // 
-            this.inspectorSignatureDataGridViewTextBoxColumn.DataPropertyName = "inspectorSignature";
-            this.inspectorSignatureDataGridViewTextBoxColumn.HeaderText = "Inspector";
-            this.inspectorSignatureDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.inspectorSignatureDataGridViewTextBoxColumn.Name = "inspectorSignatureDataGridViewTextBoxColumn";
-            this.inspectorSignatureDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // additionalInformationDataGridViewTextBoxColumn
-            // 
-            this.additionalInformationDataGridViewTextBoxColumn.DataPropertyName = "additionalInformation";
-            this.additionalInformationDataGridViewTextBoxColumn.HeaderText = "Additional Information";
-            this.additionalInformationDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.additionalInformationDataGridViewTextBoxColumn.Name = "additionalInformationDataGridViewTextBoxColumn";
-            this.additionalInformationDataGridViewTextBoxColumn.Width = 125;
             // 
             // btnSearch
             // 
@@ -294,59 +206,6 @@ namespace backupLosGatos
             this.btnSearch.TabIndex = 24;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // ticketsTableAdapter
-            // 
-            this.ticketsTableAdapter.ClearBeforeFill = true;
-            // 
-            // pageOptions
-            // 
-            this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardPage,
-            this.ticketPage,
-            this.viewKiosk,
-            this.logoutToolStripMenuItem});
-            this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.pageOptions.Location = new System.Drawing.Point(0, 0);
-            this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(923, 28);
-            this.pageOptions.TabIndex = 25;
-            // 
-            // dashboardPage
-            // 
-            this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
-            this.dashboardPage.Text = "Dashboard";
-            this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ticketPage
-            // 
-            this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(120, 24);
-            this.ticketPage.Text = "Create Ticket";
-            this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
-            // 
-            // viewKiosk
-            // 
-            this.viewKiosk.Name = "viewKiosk";
-            this.viewKiosk.Size = new System.Drawing.Size(170, 24);
-            this.viewKiosk.Text = "View Kiosk Requests";
-            this.viewKiosk.Click += new System.EventHandler(this.viewKioskRequestsToolStripMenuItem_Click);
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
             // 
             // pictureBox1
             // 
@@ -411,15 +270,152 @@ namespace backupLosGatos
             this.labelRole.Text = "manager";
             this.labelRole.Visible = false;
             // 
+            // gROUP6DataSet
+            // 
+            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
+            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ticketsBindingSource
+            // 
+            this.ticketsBindingSource.DataMember = "Tickets";
+            this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
+            // 
+            // ticketsTableAdapter
+            // 
+            this.ticketsTableAdapter.ClearBeforeFill = true;
+            // 
+            // pageOptions
+            // 
+            this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dashboardPage,
+            this.createTicketToolStripMenuItem,
+            this.viewKioskReToolStripMenuItem,
+            this.logoutToolStripMenuItem});
+            this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.pageOptions.Location = new System.Drawing.Point(0, 0);
+            this.pageOptions.Name = "pageOptions";
+            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.pageOptions.Size = new System.Drawing.Size(923, 28);
+            this.pageOptions.TabIndex = 32;
+            // 
+            // dashboardPage
+            // 
+            this.dashboardPage.Name = "dashboardPage";
+            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
+            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // viewKioskReToolStripMenuItem
+            // 
+            this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
+            this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            // 
+            // createTicketToolStripMenuItem
+            // 
+            this.createTicketToolStripMenuItem.Name = "createTicketToolStripMenuItem";
+            this.createTicketToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
+            this.createTicketToolStripMenuItem.Text = "Create Ticket";
+            // 
+            // ticketIDDataGridViewTextBoxColumn
+            // 
+            this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "ticketID";
+            this.ticketIDDataGridViewTextBoxColumn.HeaderText = "Ticket #";
+            this.ticketIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ticketIDDataGridViewTextBoxColumn.Name = "ticketIDDataGridViewTextBoxColumn";
+            this.ticketIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ticketIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // unitIDDataGridViewTextBoxColumn
+            // 
+            this.unitIDDataGridViewTextBoxColumn.DataPropertyName = "unitID";
+            this.unitIDDataGridViewTextBoxColumn.HeaderText = "Unit";
+            this.unitIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.unitIDDataGridViewTextBoxColumn.Name = "unitIDDataGridViewTextBoxColumn";
+            this.unitIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unitIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // priorityLevelDataGridViewTextBoxColumn
+            // 
+            this.priorityLevelDataGridViewTextBoxColumn.DataPropertyName = "priorityLevel";
+            this.priorityLevelDataGridViewTextBoxColumn.HeaderText = "Priority";
+            this.priorityLevelDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.priorityLevelDataGridViewTextBoxColumn.Name = "priorityLevelDataGridViewTextBoxColumn";
+            this.priorityLevelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priorityLevelDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateSubmittedDataGridViewTextBoxColumn
+            // 
+            this.dateSubmittedDataGridViewTextBoxColumn.DataPropertyName = "dateSubmitted";
+            this.dateSubmittedDataGridViewTextBoxColumn.HeaderText = "Date Submitted";
+            this.dateSubmittedDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateSubmittedDataGridViewTextBoxColumn.Name = "dateSubmittedDataGridViewTextBoxColumn";
+            this.dateSubmittedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateSubmittedDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // welderSignatureDataGridViewTextBoxColumn
+            // 
+            this.welderSignatureDataGridViewTextBoxColumn.DataPropertyName = "welderSignature";
+            this.welderSignatureDataGridViewTextBoxColumn.HeaderText = "Welder";
+            this.welderSignatureDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.welderSignatureDataGridViewTextBoxColumn.Name = "welderSignatureDataGridViewTextBoxColumn";
+            this.welderSignatureDataGridViewTextBoxColumn.ReadOnly = true;
+            this.welderSignatureDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // inspectorSignatureDataGridViewTextBoxColumn
+            // 
+            this.inspectorSignatureDataGridViewTextBoxColumn.DataPropertyName = "inspectorSignature";
+            this.inspectorSignatureDataGridViewTextBoxColumn.HeaderText = "Inspector";
+            this.inspectorSignatureDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.inspectorSignatureDataGridViewTextBoxColumn.Name = "inspectorSignatureDataGridViewTextBoxColumn";
+            this.inspectorSignatureDataGridViewTextBoxColumn.ReadOnly = true;
+            this.inspectorSignatureDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // additionalInformationDataGridViewTextBoxColumn
+            // 
+            this.additionalInformationDataGridViewTextBoxColumn.DataPropertyName = "additionalInformation";
+            this.additionalInformationDataGridViewTextBoxColumn.HeaderText = "Additional Information";
+            this.additionalInformationDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.additionalInformationDataGridViewTextBoxColumn.Name = "additionalInformationDataGridViewTextBoxColumn";
+            this.additionalInformationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.additionalInformationDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // approvalStatusDataGridViewTextBoxColumn
+            // 
+            this.approvalStatusDataGridViewTextBoxColumn.DataPropertyName = "approvalStatus";
+            this.approvalStatusDataGridViewTextBoxColumn.HeaderText = "approvalStatus";
+            this.approvalStatusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.approvalStatusDataGridViewTextBoxColumn.Name = "approvalStatusDataGridViewTextBoxColumn";
+            this.approvalStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.approvalStatusDataGridViewTextBoxColumn.Visible = false;
+            this.approvalStatusDataGridViewTextBoxColumn.Width = 125;
+            // 
             // managerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 540);
+            this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.labelRole);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboardGrid);
@@ -427,15 +423,14 @@ namespace backupLosGatos
             this.Name = "managerDashboard";
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Manager Dashboard";
             this.Load += new System.EventHandler(this.managerDashboard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
-            this.pageOptions.ResumeLayout(false);
-            this.pageOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
+            this.pageOptions.ResumeLayout(false);
+            this.pageOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,31 +446,29 @@ namespace backupLosGatos
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel filterPanel;
+        private System.Windows.Forms.ComboBox equipmentOption;
+        public System.Windows.Forms.DataGridView dashboardGrid;
+        public System.Windows.Forms.ComboBox technicianOption;
+        public System.Windows.Forms.Label labelRole;
+        private System.Windows.Forms.Button refreshButton;
         private GROUP6DataSet gROUP6DataSet;
         private System.Windows.Forms.BindingSource ticketsBindingSource;
         private GROUP6DataSetTableAdapters.TicketsTableAdapter ticketsTableAdapter;
         private System.Windows.Forms.MenuStrip pageOptions;
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem ticketPage;
-        private System.Windows.Forms.BindingSource usersBindingSource;
-        private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem viewKiosk;
+        private System.Windows.Forms.ToolStripMenuItem createTicketToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewKioskReToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn equipmentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmittedDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priorityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priorityLevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmittedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn welderSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalInformationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Panel filterPanel;
-        private System.Windows.Forms.ComboBox equipmentOption;
-        public System.Windows.Forms.DataGridView dashboardGrid;
-        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
-        public System.Windows.Forms.ComboBox technicianOption;
-        public System.Windows.Forms.Label labelRole;
-        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn approvalStatusDataGridViewTextBoxColumn;
     }
 }

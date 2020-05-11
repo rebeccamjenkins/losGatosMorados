@@ -32,7 +32,13 @@ namespace backupLosGatos {
         
         private EquipmentDataTable tableEquipment;
         
+        private KioskDataTable tableKiosk;
+        
+        private global::System.Data.DataRelation relationFK_Tickets_Equipment1;
+        
         private global::System.Data.DataRelation relationFK_Assignments_Users;
+        
+        private global::System.Data.DataRelation relationFK_Assignments_Tickets1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -73,6 +79,9 @@ namespace backupLosGatos {
                 }
                 if ((ds.Tables["Equipment"] != null)) {
                     base.Tables.Add(new EquipmentDataTable(ds.Tables["Equipment"]));
+                }
+                if ((ds.Tables["Kiosk"] != null)) {
+                    base.Tables.Add(new KioskDataTable(ds.Tables["Kiosk"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -129,6 +138,16 @@ namespace backupLosGatos {
         public EquipmentDataTable Equipment {
             get {
                 return this.tableEquipment;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public KioskDataTable Kiosk {
+            get {
+                return this.tableKiosk;
             }
         }
         
@@ -211,6 +230,9 @@ namespace backupLosGatos {
                 if ((ds.Tables["Equipment"] != null)) {
                     base.Tables.Add(new EquipmentDataTable(ds.Tables["Equipment"]));
                 }
+                if ((ds.Tables["Kiosk"] != null)) {
+                    base.Tables.Add(new KioskDataTable(ds.Tables["Kiosk"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -268,7 +290,15 @@ namespace backupLosGatos {
                     this.tableEquipment.InitVars();
                 }
             }
+            this.tableKiosk = ((KioskDataTable)(base.Tables["Kiosk"]));
+            if ((initTable == true)) {
+                if ((this.tableKiosk != null)) {
+                    this.tableKiosk.InitVars();
+                }
+            }
+            this.relationFK_Tickets_Equipment1 = this.Relations["FK_Tickets_Equipment1"];
             this.relationFK_Assignments_Users = this.Relations["FK_Assignments_Users"];
+            this.relationFK_Assignments_Tickets1 = this.Relations["FK_Assignments_Tickets1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -287,18 +317,13 @@ namespace backupLosGatos {
             base.Tables.Add(this.tableAssignments);
             this.tableEquipment = new EquipmentDataTable();
             base.Tables.Add(this.tableEquipment);
+            this.tableKiosk = new KioskDataTable();
+            base.Tables.Add(this.tableKiosk);
             global::System.Data.ForeignKeyConstraint fkc;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Tickets_Equipment", new global::System.Data.DataColumn[] {
                         this.tableEquipment.equipmentIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTickets.equipmentIDColumn});
             this.tableTickets.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.None;
-            fkc.UpdateRule = global::System.Data.Rule.None;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Assignments_Tickets", new global::System.Data.DataColumn[] {
-                        this.tableTickets.ticketIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableAssignments.ticketIDColumn});
-            this.tableAssignments.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
@@ -309,10 +334,25 @@ namespace backupLosGatos {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.None;
             fkc.UpdateRule = global::System.Data.Rule.None;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Assignments_Tickets", new global::System.Data.DataColumn[] {
+                        this.tableTickets.ticketIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAssignments.ticketIDColumn});
+            this.tableAssignments.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.None;
+            fkc.UpdateRule = global::System.Data.Rule.None;
+            this.relationFK_Tickets_Equipment1 = new global::System.Data.DataRelation("FK_Tickets_Equipment1", new global::System.Data.DataColumn[] {
+                        this.tableEquipment.equipmentIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTickets.equipmentIDColumn}, false);
+            this.Relations.Add(this.relationFK_Tickets_Equipment1);
             this.relationFK_Assignments_Users = new global::System.Data.DataRelation("FK_Assignments_Users", new global::System.Data.DataColumn[] {
                         this.tableUsers.associateIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableAssignments.associateIDColumn}, false);
             this.Relations.Add(this.relationFK_Assignments_Users);
+            this.relationFK_Assignments_Tickets1 = new global::System.Data.DataRelation("FK_Assignments_Tickets1", new global::System.Data.DataColumn[] {
+                        this.tableTickets.ticketIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAssignments.ticketIDColumn}, false);
+            this.Relations.Add(this.relationFK_Assignments_Tickets1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,6 +376,12 @@ namespace backupLosGatos {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeEquipment() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeKiosk() {
             return false;
         }
         
@@ -406,6 +452,9 @@ namespace backupLosGatos {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void EquipmentRowChangeEventHandler(object sender, EquipmentRowChangeEvent e);
         
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void KioskRowChangeEventHandler(object sender, KioskRowChangeEvent e);
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -427,9 +476,11 @@ namespace backupLosGatos {
             
             private global::System.Data.DataColumn columnstatus;
             
-            private global::System.Data.DataColumn columnpriority;
-            
             private global::System.Data.DataColumn columndateSubmitted;
+            
+            private global::System.Data.DataColumn columnpriorityLevel;
+            
+            private global::System.Data.DataColumn columnapprovalStatus;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -522,17 +573,25 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn priorityColumn {
+            public global::System.Data.DataColumn dateSubmittedColumn {
                 get {
-                    return this.columnpriority;
+                    return this.columndateSubmitted;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn dateSubmittedColumn {
+            public global::System.Data.DataColumn priorityLevelColumn {
                 get {
-                    return this.columndateSubmitted;
+                    return this.columnpriorityLevel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn approvalStatusColumn {
+                get {
+                    return this.columnapprovalStatus;
                 }
             }
             
@@ -573,18 +632,22 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow AddTicketsRow(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, string priority, System.DateTime dateSubmitted) {
+            public TicketsRow AddTicketsRow(int ticketID, int unitID, EquipmentRow parentEquipmentRowByFK_Tickets_Equipment1, string welderSignature, string inspectorSignature, string additionalInformation, string status, System.DateTime dateSubmitted, string priorityLevel, int approvalStatus) {
                 TicketsRow rowTicketsRow = ((TicketsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ticketID,
                         unitID,
-                        equipmentID,
+                        null,
                         welderSignature,
                         inspectorSignature,
                         additionalInformation,
                         status,
-                        priority,
-                        dateSubmitted};
+                        dateSubmitted,
+                        priorityLevel,
+                        approvalStatus};
+                if ((parentEquipmentRowByFK_Tickets_Equipment1 != null)) {
+                    columnValuesArray[2] = parentEquipmentRowByFK_Tickets_Equipment1[0];
+                }
                 rowTicketsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTicketsRow);
                 return rowTicketsRow;
@@ -621,8 +684,9 @@ namespace backupLosGatos {
                 this.columninspectorSignature = base.Columns["inspectorSignature"];
                 this.columnadditionalInformation = base.Columns["additionalInformation"];
                 this.columnstatus = base.Columns["status"];
-                this.columnpriority = base.Columns["priority"];
                 this.columndateSubmitted = base.Columns["dateSubmitted"];
+                this.columnpriorityLevel = base.Columns["priorityLevel"];
+                this.columnapprovalStatus = base.Columns["approvalStatus"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -642,10 +706,12 @@ namespace backupLosGatos {
                 base.Columns.Add(this.columnadditionalInformation);
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
-                this.columnpriority = new global::System.Data.DataColumn("priority", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpriority);
                 this.columndateSubmitted = new global::System.Data.DataColumn("dateSubmitted", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndateSubmitted);
+                this.columnpriorityLevel = new global::System.Data.DataColumn("priorityLevel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpriorityLevel);
+                this.columnapprovalStatus = new global::System.Data.DataColumn("approvalStatus", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnapprovalStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnticketID}, true));
                 this.columnticketID.AllowDBNull = false;
@@ -656,7 +722,8 @@ namespace backupLosGatos {
                 this.columninspectorSignature.MaxLength = 10;
                 this.columnadditionalInformation.MaxLength = 2147483647;
                 this.columnstatus.MaxLength = 2147483647;
-                this.columnpriority.MaxLength = 10;
+                this.columnpriorityLevel.AllowDBNull = false;
+                this.columnpriorityLevel.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1241,12 +1308,15 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public AssignmentsRow AddAssignmentsRow(int assignmentID, int ticketID, UsersRow parentUsersRowByFK_Assignments_Users) {
+            public AssignmentsRow AddAssignmentsRow(int assignmentID, TicketsRow parentTicketsRowByFK_Assignments_Tickets1, UsersRow parentUsersRowByFK_Assignments_Users) {
                 AssignmentsRow rowAssignmentsRow = ((AssignmentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         assignmentID,
-                        ticketID,
+                        null,
                         null};
+                if ((parentTicketsRowByFK_Assignments_Tickets1 != null)) {
+                    columnValuesArray[1] = parentTicketsRowByFK_Assignments_Tickets1[0];
+                }
                 if ((parentUsersRowByFK_Assignments_Users != null)) {
                     columnValuesArray[2] = parentUsersRowByFK_Assignments_Users[0];
                 }
@@ -1699,6 +1769,359 @@ namespace backupLosGatos {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class KioskDataTable : global::System.Data.TypedTableBase<KioskRow> {
+            
+            private global::System.Data.DataColumn columnticketID;
+            
+            private global::System.Data.DataColumn columnunitID;
+            
+            private global::System.Data.DataColumn columnequipmentID;
+            
+            private global::System.Data.DataColumn columnpriorityLevel;
+            
+            private global::System.Data.DataColumn columntechnicianName;
+            
+            private global::System.Data.DataColumn columnadditionalInfo;
+            
+            private global::System.Data.DataColumn columndateSubmitted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskDataTable() {
+                this.TableName = "Kiosk";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal KioskDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected KioskDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ticketIDColumn {
+                get {
+                    return this.columnticketID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn unitIDColumn {
+                get {
+                    return this.columnunitID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn equipmentIDColumn {
+                get {
+                    return this.columnequipmentID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn priorityLevelColumn {
+                get {
+                    return this.columnpriorityLevel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn technicianNameColumn {
+                get {
+                    return this.columntechnicianName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn additionalInfoColumn {
+                get {
+                    return this.columnadditionalInfo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn dateSubmittedColumn {
+                get {
+                    return this.columndateSubmitted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskRow this[int index] {
+                get {
+                    return ((KioskRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KioskRowChangeEventHandler KioskRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KioskRowChangeEventHandler KioskRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KioskRowChangeEventHandler KioskRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event KioskRowChangeEventHandler KioskRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddKioskRow(KioskRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskRow AddKioskRow(string ticketID, string unitID, string equipmentID, string priorityLevel, string technicianName, string additionalInfo, System.DateTime dateSubmitted) {
+                KioskRow rowKioskRow = ((KioskRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ticketID,
+                        unitID,
+                        equipmentID,
+                        priorityLevel,
+                        technicianName,
+                        additionalInfo,
+                        dateSubmitted};
+                rowKioskRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowKioskRow);
+                return rowKioskRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskRow FindByticketID(string ticketID) {
+                return ((KioskRow)(this.Rows.Find(new object[] {
+                            ticketID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                KioskDataTable cln = ((KioskDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new KioskDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnticketID = base.Columns["ticketID"];
+                this.columnunitID = base.Columns["unitID"];
+                this.columnequipmentID = base.Columns["equipmentID"];
+                this.columnpriorityLevel = base.Columns["priorityLevel"];
+                this.columntechnicianName = base.Columns["technicianName"];
+                this.columnadditionalInfo = base.Columns["additionalInfo"];
+                this.columndateSubmitted = base.Columns["dateSubmitted"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnticketID = new global::System.Data.DataColumn("ticketID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnticketID);
+                this.columnunitID = new global::System.Data.DataColumn("unitID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnunitID);
+                this.columnequipmentID = new global::System.Data.DataColumn("equipmentID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnequipmentID);
+                this.columnpriorityLevel = new global::System.Data.DataColumn("priorityLevel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpriorityLevel);
+                this.columntechnicianName = new global::System.Data.DataColumn("technicianName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntechnicianName);
+                this.columnadditionalInfo = new global::System.Data.DataColumn("additionalInfo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnadditionalInfo);
+                this.columndateSubmitted = new global::System.Data.DataColumn("dateSubmitted", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateSubmitted);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnticketID}, true));
+                this.columnticketID.AllowDBNull = false;
+                this.columnticketID.Unique = true;
+                this.columnticketID.MaxLength = 50;
+                this.columnunitID.AllowDBNull = false;
+                this.columnunitID.MaxLength = 10;
+                this.columnequipmentID.AllowDBNull = false;
+                this.columnequipmentID.MaxLength = 50;
+                this.columnpriorityLevel.AllowDBNull = false;
+                this.columnpriorityLevel.MaxLength = 10;
+                this.columntechnicianName.AllowDBNull = false;
+                this.columntechnicianName.MaxLength = 50;
+                this.columnadditionalInfo.MaxLength = 2147483647;
+                this.columndateSubmitted.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskRow NewKioskRow() {
+                return ((KioskRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new KioskRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(KioskRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.KioskRowChanged != null)) {
+                    this.KioskRowChanged(this, new KioskRowChangeEvent(((KioskRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.KioskRowChanging != null)) {
+                    this.KioskRowChanging(this, new KioskRowChangeEvent(((KioskRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.KioskRowDeleted != null)) {
+                    this.KioskRowDeleted(this, new KioskRowChangeEvent(((KioskRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.KioskRowDeleting != null)) {
+                    this.KioskRowDeleting(this, new KioskRowChangeEvent(((KioskRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveKioskRow(KioskRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                GROUP6DataSet ds = new GROUP6DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "KioskDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class TicketsRow : global::System.Data.DataRow {
@@ -1811,22 +2234,6 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string priority {
-                get {
-                    try {
-                        return ((string)(this[this.tableTickets.priorityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'priority\' in table \'Tickets\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTickets.priorityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime dateSubmitted {
                 get {
                     try {
@@ -1838,6 +2245,44 @@ namespace backupLosGatos {
                 }
                 set {
                     this[this.tableTickets.dateSubmittedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string priorityLevel {
+                get {
+                    return ((string)(this[this.tableTickets.priorityLevelColumn]));
+                }
+                set {
+                    this[this.tableTickets.priorityLevelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int approvalStatus {
+                get {
+                    try {
+                        return ((int)(this[this.tableTickets.approvalStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'approvalStatus\' in table \'Tickets\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTickets.approvalStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EquipmentRow EquipmentRow {
+                get {
+                    return ((EquipmentRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tickets_Equipment1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Tickets_Equipment1"]);
                 }
             }
             
@@ -1891,18 +2336,6 @@ namespace backupLosGatos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IspriorityNull() {
-                return this.IsNull(this.tableTickets.priorityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetpriorityNull() {
-                this[this.tableTickets.priorityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsdateSubmittedNull() {
                 return this.IsNull(this.tableTickets.dateSubmittedColumn);
             }
@@ -1911,6 +2344,29 @@ namespace backupLosGatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetdateSubmittedNull() {
                 this[this.tableTickets.dateSubmittedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsapprovalStatusNull() {
+                return this.IsNull(this.tableTickets.approvalStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetapprovalStatusNull() {
+                this[this.tableTickets.approvalStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public AssignmentsRow[] GetAssignmentsRows() {
+                if ((this.Table.ChildRelations["FK_Assignments_Tickets1"] == null)) {
+                    return new AssignmentsRow[0];
+                }
+                else {
+                    return ((AssignmentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Assignments_Tickets1"])));
+                }
             }
         }
         
@@ -2108,6 +2564,17 @@ namespace backupLosGatos {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Assignments_Users"]);
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public TicketsRow TicketsRow {
+                get {
+                    return ((TicketsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Assignments_Tickets1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Assignments_Tickets1"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2161,6 +2628,126 @@ namespace backupLosGatos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetequipmentDescriptionNull() {
                 this[this.tableEquipment.equipmentDescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public TicketsRow[] GetTicketsRows() {
+                if ((this.Table.ChildRelations["FK_Tickets_Equipment1"] == null)) {
+                    return new TicketsRow[0];
+                }
+                else {
+                    return ((TicketsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Tickets_Equipment1"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class KioskRow : global::System.Data.DataRow {
+            
+            private KioskDataTable tableKiosk;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal KioskRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableKiosk = ((KioskDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ticketID {
+                get {
+                    return ((string)(this[this.tableKiosk.ticketIDColumn]));
+                }
+                set {
+                    this[this.tableKiosk.ticketIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string unitID {
+                get {
+                    return ((string)(this[this.tableKiosk.unitIDColumn]));
+                }
+                set {
+                    this[this.tableKiosk.unitIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string equipmentID {
+                get {
+                    return ((string)(this[this.tableKiosk.equipmentIDColumn]));
+                }
+                set {
+                    this[this.tableKiosk.equipmentIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string priorityLevel {
+                get {
+                    return ((string)(this[this.tableKiosk.priorityLevelColumn]));
+                }
+                set {
+                    this[this.tableKiosk.priorityLevelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string technicianName {
+                get {
+                    return ((string)(this[this.tableKiosk.technicianNameColumn]));
+                }
+                set {
+                    this[this.tableKiosk.technicianNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string additionalInfo {
+                get {
+                    try {
+                        return ((string)(this[this.tableKiosk.additionalInfoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'additionalInfo\' in table \'Kiosk\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKiosk.additionalInfoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime dateSubmitted {
+                get {
+                    return ((global::System.DateTime)(this[this.tableKiosk.dateSubmittedColumn]));
+                }
+                set {
+                    this[this.tableKiosk.dateSubmittedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsadditionalInfoNull() {
+                return this.IsNull(this.tableKiosk.additionalInfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetadditionalInfoNull() {
+                this[this.tableKiosk.additionalInfoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2286,6 +2873,40 @@ namespace backupLosGatos {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EquipmentRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class KioskRowChangeEvent : global::System.EventArgs {
+            
+            private KioskRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskRowChangeEvent(KioskRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public KioskRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2432,12 +3053,13 @@ namespace backupLosGatos.GROUP6DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("inspectorSignature", "inspectorSignature");
             tableMapping.ColumnMappings.Add("additionalInformation", "additionalInformation");
             tableMapping.ColumnMappings.Add("status", "status");
-            tableMapping.ColumnMappings.Add("priority", "priority");
             tableMapping.ColumnMappings.Add("dateSubmitted", "dateSubmitted");
+            tableMapping.ColumnMappings.Add("priorityLevel", "priorityLevel");
+            tableMapping.ColumnMappings.Add("approvalStatus", "approvalStatus");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Tickets] WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)) AND ((@IsNull_dateSubmitted = 1 AND [dateSubmitted] IS NULL) OR ([dateSubmitted] = @Original_dateSubmitted)) AND ((@IsNull_priority = 1 AND [priority] IS NULL) OR ([priority] = @Original_priority)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Tickets] WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)) AND ([dateSubmitted] = @Original_dateSubmitted) AND ((@IsNull_approvalStatus = 1 AND [approvalStatus] IS NULL) OR ([approvalStatus] = @Original_approvalStatus)) AND ([priorityLevel] = @Original_priorityLevel))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2446,14 +3068,14 @@ namespace backupLosGatos.GROUP6DataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_welderSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "welderSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_inspectorSignature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_inspectorSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateSubmitted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_priority", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_approvalStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "approvalStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_approvalStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "approvalStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Tickets] ([ticketID], [unitID], [equipmentID], [welderSignature], [inspectorSignature], [additionalInformation], [status], [dateSubmitted], [priority]) VALUES (@ticketID, @unitID, @equipmentID, @welderSignature, @inspectorSignature, @additionalInformation, @status, @dateSubmitted, @priority);
-SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, priority FROM Tickets WHERE (ticketID = @ticketID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Tickets] ([ticketID], [unitID], [equipmentID], [welderSignature], [inspectorSignature], [additionalInformation], [status], [dateSubmitted], [approvalStatus], [priorityLevel]) VALUES (@ticketID, @unitID, @equipmentID, @welderSignature, @inspectorSignature, @additionalInformation, @status, @dateSubmitted, @approvalStatus, @priorityLevel);
+SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, approvalStatus, priorityLevel FROM Tickets WHERE (ticketID = @ticketID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2463,11 +3085,12 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@additionalInformation", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "additionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@approvalStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "approvalStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tickets] SET [ticketID] = @ticketID, [unitID] = @unitID, [equipmentID] = @equipmentID, [welderSignature] = @welderSignature, [inspectorSignature] = @inspectorSignature, [additionalInformation] = @additionalInformation, [status] = @status, [dateSubmitted] = @dateSubmitted, [priority] = @priority WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)) AND ((@IsNull_dateSubmitted = 1 AND [dateSubmitted] IS NULL) OR ([dateSubmitted] = @Original_dateSubmitted)) AND ((@IsNull_priority = 1 AND [priority] IS NULL) OR ([priority] = @Original_priority)));
-SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, priority FROM Tickets WHERE (ticketID = @ticketID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tickets] SET [ticketID] = @ticketID, [unitID] = @unitID, [equipmentID] = @equipmentID, [welderSignature] = @welderSignature, [inspectorSignature] = @inspectorSignature, [additionalInformation] = @additionalInformation, [status] = @status, [dateSubmitted] = @dateSubmitted, [approvalStatus] = @approvalStatus, [priorityLevel] = @priorityLevel WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ((@IsNull_welderSignature = 1 AND [welderSignature] IS NULL) OR ([welderSignature] = @Original_welderSignature)) AND ((@IsNull_inspectorSignature = 1 AND [inspectorSignature] IS NULL) OR ([inspectorSignature] = @Original_inspectorSignature)) AND ([dateSubmitted] = @Original_dateSubmitted) AND ((@IsNull_approvalStatus = 1 AND [approvalStatus] IS NULL) OR ([approvalStatus] = @Original_approvalStatus)) AND ([priorityLevel] = @Original_priorityLevel));
+SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, approvalStatus, priorityLevel FROM Tickets WHERE (ticketID = @ticketID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2477,7 +3100,8 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@additionalInformation", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "additionalInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@approvalStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "approvalStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticketID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unitID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_equipmentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "equipmentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -2485,10 +3109,10 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_welderSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "welderSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_inspectorSignature", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_inspectorSignature", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "inspectorSignature", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dateSubmitted", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateSubmitted", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_priority", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priority", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_approvalStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "approvalStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_approvalStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "approvalStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2505,7 +3129,8 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additi" +
-                "onalInformation, status, dateSubmitted, priority FROM Tickets";
+                "onalInformation, status, dateSubmitted, approvalStatus, priorityLevel FROM Ticke" +
+                "ts";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2566,7 +3191,7 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature, global::System.Nullable<global::System.DateTime> Original_dateSubmitted, string Original_priority) {
+        public virtual int Delete(int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature, System.DateTime Original_dateSubmitted, global::System.Nullable<int> Original_approvalStatus, string Original_priorityLevel) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ticketID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_unitID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_equipmentID));
@@ -2586,21 +3211,20 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_inspectorSignature));
             }
-            if ((Original_dateSubmitted.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_dateSubmitted.Value));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_dateSubmitted));
+            if ((Original_approvalStatus.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_approvalStatus.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_priority == null)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            if ((Original_priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("Original_priorityLevel");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_priority));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_priorityLevel));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2622,7 +3246,7 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, global::System.Nullable<global::System.DateTime> dateSubmitted, string priority) {
+        public virtual int Insert(int ticketID, int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, System.DateTime dateSubmitted, global::System.Nullable<int> approvalStatus, string priorityLevel) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ticketID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(unitID));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(equipmentID));
@@ -2645,22 +3269,23 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(additionalInformation));
             }
             if ((status == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("status");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(status));
             }
-            if ((dateSubmitted.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(dateSubmitted.Value));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(dateSubmitted));
+            if ((approvalStatus.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(approvalStatus.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((priority == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
+            if ((priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("priorityLevel");
+            }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(priority));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(priorityLevel));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2690,15 +3315,17 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
                     string inspectorSignature, 
                     string additionalInformation, 
                     string status, 
-                    global::System.Nullable<global::System.DateTime> dateSubmitted, 
-                    string priority, 
+                    System.DateTime dateSubmitted, 
+                    global::System.Nullable<int> approvalStatus, 
+                    string priorityLevel, 
                     int Original_ticketID, 
                     int Original_unitID, 
                     int Original_equipmentID, 
                     string Original_welderSignature, 
                     string Original_inspectorSignature, 
-                    global::System.Nullable<global::System.DateTime> Original_dateSubmitted, 
-                    string Original_priority) {
+                    System.DateTime Original_dateSubmitted, 
+                    global::System.Nullable<int> Original_approvalStatus, 
+                    string Original_priorityLevel) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ticketID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(unitID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(equipmentID));
@@ -2721,57 +3348,57 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(additionalInformation));
             }
             if ((status == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("status");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(status));
             }
-            if ((dateSubmitted.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(dateSubmitted.Value));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(dateSubmitted));
+            if ((approvalStatus.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(approvalStatus.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((priority == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(priority));
+            if ((priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("priorityLevel");
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_ticketID));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_unitID));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_equipmentID));
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(priorityLevel));
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ticketID));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_unitID));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_equipmentID));
             if ((Original_welderSignature == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_welderSignature));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_welderSignature));
             }
             if ((Original_inspectorSignature == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_inspectorSignature));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_inspectorSignature));
             }
-            if ((Original_dateSubmitted.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_dateSubmitted.Value));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_dateSubmitted));
+            if ((Original_approvalStatus.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_approvalStatus.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            if ((Original_priority == null)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
+            if ((Original_priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("Original_priorityLevel");
+            }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_priority));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_priorityLevel));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2793,8 +3420,25 @@ SELECT ticketID, unitID, equipmentID, welderSignature, inspectorSignature, addit
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int unitID, int equipmentID, string welderSignature, string inspectorSignature, string additionalInformation, string status, global::System.Nullable<global::System.DateTime> dateSubmitted, string priority, int Original_ticketID, int Original_unitID, int Original_equipmentID, string Original_welderSignature, string Original_inspectorSignature, global::System.Nullable<global::System.DateTime> Original_dateSubmitted, string Original_priority) {
-            return this.Update(Original_ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, priority, Original_ticketID, Original_unitID, Original_equipmentID, Original_welderSignature, Original_inspectorSignature, Original_dateSubmitted, Original_priority);
+        public virtual int Update(
+                    int unitID, 
+                    int equipmentID, 
+                    string welderSignature, 
+                    string inspectorSignature, 
+                    string additionalInformation, 
+                    string status, 
+                    System.DateTime dateSubmitted, 
+                    global::System.Nullable<int> approvalStatus, 
+                    string priorityLevel, 
+                    int Original_ticketID, 
+                    int Original_unitID, 
+                    int Original_equipmentID, 
+                    string Original_welderSignature, 
+                    string Original_inspectorSignature, 
+                    System.DateTime Original_dateSubmitted, 
+                    global::System.Nullable<int> Original_approvalStatus, 
+                    string Original_priorityLevel) {
+            return this.Update(Original_ticketID, unitID, equipmentID, welderSignature, inspectorSignature, additionalInformation, status, dateSubmitted, approvalStatus, priorityLevel, Original_ticketID, Original_unitID, Original_equipmentID, Original_welderSignature, Original_inspectorSignature, Original_dateSubmitted, Original_approvalStatus, Original_priorityLevel);
         }
     }
     
@@ -3911,6 +4555,456 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class KioskTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public KioskTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Kiosk";
+            tableMapping.ColumnMappings.Add("ticketID", "ticketID");
+            tableMapping.ColumnMappings.Add("unitID", "unitID");
+            tableMapping.ColumnMappings.Add("equipmentID", "equipmentID");
+            tableMapping.ColumnMappings.Add("priorityLevel", "priorityLevel");
+            tableMapping.ColumnMappings.Add("technicianName", "technicianName");
+            tableMapping.ColumnMappings.Add("additionalInfo", "additionalInfo");
+            tableMapping.ColumnMappings.Add("dateSubmitted", "dateSubmitted");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Kiosk] WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ([priorityLevel] = @Original_priorityLevel) AND ([technicianName] = @Original_technicianName) AND ([dateSubmitted] = @Original_dateSubmitted))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticketID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unitID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_equipmentID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "equipmentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_technicianName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "technicianName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateSubmitted", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Kiosk] ([ticketID], [unitID], [equipmentID], [priorityLevel], [technicianName], [additionalInfo], [dateSubmitted]) VALUES (@ticketID, @unitID, @equipmentID, @priorityLevel, @technicianName, @additionalInfo, @dateSubmitted);
+SELECT ticketID, unitID, equipmentID, priorityLevel, technicianName, additionalInfo, dateSubmitted FROM Kiosk WHERE (ticketID = @ticketID)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticketID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unitID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@equipmentID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "equipmentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@technicianName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "technicianName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@additionalInfo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "additionalInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateSubmitted", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Kiosk] SET [ticketID] = @ticketID, [unitID] = @unitID, [equipmentID] = @equipmentID, [priorityLevel] = @priorityLevel, [technicianName] = @technicianName, [additionalInfo] = @additionalInfo, [dateSubmitted] = @dateSubmitted WHERE (([ticketID] = @Original_ticketID) AND ([unitID] = @Original_unitID) AND ([equipmentID] = @Original_equipmentID) AND ([priorityLevel] = @Original_priorityLevel) AND ([technicianName] = @Original_technicianName) AND ([dateSubmitted] = @Original_dateSubmitted));
+SELECT ticketID, unitID, equipmentID, priorityLevel, technicianName, additionalInfo, dateSubmitted FROM Kiosk WHERE (ticketID = @ticketID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ticketID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unitID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@equipmentID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "equipmentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@technicianName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "technicianName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@additionalInfo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "additionalInfo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateSubmitted", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ticketID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ticketID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unitID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unitID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_equipmentID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "equipmentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_priorityLevel", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priorityLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_technicianName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "technicianName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dateSubmitted", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dateSubmitted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::backupLosGatos.Properties.Settings.Default.GROUP6ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ticketID, unitID, equipmentID, priorityLevel, technicianName, additionalIn" +
+                "fo, dateSubmitted FROM dbo.Kiosk";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(GROUP6DataSet.KioskDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual GROUP6DataSet.KioskDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            GROUP6DataSet.KioskDataTable dataTable = new GROUP6DataSet.KioskDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(GROUP6DataSet.KioskDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(GROUP6DataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Kiosk");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_ticketID, string Original_unitID, string Original_equipmentID, string Original_priorityLevel, string Original_technicianName, System.DateTime Original_dateSubmitted) {
+            if ((Original_ticketID == null)) {
+                throw new global::System.ArgumentNullException("Original_ticketID");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ticketID));
+            }
+            if ((Original_unitID == null)) {
+                throw new global::System.ArgumentNullException("Original_unitID");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_unitID));
+            }
+            if ((Original_equipmentID == null)) {
+                throw new global::System.ArgumentNullException("Original_equipmentID");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_equipmentID));
+            }
+            if ((Original_priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("Original_priorityLevel");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_priorityLevel));
+            }
+            if ((Original_technicianName == null)) {
+                throw new global::System.ArgumentNullException("Original_technicianName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_technicianName));
+            }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_dateSubmitted));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string ticketID, string unitID, string equipmentID, string priorityLevel, string technicianName, string additionalInfo, System.DateTime dateSubmitted) {
+            if ((ticketID == null)) {
+                throw new global::System.ArgumentNullException("ticketID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ticketID));
+            }
+            if ((unitID == null)) {
+                throw new global::System.ArgumentNullException("unitID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(unitID));
+            }
+            if ((equipmentID == null)) {
+                throw new global::System.ArgumentNullException("equipmentID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(equipmentID));
+            }
+            if ((priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("priorityLevel");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(priorityLevel));
+            }
+            if ((technicianName == null)) {
+                throw new global::System.ArgumentNullException("technicianName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(technicianName));
+            }
+            if ((additionalInfo == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(additionalInfo));
+            }
+            this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(dateSubmitted));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string ticketID, string unitID, string equipmentID, string priorityLevel, string technicianName, string additionalInfo, System.DateTime dateSubmitted, string Original_ticketID, string Original_unitID, string Original_equipmentID, string Original_priorityLevel, string Original_technicianName, System.DateTime Original_dateSubmitted) {
+            if ((ticketID == null)) {
+                throw new global::System.ArgumentNullException("ticketID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ticketID));
+            }
+            if ((unitID == null)) {
+                throw new global::System.ArgumentNullException("unitID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(unitID));
+            }
+            if ((equipmentID == null)) {
+                throw new global::System.ArgumentNullException("equipmentID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(equipmentID));
+            }
+            if ((priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("priorityLevel");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(priorityLevel));
+            }
+            if ((technicianName == null)) {
+                throw new global::System.ArgumentNullException("technicianName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(technicianName));
+            }
+            if ((additionalInfo == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(additionalInfo));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(dateSubmitted));
+            if ((Original_ticketID == null)) {
+                throw new global::System.ArgumentNullException("Original_ticketID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_ticketID));
+            }
+            if ((Original_unitID == null)) {
+                throw new global::System.ArgumentNullException("Original_unitID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_unitID));
+            }
+            if ((Original_equipmentID == null)) {
+                throw new global::System.ArgumentNullException("Original_equipmentID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_equipmentID));
+            }
+            if ((Original_priorityLevel == null)) {
+                throw new global::System.ArgumentNullException("Original_priorityLevel");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_priorityLevel));
+            }
+            if ((Original_technicianName == null)) {
+                throw new global::System.ArgumentNullException("Original_technicianName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_technicianName));
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_dateSubmitted));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string unitID, string equipmentID, string priorityLevel, string technicianName, string additionalInfo, System.DateTime dateSubmitted, string Original_ticketID, string Original_unitID, string Original_equipmentID, string Original_priorityLevel, string Original_technicianName, System.DateTime Original_dateSubmitted) {
+            return this.Update(Original_ticketID, unitID, equipmentID, priorityLevel, technicianName, additionalInfo, dateSubmitted, Original_ticketID, Original_unitID, Original_equipmentID, Original_priorityLevel, Original_technicianName, Original_dateSubmitted);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -3929,6 +5023,8 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
         private AssignmentsTableAdapter _assignmentsTableAdapter;
         
         private EquipmentTableAdapter _equipmentTableAdapter;
+        
+        private KioskTableAdapter _kioskTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -4003,6 +5099,20 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public KioskTableAdapter KioskTableAdapter {
+            get {
+                return this._kioskTableAdapter;
+            }
+            set {
+                this._kioskTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -4036,6 +5146,10 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                             && (this._equipmentTableAdapter.Connection != null))) {
                     return this._equipmentTableAdapter.Connection;
                 }
+                if (((this._kioskTableAdapter != null) 
+                            && (this._kioskTableAdapter.Connection != null))) {
+                    return this._kioskTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -4059,6 +5173,9 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                     count = (count + 1);
                 }
                 if ((this._equipmentTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._kioskTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -4108,6 +5225,15 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._kioskTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Kiosk.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._kioskTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -4150,6 +5276,14 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._kioskTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Kiosk.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._kioskTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -4160,6 +5294,14 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(GROUP6DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._kioskTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Kiosk.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._kioskTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._assignmentsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Assignments.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -4251,6 +5393,11 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._kioskTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._kioskTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -4317,6 +5464,15 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                     if (this._equipmentTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._equipmentTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._equipmentTableAdapter.Adapter);
+                    }
+                }
+                if ((this._kioskTableAdapter != null)) {
+                    revertConnections.Add(this._kioskTableAdapter, this._kioskTableAdapter.Connection);
+                    this._kioskTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._kioskTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._kioskTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._kioskTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._kioskTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -4392,6 +5548,10 @@ SELECT equipmentID, equipmentDescription FROM Equipment WHERE (equipmentID = @eq
                 if ((this._equipmentTableAdapter != null)) {
                     this._equipmentTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipmentTableAdapter]));
                     this._equipmentTableAdapter.Transaction = null;
+                }
+                if ((this._kioskTableAdapter != null)) {
+                    this._kioskTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._kioskTableAdapter]));
+                    this._kioskTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

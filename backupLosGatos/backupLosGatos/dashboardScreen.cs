@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace backupLosGatos
 {
@@ -25,6 +19,29 @@ namespace backupLosGatos
         {
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            //DataTable dataTable = new DataTable();
+            //DataSet dataSet;
+            //BindingSource bs = new BindingSource();
+            //SqlDataAdapter da;
+
+            //string fillData = "SELECT * FROM dbo.Tickets";
+            //da = new SqlDataAdapter(fillData, conn);
+            //dataSet = new DataSet();
+            //da.Fill(dataSet);
+            //dataTable = dataSet.Tables[0];
+            //bs.DataSource = dataTable;
+            //dashboardGrid.DataSource = bs;
+            //dashboardGrid.ClearSelection();
+            conn.Open();
+            SqlCommand getData = new SqlCommand("SELECT * FROM dbo.Tickets", conn);
+            reader = getData.ExecuteReader();
+
+            DataSet data = new DataSet();
+            DataTable dtname2 = new DataTable("Table0");
+            data.Tables.Add(dtname2);
+            data.Load(reader, LoadOption.PreserveChanges, data.Tables[0]);
+            this.ticketsBindingSource.DataSource = data.Tables[0];
+            dashboardGrid.DataSource = data.Tables[0];
 
             //status dropdown
             conn.Open();
@@ -117,6 +134,7 @@ namespace backupLosGatos
             if (equipmentOption.SelectedValue == null)
             {
             }
+
             else
             {
                 if (technicianOption.SelectedValue == null && statusOption.SelectedValue == null)
@@ -158,7 +176,6 @@ namespace backupLosGatos
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
 
-
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID", conn);
                     SqlParameter id_param = new SqlParameter();
                     SqlParameter id_param1 = new SqlParameter();
@@ -171,7 +188,6 @@ namespace backupLosGatos
                     id_cmd.Parameters.Add(id_param);
                     id_cmd.Parameters.Add(id_param1);
                     reader = id_cmd.ExecuteReader();
-
 
                     DataSet dsname3 = new DataSet();
                     DataTable dtname3 = new DataTable("Table5");
@@ -236,6 +252,7 @@ namespace backupLosGatos
                     id_cmd.Parameters.Add(id_param1);
                     reader = id_cmd.ExecuteReader();
 
+
                     DataSet dsname3 = new DataSet();
                     DataTable dtname3 = new DataTable("Table5");
                     dsname3.Tables.Add(dtname3);
@@ -273,7 +290,6 @@ namespace backupLosGatos
                     ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
 
                     dashboardGrid.DataSource = ds.Tables[0];
-
                 }
                 else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue == null)
                 {
@@ -336,7 +352,6 @@ namespace backupLosGatos
                     param1.Value = equipmentOption.SelectedValue.ToString();
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
-
 
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID AND Tickets.equipmentID = @equipmentID AND Tickets.status = " + "'" + selection1 + "'", conn);
                     SqlParameter id_param = new SqlParameter();
@@ -448,6 +463,7 @@ namespace backupLosGatos
                     id_cmd.Parameters.Add(id_param1);
                     reader = id_cmd.ExecuteReader();
 
+
                     DataSet dsname3 = new DataSet();
                     DataTable dtname3 = new DataTable("Table5");
                     dsname3.Tables.Add(dtname3);
@@ -473,6 +489,7 @@ namespace backupLosGatos
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
 
+
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID  AND Tickets.status = " + "'" + selection1 + "'", conn);
                     SqlParameter id_param = new SqlParameter();
                     SqlParameter id_param1 = new SqlParameter();
@@ -485,6 +502,7 @@ namespace backupLosGatos
                     id_cmd.Parameters.Add(id_param);
                     id_cmd.Parameters.Add(id_param1);
                     reader = id_cmd.ExecuteReader();
+
 
                     DataSet dsname3 = new DataSet();
                     DataTable dtname3 = new DataTable("Table5");
@@ -511,6 +529,18 @@ namespace backupLosGatos
             kioskRequest viewKiosk = new kioskRequest();
             viewKiosk.Show();
             this.Close();
+        }
+
+        private void queryTicket_TextChanged(object sender, EventArgs e)
+        {
+            conn = new
+            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            conn.Open();
+            SqlDataAdapter c_id = new SqlDataAdapter("SELECT * FROM Tickets WHERE ticketID LIKE '" + queryTicket.Text + "%'", conn);
+            DataTable dt = new DataTable();
+            c_id.Fill(dt);
+            dashboardGrid.DataSource = dt;
+            conn.Close();
         }
     }
 }

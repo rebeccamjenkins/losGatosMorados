@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 
 namespace backupLosGatos
@@ -24,6 +18,8 @@ namespace backupLosGatos
 
         private void managerDashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'gROUP6DataSet.Tickets' table. You can move, or remove it, as needed.
+            this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
@@ -512,6 +508,18 @@ namespace backupLosGatos
             kioskRequest viewKiosk = new kioskRequest();
             viewKiosk.Show();
             this.Close();
+        }
+
+        private void queryTicket_TextChanged(object sender, EventArgs e)
+        {
+            conn = new
+            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            conn.Open();
+            SqlDataAdapter c_id = new SqlDataAdapter("SELECT * FROM Tickets WHERE ticketID LIKE '" + queryTicket.Text + "%'", conn);
+            DataTable dt = new DataTable();
+            c_id.Fill(dt);
+            dashboardGrid.DataSource = dt;
+            conn.Close();
         }
     }
 }
