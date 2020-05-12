@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(kioskRequest));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,9 +39,21 @@
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.mangButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
+            this.kioskTickets = new backupLosGatos.KioskTickets();
+            this.kioskBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kioskTableAdapter = new backupLosGatos.KioskTicketsTableAdapters.KioskTableAdapter();
+            this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipmentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priorityLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.technicianNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.additionalInfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateSubmittedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             this.pageOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kioskTickets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -65,7 +78,17 @@
             // 
             // dashboardGrid
             // 
+            this.dashboardGrid.AutoGenerateColumns = false;
             this.dashboardGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dashboardGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ticketIDDataGridViewTextBoxColumn,
+            this.unitIDDataGridViewTextBoxColumn,
+            this.equipmentIDDataGridViewTextBoxColumn,
+            this.priorityLevelDataGridViewTextBoxColumn,
+            this.technicianNameDataGridViewTextBoxColumn,
+            this.additionalInfoDataGridViewTextBoxColumn,
+            this.dateSubmittedDataGridViewTextBoxColumn});
+            this.dashboardGrid.DataSource = this.kioskBindingSource;
             this.dashboardGrid.Location = new System.Drawing.Point(29, 124);
             this.dashboardGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dashboardGrid.Name = "dashboardGrid";
@@ -109,6 +132,7 @@
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(74, 24);
             this.logout.Text = "Logout";
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // mangButton
             // 
@@ -130,6 +154,76 @@
             this.coordButton.UseVisualStyleBackColor = true;
             this.coordButton.Visible = false;
             // 
+            // kioskTickets
+            // 
+            this.kioskTickets.DataSetName = "KioskTickets";
+            this.kioskTickets.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // kioskBindingSource
+            // 
+            this.kioskBindingSource.DataMember = "Kiosk";
+            this.kioskBindingSource.DataSource = this.kioskTickets;
+            // 
+            // kioskTableAdapter
+            // 
+            this.kioskTableAdapter.ClearBeforeFill = true;
+            // 
+            // ticketIDDataGridViewTextBoxColumn
+            // 
+            this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "ticketID";
+            this.ticketIDDataGridViewTextBoxColumn.HeaderText = "ticketID";
+            this.ticketIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ticketIDDataGridViewTextBoxColumn.Name = "ticketIDDataGridViewTextBoxColumn";
+            this.ticketIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // unitIDDataGridViewTextBoxColumn
+            // 
+            this.unitIDDataGridViewTextBoxColumn.DataPropertyName = "unitID";
+            this.unitIDDataGridViewTextBoxColumn.HeaderText = "unitID";
+            this.unitIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.unitIDDataGridViewTextBoxColumn.Name = "unitIDDataGridViewTextBoxColumn";
+            this.unitIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // equipmentIDDataGridViewTextBoxColumn
+            // 
+            this.equipmentIDDataGridViewTextBoxColumn.DataPropertyName = "equipmentID";
+            this.equipmentIDDataGridViewTextBoxColumn.HeaderText = "equipmentID";
+            this.equipmentIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.equipmentIDDataGridViewTextBoxColumn.Name = "equipmentIDDataGridViewTextBoxColumn";
+            this.equipmentIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // priorityLevelDataGridViewTextBoxColumn
+            // 
+            this.priorityLevelDataGridViewTextBoxColumn.DataPropertyName = "priorityLevel";
+            this.priorityLevelDataGridViewTextBoxColumn.HeaderText = "priorityLevel";
+            this.priorityLevelDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.priorityLevelDataGridViewTextBoxColumn.Name = "priorityLevelDataGridViewTextBoxColumn";
+            this.priorityLevelDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // technicianNameDataGridViewTextBoxColumn
+            // 
+            this.technicianNameDataGridViewTextBoxColumn.DataPropertyName = "technicianName";
+            this.technicianNameDataGridViewTextBoxColumn.HeaderText = "technicianName";
+            this.technicianNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.technicianNameDataGridViewTextBoxColumn.Name = "technicianNameDataGridViewTextBoxColumn";
+            this.technicianNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // additionalInfoDataGridViewTextBoxColumn
+            // 
+            this.additionalInfoDataGridViewTextBoxColumn.DataPropertyName = "additionalInfo";
+            this.additionalInfoDataGridViewTextBoxColumn.HeaderText = "additionalInfo";
+            this.additionalInfoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.additionalInfoDataGridViewTextBoxColumn.Name = "additionalInfoDataGridViewTextBoxColumn";
+            this.additionalInfoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateSubmittedDataGridViewTextBoxColumn
+            // 
+            this.dateSubmittedDataGridViewTextBoxColumn.DataPropertyName = "dateSubmitted";
+            this.dateSubmittedDataGridViewTextBoxColumn.HeaderText = "dateSubmitted";
+            this.dateSubmittedDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateSubmittedDataGridViewTextBoxColumn.Name = "dateSubmittedDataGridViewTextBoxColumn";
+            this.dateSubmittedDataGridViewTextBoxColumn.Width = 125;
+            // 
             // kioskRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -143,10 +237,13 @@
             this.Controls.Add(this.dashboardGrid);
             this.Name = "kioskRequest";
             this.Text = "kioskRequest";
+            this.Load += new System.EventHandler(this.kioskRequest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
             this.pageOptions.ResumeLayout(false);
             this.pageOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kioskTickets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +260,15 @@
         public System.Windows.Forms.Button coordButton;
         public System.Windows.Forms.ToolStripMenuItem ticketPage;
         public System.Windows.Forms.MenuStrip pageOptions;
+        private KioskTickets kioskTickets;
+        private System.Windows.Forms.BindingSource kioskBindingSource;
+        private KioskTicketsTableAdapters.KioskTableAdapter kioskTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipmentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priorityLevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn technicianNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn additionalInfoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmittedDataGridViewTextBoxColumn;
     }
 }

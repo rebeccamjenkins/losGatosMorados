@@ -90,5 +90,12 @@ namespace backupLosGatos
         {
 
         }
+
+        private void kioskRequest_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'kioskTickets.Kiosk' table. You can move, or remove it, as needed.
+            this.kioskTableAdapter.Fill(this.kioskTickets.Kiosk);
+
+        }
     }
 }

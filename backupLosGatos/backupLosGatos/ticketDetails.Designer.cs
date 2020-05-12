@@ -539,6 +539,7 @@ namespace backupLosGatos
             this.saveButton.TabIndex = 16;
             this.saveButton.Text = "Save Changes";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // updateButton
             // 

@@ -132,6 +132,7 @@ namespace backupLosGatos
             viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
             //viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
+            
             if (labelRole.Text == "manager")
             {
                 //viewTicket.updateButton.Enabled = false;
@@ -174,6 +175,7 @@ namespace backupLosGatos
                     DataTable dtname2 = new DataTable("Table4");
                     dsname2.Tables.Add(dtname2);
                     dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
+                    
                     this.ticketsBindingSource.DataSource = dsname2.Tables[0];
                     dashboardGrid.DataSource = dsname2.Tables[0];
                 }
@@ -400,6 +402,8 @@ namespace backupLosGatos
             Int32 test1 = 0;
             Int32 test3 = 0;
 
+
+
             if (technicianOption.SelectedValue == null)
             {
             }
@@ -414,12 +418,16 @@ namespace backupLosGatos
                     cmd.Parameters.Add(param);
                     test = (Int32)cmd.ExecuteScalar();
 
+
+
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID", conn);
                     SqlParameter id_param = new SqlParameter();
                     id_param.ParameterName = "@associateID";
                     id_param.Value = test.ToString();
                     id_cmd.Parameters.Add(id_param);
                     reader = id_cmd.ExecuteReader();
+
+
 
                     DataSet dsname2 = new DataSet();
                     DataTable dtname2 = new DataTable("Table3");
@@ -432,6 +440,8 @@ namespace backupLosGatos
                 {
                     string selection1 = statusOption.SelectedValue.ToString();
 
+
+
                     SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@firstName";
@@ -439,12 +449,16 @@ namespace backupLosGatos
                     cmd.Parameters.Add(param);
                     test = (Int32)cmd.ExecuteScalar();
 
+
+
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Tickets.status = " + "'" + selection1 + "'", conn);
                     SqlParameter id_param = new SqlParameter();
                     id_param.ParameterName = "@associateID";
                     id_param.Value = test.ToString();
                     id_cmd.Parameters.Add(id_param);
                     reader = id_cmd.ExecuteReader();
+
+
 
                     DataSet dsname2 = new DataSet();
                     DataTable dtname2 = new DataTable("Table3");
@@ -462,6 +476,8 @@ namespace backupLosGatos
                     cmd.Parameters.Add(param);
                     test = (Int32)cmd.ExecuteScalar();
 
+
+
                     SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
                     SqlParameter param1 = new SqlParameter();
                     param1.ParameterName = "@equipmentDescription";
@@ -469,18 +485,26 @@ namespace backupLosGatos
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
 
+
+
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID", conn);
                     SqlParameter id_param = new SqlParameter();
                     SqlParameter id_param1 = new SqlParameter();
                     id_param.ParameterName = "@associateID";
                     id_param.Value = test.ToString();
 
+
+
                     id_param1.ParameterName = "@equipmentID";
                     id_param1.Value = test1.ToString();
+
+
 
                     id_cmd.Parameters.Add(id_param);
                     id_cmd.Parameters.Add(id_param1);
                     reader = id_cmd.ExecuteReader();
+
+
 
                     DataSet dsname3 = new DataSet();
                     DataTable dtname3 = new DataTable("Table5");
@@ -493,12 +517,16 @@ namespace backupLosGatos
                 {
                     string selection1 = statusOption.SelectedValue.ToString();
 
+
+
                     SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@firstName";
                     param.Value = technicianOption.SelectedValue.ToString();
                     cmd.Parameters.Add(param);
                     test = (Int32)cmd.ExecuteScalar();
+
+
 
                     SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
                     SqlParameter param1 = new SqlParameter();
@@ -507,18 +535,26 @@ namespace backupLosGatos
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
 
+
+
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID  AND Tickets.status = " + "'" + selection1 + "'", conn);
                     SqlParameter id_param = new SqlParameter();
                     SqlParameter id_param1 = new SqlParameter();
                     id_param.ParameterName = "@associateID";
                     id_param.Value = test.ToString();
 
+
+
                     id_param1.ParameterName = "@equipmentID";
                     id_param1.Value = test1.ToString();
+
+
 
                     id_cmd.Parameters.Add(id_param);
                     id_cmd.Parameters.Add(id_param1);
                     reader = id_cmd.ExecuteReader();
+
+
 
                     DataSet dsname3 = new DataSet();
                     DataTable dtname3 = new DataTable("Table5");

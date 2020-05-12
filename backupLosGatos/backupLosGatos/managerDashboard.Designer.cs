@@ -63,7 +63,7 @@ namespace backupLosGatos
             this.dateSubmittedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.welderSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inspectorSignatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.equipmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -116,7 +116,7 @@ namespace backupLosGatos
             this.dateSubmittedDataGridViewTextBoxColumn,
             this.welderSignatureDataGridViewTextBoxColumn,
             this.inspectorSignatureDataGridViewTextBoxColumn,
-            this.Column1});
+            this.equipmentID});
             this.dashboardGrid.DataSource = this.ticketsBindingSource;
             this.dashboardGrid.Location = new System.Drawing.Point(23, 234);
             this.dashboardGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -180,7 +180,7 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(1034, 28);
+            this.pageOptions.Size = new System.Drawing.Size(995, 28);
             this.pageOptions.TabIndex = 32;
             // 
             // dashboardPage
@@ -236,6 +236,7 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 18;
             this.technicianOption.ValueMember = "associateID";
+            this.technicianOption.SelectionChangeCommitted += new System.EventHandler(this.technicianOption_SelectionChangeCommitted);
             // 
             // statusOption
             // 
@@ -249,6 +250,7 @@ namespace backupLosGatos
             this.statusOption.Size = new System.Drawing.Size(157, 24);
             this.statusOption.TabIndex = 19;
             this.statusOption.ValueMember = "status";
+            this.statusOption.SelectionChangeCommitted += new System.EventHandler(this.statusOption_SelectionChangeCommitted);
             // 
             // assignedLabel
             // 
@@ -296,6 +298,7 @@ namespace backupLosGatos
             this.equipmentOption.Name = "equipmentOption";
             this.equipmentOption.Size = new System.Drawing.Size(157, 24);
             this.equipmentOption.TabIndex = 29;
+            this.equipmentOption.SelectionChangeCommitted += new System.EventHandler(this.equipmentOption_SelectionChangeCommitted);
             // 
             // panel1
             // 
@@ -391,20 +394,20 @@ namespace backupLosGatos
             this.inspectorSignatureDataGridViewTextBoxColumn.ReadOnly = true;
             this.inspectorSignatureDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Column1
+            // equipmentID
             // 
-            this.Column1.DataPropertyName = "ticketID";
-            this.Column1.HeaderText = "Equipment Code";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 125;
+            this.equipmentID.DataPropertyName = "equipmentID";
+            this.equipmentID.HeaderText = "Equipment Code";
+            this.equipmentID.MinimumWidth = 6;
+            this.equipmentID.Name = "equipmentID";
+            this.equipmentID.ReadOnly = true;
+            this.equipmentID.Width = 125;
             // 
             // managerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 526);
+            this.ClientSize = new System.Drawing.Size(995, 526);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pageOptions);
@@ -463,6 +466,6 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmittedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn welderSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorSignatureDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn equipmentID;
     }
 }

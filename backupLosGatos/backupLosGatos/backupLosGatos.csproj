@@ -97,6 +97,11 @@
     <Compile Include="kioskRequest.Designer.cs">
       <DependentUpon>kioskRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="KioskTickets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KioskTickets.xsd</DependentUpon>
+    </Compile>
     <Compile Include="loginScreen.cs">
       <SubType>Form</SubType>
       <CustomToolNamespace>backupLosGatos</CustomToolNamespace>
@@ -186,6 +191,17 @@
     </None>
     <None Include="GROUP6DataSet2.xss">
       <DependentUpon>GROUP6DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="KioskTickets.xsc">
+      <DependentUpon>KioskTickets.xsd</DependentUpon>
+    </None>
+    <None Include="KioskTickets.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KioskTickets.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KioskTickets.xss">
+      <DependentUpon>KioskTickets.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
