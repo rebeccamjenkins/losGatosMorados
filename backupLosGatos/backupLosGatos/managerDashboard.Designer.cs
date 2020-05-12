@@ -34,7 +34,7 @@ namespace backupLosGatos
             System.Windows.Forms.Label equipmentDescriptionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(managerDashboard));
             this.label2 = new System.Windows.Forms.Label();
-            this.title = new System.Windows.Forms.Label();
+            this.Title = new System.Windows.Forms.Label();
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
             this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,14 +94,14 @@ namespace backupLosGatos
             this.label2.Size = new System.Drawing.Size(0, 17);
             this.label2.TabIndex = 15;
             // 
-            // title
+            // Title
             // 
-            this.title.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(640, 46);
-            this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(440, 49);
-            this.title.TabIndex = 14;
-            this.title.Text = "Weld Progress Tracking System";
+            this.Title.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.Location = new System.Drawing.Point(640, 46);
+            this.Title.Name = "Title";
+            this.Title.Size = new System.Drawing.Size(440, 49);
+            this.Title.TabIndex = 14;
+            this.Title.Text = "Weld Progress Tracking System";
             // 
             // dashboardGrid
             // 
@@ -419,7 +419,7 @@ namespace backupLosGatos
             this.Controls.Add(this.labelRole);
             this.Controls.Add(this.Koch);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.title);
+            this.Controls.Add(this.Title);
             this.Controls.Add(this.dashboardGrid);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "managerDashboard";
@@ -442,7 +442,7 @@ namespace backupLosGatos
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Label Title;
         private System.Windows.Forms.PictureBox Koch;
         public System.Windows.Forms.DataGridView dashboardGrid;
         public System.Windows.Forms.Label labelRole;
