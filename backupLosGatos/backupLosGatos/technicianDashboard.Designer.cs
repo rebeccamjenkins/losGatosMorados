@@ -40,7 +40,6 @@ namespace backupLosGatos
             this.labelRole = new System.Windows.Forms.Label();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewKioskReToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -99,7 +98,7 @@ namespace backupLosGatos
             // title
             // 
             this.title.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(605, 45);
+            this.title.Location = new System.Drawing.Point(364, 45);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(445, 49);
             this.title.TabIndex = 14;
@@ -121,7 +120,7 @@ namespace backupLosGatos
             this.dashboardGrid.Name = "dashboardGrid";
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
-            this.dashboardGrid.Size = new System.Drawing.Size(1027, 277);
+            this.dashboardGrid.Size = new System.Drawing.Size(786, 277);
             this.dashboardGrid.TabIndex = 13;
             // 
             // ticketsBindingSource
@@ -162,32 +161,25 @@ namespace backupLosGatos
             this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
-            this.viewKioskReToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(1063, 30);
+            this.pageOptions.Size = new System.Drawing.Size(842, 28);
             this.pageOptions.TabIndex = 31;
             // 
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 26);
-            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.Size = new System.Drawing.Size(77, 24);
+            this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // viewKioskReToolStripMenuItem
-            // 
-            this.viewKioskReToolStripMenuItem.Name = "viewKioskReToolStripMenuItem";
-            this.viewKioskReToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
-            this.viewKioskReToolStripMenuItem.Text = "View Kiosk Requests";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -202,7 +194,7 @@ namespace backupLosGatos
             this.panel1.Controls.Add(this.queryTicket);
             this.panel1.Location = new System.Drawing.Point(554, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(496, 123);
+            this.panel1.Size = new System.Drawing.Size(255, 123);
             this.panel1.TabIndex = 37;
             // 
             // ticketLabel
@@ -314,11 +306,12 @@ namespace backupLosGatos
             // techName
             // 
             this.techName.AutoSize = true;
+            this.techName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.techName.Location = new System.Drawing.Point(347, 44);
             this.techName.Name = "techName";
-            this.techName.Size = new System.Drawing.Size(45, 17);
+            this.techName.Size = new System.Drawing.Size(2, 19);
             this.techName.TabIndex = 38;
-            this.techName.Text = "Name";
+            this.techName.Visible = false;
             // 
             // fKAssignmentsTickets1BindingSource
             // 
@@ -387,7 +380,7 @@ namespace backupLosGatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1063, 549);
+            this.ClientSize = new System.Drawing.Size(842, 549);
             this.Controls.Add(this.techName);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.filterPanel);
@@ -427,7 +420,6 @@ namespace backupLosGatos
         private System.Windows.Forms.Label labelRole;
         private System.Windows.Forms.MenuStrip pageOptions;
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem viewKioskReToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn priorityDataGridViewTextBoxColumn;
         private GROUP6DataSet gROUP6DataSet;
