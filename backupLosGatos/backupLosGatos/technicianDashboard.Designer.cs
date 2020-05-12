@@ -80,7 +80,7 @@ namespace backupLosGatos
             // 
             equipmentDescriptionLabel.AutoSize = true;
             equipmentDescriptionLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            equipmentDescriptionLabel.Location = new System.Drawing.Point(23, 69);
+            equipmentDescriptionLabel.Location = new System.Drawing.Point(20, 15);
             equipmentDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             equipmentDescriptionLabel.Name = "equipmentDescriptionLabel";
             equipmentDescriptionLabel.Size = new System.Drawing.Size(89, 19);
@@ -235,7 +235,7 @@ namespace backupLosGatos
             this.equipmentOption.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.equipmentOption.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.equipmentOption.FormattingEnabled = true;
-            this.equipmentOption.Location = new System.Drawing.Point(120, 69);
+            this.equipmentOption.Location = new System.Drawing.Point(120, 16);
             this.equipmentOption.Margin = new System.Windows.Forms.Padding(4);
             this.equipmentOption.Name = "equipmentOption";
             this.equipmentOption.Size = new System.Drawing.Size(157, 24);
@@ -253,6 +253,7 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 18;
             this.technicianOption.ValueMember = "associateID";
+            this.technicianOption.Visible = false;
             // 
             // statusOption
             // 
@@ -276,6 +277,7 @@ namespace backupLosGatos
             this.assignedLabel.Size = new System.Drawing.Size(90, 19);
             this.assignedLabel.TabIndex = 21;
             this.assignedLabel.Text = "Assigned To:";
+            this.assignedLabel.Visible = false;
             // 
             // statusLabel
             // 
