@@ -21,11 +21,16 @@ namespace backupLosGatos
 
         private void technicianDashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'gROUP6DataSet1.Tickets' table. You can move, or remove it, as needed.
+            //this.ticketsTableAdapter1.Fill(this.gROUP6DataSet1.Tickets);
+            // TODO: This line of code loads data into the 'gROUP6DataSet.Assignments' table. You can move, or remove it, as needed.
+            //this.assignmentsTableAdapter.Fill(this.gROUP6DataSet.Assignments);
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
             conn.Open();
-
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID", conn);
+            MessageBox.Show(techName.Text);
+            // 
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets WHERE userName = '"+ techName.Text +"'", conn);
             DataTable data = new DataTable();
             sda.Fill(data);
             dashboardGrid.DataSource = data;
