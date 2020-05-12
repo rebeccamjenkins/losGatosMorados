@@ -95,7 +95,6 @@ namespace backupLosGatos
             this.ticketLabel.Size = new System.Drawing.Size(65, 19);
             this.ticketLabel.TabIndex = 23;
             this.ticketLabel.Text = "Ticket #:";
-            this.ticketLabel.Click += new System.EventHandler(this.ticketLabel_Click);
             // 
             // statusLabel
             // 
@@ -199,6 +198,7 @@ namespace backupLosGatos
             this.dashboardGrid.Size = new System.Drawing.Size(1054, 277);
             this.dashboardGrid.TabIndex = 13;
             this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
+            this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellDoubleClick);
             // 
             // ticketIDDataGridViewTextBoxColumn
             // 
@@ -372,13 +372,13 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(1102, 30);
+            this.pageOptions.Size = new System.Drawing.Size(1102, 28);
             this.pageOptions.TabIndex = 32;
             // 
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(77, 26);
+            this.dashboardPage.Size = new System.Drawing.Size(77, 24);
             this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
