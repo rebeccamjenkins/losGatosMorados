@@ -575,7 +575,7 @@ namespace backupLosGatos
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
             viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            //viewTicket.dateSubmittedDateTimePicker.Value = this.dashboardGrid.CurrentRow.Cells[3].Value.();
+            viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
             viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
             viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
             viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();

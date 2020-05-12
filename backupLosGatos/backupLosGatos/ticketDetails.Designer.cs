@@ -39,8 +39,8 @@ namespace backupLosGatos
             System.Windows.Forms.Label dateSubmittedLabel;
             System.Windows.Forms.Label statusLabel;
             System.Windows.Forms.Label priorityLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ticketDetails));
             System.Windows.Forms.Label associateIDLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ticketDetails));
             this.label1 = new System.Windows.Forms.Label();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,11 +48,12 @@ namespace backupLosGatos
             this.viewKioskRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.associateIDComboBox = new System.Windows.Forms.ComboBox();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.priorityCombo = new System.Windows.Forms.ComboBox();
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.statusCombo = new System.Windows.Forms.ComboBox();
-            this.dateSubmittedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.equipmentCombo = new System.Windows.Forms.ComboBox();
             this.equipmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -85,9 +86,8 @@ namespace backupLosGatos
             this.coordButton = new System.Windows.Forms.Button();
             this.mangButton = new System.Windows.Forms.Button();
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
-            this.associateIDComboBox = new System.Windows.Forms.ComboBox();
+            this.dateText = new System.Windows.Forms.TextBox();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -99,15 +99,15 @@ namespace backupLosGatos
             associateIDLabel = new System.Windows.Forms.Label();
             this.pageOptions.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingNavigator)).BeginInit();
             this.ticketsBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ticketIDLabel
@@ -184,6 +184,15 @@ namespace backupLosGatos
             priorityLabel.TabIndex = 10;
             priorityLabel.Text = "Priority:";
             // 
+            // associateIDLabel
+            // 
+            associateIDLabel.AutoSize = true;
+            associateIDLabel.Location = new System.Drawing.Point(358, 112);
+            associateIDLabel.Name = "associateIDLabel";
+            associateIDLabel.Size = new System.Drawing.Size(71, 19);
+            associateIDLabel.TabIndex = 12;
+            associateIDLabel.Text = "Assign To:";
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,6 +249,7 @@ namespace backupLosGatos
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateText);
             this.groupBox1.Controls.Add(associateIDLabel);
             this.groupBox1.Controls.Add(this.associateIDComboBox);
             this.groupBox1.Controls.Add(priorityLabel);
@@ -247,7 +257,6 @@ namespace backupLosGatos
             this.groupBox1.Controls.Add(statusLabel);
             this.groupBox1.Controls.Add(this.statusCombo);
             this.groupBox1.Controls.Add(dateSubmittedLabel);
-            this.groupBox1.Controls.Add(this.dateSubmittedDateTimePicker);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(equipmentIDLabel);
             this.groupBox1.Controls.Add(this.equipmentCombo);
@@ -264,6 +273,28 @@ namespace backupLosGatos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ticket Information";
             // 
+            // associateIDComboBox
+            // 
+            this.associateIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "associateID", true));
+            this.associateIDComboBox.DataSource = this.usersBindingSource;
+            this.associateIDComboBox.DisplayMember = "firstName";
+            this.associateIDComboBox.FormattingEnabled = true;
+            this.associateIDComboBox.Location = new System.Drawing.Point(442, 109);
+            this.associateIDComboBox.Name = "associateIDComboBox";
+            this.associateIDComboBox.Size = new System.Drawing.Size(189, 25);
+            this.associateIDComboBox.TabIndex = 13;
+            this.associateIDComboBox.ValueMember = "associateID";
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.gROUP6DataSet;
+            // 
+            // gROUP6DataSet
+            // 
+            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
+            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // priorityCombo
             // 
             this.priorityCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priorityLevel", true));
@@ -279,11 +310,6 @@ namespace backupLosGatos
             this.ticketsBindingSource.DataMember = "Tickets";
             this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
             // 
-            // gROUP6DataSet
-            // 
-            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
-            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // statusCombo
             // 
             this.statusCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
@@ -293,16 +319,6 @@ namespace backupLosGatos
             this.statusCombo.Name = "statusCombo";
             this.statusCombo.Size = new System.Drawing.Size(189, 25);
             this.statusCombo.TabIndex = 9;
-            // 
-            // dateSubmittedDateTimePicker
-            // 
-            this.dateSubmittedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ticketsBindingSource, "dateSubmitted", true));
-            this.dateSubmittedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateSubmittedDateTimePicker.Location = new System.Drawing.Point(748, 28);
-            this.dateSubmittedDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
-            this.dateSubmittedDateTimePicker.Name = "dateSubmittedDateTimePicker";
-            this.dateSubmittedDateTimePicker.Size = new System.Drawing.Size(99, 23);
-            this.dateSubmittedDateTimePicker.TabIndex = 8;
             // 
             // label2
             // 
@@ -339,6 +355,7 @@ namespace backupLosGatos
             this.unitIDText.Name = "unitIDText";
             this.unitIDText.Size = new System.Drawing.Size(185, 23);
             this.unitIDText.TabIndex = 3;
+            this.unitIDText.TextChanged += new System.EventHandler(this.unitIDText_TextChanged);
             // 
             // ticketIDText
             // 
@@ -363,14 +380,14 @@ namespace backupLosGatos
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(872, 194);
+            this.groupBox2.Size = new System.Drawing.Size(872, 200);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detailed Information";
             // 
             // additionalInformationText
             // 
-            this.additionalInformationText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "additionalInformation", true));
+            this.additionalInformationText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "dateSubmitted", true));
             this.additionalInformationText.Location = new System.Drawing.Point(148, 68);
             this.additionalInformationText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.additionalInformationText.Multiline = true;
@@ -618,35 +635,17 @@ namespace backupLosGatos
             // 
             this.equipmentTableAdapter.ClearBeforeFill = true;
             // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "Users";
-            this.usersBindingSource.DataSource = this.gROUP6DataSet;
-            // 
             // usersTableAdapter
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
             // 
-            // associateIDLabel
+            // dateText
             // 
-            associateIDLabel.AutoSize = true;
-            associateIDLabel.Location = new System.Drawing.Point(358, 112);
-            associateIDLabel.Name = "associateIDLabel";
-            associateIDLabel.Size = new System.Drawing.Size(71, 19);
-            associateIDLabel.TabIndex = 12;
-            associateIDLabel.Text = "Assign To:";
-            // 
-            // associateIDComboBox
-            // 
-            this.associateIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "associateID", true));
-            this.associateIDComboBox.DataSource = this.usersBindingSource;
-            this.associateIDComboBox.DisplayMember = "firstName";
-            this.associateIDComboBox.FormattingEnabled = true;
-            this.associateIDComboBox.Location = new System.Drawing.Point(442, 109);
-            this.associateIDComboBox.Name = "associateIDComboBox";
-            this.associateIDComboBox.Size = new System.Drawing.Size(189, 25);
-            this.associateIDComboBox.TabIndex = 13;
-            this.associateIDComboBox.ValueMember = "associateID";
+            this.dateText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "dateSubmitted", true));
+            this.dateText.Location = new System.Drawing.Point(747, 27);
+            this.dateText.Name = "dateText";
+            this.dateText.Size = new System.Drawing.Size(100, 23);
+            this.dateText.TabIndex = 7;
             // 
             // ticketDetails
             // 
@@ -671,8 +670,9 @@ namespace backupLosGatos
             this.pageOptions.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -681,7 +681,6 @@ namespace backupLosGatos
             this.ticketsBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,7 +720,6 @@ namespace backupLosGatos
         public System.Windows.Forms.TextBox additionalInformationText;
         public System.Windows.Forms.TextBox inspectorSignatureText;
         public System.Windows.Forms.TextBox welderSignatureText;
-        public System.Windows.Forms.DateTimePicker dateSubmittedDateTimePicker;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button submitButton;
@@ -736,5 +734,6 @@ namespace backupLosGatos
         private System.Windows.Forms.BindingSource usersBindingSource;
         private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.ComboBox associateIDComboBox;
+        public System.Windows.Forms.TextBox dateText;
     }
 }

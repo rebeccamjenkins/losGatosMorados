@@ -128,5 +128,41 @@ namespace backupLosGatos
             newLogin.Show();
             this.Close();
         }
+
+        private void unitIDText_TextChanged(object sender, EventArgs e)
+        {
+            equipmentCombo.Enabled = true;
+            equipmentCombo.Items.Clear();
+            equipmentCombo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            if (unitIDText.Text == "1")
+            {
+                equipmentCombo.Items.Add(1);
+                equipmentCombo.Items.Add(2);
+                equipmentCombo.Items.Add(3);
+                equipmentCombo.Items.Add(4);
+            }
+            if (unitIDText.Text == "2")
+            {
+                equipmentCombo.Items.Add(5);
+                equipmentCombo.Items.Add(6);
+                equipmentCombo.Items.Add(7);
+                equipmentCombo.Items.Add(8); ;
+            }
+            if (unitIDText.Text == "3")
+            {
+                equipmentCombo.Items.Add(9);
+                equipmentCombo.Items.Add(10);
+                equipmentCombo.Items.Add(11);
+                equipmentCombo.Items.Add(12);
+            }
+            if (unitIDText.Text == "4")
+            {
+                equipmentCombo.Items.Add(13);
+                equipmentCombo.Items.Add(14);
+                equipmentCombo.Items.Add(15);
+                equipmentCombo.Items.Add(16);
+            }
+        }
     }
 }
