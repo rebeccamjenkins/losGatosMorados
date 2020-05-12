@@ -16,15 +16,13 @@ namespace backupLosGatos
         {
             if (coordButton.Enabled == true)
             {
-                this.Close(); dashboardScreen pageDashboard = new dashboardScreen();
+                dashboardScreen pageDashboard = new dashboardScreen();
                 pageDashboard.Show();
                 this.Close();
             }
             else if (mangButton.Enabled == true)
             {
                 managerDashboard pageDashboard = new managerDashboard();
-                ticketPage.Visible = true;
-                viewKiosk.Visible = true;
                 pageDashboard.Show();
                 this.Close();
             }
@@ -32,6 +30,8 @@ namespace backupLosGatos
 
         private void logout_Click(object sender, EventArgs e)
         {
+            loginScreen newLogin = new loginScreen();
+            newLogin.Show();
             this.Close();
         }
 

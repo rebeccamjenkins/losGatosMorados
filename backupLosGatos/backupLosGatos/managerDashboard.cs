@@ -67,16 +67,12 @@ namespace backupLosGatos
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-            ticketDetails newTicket = new ticketDetails();
-            if (labelRole.Text == "manager")
-            {
-                //newTicket.updateButton.Enabled = false;
-                //newTicket.saveButton.Enabled = false;
-                newTicket.coordButton.Enabled = false;
 
-            }
-            newTicket.Show();
-            this.Hide();
+            ticketDetails newTicket = new ticketDetails();
+
+            //makes sure the right permissions are given
+            newTicket.mangButton.Enabled = true;
+            newTicket.coordButton.Enabled = false;
 
             //this makes it so it autofills the ticket number for us
             string connetionString = null;
@@ -105,10 +101,11 @@ namespace backupLosGatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Cannot open connection to database! ");
+                MessageBox.Show("Cannot open connection to database!");
             }
 
             newTicket.Show();
+            this.Hide();
         }
 
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -530,6 +527,8 @@ namespace backupLosGatos
 
         private void logout_Click(object sender, EventArgs e)
         {
+            loginScreen newLogin = new loginScreen();
+            newLogin.Show();
             this.Close();
         }
 

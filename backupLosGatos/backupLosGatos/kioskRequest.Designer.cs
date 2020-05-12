@@ -35,7 +35,6 @@
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewKiosk = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.mangButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
@@ -58,7 +57,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(458, 48);
+            this.label1.Location = new System.Drawing.Point(457, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(445, 49);
             this.label1.TabIndex = 29;
@@ -67,7 +66,7 @@
             // dashboardGrid
             // 
             this.dashboardGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dashboardGrid.Location = new System.Drawing.Point(25, 236);
+            this.dashboardGrid.Location = new System.Drawing.Point(29, 124);
             this.dashboardGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dashboardGrid.Name = "dashboardGrid";
             this.dashboardGrid.RowHeadersWidth = 51;
@@ -82,7 +81,6 @@
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
             this.ticketPage,
-            this.viewKiosk,
             this.logout});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
@@ -106,13 +104,6 @@
             this.ticketPage.Text = "Create Ticket";
             this.ticketPage.Click += new System.EventHandler(this.createTicket_Click);
             // 
-            // viewKiosk
-            // 
-            this.viewKiosk.Name = "viewKiosk";
-            this.viewKiosk.Size = new System.Drawing.Size(170, 24);
-            this.viewKiosk.Text = "View Kiosk Requests";
-            this.viewKiosk.Click += new System.EventHandler(this.viewKiosk_Click);
-            // 
             // logout
             // 
             this.logout.Name = "logout";
@@ -121,7 +112,7 @@
             // 
             // mangButton
             // 
-            this.mangButton.Location = new System.Drawing.Point(848, 157);
+            this.mangButton.Location = new System.Drawing.Point(859, 60);
             this.mangButton.Name = "mangButton";
             this.mangButton.Size = new System.Drawing.Size(55, 23);
             this.mangButton.TabIndex = 36;
@@ -131,7 +122,7 @@
             // 
             // coordButton
             // 
-            this.coordButton.Location = new System.Drawing.Point(848, 128);
+            this.coordButton.Location = new System.Drawing.Point(859, 31);
             this.coordButton.Name = "coordButton";
             this.coordButton.Size = new System.Drawing.Size(55, 23);
             this.coordButton.TabIndex = 35;
@@ -143,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 549);
+            this.ClientSize = new System.Drawing.Size(926, 423);
             this.Controls.Add(this.mangButton);
             this.Controls.Add(this.coordButton);
             this.Controls.Add(this.pageOptions);
@@ -167,7 +158,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dashboardGrid;
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem viewKiosk;
         private System.Windows.Forms.ToolStripMenuItem logout;
         public System.Windows.Forms.Button mangButton;
         public System.Windows.Forms.Button coordButton;

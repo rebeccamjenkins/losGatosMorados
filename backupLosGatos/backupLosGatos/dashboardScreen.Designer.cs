@@ -90,11 +90,12 @@ namespace backupLosGatos
             this.ticketLabel.AllowDrop = true;
             this.ticketLabel.AutoSize = true;
             this.ticketLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ticketLabel.Location = new System.Drawing.Point(121, 19);
+            this.ticketLabel.Location = new System.Drawing.Point(9, 15);
             this.ticketLabel.Name = "ticketLabel";
             this.ticketLabel.Size = new System.Drawing.Size(65, 19);
             this.ticketLabel.TabIndex = 23;
             this.ticketLabel.Text = "Ticket #:";
+            this.ticketLabel.Click += new System.EventHandler(this.ticketLabel_Click);
             // 
             // statusLabel
             // 
@@ -119,7 +120,7 @@ namespace backupLosGatos
             // queryTicket
             // 
             this.queryTicket.AllowDrop = true;
-            this.queryTicket.Location = new System.Drawing.Point(196, 13);
+            this.queryTicket.Location = new System.Drawing.Point(80, 14);
             this.queryTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.queryTicket.Multiline = true;
             this.queryTicket.Name = "queryTicket";
@@ -166,7 +167,7 @@ namespace backupLosGatos
             // title
             // 
             this.title.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(456, 46);
+            this.title.Location = new System.Drawing.Point(637, 54);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(440, 49);
             this.title.TabIndex = 14;
@@ -195,7 +196,7 @@ namespace backupLosGatos
             this.dashboardGrid.ReadOnly = true;
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
-            this.dashboardGrid.Size = new System.Drawing.Size(873, 277);
+            this.dashboardGrid.Size = new System.Drawing.Size(1054, 277);
             this.dashboardGrid.TabIndex = 13;
             this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
             // 
@@ -294,7 +295,7 @@ namespace backupLosGatos
             // Koch
             // 
             this.Koch.Image = ((System.Drawing.Image)(resources.GetObject("Koch.Image")));
-            this.Koch.Location = new System.Drawing.Point(27, 44);
+            this.Koch.Location = new System.Drawing.Point(23, 47);
             this.Koch.Margin = new System.Windows.Forms.Padding(4);
             this.Koch.Name = "Koch";
             this.Koch.Size = new System.Drawing.Size(317, 50);
@@ -312,7 +313,7 @@ namespace backupLosGatos
             this.filterPanel.Controls.Add(this.statusOption);
             this.filterPanel.Controls.Add(this.assignedLabel);
             this.filterPanel.Controls.Add(this.statusLabel);
-            this.filterPanel.Location = new System.Drawing.Point(0, 98);
+            this.filterPanel.Location = new System.Drawing.Point(23, 105);
             this.filterPanel.Margin = new System.Windows.Forms.Padding(4);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Size = new System.Drawing.Size(524, 123);
@@ -322,10 +323,10 @@ namespace backupLosGatos
             // 
             this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.Location = new System.Drawing.Point(366, 69);
+            this.refreshButton.Location = new System.Drawing.Point(348, 66);
             this.refreshButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(139, 26);
+            this.refreshButton.Size = new System.Drawing.Size(157, 26);
             this.refreshButton.TabIndex = 31;
             this.refreshButton.Text = "Reset";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -371,14 +372,14 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(923, 28);
+            this.pageOptions.Size = new System.Drawing.Size(1102, 30);
             this.pageOptions.TabIndex = 32;
             // 
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
-            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.Size = new System.Drawing.Size(77, 26);
+            this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ticketPage
@@ -407,16 +408,16 @@ namespace backupLosGatos
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.ticketLabel);
             this.panel1.Controls.Add(this.queryTicket);
-            this.panel1.Location = new System.Drawing.Point(543, 98);
+            this.panel1.Location = new System.Drawing.Point(554, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(380, 123);
+            this.panel1.Size = new System.Drawing.Size(523, 123);
             this.panel1.TabIndex = 33;
             // 
             // dashboardScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 540);
+            this.ClientSize = new System.Drawing.Size(1102, 540);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.labelRole);
