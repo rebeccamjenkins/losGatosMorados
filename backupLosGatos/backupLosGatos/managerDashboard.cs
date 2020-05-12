@@ -21,6 +21,16 @@ namespace backupLosGatos
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
+            //conn = new
+            //SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            conn.Open();
+            // 
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets", conn);
+            DataTable data = new DataTable();
+            sda.Fill(data);
+            dashboardGrid.DataSource = data;
+            conn.Close();
+
             //status dropdown
             conn.Open();
             SqlCommand cmd = new SqlCommand("SELECT DISTINCT status FROM dbo.Tickets", conn);
@@ -114,13 +124,13 @@ namespace backupLosGatos
             ticketDetails viewTicket = new ticketDetails();
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            //viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
             if (labelRole.Text == "manager")
             {
@@ -522,7 +532,9 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            dashboardGrid.Refresh();
+            technicianOption.Text = "";
+            statusOption.Text = "";
+            equipmentOption.Text = "";
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -549,6 +561,13 @@ namespace backupLosGatos
             c_id.Fill(dt);
             dashboardGrid.DataSource = dt;
             conn.Close();
+        }
+
+        private void refreshButton_Click_1(object sender, EventArgs e)
+        {
+            technicianOption.Text = "";
+            statusOption.Text = "";
+            equipmentOption.Text = "";
         }
     }
 }
