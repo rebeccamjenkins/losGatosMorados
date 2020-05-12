@@ -542,7 +542,10 @@ namespace backupLosGatos
 
         private void viewKiosk_Click(object sender, EventArgs e)
         {
+            
             kioskRequest viewKiosk = new kioskRequest();
+            viewKiosk.mangButton.Enabled = true;
+            viewKiosk.coordButton.Enabled = true;
             viewKiosk.Show();
             this.Close();
         }

@@ -30,6 +30,8 @@ namespace backupLosGatos
 
         private void logout_Click(object sender, EventArgs e)
         {
+            mangButton.Enabled = false;
+            coordButton.Enabled = false;
             loginScreen newLogin = new loginScreen();
             newLogin.Show();
             this.Close();
