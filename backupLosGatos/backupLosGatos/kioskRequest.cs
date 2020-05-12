@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace backupLosGatos
 {
@@ -23,23 +23,22 @@ namespace backupLosGatos
             else if (mangButton.Enabled == true)
             {
                 managerDashboard pageDashboard = new managerDashboard();
+                ticketPage.Visible = true;
+                viewKiosk.Visible = true;
                 pageDashboard.Show();
                 this.Close();
             }
         }
 
-        private void logout_Click(object sender, EventArgs e)
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loginScreen newLogin = new loginScreen();
-            newLogin.Show();
             this.Close();
         }
 
-        private void createTicket_Click(object sender, EventArgs e)
+        private void createTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
-            newTicket.Show();
-            this.Hide();
+            newTicket.ticketPage.Visible = false;
 
             //this makes it so it autofills the ticket number for us
             string connetionString = null;
@@ -68,7 +67,7 @@ namespace backupLosGatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Cannot open connection to database! ");
+                MessageBox.Show("Can not open connection to database! ");
             }
             if (coordButton.Enabled == true)
             {
@@ -84,17 +83,6 @@ namespace backupLosGatos
                 newTicket.Show();
                 this.Hide();
             }
-        }
-
-        private void viewKiosk_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kioskRequest_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'gROUP6DataSet.Kiosk' table. You can move, or remove it, as needed.
-            this.kioskTableAdapter.Fill(this.gROUP6DataSet.Kiosk);
 
         }
     }
