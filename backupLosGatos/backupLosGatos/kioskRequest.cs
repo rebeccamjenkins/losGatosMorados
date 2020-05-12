@@ -117,31 +117,77 @@ namespace backupLosGatos
             viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
             viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
             viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();*/
-           
+
+            //create data source and static variables
+            string connectionString = @"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true";
+            SqlConnection con = new SqlConnection(connectionString);
+            int numID = 0;
+
+            //pull number of rows from database in order to create ticketID
+            con.Open();
+            SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM Tickets", con);
+            Int32 count = (Int32)comm.ExecuteScalar();
+            con.Close();
+
+            //create strings for all variables
+            numID = count + 1;
+
+            /*
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                string injection = "INSERT into Kiosk (ticketID, unitID, equipmentID, priorityLevel, technicianName, additionalInfo, dateSubmitted) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @technicianName, @additionalInfo, @dateSubmitted)";
+
+                using (SqlCommand command = new SqlCommand(injection))
+                {
+                    command.Connection = openCon;
+                    command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
+                    command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
+                    command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
+                    command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
+                    command.Parameters.Add("@technicianName", SqlDbType.NVarChar, 50).Value = technicianName;
+                    command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
+                    command.Parameters.Add("@dateSubmitted", SqlDbType.DateTime, 30).Value = date;
+
+                    openCon.Open();
+
+                    command.ExecuteNonQuery();
+                }
+            }*/
+            
+
+
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to approve ticket?", "Ticket Approval", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                SqlConnection con = new SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
-                DateTime dateValue;
-                int numID = 0;
-
-                SqlCommand cmd = new SqlCommand("sp_insert", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@dateSubmitted", this.dashboardGrid.CurrentRow.Cells[4].Value.ToString());
-                cmd.Parameters.AddWithValue("@unitID", this.dashboardGrid.CurrentRow.Cells[1].Value.ToString());
-                cmd.Parameters.AddWithValue("@equipmentID", this.dashboardGrid.CurrentRow.Cells[2].Value.ToString());
-                cmd.Parameters.AddWithValue("@priorityLevel", this.dashboardGrid.CurrentRow.Cells[3].Value.ToString());
-                cmd.Parameters.AddWithValue("@technicianName", this.dashboardGrid.CurrentRow.Cells[6].Value.ToString());
-                cmd.Parameters.AddWithValue("@additionalInformation", this.dashboardGrid.CurrentRow.Cells[7].Value.ToString());
-
-                con.Open();
-                int i = cmd.ExecuteNonQuery();
-                con.Close();
-
-                if (i != 0)
+                using (SqlConnection openCon = new SqlConnection(connectionString))
                 {
-                    MessageBox.Show("Ticket Approved and added to Database.");
+                    DateTime dateValue;
+                    string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, additionalInformation, employeeName) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @additionalInformation, @technicianName)";
+
+
+                    using (SqlCommand cmd = new SqlCommand(injection))
+                    {
+                        cmd.Connection = openCon;
+                        
+                        cmd.Parameters.AddWithValue("@ticketID", numID);
+                        cmd.Parameters.AddWithValue("@unitID", this.dashboardGrid.CurrentRow.Cells[1].Value.ToString());
+                        cmd.Parameters.AddWithValue("@equipmentID", this.dashboardGrid.CurrentRow.Cells[2].Value.ToString());
+                        cmd.Parameters.AddWithValue("@priorityLevel", this.dashboardGrid.CurrentRow.Cells[3].Value.ToString());
+                        cmd.Parameters.AddWithValue("@dateSubmitted", this.dashboardGrid.CurrentRow.Cells[4].Value.ToString());
+                        cmd.Parameters.AddWithValue("@additionalInformation", this.dashboardGrid.CurrentRow.Cells[6].Value.ToString());
+                        cmd.Parameters.AddWithValue("@technicianName", this.dashboardGrid.CurrentRow.Cells[5].Value.ToString());
+
+                        openCon.Open();
+                        int i = cmd.ExecuteNonQuery();
+
+
+                        if (i != 0)
+                        {
+                            MessageBox.Show("Ticket Approved and added to Database.");
+
+                        }
+                    }
 
                 }
             }
