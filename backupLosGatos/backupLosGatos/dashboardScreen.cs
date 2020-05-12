@@ -497,7 +497,8 @@ namespace backupLosGatos
 
         private void logout_Click(object sender, EventArgs e)
         {
-            conn.Close();
+            loginScreen newLogin = new loginScreen();
+            newLogin.Show();
             this.Close();
         }
 
@@ -531,8 +532,8 @@ namespace backupLosGatos
                 newTicket.coordButton.Enabled = false;
 
             }
-            newTicket.Show();
-            this.Hide();
+            newTicket.coordButton.Enabled = true;
+            newTicket.mangButton.Enabled = false;
 
             //this makes it so it autofills the ticket number for us
             string connetionString = null;
@@ -565,6 +566,12 @@ namespace backupLosGatos
             }
 
             newTicket.Show();
+            this.Close();
+        }
+
+        private void ticketLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

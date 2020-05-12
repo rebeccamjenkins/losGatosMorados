@@ -105,7 +105,7 @@ namespace backupLosGatos
 
         }
 
-    private void updateButton_Click(object sender, EventArgs e)
+        private void updateButton_Click(object sender, EventArgs e)
         {
 
         }
@@ -113,7 +113,34 @@ namespace backupLosGatos
         private void viewKioskRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             kioskRequest openRequests = new kioskRequest();
-            openRequests.Show();
+
+            if (coordButton.Enabled == true || mangButton.Enabled == true)
+            {
+                if (coordButton.Enabled == true)
+                {
+                    openRequests.coordButton.Enabled = true;
+                    openRequests.mangButton.Enabled = false;
+                }
+                else
+                {
+                    openRequests.coordButton.Enabled = false;
+                    openRequests.mangButton.Enabled = true;
+                }
+                openRequests.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Sorry, you do not have the needed permissions to access this page.");
+            }
+
+            
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loginScreen newLogin = new loginScreen();
+            newLogin.Show();
             this.Close();
         }
     }

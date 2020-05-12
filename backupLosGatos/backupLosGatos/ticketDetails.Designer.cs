@@ -122,7 +122,7 @@ namespace backupLosGatos
             // inspectorSignatureLabel
             // 
             inspectorSignatureLabel.AutoSize = true;
-            inspectorSignatureLabel.Location = new System.Drawing.Point(451, 34);
+            inspectorSignatureLabel.Location = new System.Drawing.Point(546, 34);
             inspectorSignatureLabel.Name = "inspectorSignatureLabel";
             inspectorSignatureLabel.Size = new System.Drawing.Size(76, 19);
             inspectorSignatureLabel.TabIndex = 2;
@@ -148,7 +148,7 @@ namespace backupLosGatos
             // dateSubmittedLabel
             // 
             dateSubmittedLabel.AutoSize = true;
-            dateSubmittedLabel.Location = new System.Drawing.Point(415, 32);
+            dateSubmittedLabel.Location = new System.Drawing.Point(561, 35);
             dateSubmittedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             dateSubmittedLabel.Name = "dateSubmittedLabel";
             dateSubmittedLabel.Size = new System.Drawing.Size(84, 19);
@@ -158,7 +158,7 @@ namespace backupLosGatos
             // statusLabel
             // 
             statusLabel.AutoSize = true;
-            statusLabel.Location = new System.Drawing.Point(415, 73);
+            statusLabel.Location = new System.Drawing.Point(561, 76);
             statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new System.Drawing.Size(54, 19);
@@ -168,7 +168,7 @@ namespace backupLosGatos
             // priorityLabel
             // 
             priorityLabel.AutoSize = true;
-            priorityLabel.Location = new System.Drawing.Point(415, 112);
+            priorityLabel.Location = new System.Drawing.Point(561, 115);
             priorityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             priorityLabel.Name = "priorityLabel";
             priorityLabel.Size = new System.Drawing.Size(57, 19);
@@ -227,6 +227,7 @@ namespace backupLosGatos
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -256,7 +257,7 @@ namespace backupLosGatos
             // 
             this.priorityCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priorityLevel", true));
             this.priorityCombo.FormattingEnabled = true;
-            this.priorityCombo.Location = new System.Drawing.Point(512, 103);
+            this.priorityCombo.Location = new System.Drawing.Point(658, 106);
             this.priorityCombo.Margin = new System.Windows.Forms.Padding(4);
             this.priorityCombo.Name = "priorityCombo";
             this.priorityCombo.Size = new System.Drawing.Size(189, 25);
@@ -276,7 +277,7 @@ namespace backupLosGatos
             // 
             this.statusCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
             this.statusCombo.FormattingEnabled = true;
-            this.statusCombo.Location = new System.Drawing.Point(512, 64);
+            this.statusCombo.Location = new System.Drawing.Point(658, 67);
             this.statusCombo.Margin = new System.Windows.Forms.Padding(4);
             this.statusCombo.Name = "statusCombo";
             this.statusCombo.Size = new System.Drawing.Size(189, 25);
@@ -285,10 +286,11 @@ namespace backupLosGatos
             // dateSubmittedDateTimePicker
             // 
             this.dateSubmittedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.ticketsBindingSource, "dateSubmitted", true));
-            this.dateSubmittedDateTimePicker.Location = new System.Drawing.Point(512, 26);
+            this.dateSubmittedDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateSubmittedDateTimePicker.Location = new System.Drawing.Point(658, 29);
             this.dateSubmittedDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateSubmittedDateTimePicker.Name = "dateSubmittedDateTimePicker";
-            this.dateSubmittedDateTimePicker.Size = new System.Drawing.Size(265, 23);
+            this.dateSubmittedDateTimePicker.Size = new System.Drawing.Size(189, 23);
             this.dateSubmittedDateTimePicker.TabIndex = 8;
             // 
             // label2
@@ -307,7 +309,7 @@ namespace backupLosGatos
             this.equipmentCombo.Location = new System.Drawing.Point(148, 110);
             this.equipmentCombo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.equipmentCombo.Name = "equipmentCombo";
-            this.equipmentCombo.Size = new System.Drawing.Size(185, 23);
+            this.equipmentCombo.Size = new System.Drawing.Size(185, 25);
             this.equipmentCombo.TabIndex = 5;
             // 
             // unitIDText
@@ -354,16 +356,16 @@ namespace backupLosGatos
             this.additionalInformationText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.additionalInformationText.Multiline = true;
             this.additionalInformationText.Name = "additionalInformationText";
-            this.additionalInformationText.Size = new System.Drawing.Size(604, 112);
+            this.additionalInformationText.Size = new System.Drawing.Size(699, 112);
             this.additionalInformationText.TabIndex = 5;
             // 
             // inspectorSignatureText
             // 
             this.inspectorSignatureText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "inspectorSignature", true));
-            this.inspectorSignatureText.Location = new System.Drawing.Point(567, 32);
+            this.inspectorSignatureText.Location = new System.Drawing.Point(658, 32);
             this.inspectorSignatureText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inspectorSignatureText.Name = "inspectorSignatureText";
-            this.inspectorSignatureText.Size = new System.Drawing.Size(185, 23);
+            this.inspectorSignatureText.Size = new System.Drawing.Size(189, 23);
             this.inspectorSignatureText.TabIndex = 3;
             // 
             // welderSignatureText
@@ -419,6 +421,7 @@ namespace backupLosGatos
             this.ticketsBindingNavigator.Size = new System.Drawing.Size(923, 27);
             this.ticketsBindingNavigator.TabIndex = 14;
             this.ticketsBindingNavigator.Text = "bindingNavigator1";
+            this.ticketsBindingNavigator.Visible = false;
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -529,7 +532,7 @@ namespace backupLosGatos
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(700, 4);
+            this.saveButton.Location = new System.Drawing.Point(679, 4);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(168, 34);
@@ -540,7 +543,7 @@ namespace backupLosGatos
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(524, 4);
+            this.updateButton.Location = new System.Drawing.Point(503, 4);
             this.updateButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(168, 34);
@@ -563,7 +566,7 @@ namespace backupLosGatos
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.Location = new System.Drawing.Point(348, 4);
+            this.submitButton.Location = new System.Drawing.Point(327, 4);
             this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(168, 34);
