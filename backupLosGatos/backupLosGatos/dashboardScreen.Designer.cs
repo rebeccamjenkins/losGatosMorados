@@ -61,9 +61,9 @@ namespace backupLosGatos
             this.ticketsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             this.viewKiosk = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -391,13 +391,6 @@ namespace backupLosGatos
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.dashboardPage.Click += new System.EventHandler(this.dashboardScreen_Load);
             // 
-            // ticketPage
-            // 
-            this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(120, 24);
-            this.ticketPage.Text = "Create Ticket";
-            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
-            // 
             // viewKiosk
             // 
             this.viewKiosk.Name = "viewKiosk";
@@ -407,9 +400,16 @@ namespace backupLosGatos
             // 
             // logout
             // 
-            this.logout.Name = "logoutToolStripMenuItem";
+            this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(74, 24);
             this.logout.Text = "Logout";
+            // 
+            // ticketPage
+            // 
+            this.ticketPage.Name = "ticketPage";
+            this.ticketPage.Size = new System.Drawing.Size(120, 24);
+            this.ticketPage.Text = "Create Ticket";
+            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
             // dashboardScreen
             // 
@@ -463,7 +463,6 @@ namespace backupLosGatos
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
         private System.Windows.Forms.ToolStripMenuItem viewKiosk;
         private System.Windows.Forms.ToolStripMenuItem logout;
-        private System.Windows.Forms.ToolStripMenuItem ticketPage;
         private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
@@ -473,5 +472,6 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn inspectorSignatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalInformationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn approvalStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem ticketPage;
     }
 }
