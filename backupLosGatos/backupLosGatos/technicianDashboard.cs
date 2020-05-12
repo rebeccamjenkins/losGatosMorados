@@ -48,5 +48,11 @@ namespace backupLosGatos
         {
             this.Close();
         }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            statusOption.Text = "";
+            technicianOption.Text = "";
+        }
     }
 }

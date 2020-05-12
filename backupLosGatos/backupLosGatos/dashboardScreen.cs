@@ -12,7 +12,7 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
-        SqlConnection conn = null;
+        public SqlConnection conn = null;
         SqlDataReader reader = null;
 
         private void dashboardScreen_Load(object sender, EventArgs e)
@@ -490,11 +490,14 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            dashboardGrid.Refresh();
+            equipmentOption.Text = "";
+            statusOption.Text = "";
+            technicianOption.Text = "";
         }
 
         private void logout_Click(object sender, EventArgs e)
         {
+            conn.Close();
             this.Close();
         }
 
@@ -502,6 +505,7 @@ namespace backupLosGatos
         {
             kioskRequest viewKiosk = new kioskRequest();
             viewKiosk.Show();
+            conn.Close();
             this.Close();
         }
 
