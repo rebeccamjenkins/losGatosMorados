@@ -42,6 +42,9 @@ namespace backupLosGatos
                         userType.CommandText = "SELECT userType FROM Users WHERE username = '" + usernameText.Text + "'";
 
                         OleDbDataReader userTypeReturn = userType.ExecuteReader();
+
+
+
                         while (userTypeReturn.Read())
                         {
                             int typeReturn = userTypeReturn.GetInt32(0);
@@ -63,6 +66,7 @@ namespace backupLosGatos
                             else if (typeReturn == 3)
                             {
                                 technicianDashboard dashboard = new technicianDashboard();
+                                dashboard.techName.Text = usernameText.Text;
                                 this.Hide();
                                 dashboard.Show();
                             }

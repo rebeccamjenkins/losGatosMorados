@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace backupLosGatos
 {
@@ -23,22 +23,23 @@ namespace backupLosGatos
             else if (mangButton.Enabled == true)
             {
                 managerDashboard pageDashboard = new managerDashboard();
-                ticketPage.Visible = true;
-                viewKiosk.Visible = true;
                 pageDashboard.Show();
                 this.Close();
             }
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
+            loginScreen newLogin = new loginScreen();
+            newLogin.Show();
             this.Close();
         }
 
-        private void createTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        private void createTicket_Click(object sender, EventArgs e)
         {
             ticketDetails newTicket = new ticketDetails();
-            newTicket.ticketPage.Visible = false;
+            newTicket.Show();
+            this.Hide();
 
             //this makes it so it autofills the ticket number for us
             string connetionString = null;
@@ -67,7 +68,7 @@ namespace backupLosGatos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can not open connection to database! ");
+                MessageBox.Show("Cannot open connection to database! ");
             }
             if (coordButton.Enabled == true)
             {
@@ -83,7 +84,16 @@ namespace backupLosGatos
                 newTicket.Show();
                 this.Hide();
             }
+        }
 
+        private void viewKiosk_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kioskRequest_Load(object sender, EventArgs e)
+        {
+            this.kioskTableAdapter.Fill(this.gROUP6DataSet.Kiosk);
         }
     }
 }
