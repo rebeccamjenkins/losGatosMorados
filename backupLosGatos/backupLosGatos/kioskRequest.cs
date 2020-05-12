@@ -193,7 +193,17 @@ namespace backupLosGatos
             }
             else if (dialogResult == DialogResult.No)
             {
-               
+                DialogResult dialogResult = MessageBox.Show("Are you sure? Ticket request will be deleted.", "Deny Ticket?", MessageBoxButtons.YesNo);
+                if(dialogResult == DialogResult.Yes)
+                {
+
+                }
+                else
+                {
+
+                }
+
+
             }
 
 
