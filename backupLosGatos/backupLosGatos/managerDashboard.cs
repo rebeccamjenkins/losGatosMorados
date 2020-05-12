@@ -81,6 +81,9 @@ namespace backupLosGatos
             newTicket.mangButton.Enabled = true;
             newTicket.coordButton.Enabled = false;
 
+            //disable the 'create ticket' button
+            newTicket.ticketPage.Visible = false;
+
             //this makes it so it autofills the ticket number for us
             string connetionString = null;
             SqlConnection connection;

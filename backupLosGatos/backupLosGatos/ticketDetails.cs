@@ -17,6 +17,74 @@ namespace backupLosGatos
             //this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
             //this.equipmentTableAdapter.Fill(this.gROUP6DataSet.Equipment);
             //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+            SqlConnection conn = null;
+            SqlDataReader reader = null;
+            conn = new
+            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            conn.Open();
+
+            //SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets", conn);
+            //DataTable data = new DataTable();
+            //sda.Fill(data);
+            //dashboardGrid.DataSource = data;
+            //conn.Close();
+
+            //status dropdown
+            //conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT DISTINCT status FROM dbo.Tickets", conn);
+            reader = cmd.ExecuteReader();
+            DataSet dsstatus = new DataSet();
+            DataTable dtstatus = new DataTable("Table1");
+            dsstatus.Tables.Add(dtstatus);
+            dsstatus.Load(reader, LoadOption.PreserveChanges, dsstatus.Tables[0]);
+
+            statusCombo.ValueMember = "status";
+            statusCombo.DisplayMember = "status";
+            statusCombo.DataSource = dsstatus.Tables[0];
+            statusCombo.SelectedIndex = 0;
+            statusCombo.SelectedValue = 0;
+
+            //assignee dropdown
+            SqlCommand a_cmd = new SqlCommand("SELECT DISTINCT username FROM Users", conn);
+            reader = a_cmd.ExecuteReader();
+            DataSet dsname = new DataSet();
+            DataTable dtname = new DataTable("Table 2");
+            dsname.Tables.Add(dtname);
+            dsname.Load(reader, LoadOption.PreserveChanges, dsname.Tables[0]);
+
+            associateIDComboBox.ValueMember = "username";
+            associateIDComboBox.DisplayMember = "username";
+            associateIDComboBox.DataSource = dsname.Tables[0];
+            associateIDComboBox.SelectedIndex = 0;
+            associateIDComboBox.SelectedValue = 0;
+
+            //equipmentdropdown
+            //SqlCommand e_cmd = new SqlCommand("SELECT DISTINCT equipmentDescription FROM Equipment", conn);
+            //reader = e_cmd.ExecuteReader();
+            //DataSet dsequip = new DataSet();
+            //DataTable dtequip = new DataTable("Table 3");
+            //dsequip.Tables.Add(dtequip);
+            //dsequip.Load(reader, LoadOption.PreserveChanges, dsequip.Tables[0]);
+
+            //equipmentCombo.ValueMember = "equipmentDescription";
+            //equipmentCombo.DisplayMember = "equipmentDescription";
+            //equipmentCombo.DataSource = dsequip.Tables[0];
+            //equipmentCombo.SelectedIndex = 0;
+            //equipmentCombo.SelectedValue = 0;
+
+            //priority dropdown
+            SqlCommand p_cmd = new SqlCommand("SELECT DISTINCT priorityLevel FROM Tickets", conn);
+            reader = p_cmd.ExecuteReader();
+            DataSet dsprior = new DataSet();
+            DataTable dtprior = new DataTable("Table 4");
+            dsprior.Tables.Add(dtprior);
+            dsprior.Load(reader, LoadOption.PreserveChanges, dsprior.Tables[0]);
+
+            priorityCombo.ValueMember = "priorityLevel";
+            priorityCombo.DisplayMember = "priorityLevel";
+            priorityCombo.DataSource = dsprior.Tables[0];
+            priorityCombo.SelectedIndex = 0;
+            priorityCombo.SelectedValue = 0;
         }
 
         private void ticketsBindingNavigatorSaveItem_Click(object sender, EventArgs e)

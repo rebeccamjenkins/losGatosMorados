@@ -48,11 +48,12 @@ namespace backupLosGatos
             this.viewKioskRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateText = new System.Windows.Forms.TextBox();
+            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.associateIDComboBox = new System.Windows.Forms.ComboBox();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.priorityCombo = new System.Windows.Forms.ComboBox();
-            this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusCombo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.equipmentCombo = new System.Windows.Forms.ComboBox();
@@ -87,7 +88,6 @@ namespace backupLosGatos
             this.mangButton = new System.Windows.Forms.Button();
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
-            this.dateText = new System.Windows.Forms.TextBox();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -99,9 +99,9 @@ namespace backupLosGatos
             associateIDLabel = new System.Windows.Forms.Label();
             this.pageOptions.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingNavigator)).BeginInit();
@@ -273,6 +273,24 @@ namespace backupLosGatos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ticket Information";
             // 
+            // dateText
+            // 
+            this.dateText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "dateSubmitted", true));
+            this.dateText.Location = new System.Drawing.Point(747, 27);
+            this.dateText.Name = "dateText";
+            this.dateText.Size = new System.Drawing.Size(100, 23);
+            this.dateText.TabIndex = 7;
+            // 
+            // ticketsBindingSource
+            // 
+            this.ticketsBindingSource.DataMember = "Tickets";
+            this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
+            // 
+            // gROUP6DataSet
+            // 
+            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
+            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // associateIDComboBox
             // 
             this.associateIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "associateID", true));
@@ -290,11 +308,6 @@ namespace backupLosGatos
             this.usersBindingSource.DataMember = "Users";
             this.usersBindingSource.DataSource = this.gROUP6DataSet;
             // 
-            // gROUP6DataSet
-            // 
-            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
-            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // priorityCombo
             // 
             this.priorityCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priorityLevel", true));
@@ -304,11 +317,6 @@ namespace backupLosGatos
             this.priorityCombo.Name = "priorityCombo";
             this.priorityCombo.Size = new System.Drawing.Size(189, 25);
             this.priorityCombo.TabIndex = 11;
-            // 
-            // ticketsBindingSource
-            // 
-            this.ticketsBindingSource.DataMember = "Tickets";
-            this.ticketsBindingSource.DataSource = this.gROUP6DataSet;
             // 
             // statusCombo
             // 
@@ -639,14 +647,6 @@ namespace backupLosGatos
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
             // 
-            // dateText
-            // 
-            this.dateText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "dateSubmitted", true));
-            this.dateText.Location = new System.Drawing.Point(747, 27);
-            this.dateText.Name = "dateText";
-            this.dateText.Size = new System.Drawing.Size(100, 23);
-            this.dateText.TabIndex = 7;
-            // 
             // ticketDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -670,9 +670,9 @@ namespace backupLosGatos
             this.pageOptions.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -691,7 +691,6 @@ namespace backupLosGatos
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip pageOptions;
         private System.Windows.Forms.ToolStripMenuItem dashboardPage;
-        private System.Windows.Forms.ToolStripMenuItem ticketPage;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private backupLosGatos.GROUP6DataSet gROUP6DataSet;
@@ -735,5 +734,6 @@ namespace backupLosGatos
         private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
         private System.Windows.Forms.ComboBox associateIDComboBox;
         public System.Windows.Forms.TextBox dateText;
+        public System.Windows.Forms.ToolStripMenuItem ticketPage;
     }
 }
