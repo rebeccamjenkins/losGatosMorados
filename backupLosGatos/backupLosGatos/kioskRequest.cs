@@ -17,18 +17,10 @@ namespace backupLosGatos
 
         private void dashboardPage_Click(object sender, EventArgs e)
         {
-            if (coordButton.Enabled == true)
-            {
-                dashboardScreen pageDashboard = new dashboardScreen();
-                pageDashboard.Show();
-                this.Close();
-            }
-            else if (mangButton.Enabled == true)
-            {
                 managerDashboard pageDashboard = new managerDashboard();
                 pageDashboard.Show();
                 this.Close();
-            }
+      
         }
 
         private void logout_Click(object sender, EventArgs e)

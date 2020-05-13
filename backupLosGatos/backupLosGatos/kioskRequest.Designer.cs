@@ -44,7 +44,6 @@
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.mangButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
@@ -59,10 +58,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(29, 46);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(22, 37);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(317, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(238, 41);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
@@ -70,9 +68,10 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(457, 47);
+            this.label1.Location = new System.Drawing.Point(343, 38);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(445, 49);
+            this.label1.Size = new System.Drawing.Size(334, 40);
             this.label1.TabIndex = 29;
             this.label1.Text = "Weld Progress Tracking System";
             // 
@@ -89,12 +88,12 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
             this.dashboardGrid.DataSource = this.kioskBindingSource;
-            this.dashboardGrid.Location = new System.Drawing.Point(29, 124);
-            this.dashboardGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dashboardGrid.Location = new System.Drawing.Point(22, 101);
+            this.dashboardGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dashboardGrid.Name = "dashboardGrid";
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
-            this.dashboardGrid.Size = new System.Drawing.Size(1091, 348);
+            this.dashboardGrid.Size = new System.Drawing.Size(818, 283);
             this.dashboardGrid.TabIndex = 28;
             this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellDoubleClick);
             // 
@@ -174,38 +173,30 @@
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(1158, 28);
+            this.pageOptions.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.pageOptions.Size = new System.Drawing.Size(868, 25);
             this.pageOptions.TabIndex = 32;
             // 
             // dashboardPage
             // 
-            this.dashboardPage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.refreshToolStripMenuItem});
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(77, 24);
+            this.dashboardPage.Size = new System.Drawing.Size(63, 21);
             this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
             // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            // 
             // logout
             // 
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(74, 24);
+            this.logout.Size = new System.Drawing.Size(62, 21);
             this.logout.Text = "Logout";
             // 
             // mangButton
             // 
-            this.mangButton.Location = new System.Drawing.Point(859, 60);
-            this.mangButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mangButton.Location = new System.Drawing.Point(644, 49);
+            this.mangButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mangButton.Name = "mangButton";
-            this.mangButton.Size = new System.Drawing.Size(55, 23);
+            this.mangButton.Size = new System.Drawing.Size(41, 19);
             this.mangButton.TabIndex = 36;
             this.mangButton.Text = "mang";
             this.mangButton.UseVisualStyleBackColor = true;
@@ -213,10 +204,10 @@
             // 
             // coordButton
             // 
-            this.coordButton.Location = new System.Drawing.Point(859, 31);
-            this.coordButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.coordButton.Location = new System.Drawing.Point(644, 25);
+            this.coordButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.coordButton.Name = "coordButton";
-            this.coordButton.Size = new System.Drawing.Size(55, 23);
+            this.coordButton.Size = new System.Drawing.Size(41, 19);
             this.coordButton.TabIndex = 35;
             this.coordButton.Text = "coord";
             this.coordButton.UseVisualStyleBackColor = true;
@@ -228,16 +219,16 @@
             // 
             // kioskRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 687);
+            this.ClientSize = new System.Drawing.Size(868, 558);
             this.Controls.Add(this.mangButton);
             this.Controls.Add(this.coordButton);
             this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboardGrid);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "kioskRequest";
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Kiosk Requests";
             this.Load += new System.EventHandler(this.kioskRequest_Load);
@@ -279,6 +270,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }
