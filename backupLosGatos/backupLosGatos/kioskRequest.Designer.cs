@@ -44,11 +44,11 @@
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.mangButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
             this.kioskTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.KioskTableAdapter();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).BeginInit();
@@ -60,7 +60,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(29, 46);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -170,7 +170,6 @@
             this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardPage,
-            this.ticketPage,
             this.logout});
             this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
@@ -181,18 +180,13 @@
             // 
             // dashboardPage
             // 
+            this.dashboardPage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem});
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
-            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.Size = new System.Drawing.Size(77, 24);
+            this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
-            // 
-            // ticketPage
-            // 
-            this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(120, 24);
-            this.ticketPage.Text = "Create Ticket";
-            this.ticketPage.Click += new System.EventHandler(this.createTicket_Click);
             // 
             // logout
             // 
@@ -225,6 +219,12 @@
             // kioskTableAdapter
             // 
             this.kioskTableAdapter.ClearBeforeFill = true;
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.refreshToolStripMenuItem.Text = "Refresh";
             // 
             // kioskRequest
             // 
@@ -260,7 +260,6 @@
         private System.Windows.Forms.ToolStripMenuItem logout;
         public System.Windows.Forms.Button mangButton;
         public System.Windows.Forms.Button coordButton;
-        public System.Windows.Forms.ToolStripMenuItem ticketPage;
         public System.Windows.Forms.MenuStrip pageOptions;
         private System.Windows.Forms.DataGridViewTextBoxColumn ticketIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitIDDataGridViewTextBoxColumn;
@@ -279,5 +278,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

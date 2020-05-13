@@ -464,9 +464,9 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            dashboardScreen refresh = new dashboardScreen();
-            refresh.Show();
-            this.Close();
+            statusOption.Text = "";
+            technicianOption.Text = "";
+            equipmentOption.Text = "";
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -524,13 +524,6 @@ namespace backupLosGatos
 
             viewTicket.Show();
             this.Hide();
-        }
-
-        private void refreshButton_Click_1(object sender, EventArgs e)
-        {
-            statusOption.Text = "";
-            technicianOption.Text = "";
-            equipmentOption.Text = "";
         }
     }
 }
