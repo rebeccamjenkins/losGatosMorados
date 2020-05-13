@@ -33,15 +33,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
-            this.pageOptions = new System.Windows.Forms.MenuStrip();
-            this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
-            this.logout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mangButton = new System.Windows.Forms.Button();
-            this.coordButton = new System.Windows.Forms.Button();
-            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
-            this.kioskBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kioskTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.KioskTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,18 +40,27 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kioskBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
+            this.pageOptions = new System.Windows.Forms.MenuStrip();
+            this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.logout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mangButton = new System.Windows.Forms.Button();
+            this.coordButton = new System.Windows.Forms.Button();
+            this.kioskTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.KioskTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
-            this.pageOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
+            this.pageOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(29, 46);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,75 +96,7 @@
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(873, 277);
             this.dashboardGrid.TabIndex = 28;
-            // 
-            // pageOptions
-            // 
-            this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardPage,
-            this.ticketPage,
-            this.logout});
-            this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.pageOptions.Location = new System.Drawing.Point(0, 0);
-            this.pageOptions.Name = "pageOptions";
-            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(926, 28);
-            this.pageOptions.TabIndex = 32;
-            // 
-            // dashboardPage
-            // 
-            this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
-            this.dashboardPage.Text = "Dashboard";
-            this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
-            // 
-            // ticketPage
-            // 
-            this.ticketPage.Name = "ticketPage";
-            this.ticketPage.Size = new System.Drawing.Size(120, 24);
-            this.ticketPage.Text = "Create Ticket";
-            // 
-            // logout
-            // 
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(74, 24);
-            this.logout.Text = "Logout";
-            // 
-            // mangButton
-            // 
-            this.mangButton.Location = new System.Drawing.Point(859, 60);
-            this.mangButton.Name = "mangButton";
-            this.mangButton.Size = new System.Drawing.Size(55, 23);
-            this.mangButton.TabIndex = 36;
-            this.mangButton.Text = "mang";
-            this.mangButton.UseVisualStyleBackColor = true;
-            this.mangButton.Visible = false;
-            // 
-            // coordButton
-            // 
-            this.coordButton.Location = new System.Drawing.Point(859, 31);
-            this.coordButton.Name = "coordButton";
-            this.coordButton.Size = new System.Drawing.Size(55, 23);
-            this.coordButton.TabIndex = 35;
-            this.coordButton.Text = "coord";
-            this.coordButton.UseVisualStyleBackColor = true;
-            this.coordButton.Visible = false;
-            // 
-            // gROUP6DataSet
-            // 
-            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
-            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // kioskBindingSource
-            // 
-            this.kioskBindingSource.DataMember = "Kiosk";
-            this.kioskBindingSource.DataSource = this.gROUP6DataSet;
-            // 
-            // kioskTableAdapter
-            // 
-            this.kioskTableAdapter.ClearBeforeFill = true;
+            this.dashboardGrid.DoubleClick += new System.EventHandler(this.dashboardGrid_DoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -222,25 +154,98 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 125;
             // 
+            // kioskBindingSource
+            // 
+            this.kioskBindingSource.DataMember = "Kiosk";
+            this.kioskBindingSource.DataSource = this.gROUP6DataSet;
+            // 
+            // gROUP6DataSet
+            // 
+            this.gROUP6DataSet.DataSetName = "GROUP6DataSet";
+            this.gROUP6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pageOptions
+            // 
+            this.pageOptions.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageOptions.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.pageOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dashboardPage,
+            this.ticketPage,
+            this.logout});
+            this.pageOptions.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.pageOptions.Location = new System.Drawing.Point(0, 0);
+            this.pageOptions.Name = "pageOptions";
+            this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.pageOptions.Size = new System.Drawing.Size(925, 28);
+            this.pageOptions.TabIndex = 32;
+            // 
+            // dashboardPage
+            // 
+            this.dashboardPage.Name = "dashboardPage";
+            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
+            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
+            // 
+            // ticketPage
+            // 
+            this.ticketPage.Name = "ticketPage";
+            this.ticketPage.Size = new System.Drawing.Size(120, 24);
+            this.ticketPage.Text = "Create Ticket";
+            this.ticketPage.Click += new System.EventHandler(this.createTicket_Click);
+            // 
+            // logout
+            // 
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(74, 24);
+            this.logout.Text = "Logout";
+            // 
+            // mangButton
+            // 
+            this.mangButton.Location = new System.Drawing.Point(859, 60);
+            this.mangButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mangButton.Name = "mangButton";
+            this.mangButton.Size = new System.Drawing.Size(55, 23);
+            this.mangButton.TabIndex = 36;
+            this.mangButton.Text = "mang";
+            this.mangButton.UseVisualStyleBackColor = true;
+            this.mangButton.Visible = false;
+            // 
+            // coordButton
+            // 
+            this.coordButton.Location = new System.Drawing.Point(859, 31);
+            this.coordButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.coordButton.Name = "coordButton";
+            this.coordButton.Size = new System.Drawing.Size(55, 23);
+            this.coordButton.TabIndex = 35;
+            this.coordButton.Text = "coord";
+            this.coordButton.UseVisualStyleBackColor = true;
+            this.coordButton.Visible = false;
+            // 
+            // kioskTableAdapter
+            // 
+            this.kioskTableAdapter.ClearBeforeFill = true;
+            // 
             // kioskRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 423);
+            this.ClientSize = new System.Drawing.Size(925, 423);
             this.Controls.Add(this.mangButton);
             this.Controls.Add(this.coordButton);
             this.Controls.Add(this.pageOptions);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dashboardGrid);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "kioskRequest";
             this.Text = "kioskRequest";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
             this.pageOptions.ResumeLayout(false);
             this.pageOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
