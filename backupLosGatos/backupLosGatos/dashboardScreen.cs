@@ -102,9 +102,23 @@ namespace backupLosGatos
   
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            equipmentOption.Text = "";
-            statusOption.Text = "";
-            technicianOption.Text = "";
+            equipmentOption.Text = null;
+            statusOption.Text = null;
+            technicianOption.Text = null;
+
+            conn = new
+            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+
+            conn.Open();
+            SqlCommand getData = new SqlCommand("SELECT * FROM dbo.Tickets", conn);
+            reader = getData.ExecuteReader();
+
+            DataSet data = new DataSet();
+            DataTable dtname2 = new DataTable("Table0");
+            data.Tables.Add(dtname2);
+            data.Load(reader, LoadOption.PreserveChanges, data.Tables[0]);
+            this.ticketsBindingSource.DataSource = data.Tables[0];
+            dashboardGrid.DataSource = data.Tables[0];
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -221,22 +235,15 @@ namespace backupLosGatos
 
         private void equipmentOption_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
-
-
-
             string test;
             string test2;
 
-
             if (equipmentOption.SelectedValue == null)
             {
-
             }
 
             else
             {
-
                 if (technicianOption.SelectedValue == null && statusOption.SelectedValue == null)
                 {
                     SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE equipmentID = @equipmentID", conn);
@@ -254,12 +261,9 @@ namespace backupLosGatos
 
                     dashboardGrid.DataSource = ds.Tables[0];
 
-
                 }
                 else if (technicianOption.SelectedValue != null && statusOption.SelectedValue == null)
                 {
-
-
                     SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@firstName";
@@ -267,7 +271,6 @@ namespace backupLosGatos
 
                     cmd.Parameters.Add(param);
                     test2 = (string)cmd.ExecuteScalar();
-
 
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND equipmentID = @equipmentID", conn);
                     SqlParameter id_param = new SqlParameter();
@@ -287,13 +290,9 @@ namespace backupLosGatos
 
                     dashboardGrid.DataSource = ds.Tables[0];
 
-
                 }
-
-
                 else if (technicianOption.SelectedValue == null && statusOption.SelectedValue != null)
                 {
-
                     SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status and equipmentID = @equipmentID", conn);
                     SqlParameter param = new SqlParameter();
                     SqlParameter param2 = new SqlParameter();
@@ -304,11 +303,8 @@ namespace backupLosGatos
                     param.Value = statusOption.SelectedValue.ToString();
                     param2.Value = equipmentOption.SelectedValue.ToString();
 
-
                     cmd.Parameters.Add(param);
                     cmd.Parameters.Add(param2);
-
-
 
                     reader = cmd.ExecuteReader();
 
@@ -319,13 +315,9 @@ namespace backupLosGatos
 
                     dashboardGrid.DataSource = ds.Tables[0];
 
-
                 }
-
-
                 else if (technicianOption.SelectedValue != null && statusOption.SelectedValue != null)
                 {
-
                     SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@firstName";
@@ -343,12 +335,9 @@ namespace backupLosGatos
                     param2.ParameterName = "@equipmentID";
                     param3.ParameterName = "@status";
 
-
                     param2.Value = equipmentOption.SelectedValue.ToString();
                     id_param.Value = test2;
                     param3.Value = statusOption.SelectedValue.ToString();
-
-
 
                     id_cmd.Parameters.Add(id_param);
                     id_cmd.Parameters.Add(param2);
@@ -362,33 +351,20 @@ namespace backupLosGatos
 
                     dashboardGrid.DataSource = ds.Tables[0];
 
-
                 }
             }
-
-
-
-
-
-
-
         }
 
         private void statusOption_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
             string test;
             string test2;
 
             if (statusOption.SelectedValue == null)
             {
             }
-
             else
             {
-
-
-
                 if (technicianOption.SelectedValue == null && equipmentOption.SelectedValue == null)
                 {
                     SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
@@ -406,10 +382,8 @@ namespace backupLosGatos
 
                     dashboardGrid.DataSource = ds.Tables[0];
                 }
-
                 else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue == null)
                 {
-
                     SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
                     SqlParameter param = new SqlParameter();
                     param.ParameterName = "@firstName";
@@ -417,7 +391,6 @@ namespace backupLosGatos
 
                     cmd.Parameters.Add(param);
                     test2 = (string)cmd.ExecuteScalar();
-
 
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND status = @status", conn);
                     SqlParameter id_param = new SqlParameter();
@@ -438,7 +411,6 @@ namespace backupLosGatos
                     dashboardGrid.DataSource = ds.Tables[0];
 
                 }
-
                 else if (technicianOption.SelectedValue == null && equipmentOption.SelectedValue != null)
                 {
 
@@ -452,11 +424,8 @@ namespace backupLosGatos
                     param.Value = statusOption.SelectedValue.ToString();
                     param2.Value = equipmentOption.SelectedValue.ToString();
 
-
                     cmd.Parameters.Add(param);
                     cmd.Parameters.Add(param2);
-
-
 
                     reader = cmd.ExecuteReader();
 
@@ -468,7 +437,6 @@ namespace backupLosGatos
                     dashboardGrid.DataSource = ds.Tables[0];
 
                 }
-
                 else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue != null)
                 {
 
@@ -489,12 +457,9 @@ namespace backupLosGatos
                     param2.ParameterName = "@equipmentID";
                     param3.ParameterName = "@status";
 
-
                     param2.Value = equipmentOption.SelectedValue.ToString();
                     id_param.Value = test2;
                     param3.Value = statusOption.SelectedValue.ToString();
-
-
 
                     id_cmd.Parameters.Add(id_param);
                     id_cmd.Parameters.Add(param2);
@@ -507,20 +472,12 @@ namespace backupLosGatos
                     ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
 
                     dashboardGrid.DataSource = ds.Tables[0];
-
-
                 }
             }
-
-
-
         }
 
         private void technicianOption_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
-
-
             string test;
             string test2;
 
@@ -539,8 +496,6 @@ namespace backupLosGatos
 
                     cmd.Parameters.Add(param);
                     test2 = (string)cmd.ExecuteScalar();
-
-
 
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username", conn);
                     SqlParameter id_param = new SqlParameter();
@@ -673,5 +628,24 @@ namespace backupLosGatos
 
 
         }
+
+        //logs user out
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            loginScreen newLogin = new loginScreen();
+            newLogin.Show();
+            this.Close();
+        }
+
+        //clears ticket number entered
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            queryTicket.Text = "";
+        }
+
+        //private void toolStripLabel1_Click(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

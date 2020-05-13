@@ -62,6 +62,7 @@ namespace backupLosGatos
             this.fKAssignmentsTickets1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.assignmentsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.AssignmentsTableAdapter();
             this.ticketsTableAdapter1 = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet1)).BeginInit();
@@ -118,6 +119,7 @@ namespace backupLosGatos
             this.dashboardGrid.Name = "dashboardGrid";
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
+            this.dashboardGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dashboardGrid.Size = new System.Drawing.Size(787, 277);
             this.dashboardGrid.TabIndex = 13;
             this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellDoubleClick);
@@ -232,6 +234,7 @@ namespace backupLosGatos
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.ticketLabel);
             this.panel1.Controls.Add(this.queryTicket);
             this.panel1.Location = new System.Drawing.Point(555, 106);
@@ -381,6 +384,19 @@ namespace backupLosGatos
             // 
             this.ticketsTableAdapter1.ClearBeforeFill = true;
             // 
+            // btnClear
+            // 
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClear.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(85, 65);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(157, 26);
+            this.btnClear.TabIndex = 33;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // technicianDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -452,5 +468,6 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmitted;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.Label equipmentDescriptionLabel;
+        private System.Windows.Forms.Button btnClear;
     }
 }

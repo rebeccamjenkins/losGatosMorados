@@ -125,6 +125,10 @@ namespace backupLosGatos
             string priorityLevel = priorityCombo.Text.ToString();
             DateTime date = DateTime.Today;
             string status = statusCombo.Text.ToString();
+            if (status == "Not Starte")
+            {
+                status = statusCombo.Text.ToString() + "d";
+            }
             string welder = welderSignatureText.Text.ToString();
             string inspector = inspectorSignatureText.Text.ToString();
             string assignto = associateIDComboBox.Text.ToString();
@@ -144,46 +148,68 @@ namespace backupLosGatos
                 SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM Tickets", con);
                 Int32 count = (Int32)comm.ExecuteScalar();
 
-                con.Close();
-
-                //create strings for all variables
-                numID = count + 100;
-
-                /*string unitID = ticketIDText.Text.ToString();
-                string equipmentID = unitIDText.Text.ToString();
-                string priorityLevel = priorityCombo.Text.ToString();
-                 DateTime date = DateTime.Today;
-                 string status = statusCombo.Text.ToString();
-                 string welder = welderSignatureText.Text.ToString();
-                string inspector = inspectorSignatureText.Text.ToString();
-                string assignto = associateIDComboBox.Text.ToString();
-                string additionalInfo = additionalInformationText.Text.ToString();*/
-
-                using (SqlConnection openCon = new SqlConnection(connectionString))
+                //check to make sure they do not have more than three tickets assigned
+                SqlCommand technician = new SqlCommand("SELECT COUNT(*) FROM Tickets WHERE userName = '" +
+                    assignto + "' AND (status = 'Not Started' OR status = 'Not Starte' OR status = 'In Progress')", con);
+                Int32 ticketCount = (Int32)technician.ExecuteScalar();
+                MessageBox.Show(ticketCount.ToString());
+                if (ticketCount < 3)
                 {
-                    string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, employeeName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @userName, @inspectorSignature, @additionalInfo )";
+                    con.Close();
 
-                    using (SqlCommand command = new SqlCommand(injection))
+                    //create strings for all variables
+                    numID = count + 100;
+
+                    /*string unitID = ticketIDText.Text.ToString();
+                    string equipmentID = unitIDText.Text.ToString();
+                    string priorityLevel = priorityCombo.Text.ToString();
+                     DateTime date = DateTime.Today;
+                     string status = statusCombo.Text.ToString();
+                     string welder = welderSignatureText.Text.ToString();
+                    string inspector = inspectorSignatureText.Text.ToString();
+                    string assignto = associateIDComboBox.Text.ToString();
+                    string additionalInfo = additionalInformationText.Text.ToString();*/
+
+
+
+                    using (SqlConnection openCon = new SqlConnection(connectionString))
                     {
-                        command.Connection = openCon;
-                        command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
-                        command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
-                        command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
-                        command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
-                        command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = date;
-                        command.Parameters.Add("@status", SqlDbType.NChar, 10).Value = status;
-                        command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = welder;
-                        command.Parameters.Add("@userName", SqlDbType.NVarChar, 50).Value = assignto;
-                        command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = inspector;
-                        command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
+                        string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, userName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @userName, @inspectorSignature, @additionalInfo )";
 
-                        openCon.Open();
+                        using (SqlCommand command = new SqlCommand(injection))
+                        {
+                            command.Connection = openCon;
+                            command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
+                            command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
+                            command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
+                            command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
+                            command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = date;
+                            command.Parameters.Add("@status", SqlDbType.NChar, 10).Value = status;
+                            command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = welder;
+                            command.Parameters.Add("@userName", SqlDbType.NVarChar, 50).Value = assignto;
+                            command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = inspector;
+                            command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
 
-                        command.ExecuteNonQuery();
+                            openCon.Open();
+
+                            command.ExecuteNonQuery();
+                        }
                     }
+                    MessageBox.Show("Entry Saved");
+                    associateIDComboBox.Text = null;
+                    unitIDText.Text = null;
+                    equipmentCombo.Text = null;
+                    statusCombo.Text = null;
+                    priorityCombo.Text = null;
+                    additionalInformationText.Text = null;
                 }
-                MessageBox.Show("Entry Saved");
-
+                else
+                {
+                    MessageBox.Show("This technician has reached the maximum amount of tickets allowed to " +
+                        "be assigned to them. Please assign another available technician.");
+                    associateIDComboBox.Text = null;
+                    ticketIDText.Text = ticketIDText.Text + 1;
+                }
             }
             //reset app
             else if (dialogResult == DialogResult.No)
@@ -231,6 +257,33 @@ namespace backupLosGatos
 
         private void updateButton_Click(object sender, EventArgs e)
         {
+            submitButton.Visible = false;
+            saveButton.Visible = true;
+
+            welderSignatureText.ReadOnly = false;
+            inspectorSignatureText.ReadOnly = false;
+            additionalInformationText.ReadOnly = false;
+            unitIDText.ReadOnly = false;
+
+            assignText.Visible = false;
+            associateIDComboBox.Visible = true;
+            associateIDComboBox.Text = assignText.Text;
+
+            priorityText.Visible = false;
+            priorityCombo.Visible = true;
+            priorityCombo.Text = priorityText.Text;
+
+            statusText.Visible = false;
+            statusCombo.Visible = true;
+            statusCombo.Text = statusText.Text;
+
+            //dateText.Visible = false;
+            //dateTimePicker.Visible = true;
+            //dateTimePicker.Value = dateText.Text;
+
+            equipText.Visible = false;
+            equipmentCombo.Visible = true;
+            equipmentCombo.Text = equipText.Text;
 
         }
 
@@ -273,91 +326,177 @@ namespace backupLosGatos
 
         private void ticketPage_Click(object sender, EventArgs e)
         {
-            ticketDetails newTicket = new ticketDetails();
+            //ticketDetails newTicket = new ticketDetails();
+            submitButton.Visible = true;
+            saveButton.Visible = false;
+            updateButton.Visible = false;
+
+            welderSignatureText.ReadOnly = false;
+            welderSignatureText.Text = null;
+            inspectorSignatureText.ReadOnly = false;
+            inspectorSignatureText.Text = null;
+            additionalInformationText.ReadOnly = false;
+            additionalInformationText.Text = null;
+            unitIDText.ReadOnly = false;
+            unitIDText.Text = null;
+            
+
+            assignText.Visible = false;
+            associateIDComboBox.Visible = true;
+
+            priorityText.Visible = false;
+            priorityCombo.Visible = true;
+
+            statusText.Visible = false;
+            statusCombo.Visible = true;
+
+            dateText.Visible = false;
+            dateTimePicker.Visible = true;
+
+            equipText.Visible = false;
+            equipmentCombo.Visible = true;
+
+
+            //disable the 'create ticket' button
+            ticketPage.Visible = false;
+
+            //this makes it so it autofills the ticket number for us
+            string connectionString = null;
+            SqlConnection connection;
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            string sql = null;
+
+            connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+            sql = "SELECT ticketID FROM Tickets";
+            connection = new SqlConnection(connectionString);
+
+            try
+            {
+                connection.Open();
+                command = new SqlCommand(sql, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds, "SQL Temp Table");
+                adapter.Dispose();
+                command.Dispose();
+                //connection.Close();
+
+                ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
+                //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot open connection to database!");
+            }
 
             if (coordButton.Enabled == true || mangButton.Enabled == true)
             {
                 if (coordButton.Enabled == true)
                 { 
                     //makes sure the right permissions are given
-                    newTicket.mangButton.Enabled = true;
-                    newTicket.coordButton.Enabled = false;
-
-                    //disable the 'create ticket' button
-                    newTicket.ticketPage.Visible = false;
-
-                    //this makes it so it autofills the ticket number for us
-                    string connectionString = null;
-                    SqlConnection connection;
-                    SqlCommand command;
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    DataSet ds = new DataSet();
-                    string sql = null;
-
-                    connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
-                    sql = "SELECT ticketID FROM Tickets";
-                    connection = new SqlConnection(connectionString);
-
-                    try
-                    {
-                        connection.Open();
-                        command = new SqlCommand(sql, connection);
-                        adapter.SelectCommand = command;
-                        adapter.Fill(ds, "SQL Temp Table");
-                        adapter.Dispose();
-                        command.Dispose();
-                        //connection.Close();
-
-                        newTicket.ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
-                        //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Cannot open connection to database!");
-                    }
+                    mangButton.Enabled = false;
+                    coordButton.Enabled = true;
                 }
                 else
                 {
-                    newTicket.mangButton.Enabled = false;
-                    newTicket.coordButton.Enabled = true;
+                    mangButton.Enabled = true;
+                    coordButton.Enabled = false;
 
-                    //disable the 'create ticket' button
-                    newTicket.ticketPage.Visible = false;
-
-                    //this makes it so it autofills the ticket number for us
-                    string connectionString = null;
-                    SqlConnection connection;
-                    SqlCommand command;
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    DataSet ds = new DataSet();
-                    string sql = null;
-
-                    connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
-                    sql = "SELECT ticketID FROM Tickets";
-                    connection = new SqlConnection(connectionString);
-
-                    try
-                    {
-                        connection.Open();
-                        command = new SqlCommand(sql, connection);
-                        adapter.SelectCommand = command;
-                        adapter.Fill(ds, "SQL Temp Table");
-                        adapter.Dispose();
-                        command.Dispose();
-                        //connection.Close();
-
-                        newTicket.ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
-                        //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Cannot open connection to database!");
-                    }
                 }
 
-                newTicket.Show();
-                this.Hide();
+                //newTicket.Show();
+                //this.Hide();
             }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            string ticketID = ticketIDText.Text;
+            string tempAssign = associateIDComboBox.Text;
+            string tempPriority = priorityCombo.Text;
+            string tempStatus = statusCombo.Text;
+            string tempEquip = equipmentCombo.Text;
+            string tempWelder = welderSignatureText.Text;
+            string tempInspector = inspectorSignatureText.Text;
+            string tempAdditionalInfo = additionalInformationText.Text;
+            string tempUnit = unitIDText.Text;
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this ticket?", "Update Ticket", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //create data source and static variables
+                string connectionString = @"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true";
+                SqlConnection con = new SqlConnection(connectionString);
+                //DateTime thisDay = DateTime.Today;
+                //int numID = 0;
+
+                //pull number of rows from database in order to create ticketID
+                //con.Open();
+                //SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM Tickets", con);
+                //Int32 count = (Int32)comm.ExecuteScalar();
+                //con.Close();
+
+                using (SqlConnection openCon = new SqlConnection(connectionString))
+                {
+                    string update = "UPDATE Tickets SET userName = @userName, priorityLevel = @priorityLevel, " +
+                        "status = @status, dateSubmitted = @dateSubmitted, equipmentID = @equipmentID, " +
+                        "welderSignature = @welderSignature, inspectorSignature = @inspectorSignature," +
+                        "additionalInfo = @additionalInfo, unitID = @unitID WHERE ticketID = @ticketID; ";
+
+                    using (SqlCommand command = new SqlCommand(update))
+                    {
+                        command.Connection = openCon;
+                        command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = ticketID;
+                        command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = tempUnit;
+                        command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = tempEquip;
+                        command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = tempPriority;
+                        //command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = ;
+                        command.Parameters.Add("@status", SqlDbType.NChar, 10).Value = tempStatus;
+                        command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = tempWelder;
+                        command.Parameters.Add("@userName", SqlDbType.NVarChar, 50).Value = tempAssign;
+                        command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = tempInspector;
+                        command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = tempAdditionalInfo;
+
+                        openCon.Open();
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Ticket updated.");
+
+                if (mangButton.Enabled = true)
+                {
+                    managerDashboard openManager = new managerDashboard();
+                    openManager.Show();
+                    mangButton.Enabled = false;
+                    coordButton.Enabled = false;
+                    this.Close();
+                }
+                else if (coordButton.Enabled == true)
+                {
+                    dashboardScreen openCoordinator = new dashboardScreen();
+                    openCoordinator.Show();
+                    mangButton.Enabled = false;
+                    coordButton.Enabled = false;
+                    this.Close();
+                }
+                else
+                {
+                    technicianDashboard technician = new technicianDashboard();
+                    technician.Show();
+                    this.Close();
+                }
+                 
+            }
+            //reset app
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+            
+
+
         }
     }
 }

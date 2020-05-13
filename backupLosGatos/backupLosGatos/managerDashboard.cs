@@ -18,11 +18,13 @@ namespace backupLosGatos
 
         private void managerDashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ticketsDataSet.Tickets' table. You can move, or remove it, as needed.
+            this.ticketsTableAdapter1.Fill(this.ticketsDataSet.Tickets);
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
             conn.Open();
             
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets", conn);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets WHERE unitID = '" + unitManagerID.Text +"'", conn);
             DataTable data = new DataTable();
             sda.Fill(data);
             dashboardGrid.DataSource = data;
@@ -86,6 +88,9 @@ namespace backupLosGatos
             newTicket.statusText.Visible = false;
             newTicket.equipText.Visible = false;
             newTicket.priorityText.Visible = false;
+            newTicket.assignText.Visible = false;
+            newTicket.dateText.Visible = false;
+            newTicket.dateTimePicker.Visible = true;
 
             //this makes it so it autofills the ticket number for us
             string connectionString = null;
@@ -141,7 +146,7 @@ namespace backupLosGatos
         {
             
             kioskRequest viewKiosk = new kioskRequest();
-            if (labelRole.Text == "manager")
+            if (unitManagerID.Text == "manager")
             {
                 viewKiosk.coordButton.Enabled = false;
             }
@@ -163,9 +168,19 @@ namespace backupLosGatos
 
         private void refreshButton_Click_1(object sender, EventArgs e)
         {
-            technicianOption.Text = "";
-            statusOption.Text = "";
-            equipmentOption.Text = "";
+            technicianOption.Text = null;
+            statusOption.Text = null;
+            equipmentOption.Text = null;
+
+            conn = new
+            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            conn.Open();
+
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets", conn);
+            DataTable data = new DataTable();
+            sda.Fill(data);
+            dashboardGrid.DataSource = data;
+            conn.Close();
         }
 
         private void dashboardPage_Click(object sender, EventArgs e)
@@ -178,30 +193,40 @@ namespace backupLosGatos
         private void dashboardGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ticketDetails viewTicket = new ticketDetails();
+            //Ticket Number
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
-            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            //viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            //viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            //viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
-
-            viewTicket.statusText.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.statusCombo.Visible = false;
-            viewTicket.priorityText.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            //Assigned To (COMBO)
+            viewTicket.assignText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
+            viewTicket.associateIDComboBox.Visible = false;
+            //Priority Level (COMBO)
+            viewTicket.priorityText.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
             viewTicket.priorityCombo.Visible = false;
+            //Status (COMBO)
+            viewTicket.statusText.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.statusCombo.Visible = false;
+            //DateTime (COMBO)
+            viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.dateTimePicker.Visible = false;
+            //Equipment (COMBO)
             viewTicket.equipText.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
             viewTicket.equipmentCombo.Visible = false;
+            //Welder Signature
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.welderSignatureText.ReadOnly = true;
+            //Inspector Signature
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.inspectorSignatureText.ReadOnly = true;
+            //Additional Information
+            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            viewTicket.additionalInformationText.ReadOnly = true;
+            //Unit
+            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[9].Value.ToString();
+            viewTicket.unitIDText.ReadOnly = true;
 
-            if (labelRole.Text == "manager")
-            {
-                viewTicket.updateButton.Enabled = false;
-                viewTicket.saveButton.Enabled = false;
+                viewTicket.updateButton.Visible = true;
+                viewTicket.saveButton.Visible = false;
                 viewTicket.mangButton.Enabled = true;
                 viewTicket.coordButton.Enabled = false; 
-            }
 
             viewTicket.Show();
             this.Hide();
@@ -643,6 +668,10 @@ namespace backupLosGatos
 
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            queryTicket.Text = "";
+        }
     }
 }
 

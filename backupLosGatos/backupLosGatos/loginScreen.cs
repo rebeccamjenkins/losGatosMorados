@@ -43,6 +43,7 @@ namespace backupLosGatos
 
                         OleDbDataReader userTypeReturn = userType.ExecuteReader();
 
+                        
                         while (userTypeReturn.Read())
                         {
                             int typeReturn = userTypeReturn.GetInt32(0);
@@ -56,7 +57,15 @@ namespace backupLosGatos
                             //if the user is a unit manager
                             else if (typeReturn == 2)
                             {
+                                OleDbCommand unitManagerID = myConnection.CreateCommand();
+                                unitManagerID.CommandText = "SELECT unitID FROM Users WHERE username = '" + usernameText.Text + "'";
+                                OleDbDataReader unitID = unitManagerID.ExecuteReader();
                                 managerDashboard dashboard = new managerDashboard();
+                                while (unitID.Read())
+                                {
+                                    dashboard.unitManagerID.Text = unitID.GetInt32(0).ToString();
+                                }
+                                
                                 this.Hide();
                                 dashboard.Show();
                             }

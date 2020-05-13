@@ -92,6 +92,7 @@ namespace backupLosGatos
             this.equipmentTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.EquipmentTableAdapter();
             this.usersTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.UsersTableAdapter();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.assignText = new System.Windows.Forms.TextBox();
             ticketIDLabel = new System.Windows.Forms.Label();
             welderSignatureLabel = new System.Windows.Forms.Label();
             inspectorSignatureLabel = new System.Windows.Forms.Label();
@@ -219,7 +220,7 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(923, 28);
+            this.pageOptions.Size = new System.Drawing.Size(923, 30);
             this.pageOptions.TabIndex = 11;
             // 
             // dashboardPage
@@ -254,10 +255,12 @@ namespace backupLosGatos
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateText);
+            this.groupBox1.Controls.Add(this.dateTimePicker);
+            this.groupBox1.Controls.Add(this.assignText);
             this.groupBox1.Controls.Add(this.priorityText);
             this.groupBox1.Controls.Add(this.statusText);
             this.groupBox1.Controls.Add(this.equipText);
-            this.groupBox1.Controls.Add(this.dateText);
             this.groupBox1.Controls.Add(associateIDLabel);
             this.groupBox1.Controls.Add(this.associateIDComboBox);
             this.groupBox1.Controls.Add(priorityLabel);
@@ -286,7 +289,7 @@ namespace backupLosGatos
             this.priorityText.Location = new System.Drawing.Point(443, 66);
             this.priorityText.Name = "priorityText";
             this.priorityText.ReadOnly = true;
-            this.priorityText.Size = new System.Drawing.Size(189, 23);
+            this.priorityText.Size = new System.Drawing.Size(185, 23);
             this.priorityText.TabIndex = 16;
             // 
             // statusText
@@ -294,7 +297,7 @@ namespace backupLosGatos
             this.statusText.Location = new System.Drawing.Point(443, 30);
             this.statusText.Name = "statusText";
             this.statusText.ReadOnly = true;
-            this.statusText.Size = new System.Drawing.Size(189, 23);
+            this.statusText.Size = new System.Drawing.Size(185, 23);
             this.statusText.TabIndex = 15;
             // 
             // equipText
@@ -308,9 +311,10 @@ namespace backupLosGatos
             // dateText
             // 
             this.dateText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "dateSubmitted", true));
-            this.dateText.Location = new System.Drawing.Point(747, 27);
+            this.dateText.Location = new System.Drawing.Point(747, 28);
             this.dateText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateText.Name = "dateText";
+            this.dateText.ReadOnly = true;
             this.dateText.Size = new System.Drawing.Size(100, 23);
             this.dateText.TabIndex = 7;
             // 
@@ -626,6 +630,7 @@ namespace backupLosGatos
             this.saveButton.Text = "Save Changes";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Visible = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // updateButton
             // 
@@ -695,12 +700,21 @@ namespace backupLosGatos
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(12, 26);
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.Location = new System.Drawing.Point(747, 28);
             this.dateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker.Size = new System.Drawing.Size(100, 23);
             this.dateTimePicker.TabIndex = 21;
             this.dateTimePicker.Visible = false;
+            // 
+            // assignText
+            // 
+            this.assignText.Location = new System.Drawing.Point(443, 112);
+            this.assignText.Name = "assignText";
+            this.assignText.ReadOnly = true;
+            this.assignText.Size = new System.Drawing.Size(185, 23);
+            this.assignText.TabIndex = 17;
             // 
             // ticketDetails
             // 
@@ -708,7 +722,6 @@ namespace backupLosGatos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(923, 540);
-            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mangButton);
             this.Controls.Add(this.pictureBox1);
@@ -788,12 +801,13 @@ namespace backupLosGatos
         private GROUP6DataSetTableAdapters.EquipmentTableAdapter equipmentTableAdapter;
         private System.Windows.Forms.BindingSource usersBindingSource;
         private GROUP6DataSetTableAdapters.UsersTableAdapter usersTableAdapter;
-        private System.Windows.Forms.ComboBox associateIDComboBox;
         public System.Windows.Forms.TextBox dateText;
         public System.Windows.Forms.ToolStripMenuItem ticketPage;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
         public System.Windows.Forms.TextBox priorityText;
         public System.Windows.Forms.TextBox statusText;
         public System.Windows.Forms.TextBox equipText;
+        public System.Windows.Forms.TextBox assignText;
+        public System.Windows.Forms.ComboBox associateIDComboBox;
+        public System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }
