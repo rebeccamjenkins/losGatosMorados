@@ -59,18 +59,18 @@ namespace backupLosGatos
             associateIDComboBox.SelectedValue = 0;
 
             //equipmentdropdown
-            //SqlCommand e_cmd = new SqlCommand("SELECT DISTINCT equipmentDescription FROM Equipment", conn);
-            //reader = e_cmd.ExecuteReader();
-            //DataSet dsequip = new DataSet();
-            //DataTable dtequip = new DataTable("Table 3");
-            //dsequip.Tables.Add(dtequip);
-            //dsequip.Load(reader, LoadOption.PreserveChanges, dsequip.Tables[0]);
+            SqlCommand e_cmd = new SqlCommand("SELECT DISTINCT equipmentDescription FROM Equipment", conn);
+            reader = e_cmd.ExecuteReader();
+            DataSet dsequip = new DataSet();
+            DataTable dtequip = new DataTable("Table 3");
+            dsequip.Tables.Add(dtequip);
+            dsequip.Load(reader, LoadOption.PreserveChanges, dsequip.Tables[0]);
 
-            //equipmentCombo.ValueMember = "equipmentDescription";
-            //equipmentCombo.DisplayMember = "equipmentDescription";
-            //equipmentCombo.DataSource = dsequip.Tables[0];
-            //equipmentCombo.SelectedIndex = 0;
-            //equipmentCombo.SelectedValue = 0;
+            equipmentCombo.ValueMember = "equipmentDescription";
+            equipmentCombo.DisplayMember = "equipmentDescription";
+            equipmentCombo.DataSource = dsequip.Tables[0];
+            equipmentCombo.SelectedIndex = 0;
+            equipmentCombo.SelectedValue = 0;
 
             //priority dropdown
             SqlCommand p_cmd = new SqlCommand("SELECT DISTINCT priorityLevel FROM Tickets", conn);
@@ -127,6 +127,7 @@ namespace backupLosGatos
 
                 SqlCommand cmd = new SqlCommand("sp_insert", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 cmd.Parameters.AddWithValue("@dateSubmitted", thisDay);
                 cmd.Parameters.AddWithValue("@ticketID", ticketIDText.Text.ToString());
                 cmd.Parameters.AddWithValue("@unitID", unitIDText.Text.ToString());
@@ -199,38 +200,7 @@ namespace backupLosGatos
 
         private void unitIDText_TextChanged(object sender, EventArgs e)
         {
-            equipmentCombo.Enabled = true;
-            equipmentCombo.Items.Clear();
-            equipmentCombo.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            if (unitIDText.Text == "1")
-            {
-                equipmentCombo.Items.Add(1);
-                equipmentCombo.Items.Add(2);
-                equipmentCombo.Items.Add(3);
-                equipmentCombo.Items.Add(4);
-            }
-            if (unitIDText.Text == "2")
-            {
-                equipmentCombo.Items.Add(5);
-                equipmentCombo.Items.Add(6);
-                equipmentCombo.Items.Add(7);
-                equipmentCombo.Items.Add(8); ;
-            }
-            if (unitIDText.Text == "3")
-            {
-                equipmentCombo.Items.Add(9);
-                equipmentCombo.Items.Add(10);
-                equipmentCombo.Items.Add(11);
-                equipmentCombo.Items.Add(12);
-            }
-            if (unitIDText.Text == "4")
-            {
-                equipmentCombo.Items.Add(13);
-                equipmentCombo.Items.Add(14);
-                equipmentCombo.Items.Add(15);
-                equipmentCombo.Items.Add(16);
-            }
         }
     }
 }
