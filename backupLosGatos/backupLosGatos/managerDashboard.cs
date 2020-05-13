@@ -118,32 +118,6 @@ namespace backupLosGatos
             this.Hide();
         }
 
-        private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //generates ticketDetails window populated with database information relevant to datagridview cell selected
-            ticketDetails viewTicket = new ticketDetails();
-
-            viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
-            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
-
-            if (labelRole.Text == "manager")
-            {
-                //viewTicket.updateButton.Enabled = false;
-                //viewTicket.saveButton.Enabled = false;
-                viewTicket.coordButton.Enabled = false;
-            }
-
-            viewTicket.Show();
-            this.Hide();
-        }
-
         private void equipmentOption_SelectionChangeCommitted(object sender, EventArgs e)
         {
             Int32 test = 0;
@@ -532,9 +506,9 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            technicianOption.Text = "";
-            statusOption.Text = "";
-            equipmentOption.Text = "";
+            managerDashboard newDashboard = new managerDashboard();
+            newDashboard.Show();
+            this.Hide();
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -580,6 +554,30 @@ namespace backupLosGatos
             managerDashboard refresh = new managerDashboard();
             this.Close();
             refresh.Show();
+        }
+
+        private void dashboardGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ticketDetails viewTicket = new ticketDetails();
+            viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
+            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
+            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+
+            if (labelRole.Text == "manager")
+            {
+                viewTicket.updateButton.Enabled = false;
+                viewTicket.saveButton.Enabled = false;
+                viewTicket.mangButton.Enabled = true;
+            }
+
+            viewTicket.Show();
+            this.Hide();
         }
     }
 }

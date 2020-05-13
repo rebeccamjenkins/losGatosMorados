@@ -119,6 +119,7 @@ namespace backupLosGatos
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(787, 277);
             this.dashboardGrid.TabIndex = 13;
+            this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellDoubleClick);
             // 
             // ticketIDDataGridViewTextBoxColumn
             // 
@@ -270,6 +271,7 @@ namespace backupLosGatos
             this.refreshButton.TabIndex = 31;
             this.refreshButton.Text = "Reset";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click_1);
             // 
             // equipmentOption
             // 
