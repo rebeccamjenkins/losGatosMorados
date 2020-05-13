@@ -65,7 +65,7 @@ namespace backupLosGatos
                             else if (typeReturn == 3)
                             {
                                 technicianDashboard dashboard = new technicianDashboard();
-                                techName.techName.Text = usernameText.Text;
+                                dashboard.techName.Text = usernameText.Text;
                                 this.Hide();
                                 dashboard.Show();
                             }
