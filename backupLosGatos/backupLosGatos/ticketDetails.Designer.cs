@@ -297,15 +297,17 @@ namespace backupLosGatos
             // associateIDComboBox
             // 
             this.associateIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "associateID", true));
-            this.associateIDComboBox.DataSource = this.usersBindingSource;
-            this.associateIDComboBox.DisplayMember = "firstName";
             this.associateIDComboBox.FormattingEnabled = true;
+            this.associateIDComboBox.Items.AddRange(new object[] {
+            "",
+            "Shayne",
+            "Francisco",
+            "Jake"});
             this.associateIDComboBox.Location = new System.Drawing.Point(443, 110);
             this.associateIDComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.associateIDComboBox.Name = "associateIDComboBox";
             this.associateIDComboBox.Size = new System.Drawing.Size(189, 25);
             this.associateIDComboBox.TabIndex = 13;
-            this.associateIDComboBox.ValueMember = "associateID";
             // 
             // usersBindingSource
             // 
@@ -316,6 +318,12 @@ namespace backupLosGatos
             // 
             this.priorityCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priorityLevel", true));
             this.priorityCombo.FormattingEnabled = true;
+            this.priorityCombo.Items.AddRange(new object[] {
+            "",
+            "Low",
+            "Medium",
+            "High",
+            "Urgent"});
             this.priorityCombo.Location = new System.Drawing.Point(443, 66);
             this.priorityCombo.Margin = new System.Windows.Forms.Padding(4);
             this.priorityCombo.Name = "priorityCombo";
@@ -326,6 +334,11 @@ namespace backupLosGatos
             // 
             this.statusCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
             this.statusCombo.FormattingEnabled = true;
+            this.statusCombo.Items.AddRange(new object[] {
+            "",
+            "Not Started",
+            "In Progress",
+            "Completed"});
             this.statusCombo.Location = new System.Drawing.Point(443, 28);
             this.statusCombo.Margin = new System.Windows.Forms.Padding(4);
             this.statusCombo.Name = "statusCombo";
@@ -347,6 +360,7 @@ namespace backupLosGatos
             this.equipmentCombo.DisplayMember = "equipmentID";
             this.equipmentCombo.FormattingEnabled = true;
             this.equipmentCombo.Items.AddRange(new object[] {
+            "",
             "Vessel",
             "Hydrotreater",
             "Condenser",
