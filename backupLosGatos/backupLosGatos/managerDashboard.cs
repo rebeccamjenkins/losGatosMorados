@@ -574,6 +574,7 @@ namespace backupLosGatos
                 viewTicket.updateButton.Enabled = false;
                 viewTicket.saveButton.Enabled = false;
                 viewTicket.mangButton.Enabled = true;
+                viewTicket.coordButton.Enabled = false; 
             }
 
             viewTicket.Show();
