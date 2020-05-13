@@ -177,7 +177,7 @@ namespace backupLosGatos
 
                         if (i != 0)
                         {
-                            MessageBox.Show("Ticket Approved and added to Database.");
+                            MessageBox.Show("Ticket approved and added to Database.");
 
                         }
                     }

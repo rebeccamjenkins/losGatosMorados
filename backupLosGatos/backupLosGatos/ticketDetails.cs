@@ -17,6 +17,7 @@ namespace backupLosGatos
             //this.usersTableAdapter.Fill(this.gROUP6DataSet.Users);
             //this.equipmentTableAdapter.Fill(this.gROUP6DataSet.Equipment);
             //this.ticketsTableAdapter.Fill(this.gROUP6DataSet.Tickets);
+
             SqlConnection conn = null;
             SqlDataReader reader = null;
             conn = new
@@ -131,12 +132,10 @@ namespace backupLosGatos
                 cmd.Parameters.AddWithValue("@dateSubmitted", thisDay);
                 cmd.Parameters.AddWithValue("@ticketID", ticketIDText.Text.ToString());
                 cmd.Parameters.AddWithValue("@unitID", unitIDText.Text.ToString());
-                cmd.Parameters.AddWithValue("@equipmentID", equipmentCombo.SelectedValue.ToString()); //needs to display equipment names in the combobox while processing them as the equipmentID
+                cmd.Parameters.AddWithValue("@equipmentID", equipmentCombo.SelectedValue.ToString()); 
                 cmd.Parameters.AddWithValue("@priorityLevel", priorityCombo.Text.ToString());
-                //cmd.Parameters.AddWithValue("@associateID", assignedCombo.Text.ToString()); //needs to display names in the combobox while processing the selection as the associateID 
-                    //we need to code how to create an assignmentID automatically when a ticketID and associateID are provided. all three of them comprise a composite key, so they're all required. i wonder if this is similar to michelle's auto-incrementing ticket number code?
-                cmd.Parameters.AddWithValue("@welderSignature", welderSignatureText.Text.ToString()); //double check this allows for nulls
-                cmd.Parameters.AddWithValue("@inspectorSignature", inspectorSignatureText.Text.ToString()); //double check this allows for nulls
+                cmd.Parameters.AddWithValue("@welderSignature", welderSignatureText.Text.ToString()); 
+                cmd.Parameters.AddWithValue("@inspectorSignature", inspectorSignatureText.Text.ToString()); 
                 cmd.Parameters.AddWithValue("@additionalInformation", additionalInformationText.Text.ToString());
 
                 conn.Open();

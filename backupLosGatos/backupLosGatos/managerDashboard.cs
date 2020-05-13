@@ -85,16 +85,16 @@ namespace backupLosGatos
             newTicket.ticketPage.Visible = false;
 
             //this makes it so it autofills the ticket number for us
-            string connetionString = null;
+            string connectionString = null;
             SqlConnection connection;
             SqlCommand command;
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
             string sql = null;
 
-            connetionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+            connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
             sql = "SELECT ticketID FROM Tickets";
-            connection = new SqlConnection(connetionString);
+            connection = new SqlConnection(connectionString);
 
             try
             {
@@ -122,15 +122,16 @@ namespace backupLosGatos
         {
             //generates ticketDetails window populated with database information relevant to datagridview cell selected
             ticketDetails viewTicket = new ticketDetails();
+
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            //viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            //viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
 
             if (labelRole.Text == "manager")
             {
