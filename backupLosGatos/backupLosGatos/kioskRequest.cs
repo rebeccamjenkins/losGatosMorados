@@ -30,8 +30,6 @@ namespace backupLosGatos
 
         private void logout_Click(object sender, EventArgs e)
         {
-            mangButton.Enabled = false;
-            coordButton.Enabled = false;
             loginScreen newLogin = new loginScreen();
             newLogin.Show();
             this.Close();
@@ -94,9 +92,10 @@ namespace backupLosGatos
         }
 
         private void kioskRequest_Load(object sender, EventArgs e)
-        { 
+        {
             // TODO: This line of code loads data into the 'gROUP6DataSet.Kiosk' table. You can move, or remove it, as needed.
             this.kioskTableAdapter.Fill(this.gROUP6DataSet.Kiosk);
+
         }
 
         private void logout_Click_1(object sender, EventArgs e)
@@ -106,6 +105,7 @@ namespace backupLosGatos
             login.Show();
             this.Close();
         }
+
         private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             /*generates ticketDetails window populated with database information relevant to datagridview cell selected
@@ -151,7 +151,10 @@ namespace backupLosGatos
                 }
             }*/
 
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to approve ticket?", "Ticket Approval", MessageBoxButtons.YesNo);
+
+
+
+            DialogResult dialogResult = MessageBox.Show("Do you want to approve this ticket?", "Ticket Approval", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 using (SqlConnection openCon = new SqlConnection(connectionString))
@@ -175,17 +178,86 @@ namespace backupLosGatos
                         openCon.Open();
                         int i = cmd.ExecuteNonQuery();
 
+
                         if (i != 0)
                         {
-                            MessageBox.Show("Ticket approved and added to Database.");
+                            MessageBox.Show("Ticket Approved and added to Database.");
 
                         }
                     }
+
                 }
+                int value;
+                string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
+
+                value = Int32.Parse(str);
+                int place = 107 - value;
+
+                try
+                {
+                    using (SqlConnection con2 = new SqlConnection("Data Source = 10.135.85.184; Initial Catalog = Group6; User ID = Group6; Password = Grp6s2117"))
+                    {
+
+                        using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + value))
+                        {
+                            commandDel.Connection = con2;
+                            con2.Open();
+                            commandDel.ExecuteNonQuery();
+                        }
+
+                    }
+
+                    MessageBox.Show("Weld Request Denied.");
+                    kioskRequest refresh = new kioskRequest();
+                    this.Close();
+                    refresh.Show();
+
+                }
+                catch (SystemException ex)
+                {
+                    MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {
+                DialogResult dialogResult2 = MessageBox.Show("Are you sure? Ticket request will be deleted.", "Deny Ticket?", MessageBoxButtons.YesNo);
+                if (dialogResult2 == DialogResult.Yes)
+                {
+                    int value;
+                    string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
 
+                    value = Int32.Parse(str);
+                    int place = 107 - value;
+
+                    try
+                    {
+                        using (SqlConnection con2 = new SqlConnection("Data Source = 10.135.85.184; Initial Catalog = Group6; User ID = Group6; Password = Grp6s2117"))
+                        {
+
+                            using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + value))
+                            {
+                                commandDel.Connection = con2;
+                                con2.Open();
+                                commandDel.ExecuteNonQuery();
+                            }
+
+                        }
+
+                        MessageBox.Show("Weld Request Denied.");
+                        kioskRequest refresh = new kioskRequest();
+                        this.Close();
+                        refresh.Show();
+
+                    }
+                    catch (SystemException ex)
+                    {
+                        MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+                    }
+                }
+                else
+                {
+                }
             }
         }
     }

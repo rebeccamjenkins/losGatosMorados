@@ -209,9 +209,7 @@ namespace backupLosGatos
             if (coordButton.Enabled == true || mangButton.Enabled == true)
             {
                 if (coordButton.Enabled == true)
-                {
-                    openRequests.coordButton.Enabled = true;
-                    openRequests.mangButton.Enabled = false;
+                { 
                     //makes sure the right permissions are given
                     newTicket.mangButton.Enabled = true;
                     newTicket.coordButton.Enabled = false;
