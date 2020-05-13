@@ -99,395 +99,7 @@ namespace backupLosGatos
             this.Hide();
         }
 
-        private void equipmentOption_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            Int32 test = 0;
-            Int32 test1 = 0;
-            Int32 test2 = 0;
-
-            if (equipmentOption.SelectedValue == null)
-            {
-            }
-
-            else
-            {
-                if (technicianOption.SelectedValue == null && statusOption.SelectedValue == null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@equipmentDescription";
-                    param.Value = equipmentOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Equipment WHERE Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    id_param.ParameterName = "@equipmentID";
-                    id_param.Value = test.ToString();
-                    id_cmd.Parameters.Add(id_param);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table4");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-                else if (technicianOption.SelectedValue != null && statusOption.SelectedValue == null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param1 = new SqlParameter();
-                    param1.ParameterName = "@equipmentDescription";
-                    param1.Value = equipmentOption.SelectedValue.ToString();
-                    cmd1.Parameters.Add(param1);
-                    test1 = (Int32)cmd1.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    SqlParameter id_param1 = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-
-                    id_param1.ParameterName = "@equipmentID";
-                    id_param1.Value = test1.ToString();
-
-                    id_cmd.Parameters.Add(id_param);
-                    id_cmd.Parameters.Add(id_param1);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname3 = new DataSet();
-                    DataTable dtname3 = new DataTable("Table5");
-                    dsname3.Tables.Add(dtname3);
-                    dsname3.Load(reader, LoadOption.PreserveChanges, dsname3.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname3.Tables[0];
-                    dashboardGrid.DataSource = dsname3.Tables[0];
-                }
-                else if (technicianOption.SelectedValue == null && statusOption.SelectedValue != null)
-                {
-                    string selection1 = statusOption.SelectedValue.ToString();
-
-                    SqlCommand cmd = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@equipmentDescription";
-                    param.Value = equipmentOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Equipment WHERE Equipment.equipmentID = @equipmentID AND Tickets.equipmentID = @equipmentID AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    id_param.ParameterName = "@equipmentID";
-                    id_param.Value = test.ToString();
-                    id_cmd.Parameters.Add(id_param);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table3");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-                else if (technicianOption.SelectedValue != null && statusOption.SelectedValue != null)
-                {
-                    string selection1 = statusOption.SelectedValue.ToString();
-
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param1 = new SqlParameter();
-                    param1.ParameterName = "@equipmentDescription";
-                    param1.Value = equipmentOption.SelectedValue.ToString();
-                    cmd1.Parameters.Add(param1);
-                    test1 = (Int32)cmd1.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID  AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    SqlParameter id_param1 = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-
-                    id_param1.ParameterName = "@equipmentID";
-                    id_param1.Value = test1.ToString();
-
-                    id_cmd.Parameters.Add(id_param);
-                    id_cmd.Parameters.Add(id_param1);
-                    reader = id_cmd.ExecuteReader();
-
-
-                    DataSet dsname3 = new DataSet();
-                    DataTable dtname3 = new DataTable("Table5");
-                    dsname3.Tables.Add(dtname3);
-                    dsname3.Load(reader, LoadOption.PreserveChanges, dsname3.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname3.Tables[0];
-                    dashboardGrid.DataSource = dsname3.Tables[0];
-                }
-            }
-        }
-
-        private void statusOption_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            Int32 test = 0;
-            Int32 test1 = 0;
-            if (statusOption.SelectedValue == null)
-            {
-            }
-            else
-            {
-                string selection1 = statusOption.SelectedValue.ToString();
-
-                if (technicianOption.SelectedValue == null && equipmentOption.SelectedValue == null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@status";
-                    param.Value = statusOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-
-                    reader = cmd.ExecuteReader();
-
-                    DataSet ds = new DataSet();
-                    DataTable dt = new DataTable("Table1");
-                    ds.Tables.Add(dt);
-                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
-
-                    dashboardGrid.DataSource = ds.Tables[0];
-                }
-                else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue == null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-                    id_cmd.Parameters.Add(id_param);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table3");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-                else if (technicianOption.SelectedValue == null && equipmentOption.SelectedValue != null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@equipmentDescription";
-                    param.Value = equipmentOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Equipment WHERE Equipment.equipmentID = @equipmentID AND Tickets.equipmentID = @equipmentID AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    id_param.ParameterName = "@equipmentID";
-                    id_param.Value = test.ToString();
-                    id_cmd.Parameters.Add(id_param);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table3");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-                else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue != null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param1 = new SqlParameter();
-                    param1.ParameterName = "@equipmentDescription";
-                    param1.Value = equipmentOption.SelectedValue.ToString();
-                    cmd1.Parameters.Add(param1);
-                    test1 = (Int32)cmd1.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID AND Tickets.equipmentID = @equipmentID AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    SqlParameter id_param1 = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-                    id_param1.ParameterName = "@equipmentID";
-                    id_param1.Value = test1.ToString();
-
-                    id_cmd.Parameters.Add(id_param);
-                    id_cmd.Parameters.Add(id_param1);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table3");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-            }
-        }
-
-        private void technicianOption_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            Int32 test = 0;
-            Int32 test1 = 0;
-            Int32 test3 = 0;
-
-            if (technicianOption.SelectedValue == null)
-            {
-            }
-            else
-            {
-                if (statusOption.SelectedValue == null && equipmentOption.SelectedValue == null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-                    id_cmd.Parameters.Add(id_param);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table3");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-                else if (statusOption.SelectedValue != null && equipmentOption.SelectedValue == null)
-                {
-                    string selection1 = statusOption.SelectedValue.ToString();
-
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-                    id_cmd.Parameters.Add(id_param);
-                    reader = id_cmd.ExecuteReader();
-
-                    DataSet dsname2 = new DataSet();
-                    DataTable dtname2 = new DataTable("Table3");
-                    dsname2.Tables.Add(dtname2);
-                    dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname2.Tables[0];
-                    dashboardGrid.DataSource = dsname2.Tables[0];
-                }
-                else if (statusOption.SelectedValue == null && equipmentOption.SelectedValue != null)
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param1 = new SqlParameter();
-                    param1.ParameterName = "@equipmentDescription";
-                    param1.Value = equipmentOption.SelectedValue.ToString();
-                    cmd1.Parameters.Add(param1);
-                    test1 = (Int32)cmd1.ExecuteScalar();
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    SqlParameter id_param1 = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-
-                    id_param1.ParameterName = "@equipmentID";
-                    id_param1.Value = test1.ToString();
-
-                    id_cmd.Parameters.Add(id_param);
-                    id_cmd.Parameters.Add(id_param1);
-                    reader = id_cmd.ExecuteReader();
-
-
-                    DataSet dsname3 = new DataSet();
-                    DataTable dtname3 = new DataTable("Table5");
-                    dsname3.Tables.Add(dtname3);
-                    dsname3.Load(reader, LoadOption.PreserveChanges, dsname3.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname3.Tables[0];
-                    dashboardGrid.DataSource = dsname3.Tables[0];
-                }
-                else if (statusOption.SelectedValue != null && equipmentOption.SelectedValue != null)
-                {
-                    string selection1 = statusOption.SelectedValue.ToString();
-
-                    SqlCommand cmd = new SqlCommand("SELECT associateID FROM Users WHERE firstName = @firstName", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@firstName";
-                    param.Value = technicianOption.SelectedValue.ToString();
-                    cmd.Parameters.Add(param);
-                    test = (Int32)cmd.ExecuteScalar();
-
-                    SqlCommand cmd1 = new SqlCommand("SELECT equipmentID FROM Equipment WHERE equipmentDescription = @equipmentDescription", conn);
-                    SqlParameter param1 = new SqlParameter();
-                    param1.ParameterName = "@equipmentDescription";
-                    param1.Value = equipmentOption.SelectedValue.ToString();
-                    cmd1.Parameters.Add(param1);
-                    test1 = (Int32)cmd1.ExecuteScalar();
-
-
-                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID  AND Tickets.status = " + "'" + selection1 + "'", conn);
-                    SqlParameter id_param = new SqlParameter();
-                    SqlParameter id_param1 = new SqlParameter();
-                    id_param.ParameterName = "@associateID";
-                    id_param.Value = test.ToString();
-
-                    id_param1.ParameterName = "@equipmentID";
-                    id_param1.Value = test1.ToString();
-
-                    id_cmd.Parameters.Add(id_param);
-                    id_cmd.Parameters.Add(id_param1);
-                    reader = id_cmd.ExecuteReader();
-
-
-                    DataSet dsname3 = new DataSet();
-                    DataTable dtname3 = new DataTable("Table5");
-                    dsname3.Tables.Add(dtname3);
-                    dsname3.Load(reader, LoadOption.PreserveChanges, dsname3.Tables[0]);
-                    this.ticketsBindingSource.DataSource = dsname3.Tables[0];
-                    dashboardGrid.DataSource = dsname3.Tables[0];
-                }
-            }
-        }
-
+  
         private void refreshButton_Click(object sender, EventArgs e)
         {
             equipmentOption.Text = "";
@@ -605,6 +217,461 @@ namespace backupLosGatos
             dashboardScreen newD = new dashboardScreen();
             newD.Show();
             this.Close();
+        }
+
+        private void equipmentOption_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+
+
+
+            string test;
+            string test2;
+
+
+            if (equipmentOption.SelectedValue == null)
+            {
+
+            }
+
+            else
+            {
+
+                if (technicianOption.SelectedValue == null && statusOption.SelectedValue == null)
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE equipmentID = @equipmentID", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@equipmentID";
+                    param.Value = equipmentOption.SelectedValue.ToString();
+                    cmd.Parameters.Add(param);
+
+                    reader = cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+
+                }
+                else if (technicianOption.SelectedValue != null && statusOption.SelectedValue == null)
+                {
+
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND equipmentID = @equipmentID", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@equipmentID";
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+
+                }
+
+
+                else if (technicianOption.SelectedValue == null && statusOption.SelectedValue != null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status and equipmentID = @equipmentID", conn);
+                    SqlParameter param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+
+                    param.ParameterName = "@status";
+                    param2.ParameterName = "@equipmentID";
+
+                    param.Value = statusOption.SelectedValue.ToString();
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+
+
+                    cmd.Parameters.Add(param);
+                    cmd.Parameters.Add(param2);
+
+
+
+                    reader = cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+
+                }
+
+
+                else if (technicianOption.SelectedValue != null && statusOption.SelectedValue != null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND equipmentID = @equipmentID AND status = @status", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    SqlParameter param3 = new SqlParameter();
+
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@equipmentID";
+                    param3.ParameterName = "@status";
+
+
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    param3.Value = statusOption.SelectedValue.ToString();
+
+
+
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    id_cmd.Parameters.Add(param3);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+
+                }
+            }
+
+
+
+
+
+
+
+        }
+
+        private void statusOption_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+            string test;
+            string test2;
+
+            if (statusOption.SelectedValue == null)
+            {
+            }
+
+            else
+            {
+
+
+
+                if (technicianOption.SelectedValue == null && equipmentOption.SelectedValue == null)
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@status";
+                    param.Value = statusOption.SelectedValue.ToString();
+                    cmd.Parameters.Add(param);
+
+                    reader = cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+                }
+
+                else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue == null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND status = @status", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@status";
+                    param2.Value = statusOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+                }
+
+                else if (technicianOption.SelectedValue == null && equipmentOption.SelectedValue != null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Tickets WHERE status = @status and equipmentID = @equipmentID", conn);
+                    SqlParameter param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+
+                    param.ParameterName = "@status";
+                    param2.ParameterName = "@equipmentID";
+
+                    param.Value = statusOption.SelectedValue.ToString();
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+
+
+                    cmd.Parameters.Add(param);
+                    cmd.Parameters.Add(param2);
+
+
+
+                    reader = cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+                }
+
+                else if (technicianOption.SelectedValue != null && equipmentOption.SelectedValue != null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND equipmentID = @equipmentID AND status = @status", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    SqlParameter param3 = new SqlParameter();
+
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@equipmentID";
+                    param3.ParameterName = "@status";
+
+
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    param3.Value = statusOption.SelectedValue.ToString();
+
+
+
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    id_cmd.Parameters.Add(param3);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+
+                }
+            }
+
+
+
+        }
+
+        private void technicianOption_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+
+
+            string test;
+            string test2;
+
+            if (technicianOption.SelectedValue == null)
+            {
+            }
+            else
+            {
+                if (statusOption.SelectedValue == null && equipmentOption.SelectedValue == null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    id_param.ParameterName = "@username";
+                    id_param.Value = test2;
+                    id_cmd.Parameters.Add(id_param);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+
+                }
+
+                else if (statusOption.SelectedValue != null && equipmentOption.SelectedValue == null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND status = @status", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@status";
+                    param2.Value = statusOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+                }
+                else if (statusOption.SelectedValue == null && equipmentOption.SelectedValue != null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND equipmentID = @equipmentID", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@equipmentID";
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+                }
+                else if (statusOption.SelectedValue != null && equipmentOption.SelectedValue != null)
+                {
+
+                    SqlCommand cmd = new SqlCommand("SELECT username FROM Users WHERE firstName = @firstName", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@firstName";
+                    param.Value = technicianOption.SelectedValue.ToString();
+
+                    cmd.Parameters.Add(param);
+                    test2 = (string)cmd.ExecuteScalar();
+
+                    SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets WHERE userName = @username AND equipmentID = @equipmentID AND status = @status", conn);
+                    SqlParameter id_param = new SqlParameter();
+                    SqlParameter param2 = new SqlParameter();
+                    SqlParameter param3 = new SqlParameter();
+
+                    id_param.ParameterName = "@username";
+                    param2.ParameterName = "@equipmentID";
+                    param3.ParameterName = "@status";
+
+
+                    param2.Value = equipmentOption.SelectedValue.ToString();
+                    id_param.Value = test2;
+                    param3.Value = statusOption.SelectedValue.ToString();
+
+
+
+                    id_cmd.Parameters.Add(id_param);
+                    id_cmd.Parameters.Add(param2);
+                    id_cmd.Parameters.Add(param3);
+                    reader = id_cmd.ExecuteReader();
+
+                    DataSet ds = new DataSet();
+                    DataTable dt = new DataTable("Table1");
+                    ds.Tables.Add(dt);
+                    ds.Load(reader, LoadOption.PreserveChanges, ds.Tables[0]);
+
+                    dashboardGrid.DataSource = ds.Tables[0];
+
+                }
+
+
+
+
+            }
+
+
+
+
+
+
         }
     }
 }

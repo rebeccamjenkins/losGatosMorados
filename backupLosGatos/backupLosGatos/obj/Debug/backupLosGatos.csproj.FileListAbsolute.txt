@@ -110,3 +110,5 @@ C:\Users\cardo\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backu
 C:\Users\cardo\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.csproj.CoreCompileInputs.cache
 C:\Users\cardo\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.exe
 C:\Users\cardo\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.pdb
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.kioskForm.resources
+C:\Users\imsha\Source\Repos\rebeccamjenkins\losGatosMorados\backupLosGatos\backupLosGatos\obj\Debug\backupLosGatos.kioskRequest.resources
