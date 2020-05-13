@@ -196,18 +196,46 @@ namespace backupLosGatos
                 DialogResult dialogResult2 = MessageBox.Show("Are you sure? Ticket request will be deleted.", "Deny Ticket?", MessageBoxButtons.YesNo);
                 if(dialogResult2 == DialogResult.Yes)
                 {
+                    int value;
+                    string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
 
+                    value = Int32.Parse(str);
+                    int place = 105 - value;
+
+                    try
+                    {
+                        using (SqlConnection con2 = new SqlConnection("Data Source = 10.135.85.184; Initial Catalog = Group6; User ID = Group6; Password = Grp6s2117"))
+                        {
+                          
+                            using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + place))
+                            {
+                                commandDel.Connection = con2;
+                                con2.Open();
+                                commandDel.ExecuteNonQuery();
+                            }
+                            
+                        }
+                    }
+                    catch (SystemException ex)
+                    {
+                        MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+                    }
                 }
                 else
                 {
 
                 }
+            }
+
+
+                
+                
 
 
             }
 
 
 
-        }
+        
     }
 }
