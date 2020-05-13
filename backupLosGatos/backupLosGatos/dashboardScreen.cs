@@ -592,5 +592,12 @@ namespace backupLosGatos
             viewTicket.Show();
             this.Hide();
         }
+
+        private void btnDashboardRefresh_Click(object sender, EventArgs e)
+        {
+            dashboardScreen newD = new dashboardScreen();
+            newD.Show();
+            this.Close();
+        }
     }
 }

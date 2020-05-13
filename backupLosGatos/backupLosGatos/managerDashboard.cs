@@ -20,6 +20,13 @@ namespace backupLosGatos
         {
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            conn.Open();
+            
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Tickets", conn);
+            DataTable data = new DataTable();
+            sda.Fill(data);
+            dashboardGrid.DataSource = data;
+            conn.Close();
 
             //status dropdown
             conn.Open();
@@ -74,17 +81,20 @@ namespace backupLosGatos
             newTicket.mangButton.Enabled = true;
             newTicket.coordButton.Enabled = false;
 
+            //disable the 'create ticket' button
+            newTicket.ticketPage.Visible = false;
+
             //this makes it so it autofills the ticket number for us
-            string connetionString = null;
+            string connectionString = null;
             SqlConnection connection;
             SqlCommand command;
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataSet ds = new DataSet();
             string sql = null;
 
-            connetionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+            connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
             sql = "SELECT ticketID FROM Tickets";
-            connection = new SqlConnection(connetionString);
+            connection = new SqlConnection(connectionString);
 
             try
             {
@@ -112,12 +122,13 @@ namespace backupLosGatos
         {
             //generates ticketDetails window populated with database information relevant to datagridview cell selected
             ticketDetails viewTicket = new ticketDetails();
+
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
             viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
             viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
             viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
@@ -164,6 +175,7 @@ namespace backupLosGatos
                     DataTable dtname2 = new DataTable("Table4");
                     dsname2.Tables.Add(dtname2);
                     dsname2.Load(reader, LoadOption.PreserveChanges, dsname2.Tables[0]);
+
                     this.ticketsBindingSource.DataSource = dsname2.Tables[0];
                     dashboardGrid.DataSource = dsname2.Tables[0];
                 }
@@ -182,7 +194,6 @@ namespace backupLosGatos
                     param1.Value = equipmentOption.SelectedValue.ToString();
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
-
 
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID and Tickets.equipmentID = @equipmentID", conn);
                     SqlParameter id_param = new SqlParameter();
@@ -362,7 +373,6 @@ namespace backupLosGatos
                     cmd1.Parameters.Add(param1);
                     test1 = (Int32)cmd1.ExecuteScalar();
 
-
                     SqlCommand id_cmd = new SqlCommand("SELECT * FROM Tickets, Assignments, Equipment WHERE Assignments.associateID = @associateID AND Assignments.ticketID = Tickets.ticketID AND Equipment.equipmentID = @equipmentID AND Tickets.equipmentID = @equipmentID AND Tickets.status = " + "'" + selection1 + "'", conn);
                     SqlParameter id_param = new SqlParameter();
                     SqlParameter id_param1 = new SqlParameter();
@@ -522,7 +532,9 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            dashboardGrid.Refresh();
+            technicianOption.Text = "";
+            statusOption.Text = "";
+            equipmentOption.Text = "";
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -534,7 +546,12 @@ namespace backupLosGatos
 
         private void viewKiosk_Click(object sender, EventArgs e)
         {
+            
             kioskRequest viewKiosk = new kioskRequest();
+            if (labelRole.Text == "manager")
+            {
+                viewKiosk.coordButton.Enabled = false;
+            }
             viewKiosk.Show();
             this.Close();
         }
@@ -549,6 +566,22 @@ namespace backupLosGatos
             c_id.Fill(dt);
             dashboardGrid.DataSource = dt;
             conn.Close();
+        }
+
+        private void refreshButton_Click_1(object sender, EventArgs e)
+        {
+            technicianOption.Text = "";
+            statusOption.Text = "";
+            equipmentOption.Text = "";
+        }
+
+        private void dashboardPage_Click(object sender, EventArgs e)
+        {
+            managerDashboard refresh = new managerDashboard();
+
+            refresh.Show(); 
+            this.Close();
+            
         }
     }
 }

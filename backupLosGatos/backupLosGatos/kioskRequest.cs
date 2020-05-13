@@ -136,7 +136,6 @@ namespace backupLosGatos
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
                 string injection = "INSERT into Kiosk (ticketID, unitID, equipmentID, priorityLevel, technicianName, additionalInfo, dateSubmitted) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @technicianName, @additionalInfo, @dateSubmitted)";
-
                 using (SqlCommand command = new SqlCommand(injection))
                 {
                     command.Connection = openCon;
@@ -147,13 +146,11 @@ namespace backupLosGatos
                     command.Parameters.Add("@technicianName", SqlDbType.NVarChar, 50).Value = technicianName;
                     command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
                     command.Parameters.Add("@dateSubmitted", SqlDbType.DateTime, 30).Value = date;
-
                     openCon.Open();
-
                     command.ExecuteNonQuery();
                 }
             }*/
-            
+
 
 
 
@@ -169,7 +166,7 @@ namespace backupLosGatos
                     using (SqlCommand cmd = new SqlCommand(injection))
                     {
                         cmd.Connection = openCon;
-                        
+
                         cmd.Parameters.AddWithValue("@ticketID", numID);
                         cmd.Parameters.AddWithValue("@unitID", this.dashboardGrid.CurrentRow.Cells[1].Value.ToString());
                         cmd.Parameters.AddWithValue("@equipmentID", this.dashboardGrid.CurrentRow.Cells[2].Value.ToString());
@@ -225,7 +222,7 @@ namespace backupLosGatos
             else if (dialogResult == DialogResult.No)
             {
                 DialogResult dialogResult2 = MessageBox.Show("Are you sure? Ticket request will be deleted.", "Deny Ticket?", MessageBoxButtons.YesNo);
-                if(dialogResult2 == DialogResult.Yes)
+                if (dialogResult2 == DialogResult.Yes)
                 {
                     int value;
                     string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
@@ -237,45 +234,40 @@ namespace backupLosGatos
                     {
                         using (SqlConnection con2 = new SqlConnection("Data Source = 10.135.85.184; Initial Catalog = Group6; User ID = Group6; Password = Grp6s2117"))
                         {
-                          
+
                             using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + value))
                             {
                                 commandDel.Connection = con2;
                                 con2.Open();
                                 commandDel.ExecuteNonQuery();
                             }
-                            
+
                         }
 
                         MessageBox.Show("Weld Request Denied.");
                         kioskRequest refresh = new kioskRequest();
-                        this.Close();
                         refresh.Show();
+                        this.Close();
+                        
 
                     }
                     catch (SystemException ex)
                     {
                         MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
                     }
-
-
-
                 }
                 else
                 {
-
                 }
             }
+        }
 
-
-                
-                
-
-
-            }
-
-
-
-        
+        private void ticketPage_Click(object sender, EventArgs e)
+        {
+            ticketDetails newT = new ticketDetails();
+           
+            newT.Show();
+            this.Close();
+        }
     }
 }
