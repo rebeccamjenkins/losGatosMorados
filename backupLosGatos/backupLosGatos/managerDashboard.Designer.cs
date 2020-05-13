@@ -129,8 +129,6 @@ namespace backupLosGatos
             this.dashboardGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dashboardGrid.Size = new System.Drawing.Size(1057, 277);
             this.dashboardGrid.TabIndex = 13;
-            this.dashboardGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
-            this.dashboardGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
             this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentClick);
             // 
             // ticketIDDataGridViewTextBoxColumn

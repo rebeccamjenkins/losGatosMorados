@@ -118,6 +118,7 @@ namespace backupLosGatos
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(786, 277);
             this.dashboardGrid.TabIndex = 13;
+            this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellDoubleClick);
             // 
             // ticketIDDataGridViewTextBoxColumn
             // 
