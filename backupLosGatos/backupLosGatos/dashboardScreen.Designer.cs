@@ -273,8 +273,9 @@ namespace backupLosGatos
             // viewKiosk
             // 
             this.viewKiosk.Name = "viewKiosk";
-            this.viewKiosk.Size = new System.Drawing.Size(170, 34);
+            this.viewKiosk.Size = new System.Drawing.Size(170, 24);
             this.viewKiosk.Text = "View Kiosk Requests";
+            this.viewKiosk.Visible = false;
             this.viewKiosk.Click += new System.EventHandler(this.viewKiosk_Click);
             // 
             // logout

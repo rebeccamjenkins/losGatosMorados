@@ -94,7 +94,7 @@
             this.dashboardGrid.Name = "dashboardGrid";
             this.dashboardGrid.RowHeadersWidth = 51;
             this.dashboardGrid.RowTemplate.Height = 24;
-            this.dashboardGrid.Size = new System.Drawing.Size(873, 277);
+            this.dashboardGrid.Size = new System.Drawing.Size(1091, 348);
             this.dashboardGrid.TabIndex = 28;
             // 
             // dataGridViewTextBoxColumn1
@@ -174,7 +174,7 @@
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(925, 28);
+            this.pageOptions.Size = new System.Drawing.Size(1158, 38);
             this.pageOptions.TabIndex = 32;
             // 
             // dashboardPage
@@ -229,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 423);
+            this.ClientSize = new System.Drawing.Size(926, 549);
             this.Controls.Add(this.mangButton);
             this.Controls.Add(this.coordButton);
             this.Controls.Add(this.pageOptions);
@@ -238,7 +238,7 @@
             this.Controls.Add(this.dashboardGrid);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "kioskRequest";
-            this.Text = "kioskRequest";
+            this.Text = "Los Gatos Morados: Weld Progress Tracking System - Kiosk Requests";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).EndInit();

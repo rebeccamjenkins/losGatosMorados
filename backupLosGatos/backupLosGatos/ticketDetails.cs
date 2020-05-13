@@ -97,13 +97,13 @@ namespace backupLosGatos
 
         private void dashboardPage_Click(object sender, EventArgs e)
         {
-            if (coordButton.Enabled == true)
+            if (coordButton.Enabled == true || mangButton.Enabled == false)
             {
                 dashboardScreen pageDashboard = new dashboardScreen();
                 pageDashboard.Show();
                 this.Close();
             }
-            else if (mangButton.Enabled == true)
+            else if (mangButton.Enabled == true || coordButton.Enabled == false)
             {
                 managerDashboard pageDashboard = new managerDashboard();
                 pageDashboard.Show();
