@@ -120,8 +120,8 @@ namespace backupLosGatos
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            string unitID = ticketIDText.Text.ToString();
-            string equipmentID = unitIDText.Text.ToString();
+            string unitID = unitIDText.Text.ToString();
+            string equipmentID = equipmentCombo.Text.ToString();
             string priorityLevel = priorityCombo.Text.ToString();
             DateTime date = DateTime.Today;
             string status = statusCombo.Text.ToString();
