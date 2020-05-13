@@ -84,6 +84,7 @@ namespace backupLosGatos
             this.equipmentDescriptionLabel.Size = new System.Drawing.Size(89, 19);
             this.equipmentDescriptionLabel.TabIndex = 28;
             this.equipmentDescriptionLabel.Text = "Equipment:";
+            this.equipmentDescriptionLabel.Visible = false;
             // 
             // label2
             // 
@@ -238,6 +239,7 @@ namespace backupLosGatos
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(255, 123);
             this.panel1.TabIndex = 37;
+            this.panel1.Visible = false;
             // 
             // ticketLabel
             // 
@@ -249,6 +251,7 @@ namespace backupLosGatos
             this.ticketLabel.Size = new System.Drawing.Size(65, 19);
             this.ticketLabel.TabIndex = 23;
             this.ticketLabel.Text = "Ticket #:";
+            this.ticketLabel.Visible = false;
             // 
             // queryTicket
             // 
@@ -259,6 +262,7 @@ namespace backupLosGatos
             this.queryTicket.Name = "queryTicket";
             this.queryTicket.Size = new System.Drawing.Size(157, 25);
             this.queryTicket.TabIndex = 20;
+            this.queryTicket.Visible = false;
             this.queryTicket.TextChanged += new System.EventHandler(this.queryTicket_TextChanged);
             // 
             // refreshButton
@@ -272,6 +276,7 @@ namespace backupLosGatos
             this.refreshButton.TabIndex = 31;
             this.refreshButton.Text = "Reset";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Visible = false;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click_1);
             // 
             // equipmentOption
@@ -284,6 +289,7 @@ namespace backupLosGatos
             this.equipmentOption.Name = "equipmentOption";
             this.equipmentOption.Size = new System.Drawing.Size(157, 24);
             this.equipmentOption.TabIndex = 29;
+            this.equipmentOption.Visible = false;
             // 
             // technicianOption
             // 
@@ -311,6 +317,7 @@ namespace backupLosGatos
             this.statusOption.Size = new System.Drawing.Size(157, 24);
             this.statusOption.TabIndex = 19;
             this.statusOption.ValueMember = "status";
+            this.statusOption.Visible = false;
             // 
             // assignedLabel
             // 
@@ -332,6 +339,7 @@ namespace backupLosGatos
             this.statusLabel.Size = new System.Drawing.Size(54, 19);
             this.statusLabel.TabIndex = 22;
             this.statusLabel.Text = "Status:";
+            this.statusLabel.Visible = false;
             // 
             // filterPanel
             // 
@@ -348,6 +356,7 @@ namespace backupLosGatos
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Size = new System.Drawing.Size(525, 123);
             this.filterPanel.TabIndex = 36;
+            this.filterPanel.Visible = false;
             // 
             // techName
             // 
