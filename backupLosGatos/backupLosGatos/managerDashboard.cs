@@ -83,6 +83,9 @@ namespace backupLosGatos
 
             //disable the 'create ticket' button
             newTicket.ticketPage.Visible = false;
+            newTicket.statusText.Visible = false;
+            newTicket.equipText.Visible = false;
+            newTicket.priorityText.Visible = false;
 
             //this makes it so it autofills the ticket number for us
             string connectionString = null;
