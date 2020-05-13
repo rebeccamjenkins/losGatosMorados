@@ -29,11 +29,17 @@ namespace backupLosGatos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label equipmentDescriptionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(technicianDashboard));
+            this.equipmentDescriptionLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.dashboardGrid = new System.Windows.Forms.DataGridView();
+            this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priorityLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateSubmitted = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ticketsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gROUP6DataSet1 = new backupLosGatos.GROUP6DataSet();
             this.ticketsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.Koch = new System.Windows.Forms.PictureBox();
@@ -55,16 +61,10 @@ namespace backupLosGatos
             this.techName = new System.Windows.Forms.Label();
             this.fKAssignmentsTickets1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.assignmentsTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.AssignmentsTableAdapter();
-            this.gROUP6DataSet1 = new backupLosGatos.GROUP6DataSet();
-            this.ticketsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ticketsTableAdapter1 = new backupLosGatos.GROUP6DataSetTableAdapters.TicketsTableAdapter();
-            this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priorityLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateSubmitted = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            equipmentDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Koch)).BeginInit();
@@ -72,20 +72,18 @@ namespace backupLosGatos
             this.panel1.SuspendLayout();
             this.filterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fKAssignmentsTickets1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // equipmentDescriptionLabel
             // 
-            equipmentDescriptionLabel.AutoSize = true;
-            equipmentDescriptionLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            equipmentDescriptionLabel.Location = new System.Drawing.Point(23, 69);
-            equipmentDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            equipmentDescriptionLabel.Name = "equipmentDescriptionLabel";
-            equipmentDescriptionLabel.Size = new System.Drawing.Size(89, 19);
-            equipmentDescriptionLabel.TabIndex = 28;
-            equipmentDescriptionLabel.Text = "Equipment:";
+            this.equipmentDescriptionLabel.AutoSize = true;
+            this.equipmentDescriptionLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equipmentDescriptionLabel.Location = new System.Drawing.Point(21, 17);
+            this.equipmentDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.equipmentDescriptionLabel.Name = "equipmentDescriptionLabel";
+            this.equipmentDescriptionLabel.Size = new System.Drawing.Size(89, 19);
+            this.equipmentDescriptionLabel.TabIndex = 28;
+            this.equipmentDescriptionLabel.Text = "Equipment:";
             // 
             // label2
             // 
@@ -110,7 +108,6 @@ namespace backupLosGatos
             this.dashboardGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dashboardGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ticketIDDataGridViewTextBoxColumn,
-            this.userName,
             this.priorityLevel,
             this.dateSubmitted,
             this.status});
@@ -122,6 +119,48 @@ namespace backupLosGatos
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(786, 277);
             this.dashboardGrid.TabIndex = 13;
+            // 
+            // ticketIDDataGridViewTextBoxColumn
+            // 
+            this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "ticketID";
+            this.ticketIDDataGridViewTextBoxColumn.HeaderText = "Ticket #";
+            this.ticketIDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ticketIDDataGridViewTextBoxColumn.Name = "ticketIDDataGridViewTextBoxColumn";
+            this.ticketIDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // priorityLevel
+            // 
+            this.priorityLevel.DataPropertyName = "priorityLevel";
+            this.priorityLevel.HeaderText = "Priority Level";
+            this.priorityLevel.MinimumWidth = 6;
+            this.priorityLevel.Name = "priorityLevel";
+            this.priorityLevel.Width = 125;
+            // 
+            // dateSubmitted
+            // 
+            this.dateSubmitted.DataPropertyName = "dateSubmitted";
+            this.dateSubmitted.HeaderText = "Date Submitted";
+            this.dateSubmitted.MinimumWidth = 6;
+            this.dateSubmitted.Name = "dateSubmitted";
+            this.dateSubmitted.Width = 125;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Status";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.Width = 125;
+            // 
+            // ticketsBindingSource1
+            // 
+            this.ticketsBindingSource1.DataMember = "Tickets";
+            this.ticketsBindingSource1.DataSource = this.gROUP6DataSet1;
+            // 
+            // gROUP6DataSet1
+            // 
+            this.gROUP6DataSet1.DataSetName = "GROUP6DataSet1";
+            this.gROUP6DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ticketsBindingSource
             // 
@@ -235,7 +274,7 @@ namespace backupLosGatos
             this.equipmentOption.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.equipmentOption.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.equipmentOption.FormattingEnabled = true;
-            this.equipmentOption.Location = new System.Drawing.Point(120, 69);
+            this.equipmentOption.Location = new System.Drawing.Point(121, 16);
             this.equipmentOption.Margin = new System.Windows.Forms.Padding(4);
             this.equipmentOption.Name = "equipmentOption";
             this.equipmentOption.Size = new System.Drawing.Size(157, 24);
@@ -253,6 +292,7 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 18;
             this.technicianOption.ValueMember = "associateID";
+            this.technicianOption.Visible = false;
             // 
             // statusOption
             // 
@@ -276,6 +316,7 @@ namespace backupLosGatos
             this.assignedLabel.Size = new System.Drawing.Size(90, 19);
             this.assignedLabel.TabIndex = 21;
             this.assignedLabel.Text = "Assigned To:";
+            this.assignedLabel.Visible = false;
             // 
             // statusLabel
             // 
@@ -292,7 +333,7 @@ namespace backupLosGatos
             this.filterPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.filterPanel.Controls.Add(this.refreshButton);
             this.filterPanel.Controls.Add(this.equipmentOption);
-            this.filterPanel.Controls.Add(equipmentDescriptionLabel);
+            this.filterPanel.Controls.Add(this.equipmentDescriptionLabel);
             this.filterPanel.Controls.Add(this.technicianOption);
             this.filterPanel.Controls.Add(this.statusOption);
             this.filterPanel.Controls.Add(this.assignedLabel);
@@ -322,59 +363,9 @@ namespace backupLosGatos
             // 
             this.assignmentsTableAdapter.ClearBeforeFill = true;
             // 
-            // gROUP6DataSet1
-            // 
-            this.gROUP6DataSet1.DataSetName = "GROUP6DataSet1";
-            this.gROUP6DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ticketsBindingSource1
-            // 
-            this.ticketsBindingSource1.DataMember = "Tickets";
-            this.ticketsBindingSource1.DataSource = this.gROUP6DataSet1;
-            // 
             // ticketsTableAdapter1
             // 
             this.ticketsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // ticketIDDataGridViewTextBoxColumn
-            // 
-            this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "ticketID";
-            this.ticketIDDataGridViewTextBoxColumn.HeaderText = "Ticket #";
-            this.ticketIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ticketIDDataGridViewTextBoxColumn.Name = "ticketIDDataGridViewTextBoxColumn";
-            this.ticketIDDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // userName
-            // 
-            this.userName.DataPropertyName = "userName";
-            this.userName.HeaderText = "Username";
-            this.userName.MinimumWidth = 6;
-            this.userName.Name = "userName";
-            this.userName.Width = 125;
-            // 
-            // priorityLevel
-            // 
-            this.priorityLevel.DataPropertyName = "priorityLevel";
-            this.priorityLevel.HeaderText = "Priority Level";
-            this.priorityLevel.MinimumWidth = 6;
-            this.priorityLevel.Name = "priorityLevel";
-            this.priorityLevel.Width = 125;
-            // 
-            // dateSubmitted
-            // 
-            this.dateSubmitted.DataPropertyName = "dateSubmitted";
-            this.dateSubmitted.HeaderText = "Date Submitted";
-            this.dateSubmitted.MinimumWidth = 6;
-            this.dateSubmitted.Name = "dateSubmitted";
-            this.dateSubmitted.Width = 125;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Status";
-            this.status.MinimumWidth = 6;
-            this.status.Name = "status";
-            this.status.Width = 125;
             // 
             // technicianDashboard
             // 
@@ -395,6 +386,8 @@ namespace backupLosGatos
             this.Text = "Los Gatos Morados: Weld Progress Tracking System - Technician Dashboard";
             this.Load += new System.EventHandler(this.technicianDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Koch)).EndInit();
@@ -405,8 +398,6 @@ namespace backupLosGatos
             this.filterPanel.ResumeLayout(false);
             this.filterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fKAssignmentsTickets1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gROUP6DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,5 +437,6 @@ namespace backupLosGatos
         private System.Windows.Forms.DataGridViewTextBoxColumn priorityLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSubmitted;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.Label equipmentDescriptionLabel;
     }
 }

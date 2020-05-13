@@ -83,7 +83,6 @@ namespace backupLosGatos
             if (equipmentOption.SelectedValue == null)
             {
             }
-
             else
             {
                 if (technicianOption.SelectedValue == null && statusOption.SelectedValue == null)
@@ -480,6 +479,12 @@ namespace backupLosGatos
         private void viewKiosk_Click(object sender, EventArgs e)
         {
             kioskRequest viewKiosk = new kioskRequest();
+
+            if (labelRole.Text == "coordinator")
+            {
+                viewKiosk.mangButton.Enabled = false;
+            }
+
             viewKiosk.Show();
             conn.Close();
             this.Close();
@@ -495,53 +500,6 @@ namespace backupLosGatos
             c_id.Fill(dt);
             dashboardGrid.DataSource = dt;
             conn.Close();
-        }
-
-        private void ticketPage_Click(object sender, EventArgs e)
-        {
-            ticketDetails newTicket = new ticketDetails();
-            if (labelRole.Text == "coordinator")
-            {
-                newTicket.updateButton.Enabled = false;
-                newTicket.saveButton.Enabled = false;
-                newTicket.coordButton.Enabled = false;
-
-            }
-            newTicket.coordButton.Enabled = true;
-            newTicket.mangButton.Enabled = false;
-
-            //this makes it so it autofills the ticket number for us
-            string connetionString = null;
-            SqlConnection connection;
-            SqlCommand command;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataSet ds = new DataSet();
-            string sql = null;
-
-            connetionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
-            sql = "SELECT ticketID FROM Tickets";
-            connection = new SqlConnection(connetionString);
-
-            try
-            {
-                connection.Open();
-                command = new SqlCommand(sql, connection);
-                adapter.SelectCommand = command;
-                adapter.Fill(ds, "SQL Temp Table");
-                adapter.Dispose();
-                command.Dispose();
-                //connection.Close();
-
-                newTicket.ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
-                //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Cannot open connection to database! ");
-            }
-
-            newTicket.Show();
-            this.Close();
         }
 
         private void dashboardGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

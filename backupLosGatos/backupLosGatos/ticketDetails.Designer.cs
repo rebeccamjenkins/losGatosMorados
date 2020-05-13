@@ -316,7 +316,7 @@ namespace backupLosGatos
             this.priorityCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "priorityLevel", true));
             this.priorityCombo.FormattingEnabled = true;
             this.priorityCombo.Location = new System.Drawing.Point(443, 66);
-            this.priorityCombo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.priorityCombo.Margin = new System.Windows.Forms.Padding(4);
             this.priorityCombo.Name = "priorityCombo";
             this.priorityCombo.Size = new System.Drawing.Size(189, 25);
             this.priorityCombo.TabIndex = 11;
@@ -326,7 +326,7 @@ namespace backupLosGatos
             this.statusCombo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ticketsBindingSource, "status", true));
             this.statusCombo.FormattingEnabled = true;
             this.statusCombo.Location = new System.Drawing.Point(443, 28);
-            this.statusCombo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusCombo.Margin = new System.Windows.Forms.Padding(4);
             this.statusCombo.Name = "statusCombo";
             this.statusCombo.Size = new System.Drawing.Size(189, 25);
             this.statusCombo.TabIndex = 9;
@@ -572,7 +572,7 @@ namespace backupLosGatos
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(27, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(317, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -583,23 +583,25 @@ namespace backupLosGatos
             // 
             this.saveButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.Location = new System.Drawing.Point(679, 4);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(168, 34);
             this.saveButton.TabIndex = 16;
             this.saveButton.Text = "Save Changes";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Visible = false;
             // 
             // updateButton
             // 
             this.updateButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.Location = new System.Drawing.Point(503, 4);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(168, 34);
             this.updateButton.TabIndex = 17;
             this.updateButton.Text = "Edit Ticket";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Visible = false;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // panel1
@@ -608,7 +610,7 @@ namespace backupLosGatos
             this.panel1.Controls.Add(this.saveButton);
             this.panel1.Controls.Add(this.updateButton);
             this.panel1.Location = new System.Drawing.Point(23, 465);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(872, 60);
             this.panel1.TabIndex = 18;
@@ -617,7 +619,7 @@ namespace backupLosGatos
             // 
             this.submitButton.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.Location = new System.Drawing.Point(327, 4);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(168, 34);
             this.submitButton.TabIndex = 18;

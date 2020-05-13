@@ -548,8 +548,10 @@ namespace backupLosGatos
         {
             
             kioskRequest viewKiosk = new kioskRequest();
-            viewKiosk.mangButton.Enabled = true;
-            viewKiosk.coordButton.Enabled = true;
+            if (labelRole.Text == "manager")
+            {
+                viewKiosk.coordButton.Enabled = false;
+            }
             viewKiosk.Show();
             this.Close();
         }
