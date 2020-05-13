@@ -86,6 +86,8 @@ namespace backupLosGatos
             priorityCombo.DataSource = dsprior.Tables[0];
             priorityCombo.SelectedIndex = 0;
             priorityCombo.SelectedValue = 0;
+
+
         }
 
         private void ticketsBindingNavigatorSaveItem_Click(object sender, EventArgs e)

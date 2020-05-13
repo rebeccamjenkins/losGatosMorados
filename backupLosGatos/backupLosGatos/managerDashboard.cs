@@ -561,13 +561,20 @@ namespace backupLosGatos
             ticketDetails viewTicket = new ticketDetails();
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            //viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            //viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
             //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            //viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
             viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
             viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
             viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+
+            viewTicket.statusText.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.statusCombo.Visible = false;
+            viewTicket.priorityText.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.priorityCombo.Visible = false;
+            viewTicket.equipText.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.equipmentCombo.Visible = false;
 
             if (labelRole.Text == "manager")
             {
