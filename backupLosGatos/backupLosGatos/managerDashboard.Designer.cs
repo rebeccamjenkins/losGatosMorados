@@ -260,7 +260,7 @@ namespace backupLosGatos
             this.pageOptions.Location = new System.Drawing.Point(0, 0);
             this.pageOptions.Name = "pageOptions";
             this.pageOptions.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.pageOptions.Size = new System.Drawing.Size(1117, 28);
+            this.pageOptions.Size = new System.Drawing.Size(1405, 28);
             this.pageOptions.TabIndex = 32;
             // 
             // dashboardPage
@@ -415,7 +415,7 @@ namespace backupLosGatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 526);
+            this.ClientSize = new System.Drawing.Size(1405, 681);
             this.Controls.Add(this.filterPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pageOptions);

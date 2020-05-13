@@ -44,11 +44,11 @@
             this.gROUP6DataSet = new backupLosGatos.GROUP6DataSet();
             this.pageOptions = new System.Windows.Forms.MenuStrip();
             this.dashboardPage = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.mangButton = new System.Windows.Forms.Button();
             this.coordButton = new System.Windows.Forms.Button();
             this.kioskTableAdapter = new backupLosGatos.GROUP6DataSetTableAdapters.KioskTableAdapter();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kioskBindingSource)).BeginInit();
@@ -96,7 +96,7 @@
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(873, 277);
             this.dashboardGrid.TabIndex = 28;
-            this.dashboardGrid.DoubleClick += new System.EventHandler(this.dashboardGrid_DoubleClick);
+            this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellContentDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -188,6 +188,12 @@
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            // 
             // logout
             // 
             this.logout.Name = "logout";
@@ -219,12 +225,6 @@
             // kioskTableAdapter
             // 
             this.kioskTableAdapter.ClearBeforeFill = true;
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.refreshToolStripMenuItem.Text = "Refresh";
             // 
             // kioskRequest
             // 
