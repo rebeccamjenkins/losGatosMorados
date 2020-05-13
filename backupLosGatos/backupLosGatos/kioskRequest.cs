@@ -157,7 +157,7 @@ namespace backupLosGatos
 
 
 
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to approve ticket?", "Ticket Approval", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Do you want to approve this ticket?", "Ticket Approval", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 using (SqlConnection openCon = new SqlConnection(connectionString))
@@ -190,6 +190,37 @@ namespace backupLosGatos
                     }
 
                 }
+                int value;
+                string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
+
+                value = Int32.Parse(str);
+                int place = 107 - value;
+
+                try
+                {
+                    using (SqlConnection con2 = new SqlConnection("Data Source = 10.135.85.184; Initial Catalog = Group6; User ID = Group6; Password = Grp6s2117"))
+                    {
+
+                        using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + value))
+                        {
+                            commandDel.Connection = con2;
+                            con2.Open();
+                            commandDel.ExecuteNonQuery();
+                        }
+
+                    }
+
+                    MessageBox.Show("Weld Request Denied.");
+                    kioskRequest refresh = new kioskRequest();
+                    this.Close();
+                    refresh.Show();
+
+                }
+                catch (SystemException ex)
+                {
+                    MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+                }
+
             }
             else if (dialogResult == DialogResult.No)
             {
