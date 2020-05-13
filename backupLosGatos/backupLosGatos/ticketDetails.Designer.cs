@@ -283,7 +283,7 @@ namespace backupLosGatos
             // 
             // priorityText
             // 
-            this.priorityText.Location = new System.Drawing.Point(443, 70);
+            this.priorityText.Location = new System.Drawing.Point(443, 66);
             this.priorityText.Name = "priorityText";
             this.priorityText.ReadOnly = true;
             this.priorityText.Size = new System.Drawing.Size(189, 23);

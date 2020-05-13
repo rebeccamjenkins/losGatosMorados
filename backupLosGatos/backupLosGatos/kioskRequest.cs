@@ -93,7 +93,6 @@ namespace backupLosGatos
 
         private void kioskRequest_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'gROUP6DataSet.Kiosk' table. You can move, or remove it, as needed.
             this.kioskTableAdapter.Fill(this.gROUP6DataSet.Kiosk);
         }
 
