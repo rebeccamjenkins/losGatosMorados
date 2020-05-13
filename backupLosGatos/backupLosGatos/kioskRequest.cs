@@ -12,6 +12,9 @@ namespace backupLosGatos
             InitializeComponent();
         }
 
+        public SqlConnection conn = null;
+        SqlDataReader reader = null;
+
         private void dashboardPage_Click(object sender, EventArgs e)
         {
             if (coordButton.Enabled == true)
@@ -93,7 +96,19 @@ namespace backupLosGatos
 
         private void kioskRequest_Load(object sender, EventArgs e)
         {
-            this.kioskTableAdapter.Fill(this.gROUP6DataSet.Kiosk);
+            conn = new
+            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+
+            conn.Open();
+            SqlCommand getData = new SqlCommand("SELECT * FROM dbo.Kiosk", conn);
+            reader = getData.ExecuteReader();
+
+            DataSet data = new DataSet();
+            DataTable dtname2 = new DataTable("Table0");
+            data.Tables.Add(dtname2);
+            data.Load(reader, LoadOption.PreserveChanges, data.Tables[0]);
+            this.kioskBindingSource.DataSource = data.Tables[0];
+            dashboardGrid.DataSource = data.Tables[0];
         }
 
         private void logout_Click_1(object sender, EventArgs e)
@@ -156,7 +171,6 @@ namespace backupLosGatos
                     DateTime dateValue;
                     string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, additionalInformation, employeeName) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @additionalInformation, @technicianName)";
 
-
                     using (SqlCommand cmd = new SqlCommand(injection))
                     {
                         cmd.Connection = openCon;
@@ -174,7 +188,7 @@ namespace backupLosGatos
 
                         if (i != 0)
                         {
-                            MessageBox.Show("Ticket Approved and added to Database.");
+                            MessageBox.Show("Ticket approved and added to Database.");
                         }
                     }
                 }
@@ -195,18 +209,15 @@ namespace backupLosGatos
                             commandDel.ExecuteNonQuery();
                         }
                     }
-
                     MessageBox.Show("Weld Request Denied.");
                     kioskRequest refresh = new kioskRequest();
                     this.Close();
                     refresh.Show();
-
                 }
                 catch (SystemException ex)
                 {
                     MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
                 }
-
             }
             else if (dialogResult == DialogResult.No)
             {
