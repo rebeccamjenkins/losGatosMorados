@@ -161,7 +161,7 @@ namespace backupLosGatos
 
                 using (SqlConnection openCon = new SqlConnection(connectionString))
                 {
-                    string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, employeeName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @employeeName, @inspectorSignature, @additionalInfo )";
+                    string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, employeeName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @userName, @inspectorSignature, @additionalInfo )";
 
                     using (SqlCommand command = new SqlCommand(injection))
                     {
@@ -173,7 +173,7 @@ namespace backupLosGatos
                         command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = date;
                         command.Parameters.Add("@status", SqlDbType.NChar, 10).Value = status;
                         command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = welder;
-                        command.Parameters.Add("@employeeName", SqlDbType.NVarChar, 50).Value = assignto;
+                        command.Parameters.Add("@userName", SqlDbType.NVarChar, 50).Value = assignto;
                         command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = inspector;
                         command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
 
