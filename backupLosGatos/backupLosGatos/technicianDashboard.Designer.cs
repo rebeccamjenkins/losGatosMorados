@@ -177,7 +177,7 @@ namespace backupLosGatos
             // 
             this.Koch.Image = ((System.Drawing.Image)(resources.GetObject("Koch.Image")));
             this.Koch.Location = new System.Drawing.Point(23, 44);
-            this.Koch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Koch.Margin = new System.Windows.Forms.Padding(4);
             this.Koch.Name = "Koch";
             this.Koch.Size = new System.Drawing.Size(317, 50);
             this.Koch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -215,7 +215,7 @@ namespace backupLosGatos
             this.dashboardPage.Size = new System.Drawing.Size(77, 24);
             this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
+            this.dashboardPage.Click += new System.EventHandler(this.technicianDashboard_Load);
             // 
             // logoutToolStripMenuItem
             // 
@@ -259,6 +259,7 @@ namespace backupLosGatos
             this.queryTicket.Name = "queryTicket";
             this.queryTicket.Size = new System.Drawing.Size(157, 25);
             this.queryTicket.TabIndex = 20;
+            this.queryTicket.TextChanged += new System.EventHandler(this.queryTicket_TextChanged);
             // 
             // refreshButton
             // 
@@ -279,7 +280,7 @@ namespace backupLosGatos
             this.equipmentOption.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.equipmentOption.FormattingEnabled = true;
             this.equipmentOption.Location = new System.Drawing.Point(121, 16);
-            this.equipmentOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.equipmentOption.Margin = new System.Windows.Forms.Padding(4);
             this.equipmentOption.Name = "equipmentOption";
             this.equipmentOption.Size = new System.Drawing.Size(157, 24);
             this.equipmentOption.TabIndex = 29;
@@ -343,7 +344,7 @@ namespace backupLosGatos
             this.filterPanel.Controls.Add(this.assignedLabel);
             this.filterPanel.Controls.Add(this.statusLabel);
             this.filterPanel.Location = new System.Drawing.Point(23, 105);
-            this.filterPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterPanel.Margin = new System.Windows.Forms.Padding(4);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Size = new System.Drawing.Size(525, 123);
             this.filterPanel.TabIndex = 36;

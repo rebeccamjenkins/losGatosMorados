@@ -520,10 +520,18 @@ namespace backupLosGatos
                 viewTicket.updateButton.Enabled = false;
                 viewTicket.saveButton.Enabled = false;
                 viewTicket.mangButton.Enabled = false;
+                viewTicket.ticketPage.Visible = false;
             }
 
             viewTicket.Show();
             this.Hide();
+        }
+
+        private void dashboardPage_Click(object sender, EventArgs e)
+        {
+            dashboardScreen refresh = new dashboardScreen();
+            refresh.Show();
+            this.Close();
         }
     }
 }

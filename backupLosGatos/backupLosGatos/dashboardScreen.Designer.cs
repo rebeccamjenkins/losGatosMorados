@@ -266,15 +266,15 @@ namespace backupLosGatos
             // dashboardPage
             // 
             this.dashboardPage.Name = "dashboardPage";
-            this.dashboardPage.Size = new System.Drawing.Size(104, 24);
-            this.dashboardPage.Text = "Dashboard";
+            this.dashboardPage.Size = new System.Drawing.Size(77, 24);
+            this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dashboardPage.Click += new System.EventHandler(this.dashboardScreen_Load);
+            this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
             // 
             // viewKiosk
             // 
             this.viewKiosk.Name = "viewKiosk";
-            this.viewKiosk.Size = new System.Drawing.Size(170, 24);
+            this.viewKiosk.Size = new System.Drawing.Size(170, 34);
             this.viewKiosk.Text = "View Kiosk Requests";
             this.viewKiosk.Click += new System.EventHandler(this.viewKiosk_Click);
             // 
@@ -283,6 +283,7 @@ namespace backupLosGatos
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(74, 24);
             this.logout.Text = "Logout";
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // ticketLabel
             // 
@@ -304,6 +305,7 @@ namespace backupLosGatos
             this.queryTicket.Name = "queryTicket";
             this.queryTicket.Size = new System.Drawing.Size(157, 25);
             this.queryTicket.TabIndex = 20;
+            this.queryTicket.TextChanged += new System.EventHandler(this.queryTicket_TextChanged);
             // 
             // filterPanel
             // 
@@ -332,6 +334,7 @@ namespace backupLosGatos
             this.refreshButton.TabIndex = 31;
             this.refreshButton.Text = "Reset";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // equipmentOption
             // 
@@ -399,6 +402,7 @@ namespace backupLosGatos
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(394, 123);
             this.panel1.TabIndex = 37;
+            this.panel1.Click += new System.EventHandler(this.dashboardScreen_Load);
             // 
             // dashboardScreen
             // 
