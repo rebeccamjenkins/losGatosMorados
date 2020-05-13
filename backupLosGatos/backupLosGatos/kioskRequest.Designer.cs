@@ -96,6 +96,7 @@
             this.dashboardGrid.RowTemplate.Height = 24;
             this.dashboardGrid.Size = new System.Drawing.Size(1091, 348);
             this.dashboardGrid.TabIndex = 28;
+            this.dashboardGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dashboardGrid_CellDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
