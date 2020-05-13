@@ -132,10 +132,10 @@ namespace backupLosGatos
                 cmd.Parameters.AddWithValue("@dateSubmitted", thisDay);
                 cmd.Parameters.AddWithValue("@ticketID", ticketIDText.Text.ToString());
                 cmd.Parameters.AddWithValue("@unitID", unitIDText.Text.ToString());
-                cmd.Parameters.AddWithValue("@equipmentID", equipmentCombo.SelectedValue.ToString()); 
+                cmd.Parameters.AddWithValue("@equipmentID", equipmentCombo.SelectedValue.ToString());
                 cmd.Parameters.AddWithValue("@priorityLevel", priorityCombo.Text.ToString());
-                cmd.Parameters.AddWithValue("@welderSignature", welderSignatureText.Text.ToString()); 
-                cmd.Parameters.AddWithValue("@inspectorSignature", inspectorSignatureText.Text.ToString()); 
+                cmd.Parameters.AddWithValue("@welderSignature", welderSignatureText.Text.ToString());
+                cmd.Parameters.AddWithValue("@inspectorSignature", inspectorSignatureText.Text.ToString());
                 cmd.Parameters.AddWithValue("@additionalInformation", additionalInformationText.Text.ToString());
 
                 conn.Open();
@@ -162,7 +162,7 @@ namespace backupLosGatos
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-  
+
         }
 
         private void viewKioskRequestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,6 +200,97 @@ namespace backupLosGatos
         private void unitIDText_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ticketPage_Click(object sender, EventArgs e)
+        {
+            ticketDetails newTicket = new ticketDetails();
+
+            if (coordButton.Enabled == true || mangButton.Enabled == true)
+            {
+                if (coordButton.Enabled == true)
+                {
+                    openRequests.coordButton.Enabled = true;
+                    openRequests.mangButton.Enabled = false;
+                    //makes sure the right permissions are given
+                    newTicket.mangButton.Enabled = true;
+                    newTicket.coordButton.Enabled = false;
+
+                    //disable the 'create ticket' button
+                    newTicket.ticketPage.Visible = false;
+
+                    //this makes it so it autofills the ticket number for us
+                    string connectionString = null;
+                    SqlConnection connection;
+                    SqlCommand command;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    DataSet ds = new DataSet();
+                    string sql = null;
+
+                    connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+                    sql = "SELECT ticketID FROM Tickets";
+                    connection = new SqlConnection(connectionString);
+
+                    try
+                    {
+                        connection.Open();
+                        command = new SqlCommand(sql, connection);
+                        adapter.SelectCommand = command;
+                        adapter.Fill(ds, "SQL Temp Table");
+                        adapter.Dispose();
+                        command.Dispose();
+                        //connection.Close();
+
+                        newTicket.ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
+                        //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Cannot open connection to database!");
+                    }
+                }
+                else
+                {
+                    newTicket.mangButton.Enabled = false;
+                    newTicket.coordButton.Enabled = true;
+
+                    //disable the 'create ticket' button
+                    newTicket.ticketPage.Visible = false;
+
+                    //this makes it so it autofills the ticket number for us
+                    string connectionString = null;
+                    SqlConnection connection;
+                    SqlCommand command;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    DataSet ds = new DataSet();
+                    string sql = null;
+
+                    connectionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+                    sql = "SELECT ticketID FROM Tickets";
+                    connection = new SqlConnection(connectionString);
+
+                    try
+                    {
+                        connection.Open();
+                        command = new SqlCommand(sql, connection);
+                        adapter.SelectCommand = command;
+                        adapter.Fill(ds, "SQL Temp Table");
+                        adapter.Dispose();
+                        command.Dispose();
+                        //connection.Close();
+
+                        newTicket.ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
+                        //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Cannot open connection to database!");
+                    }
+                }
+
+                newTicket.Show();
+                this.Hide();
+            }
         }
     }
 }

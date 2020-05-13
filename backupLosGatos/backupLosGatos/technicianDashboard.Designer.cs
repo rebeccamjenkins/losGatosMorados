@@ -78,7 +78,7 @@ namespace backupLosGatos
             // 
             this.equipmentDescriptionLabel.AutoSize = true;
             this.equipmentDescriptionLabel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equipmentDescriptionLabel.Location = new System.Drawing.Point(23, 69);
+            this.equipmentDescriptionLabel.Location = new System.Drawing.Point(24, 17);
             this.equipmentDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.equipmentDescriptionLabel.Name = "equipmentDescriptionLabel";
             this.equipmentDescriptionLabel.Size = new System.Drawing.Size(89, 19);
@@ -276,7 +276,7 @@ namespace backupLosGatos
             this.equipmentOption.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.equipmentOption.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.equipmentOption.FormattingEnabled = true;
-            this.equipmentOption.Location = new System.Drawing.Point(120, 69);
+            this.equipmentOption.Location = new System.Drawing.Point(121, 16);
             this.equipmentOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.equipmentOption.Name = "equipmentOption";
             this.equipmentOption.Size = new System.Drawing.Size(157, 24);
@@ -294,6 +294,7 @@ namespace backupLosGatos
             this.technicianOption.Size = new System.Drawing.Size(157, 24);
             this.technicianOption.TabIndex = 18;
             this.technicianOption.ValueMember = "associateID";
+            this.technicianOption.Visible = false;
             // 
             // statusOption
             // 
@@ -317,6 +318,7 @@ namespace backupLosGatos
             this.assignedLabel.Size = new System.Drawing.Size(90, 19);
             this.assignedLabel.TabIndex = 21;
             this.assignedLabel.Text = "Assigned To:";
+            this.assignedLabel.Visible = false;
             // 
             // statusLabel
             // 

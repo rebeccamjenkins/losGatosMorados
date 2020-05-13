@@ -233,6 +233,7 @@ namespace backupLosGatos
             this.ticketPage.Size = new System.Drawing.Size(120, 24);
             this.ticketPage.Text = "Create Ticket";
             this.ticketPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ticketPage.Click += new System.EventHandler(this.ticketPage_Click);
             // 
             // viewKioskRequestToolStripMenuItem
             // 
