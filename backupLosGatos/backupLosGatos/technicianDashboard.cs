@@ -21,6 +21,8 @@ namespace backupLosGatos
 
         private void technicianDashboard_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'gROUP6DataSet11.Tickets' table. You can move, or remove it, as needed.
+            //this.ticketsTableAdapter2.Fill(this.gROUP6DataSet11.Tickets);
             //this.ticketsTableAdapter1.Fill(this.gROUP6DataSet1.Tickets);
             //this.assignmentsTableAdapter.Fill(this.gROUP6DataSet.Assignments);
             conn = new
@@ -33,10 +35,10 @@ namespace backupLosGatos
             dashboardGrid.DataSource = data;
             conn.Close();
 
-            foreach (DataGridViewRow row in dashboardGrid.Rows)
-            {
-                dashboardGrid.Rows[row.Index].Visible = !(row.Index > maxRows);
-            }
+            //foreach (DataGridViewRow row in dashboardGrid.Rows)
+            //{
+            //    dashboardGrid.Rows[row.Index].Visible = !(row.Index > maxRows);
+            //}
         }
 
         private void ticketPage_Click(object sender, EventArgs e)
@@ -55,8 +57,9 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            statusOption.Text = "";
-            technicianOption.Text = "";
+            technicianDashboard tech = new technicianDashboard();
+            tech.Show();
+            this.Close();
         }
 
         private void dashboardPage_Click(object sender, EventArgs e)
@@ -76,15 +79,42 @@ namespace backupLosGatos
         private void dashboardGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ticketDetails viewTicket = new ticketDetails();
+            //Ticket Number
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
-            //viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            //viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
-            //viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
-            //viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
-            //viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            //Assigned To (COMBO)
+            viewTicket.assignText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
+            viewTicket.associateIDComboBox.Visible = false;
+            //Priority Level (COMBO)
+            viewTicket.priorityText.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.priorityCombo.Visible = false;
+            //Status (COMBO)
+            viewTicket.statusText.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.statusCombo.Visible = false;
+            //DateTime (COMBO)
+            viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.dateTimePicker.Visible = false;
+            //Equipment (COMBO)
+            viewTicket.equipText.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.equipmentCombo.Visible = false;
+            //Welder Signature
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.welderSignatureText.ReadOnly = true;
+            //Inspector Signature
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.inspectorSignatureText.ReadOnly = true;
+            //Additional Information
+            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+            viewTicket.additionalInformationText.ReadOnly = true;
+            //Unit
+            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[9].Value.ToString();
+            viewTicket.unitIDText.ReadOnly = true;
+
+            viewTicket.submitButton.Visible = false;
+            viewTicket.updateButton.Visible = true;
+            viewTicket.saveButton.Visible = true;
+            viewTicket.mangButton.Enabled = false;
+            viewTicket.coordButton.Enabled = false;
+
 
             viewTicket.Show();
             this.Hide();

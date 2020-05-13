@@ -152,7 +152,7 @@ namespace backupLosGatos
                 SqlCommand technician = new SqlCommand("SELECT COUNT(*) FROM Tickets WHERE userName = '" +
                     assignto + "' AND (status = 'Not Started' OR status = 'Not Starte' OR status = 'In Progress')", con);
                 Int32 ticketCount = (Int32)technician.ExecuteScalar();
-                MessageBox.Show(ticketCount.ToString());
+                //MessageBox.Show(ticketCount.ToString());
                 if (ticketCount < 3)
                 {
                     con.Close();
@@ -208,7 +208,7 @@ namespace backupLosGatos
                     MessageBox.Show("This technician has reached the maximum amount of tickets allowed to " +
                         "be assigned to them. Please assign another available technician.");
                     associateIDComboBox.Text = null;
-                    ticketIDText.Text = ticketIDText.Text + 1;
+                    //ticketIDText.Text = ticketIDText.Text + 1;
                 }
             }
             //reset app
@@ -440,9 +440,9 @@ namespace backupLosGatos
                 using (SqlConnection openCon = new SqlConnection(connectionString))
                 {
                     string update = "UPDATE Tickets SET userName = @userName, priorityLevel = @priorityLevel, " +
-                        "status = @status, dateSubmitted = @dateSubmitted, equipmentID = @equipmentID, " +
+                        "status = @status,  equipmentID = @equipmentID, " +
                         "welderSignature = @welderSignature, inspectorSignature = @inspectorSignature," +
-                        "additionalInfo = @additionalInfo, unitID = @unitID WHERE ticketID = @ticketID; ";
+                        "additionalInformation = @additionalInformation, unitID = @unitID WHERE ticketID = @ticketID; ";
 
                     using (SqlCommand command = new SqlCommand(update))
                     {
@@ -456,16 +456,17 @@ namespace backupLosGatos
                         command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = tempWelder;
                         command.Parameters.Add("@userName", SqlDbType.NVarChar, 50).Value = tempAssign;
                         command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = tempInspector;
-                        command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = tempAdditionalInfo;
+                        command.Parameters.Add("@additionalInformation", SqlDbType.NVarChar, 1000).Value = tempAdditionalInfo;
 
                         openCon.Open();
 
                         command.ExecuteNonQuery();
+                        openCon.Close();
                     }
                 }
                 MessageBox.Show("Ticket updated.");
 
-                if (mangButton.Enabled = true)
+                if (mangButton.Enabled == true)
                 {
                     managerDashboard openManager = new managerDashboard();
                     openManager.Show();

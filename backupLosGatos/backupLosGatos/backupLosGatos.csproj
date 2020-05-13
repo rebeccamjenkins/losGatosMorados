@@ -75,6 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GROUP6DataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GROUP6DataSet12.xsd</DependentUpon>
+    </Compile>
     <Compile Include="kioskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +164,17 @@
     </None>
     <None Include="GROUP6DataSet.xss">
       <DependentUpon>GROUP6DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GROUP6DataSet12.xsc">
+      <DependentUpon>GROUP6DataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="GROUP6DataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GROUP6DataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GROUP6DataSet12.xss">
+      <DependentUpon>GROUP6DataSet12.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
