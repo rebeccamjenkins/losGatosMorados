@@ -74,6 +74,31 @@ namespace backupLosGatos
             equipmentOption.SelectedValue = 0;
         }
 
+        private void dashboardGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //generates ticketDetails window populated with database information relevant to datagridview cell selected
+            ticketDetails viewTicket = new ticketDetails();
+            viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
+            viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            //viewTicket.dateSubmittedDateTimePicker.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
+            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
+            viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
+            viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
+
+            if (labelRole.Text == "coordinator")
+            {
+                viewTicket.updateButton.Enabled = false;
+                viewTicket.saveButton.Enabled = false;
+                viewTicket.mangButton.Enabled = false;
+            }
+
+            viewTicket.Show();
+            this.Hide();
+        }
+
         private void equipmentOption_SelectionChangeCommitted(object sender, EventArgs e)
         {
             Int32 test = 0;
@@ -83,6 +108,7 @@ namespace backupLosGatos
             if (equipmentOption.SelectedValue == null)
             {
             }
+
             else
             {
                 if (technicianOption.SelectedValue == null && statusOption.SelectedValue == null)
@@ -464,9 +490,9 @@ namespace backupLosGatos
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
+            equipmentOption.Text = "";
             statusOption.Text = "";
             technicianOption.Text = "";
-            equipmentOption.Text = "";
         }
 
         private void logout_Click(object sender, EventArgs e)
@@ -479,12 +505,6 @@ namespace backupLosGatos
         private void viewKiosk_Click(object sender, EventArgs e)
         {
             kioskRequest viewKiosk = new kioskRequest();
-
-            if (labelRole.Text == "coordinator")
-            {
-                viewKiosk.mangButton.Enabled = false;
-            }
-
             viewKiosk.Show();
             conn.Close();
             this.Close();
@@ -502,15 +522,62 @@ namespace backupLosGatos
             conn.Close();
         }
 
+        private void ticketPage_Click(object sender, EventArgs e)
+        {
+            ticketDetails newTicket = new ticketDetails();
+            if (labelRole.Text == "coordinator")
+            {
+                newTicket.updateButton.Enabled = false;
+                newTicket.saveButton.Enabled = false;
+                newTicket.coordButton.Enabled = false;
+
+            }
+            newTicket.coordButton.Enabled = true;
+            newTicket.mangButton.Enabled = false;
+
+            //this makes it so it autofills the ticket number for us
+            string connetionString = null;
+            SqlConnection connection;
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            string sql = null;
+
+            connetionString = "Data Source=10.135.85.184;Initial Catalog=Group6;User ID=Group6;Password=Grp6s2117";
+            sql = "SELECT ticketID FROM Tickets";
+            connection = new SqlConnection(connetionString);
+
+            try
+            {
+                connection.Open();
+                command = new SqlCommand(sql, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds, "SQL Temp Table");
+                adapter.Dispose();
+                command.Dispose();
+                //connection.Close();
+
+                newTicket.ticketIDText.Text = (ds.Tables[0].Rows.Count + 100).ToString();
+                //MessageBox.Show("Number of row(s) - " + ds.Tables[0].Rows.Count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Cannot open connection to database! ");
+            }
+
+            newTicket.Show();
+            this.Close();
+        }
+
         private void dashboardGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             ticketDetails viewTicket = new ticketDetails();
             viewTicket.ticketIDText.Text = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
             viewTicket.unitIDText.Text = this.dashboardGrid.CurrentRow.Cells[1].Value.ToString();
-            viewTicket.statusCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
-            viewTicket.priorityCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[3].Value.ToString();
-            //viewTicket.dateText.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
-            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
+            viewTicket.equipmentCombo.SelectedValue = this.dashboardGrid.CurrentRow.Cells[2].Value.ToString();
+            //viewTicket.dateSubmittedDateTimePicker.Value = this.dashboardGrid.CurrentRow.Cells[3].Value.();
+            viewTicket.priorityCombo.Text = this.dashboardGrid.CurrentRow.Cells[4].Value.ToString();
+            viewTicket.statusCombo.Text = this.dashboardGrid.CurrentRow.Cells[5].Value.ToString();
             viewTicket.welderSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[6].Value.ToString();
             viewTicket.inspectorSignatureText.Text = this.dashboardGrid.CurrentRow.Cells[7].Value.ToString();
             viewTicket.additionalInformationText.Text = this.dashboardGrid.CurrentRow.Cells[8].Value.ToString();
@@ -520,17 +587,16 @@ namespace backupLosGatos
                 viewTicket.updateButton.Enabled = false;
                 viewTicket.saveButton.Enabled = false;
                 viewTicket.mangButton.Enabled = false;
-                viewTicket.ticketPage.Visible = false;
             }
 
             viewTicket.Show();
             this.Hide();
         }
 
-        private void dashboardPage_Click(object sender, EventArgs e)
+        private void btnDashboardRefresh_Click(object sender, EventArgs e)
         {
-            dashboardScreen refresh = new dashboardScreen();
-            refresh.Show();
+            dashboardScreen newD = new dashboardScreen();
+            newD.Show();
             this.Close();
         }
     }

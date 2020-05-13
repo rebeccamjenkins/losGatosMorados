@@ -269,7 +269,6 @@ namespace backupLosGatos
             this.dashboardPage.Size = new System.Drawing.Size(77, 24);
             this.dashboardPage.Text = "Refresh";
             this.dashboardPage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dashboardPage.Click += new System.EventHandler(this.dashboardPage_Click);
             // 
             // viewKiosk
             // 
