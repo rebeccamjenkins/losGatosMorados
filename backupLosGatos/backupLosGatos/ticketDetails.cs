@@ -87,7 +87,6 @@ namespace backupLosGatos
             priorityCombo.SelectedIndex = 0;
             priorityCombo.SelectedValue = 0;
 
-
         }
 
         private void ticketsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -121,13 +120,83 @@ namespace backupLosGatos
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            string unitID = ticketIDText.Text.ToString();
+            string equipmentID = unitIDText.Text.ToString();
+            string priorityLevel = priorityCombo.Text.ToString();
+            DateTime date = DateTime.Today;
+            string status = statusCombo.Text.ToString();
+            string welder = welderSignatureText.Text.ToString();
+            string inspector = inspectorSignatureText.Text.ToString();
+            string assignto = associateIDComboBox.Text.ToString();
+
+            string additionalInfo = additionalInformationText.Text.ToString();
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //create data source and static variables
+                string connectionString = @"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true";
+                SqlConnection con = new SqlConnection(connectionString);
+                DateTime thisDay = DateTime.Today;
+                int numID = 0;
+
+                //pull number of rows from database in order to create ticketID
+                con.Open();
+                SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM Tickets", con);
+                Int32 count = (Int32)comm.ExecuteScalar();
+
+                con.Close();
+
+                //create strings for all variables
+                numID = count + 100;
+
+                /*string unitID = ticketIDText.Text.ToString();
+                string equipmentID = unitIDText.Text.ToString();
+                string priorityLevel = priorityCombo.Text.ToString();
+                 DateTime date = DateTime.Today;
+                 string status = statusCombo.Text.ToString();
+                 string welder = welderSignatureText.Text.ToString();
+                string inspector = inspectorSignatureText.Text.ToString();
+                string assignto = associateIDComboBox.Text.ToString();
+                string additionalInfo = additionalInformationText.Text.ToString();*/
+
+                using (SqlConnection openCon = new SqlConnection(connectionString))
+                {
+                    string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, employeeName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @employeeName, @inspectorSignature, @additionalInfo )";
+
+                    using (SqlCommand command = new SqlCommand(injection))
+                    {
+                        command.Connection = openCon;
+                        command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
+                        command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
+                        command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
+                        command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
+                        command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = date;
+                        command.Parameters.Add("@status", SqlDbType.NChar, 10).Value = status;
+                        command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = welder;
+                        command.Parameters.Add("@employeeName", SqlDbType.NVarChar, 50).Value = assignto;
+                        command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = inspector;
+                        command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
+
+                        openCon.Open();
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Entry Saved");
+
+            }
+            //reset app
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
+            /*DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 SqlConnection conn = new SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
                 DateTime thisDay = DateTime.Today;
                 int numID = 0;
-
                 SqlCommand cmd = new SqlCommand("sp_insert", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -139,11 +208,9 @@ namespace backupLosGatos
                 cmd.Parameters.AddWithValue("@welderSignature", welderSignatureText.Text.ToString());
                 cmd.Parameters.AddWithValue("@inspectorSignature", inspectorSignatureText.Text.ToString());
                 cmd.Parameters.AddWithValue("@additionalInformation", additionalInformationText.Text.ToString());
-
                 conn.Open();
                 int i = cmd.ExecuteNonQuery();
                 conn.Close();
-
                 if (i != 0)
                 {
                     MessageBox.Show("Your ticket has been submitted.");
@@ -159,7 +226,7 @@ namespace backupLosGatos
                 welderSignatureText.Text = "";
                 inspectorSignatureText.Text = "";
                 additionalInformationText.Text = "";
-            }
+            }*/
         }
 
         private void updateButton_Click(object sender, EventArgs e)
