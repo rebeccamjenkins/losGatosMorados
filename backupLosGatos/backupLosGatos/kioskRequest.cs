@@ -200,14 +200,14 @@ namespace backupLosGatos
                     string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
 
                     value = Int32.Parse(str);
-                    int place = 105 - value;
+                    int place = 107 - value;
 
                     try
                     {
                         using (SqlConnection con2 = new SqlConnection("Data Source = 10.135.85.184; Initial Catalog = Group6; User ID = Group6; Password = Grp6s2117"))
                         {
                           
-                            using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + place))
+                            using (SqlCommand commandDel = new SqlCommand("DELETE FROM Kiosk WHERE ticketID = " + value))
                             {
                                 commandDel.Connection = con2;
                                 con2.Open();
@@ -215,11 +215,20 @@ namespace backupLosGatos
                             }
                             
                         }
+
+                        MessageBox.Show("Weld Request Denied.");
+                        kioskRequest refresh = new kioskRequest();
+                        this.Close();
+                        refresh.Show();
+
                     }
                     catch (SystemException ex)
                     {
                         MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
                     }
+
+
+
                 }
                 else
                 {
