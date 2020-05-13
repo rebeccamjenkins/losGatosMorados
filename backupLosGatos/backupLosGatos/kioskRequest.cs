@@ -96,8 +96,7 @@ namespace backupLosGatos
 
         private void kioskRequest_Load(object sender, EventArgs e)
         {
-            conn = new
-            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            SqlConnection conn = new SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
             conn.Open();
             SqlCommand getData = new SqlCommand("SELECT * FROM dbo.Kiosk", conn);
@@ -179,9 +178,9 @@ namespace backupLosGatos
                         cmd.Parameters.AddWithValue("@unitID", this.dashboardGrid.CurrentRow.Cells[1].Value.ToString());
                         cmd.Parameters.AddWithValue("@equipmentID", this.dashboardGrid.CurrentRow.Cells[2].Value.ToString());
                         cmd.Parameters.AddWithValue("@priorityLevel", this.dashboardGrid.CurrentRow.Cells[3].Value.ToString());
-                        cmd.Parameters.AddWithValue("@dateSubmitted", this.dashboardGrid.CurrentRow.Cells[4].Value.ToString());
-                        cmd.Parameters.AddWithValue("@additionalInformation", this.dashboardGrid.CurrentRow.Cells[6].Value.ToString());
-                        cmd.Parameters.AddWithValue("@technicianName", this.dashboardGrid.CurrentRow.Cells[5].Value.ToString());
+                        cmd.Parameters.AddWithValue("@dateSubmitted", this.dashboardGrid.CurrentRow.Cells[6].Value.ToString());
+                        cmd.Parameters.AddWithValue("@additionalInformation", this.dashboardGrid.CurrentRow.Cells[5].Value.ToString());
+                        cmd.Parameters.AddWithValue("@technicianName", this.dashboardGrid.CurrentRow.Cells[4].Value.ToString());
 
                         openCon.Open();
                         int i = cmd.ExecuteNonQuery();
@@ -196,7 +195,7 @@ namespace backupLosGatos
                 string str = this.dashboardGrid.CurrentRow.Cells[0].Value.ToString();
 
                 value = Int32.Parse(str);
-                int place = 107 - value;
+                
 
                 try
                 {
@@ -209,7 +208,7 @@ namespace backupLosGatos
                             commandDel.ExecuteNonQuery();
                         }
                     }
-                    MessageBox.Show("Weld Request Denied.");
+                    //MessageBox.Show("Weld Request Denied.");
                     kioskRequest refresh = new kioskRequest();
                     this.Close();
                     refresh.Show();
