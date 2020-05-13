@@ -14,14 +14,14 @@ namespace backupLosGatos
 
         private void ticketDetails_Load(object sender, EventArgs e)
         {
-            
+
             SqlConnection conn = null;
             SqlDataReader reader = null;
             conn = new
             SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
             conn.Open();
 
-           
+
             SqlCommand cmd = new SqlCommand("SELECT DISTINCT status FROM dbo.Tickets", conn);
             reader = cmd.ExecuteReader();
             DataSet dsstatus = new DataSet();
@@ -109,74 +109,83 @@ namespace backupLosGatos
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+            string unitID = ticketIDText.Text.ToString();
+            string equipmentID = unitIDText.Text.ToString();
+            string priorityLevel = priorityCombo.Text.ToString();
+            DateTime date = DateTime.Today;
+            string status = statusCombo.Text.ToString();
+            string welder = welderSignatureText.Text.ToString();
+            string inspector = inspectorSignatureText.Text.ToString();
+            string assignto = associateIDComboBox.Text.ToString();
+
+            string additionalInfo = additionalInformationText.Text.ToString();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //create data source and static variables
+                string connectionString = @"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true";
+                SqlConnection con = new SqlConnection(connectionString);
+                DateTime thisDay = DateTime.Today;
+                int numID = 0;
+
+                //pull number of rows from database in order to create ticketID
+                con.Open();
+                SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM Tickets", con);
+                Int32 count = (Int32)comm.ExecuteScalar();
+
+                con.Close();
+
+                //create strings for all variables
+                numID = count + 100;
+
+                /*string unitID = ticketIDText.Text.ToString();
+                string equipmentID = unitIDText.Text.ToString();
+                string priorityLevel = priorityCombo.Text.ToString();
+                 DateTime date = DateTime.Today;
+                 string status = statusCombo.Text.ToString();
+                 string welder = welderSignatureText.Text.ToString();
+                string inspector = inspectorSignatureText.Text.ToString();
+                string assignto = associateIDComboBox.Text.ToString();
+
+                string additionalInfo = additionalInformationText.Text.ToString();*/
+
+
+
+                using (SqlConnection openCon = new SqlConnection(connectionString))
                 {
-                    //create data source and static variables
-                    string connectionString = @"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true";
-                    SqlConnection con = new SqlConnection(connectionString);
-                    DateTime thisDay = DateTime.Today;
-                    int numID = 0;
+                    string injection = "INSERT into Tickets (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, employeeName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @employeeName, @inspectorSignature, @additionalInfo )";
 
-                    //pull number of rows from database in order to create ticketID
-                    con.Open();
-                    SqlCommand comm = new SqlCommand("SELECT COUNT(*) FROM Tickets", con);
-                    Int32 count = (Int32)comm.ExecuteScalar();
-                    
-                    con.Close();
-                    
-                    //create strings for all variables
-                    numID = count + 100;
-                    
-                    string unitID = ticketIDText.Text.ToString();
-                    string equipmentID = unitIDText.Text.ToString();
-                    string priorityLevel = priorityCombo.Text.ToString();
-                     DateTime date = DateTime.Today;
-                     string status = statusCombo.Text.ToString();
-                     string welder = welderSignatureText.Text.ToString();
-                    string inspector = inspectorSignatureText.Text.ToString();
-                    string assignto = associateIDComboBox.Text.ToString();
-                    
-                    string additionalInfo = additionalInformationText.Text.ToString();
-
-
-
-                    using (SqlConnection openCon = new SqlConnection(connectionString))
+                    using (SqlCommand command = new SqlCommand(injection))
                     {
-                        string injection = "INSERT into Kiosk (ticketID, unitID, equipmentID, priorityLevel, dateSubmitted, status, welderSignature, technicianName, inspectorSignature, additionalInformation) VALUES (@ticketID,@unitID,@equipmentID,@priorityLevel, @dateSubmitted, @status, @welderSignature, @technicianName, @inspectorSignature, @additionalInfo, )";
-
-                        using (SqlCommand command = new SqlCommand(injection))
-                        {
-                            command.Connection = openCon;
-                            command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
-                            command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
-                            command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
-                            command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
-                             command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = date;
+                        command.Connection = openCon;
+                        command.Parameters.Add("@ticketID", SqlDbType.NVarChar, 50).Value = numID;
+                        command.Parameters.Add("@unitID", SqlDbType.NChar, 10).Value = unitID;
+                        command.Parameters.Add("@equipmentID", SqlDbType.NChar, 10).Value = equipmentID;
+                        command.Parameters.Add("@priorityLevel", SqlDbType.NChar, 10).Value = priorityLevel;
+                        command.Parameters.Add("@dateSubmitted", SqlDbType.NChar, 10).Value = date;
                         command.Parameters.Add("@status", SqlDbType.NChar, 10).Value = status;
                         command.Parameters.Add("@welderSignature", SqlDbType.NChar, 10).Value = welder;
-                        command.Parameters.Add("@technicianName", SqlDbType.NVarChar, 50).Value = assignto;
+                        command.Parameters.Add("@employeeName", SqlDbType.NVarChar, 50).Value = assignto;
                         command.Parameters.Add("@inspectorSignature", SqlDbType.NChar, 10).Value = inspector;
                         command.Parameters.Add("@additionalInfo", SqlDbType.NVarChar, 1000).Value = additionalInfo;
-                           
-                            openCon.Open();
 
-                            command.ExecuteNonQuery();
-                        }
+                        openCon.Open();
+
+                        command.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Entry Saved");
-                 
-
-
-
                 }
-                //reset app
-                else if (dialogResult == DialogResult.No)
-                {
-                  
-                }
-            
+                MessageBox.Show("Entry Saved");
+
+
+
+
+            }
+            //reset app
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
+
 
 
             /*DialogResult dialogResult = MessageBox.Show("Are you sure you want to submit ticket?", "Ticket Submission", MessageBoxButtons.YesNo);
@@ -269,7 +278,7 @@ namespace backupLosGatos
             if (coordButton.Enabled == true || mangButton.Enabled == true)
             {
                 if (coordButton.Enabled == true)
-                { 
+                {
                     //makes sure the right permissions are given
                     newTicket.mangButton.Enabled = true;
                     newTicket.coordButton.Enabled = false;
