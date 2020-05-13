@@ -574,5 +574,12 @@ namespace backupLosGatos
             statusOption.Text = "";
             equipmentOption.Text = "";
         }
+
+        private void dashboardPage_Click(object sender, EventArgs e)
+        {
+            managerDashboard refresh = new managerDashboard();
+            this.Close();
+            refresh.Show();
+        }
     }
 }
