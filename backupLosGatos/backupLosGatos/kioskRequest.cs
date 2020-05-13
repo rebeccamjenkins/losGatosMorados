@@ -96,8 +96,7 @@ namespace backupLosGatos
 
         private void kioskRequest_Load(object sender, EventArgs e)
         {
-            conn = new
-            SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
+            SqlConnection conn = new SqlConnection(@"Data Source = 10.135.85.184; Initial Catalog = GROUP6; Persist Security Info = True; User ID = Group6; Password = Grp6s2117; MultipleActiveResultSets=true");
 
             conn.Open();
             SqlCommand getData = new SqlCommand("SELECT * FROM dbo.Kiosk", conn);
