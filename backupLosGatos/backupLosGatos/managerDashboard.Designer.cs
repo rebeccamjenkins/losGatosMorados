@@ -403,12 +403,15 @@ namespace backupLosGatos
             // queryTicket
             // 
             this.queryTicket.AllowDrop = true;
+            this.queryTicket.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.queryTicket.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.queryTicket.Location = new System.Drawing.Point(87, 16);
             this.queryTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.queryTicket.Multiline = true;
             this.queryTicket.Name = "queryTicket";
             this.queryTicket.Size = new System.Drawing.Size(157, 25);
             this.queryTicket.TabIndex = 20;
+            this.queryTicket.TextChanged += new System.EventHandler(this.queryTicket_TextChanged_1);
             // 
             // managerDashboard
             // 
