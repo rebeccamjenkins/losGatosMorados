@@ -60,6 +60,7 @@ namespace backupLosGatos
         {
             statusOption.Text = "";
             technicianOption.Text = "";
+            equipmentOption.Text = "";
         }
     }
 }
