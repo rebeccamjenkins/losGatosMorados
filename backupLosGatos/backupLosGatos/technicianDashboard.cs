@@ -61,5 +61,12 @@ namespace backupLosGatos
             statusOption.Text = "";
             technicianOption.Text = "";
         }
+
+        private void dashboardPage_Click(object sender, EventArgs e)
+        {
+            technicianDashboard refresh = new technicianDashboard();
+            this.Close();
+            refresh.Show();
+        }
     }
 }
